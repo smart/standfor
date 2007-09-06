@@ -1,0 +1,18 @@
+<h1>Listing donations</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for donation in @donations %>
+  <tr>
+    <td><%= link_to 'Show', donation %></td>
+    <td><%= link_to 'Edit', edit_donation_path(donation) %></td>
+    <td><%= link_to 'Destroy', donation, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New donation', new_donation_path %>

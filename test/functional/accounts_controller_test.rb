@@ -11,82 +11,47 @@ class AccountsControllerTest < Test::Unit::TestCase
     @controller = AccountsController.new
     @request    = ActionController::TestRequest.new
     @response   = ActionController::TestResponse.new
-
-    @first_id = accounts(:first).id
   end
 
-  def test_index
+  def test_should_get_index
     get :index
     assert_response :success
-    assert_template 'list'
+    assert assigns(:accounts)
   end
 
-  def test_list
-    get :list
-
-    assert_response :success
-    assert_template 'list'
-
-    assert_not_nil assigns(:accounts)
-  end
-
-  def test_show
-    get :show, :id => @first_id
-
-    assert_response :success
-    assert_template 'show'
-
-    assert_not_nil assigns(:account)
-    assert assigns(:account).valid?
-  end
-
-  def test_new
+  def test_should_get_new
     get :new
-
     assert_response :success
-    assert_template 'new'
-
-    assert_not_nil assigns(:account)
   end
 
-  def test_create
-    num_accounts = Account.count
+  def test_should_create_account
+    assert_difference('Account.count') do
+      post :create, :account => { }
+    end
 
-    post :create, :account => {}
-
-    assert_response :redirect
-    assert_redirected_to :action => 'list'
-
-    assert_equal num_accounts + 1, Account.count
+    assert_redirected_to account_path(assigns(:account))
   end
 
-  def test_edit
-    get :edit, :id => @first_id
-
+  def test_should_show_account
+    get :show, :id => 1
     assert_response :success
-    assert_template 'edit'
-
-    assert_not_nil assigns(:account)
-    assert assigns(:account).valid?
   end
 
-  def test_update
-    post :update, :id => @first_id
-    assert_response :redirect
-    assert_redirected_to :action => 'show', :id => @first_id
+  def test_should_get_edit
+    get :edit, :id => 1
+    assert_response :success
   end
 
-  def test_destroy
-    assert_nothing_raised {
-      Account.find(@first_id)
-    }
+  def test_should_update_account
+    put :update, :id => 1, :account => { }
+    assert_redirected_to account_path(assigns(:account))
+  end
 
-    post :destroy, :id => @first_id
-    assert_response :redirect
-    assert_redirected_to :action => 'list'
+  def test_should_destroy_account
+    assert_difference('Account.count', -1) do
+      delete :destroy, :id => 1
+    end
 
-    assert_raise(ActiveRecord::RecordNotFound) {
-      Account.find(@first_id)
-    }
+    assert_redirected_to accounts_path
   end
 end
