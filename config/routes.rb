@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :my_badges
+
+  map.resources :badges
+
   map.resources :organizations
 
   map.resources :accounts
