@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :organizations
+
   map.resources :accounts
 
   map.resources :donations
