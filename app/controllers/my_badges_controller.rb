@@ -1,4 +1,5 @@
 class MyBadgesController < ApplicationController
+  layout 'default'
   # GET /my_badges
   # GET /my_badges.xml
   def index

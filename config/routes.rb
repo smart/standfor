@@ -1,13 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :my_badges
-
-  map.resources :badges
-
-  map.resources :organizations
-
-  map.resources :accounts
-
-  map.resources :donations
+  map.resources :my_badges, :badges, :organizations, :accounts, :donations
 
   # The priority is based upon order of creation: first created -> highest priority.
   
@@ -26,11 +18,9 @@ ActionController::Routing::Routes.draw do |map|
   # Allow downloading Web Service WSDL as a file with an extension
   # instead of a file named 'wsdl'
   #
+  #
   map.connect ':controller/service.wsdl', :action => 'wsdl'
-
-
-  map.connect '/', :controller => :accounts, :action => :index
-  
+  map.connect '/', :controller => 'accounts', :action => 'index'
   # Install the default route as the lowest priority.
   map.connect ':controller/:action/:id.:format'
   map.connect ':controller/:action/:id'
