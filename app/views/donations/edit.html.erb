@@ -3,6 +3,17 @@
 <%= error_messages_for :donation %>
 
 <% form_for(@donation) do |f| %>
+
+  <p><lable for="donation_amount" >Amount:</label>
+   <%= f.text_field :amount -%>
+  </p>
+
+  <p><lable for="donation_organization" >Organization:</label>
+    <%= f.select( "organization_id", Organization.find(:all).collect {|o| [ o.name, o.id ] }, 
+		{ :include_blank => true }) -%>
+
+  </p>
+
   <p>
     <%= f.submit "Update" %>
   </p>
