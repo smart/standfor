@@ -1,0 +1,26 @@
+<h1>Editing segment</h1>
+
+<%= error_messages_for :segment %>
+
+<% form_for(@segment) do |f| %>
+
+  <p><lable for="segment_name" >Name:</label>
+   <%= f.text_field :name -%>
+  </p>
+
+  <p><lable for="segment_name" >Keyword:</label>
+   <%= f.text_field :keyword -%>
+  </p>
+
+  <p><lable for="segment_organization" >Organization:</label>
+    <%= f.select( "organization_id", Organization.find(:all).collect {|o| [ o.name, o.id ] }, 
+		{ :include_blank => true }) -%>
+  </p>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @segment %> |
+<%= link_to 'Back', segments_path %>

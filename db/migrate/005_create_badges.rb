@@ -3,6 +3,7 @@ class CreateBadges < ActiveRecord::Migration
     create_table :badges do |t|
       t.column :name, :string
       t.column :organization_id, :integer
+      t.column :segment_id, :integer
       t.column :structure_id, :integer
       t.timestamps 
     end

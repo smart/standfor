@@ -2,16 +2,19 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 6) do
+ActiveRecord::Schema.define(:version => 7) do
 
   create_table "accounts", :force => true do |t|
     t.string  "first_name"
     t.string  "last_name"
     t.string  "phone"
     t.string  "email"
+    t.string  "address_1"
+    t.string  "address_2"
     t.string  "city"
     t.string  "state"
     t.string  "zip"
+    t.string  "country"
     t.date    "created_at"
     t.date    "updated_at"
     t.boolean "status",     :default => true
@@ -20,6 +23,7 @@ ActiveRecord::Schema.define(:version => 6) do
   create_table "badges", :force => true do |t|
     t.string   "name"
     t.integer  "organization_id"
+    t.integer  "segment_id"
     t.integer  "structure_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -29,6 +33,8 @@ ActiveRecord::Schema.define(:version => 6) do
     t.integer  "account_id"
     t.integer  "organization_id"
     t.integer  "amount"
+    t.integer  "segment_id"
+    t.integer  "billing_record_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -57,6 +63,15 @@ ActiveRecord::Schema.define(:version => 6) do
     t.string "description"
     t.date   "created_on"
     t.date   "updated_on"
+    t.string "keyword"
+  end
+
+  create_table "segments", :force => true do |t|
+    t.string   "name"
+    t.string   "keyword"
+    t.integer  "organization_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "sessions", :force => true do |t|

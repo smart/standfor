@@ -1,4 +1,6 @@
 class AccountsController < ApplicationController
+  layout 'default'
+  helper 'accounts'
   # GET /accounts
   # GET /accounts.xml
   def index

@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :my_badges, :badges, :organizations, :accounts, :donations
+
+  map.resources :my_badges, :badges, :organizations, :accounts, :donations, :segments
 
   # The priority is based upon order of creation: first created -> highest priority.
   

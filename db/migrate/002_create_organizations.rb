@@ -18,6 +18,7 @@ class CreateOrganizations < ActiveRecord::Migration
        t.column :description,:string
        t.column :created_on, :date
        t.column :updated_on, :date
+       t.column :keyword,    :string
      end
   end
 
