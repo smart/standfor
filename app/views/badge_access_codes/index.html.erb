@@ -1,0 +1,18 @@
+<h1>Listing badge_access_codes</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for badge_access_code in @badge_access_codes %>
+  <tr>
+    <td><%= link_to 'Show', badge_access_code %></td>
+    <td><%= link_to 'Edit', edit_badge_access_code_path(badge_access_code) %></td>
+    <td><%= link_to 'Destroy', badge_access_code, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New badge_access_code', new_badge_access_code_path %>

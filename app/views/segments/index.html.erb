@@ -1,9 +1,19 @@
-<h1>Listing segments</h1>
+<h1>Giving Segments</h1>
 
+<ul>
+
+<% @segments.each do |segment| %>
+
+<li><%= link_to segment.name, segment  -%></li>
+
+<% end  %>
+
+</ul>
+
+<% if false %>
 <table>
   <tr>
   </tr>
-
 <% for segment in @segments %>
   <tr>
     <td><%= link_to 'Show', segment %></td>
@@ -12,7 +22,6 @@
   </tr>
 <% end %>
 </table>
-
 <br />
-
 <%= link_to 'New segment', new_segment_path %>
+<% end %>

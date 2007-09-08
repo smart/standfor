@@ -1,5 +1,15 @@
-<h1>Listing badges</h1>
+<h1>Badge Catalog</h1>
 
+<ul>
+<% @badges.each do |badge| %>
+
+<li><%= link_to badge.name, :controller => 'badges' , :action => 'show'  -%> </li>
+
+<% end %>
+</ul>
+
+<% if false %>
+TODO: DELETE THIS SCAFFOLD  CODE ONCE THE LGOIC IS CLEAR
 <table>
   <tr>
   </tr>
@@ -16,3 +26,4 @@
 <br />
 
 <%= link_to 'New badge', new_badge_path %>
+<% end %>

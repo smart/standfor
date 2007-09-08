@@ -1,0 +1,2 @@
+module AccountBadgeAuthorizationsHelper
+end

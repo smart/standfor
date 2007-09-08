@@ -1,0 +1,18 @@
+<h1>Earn This Badge!</h1>
+
+<ul>
+<% @badge.requirements.each do |requirement| %>
+<li> 
+<%= requirement.name -%> 
+
+<p> 
+<%= requirement.description -%> 
+<%= link_to 'do this now', 
+	:controller => 'requirements', 
+	:action => 'complete',
+	:id => requirement    -%>
+</p>
+
+</li>
+<% end %>
+</ul>

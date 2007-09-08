@@ -1,4 +1,5 @@
 class RequirementsController < ApplicationController
+  layout  'default'
   # GET /requirements
   # GET /requirements.xml
   def index
@@ -82,4 +83,9 @@ class RequirementsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def complete
+    @requirement = Requirement.find(params[:id])
+  end
+
 end

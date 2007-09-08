@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :account_badge_authorizations
+
+  map.resources :badge_access_codes
+
   map.resources :requirements
 
 
@@ -23,7 +27,11 @@ ActionController::Routing::Routes.draw do |map|
   #
   #
   map.connect ':controller/service.wsdl', :action => 'wsdl'
-  map.connect '/', :controller => 'accounts', :action => 'index'
+
+  map.connect '/', :controller => 'site', :action => 'index'
+  map.connect '/catalog', :controller => 'badges', :action => 'index'
+  #map.connect '/get/badge/:badge_id', :controller => 'my_badges', :action => 'new'
+
   # Install the default route as the lowest priority.
   map.connect ':controller/:action/:id.:format'
   map.connect ':controller/:action/:id'

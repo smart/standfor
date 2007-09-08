@@ -1,0 +1,2 @@
+module BadgeAccessCodesHelper
+end

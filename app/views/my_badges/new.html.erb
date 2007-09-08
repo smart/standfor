@@ -1,11 +1,16 @@
-<h1>New my_badge</h1>
+<h1>Get This Badge </h1>
 
 <%= error_messages_for :my_badge %>
 
-<% form_for(@my_badge) do |f| %>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
+<p><%= @badge.name  -%> </p>
 
-<%= link_to 'Back', my_badges_path %>
+
+<% form_for :my_badge, 
+	:url  => {:action => "create", :id => @badge }, 
+	:method => :post  do |f| %>
+  
+  <p>
+    <%= submit_tag "Give Me My Badge" %>
+  </p>
+
+<% end %>

@@ -2,7 +2,15 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 8) do
+ActiveRecord::Schema.define(:version => 10) do
+
+  create_table "account_badge_authorizations", :force => true do |t|
+    t.integer  "account_id"
+    t.integer  "badge_id"
+    t.integer  "badge_access_code_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "accounts", :force => true do |t|
     t.string  "first_name"
@@ -18,6 +26,11 @@ ActiveRecord::Schema.define(:version => 8) do
     t.date    "created_at"
     t.date    "updated_at"
     t.boolean "status",     :default => true
+  end
+
+  create_table "badge_access_codes", :force => true do |t|
+    t.integer "badge_id"
+    t.string  "value"
   end
 
   create_table "badges", :force => true do |t|

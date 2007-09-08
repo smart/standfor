@@ -83,4 +83,9 @@ class BadgesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def requirements 
+    @badge = Badge.find(params[:id])
+  end
+
 end

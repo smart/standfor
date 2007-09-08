@@ -25,7 +25,10 @@ class DonationsController < ApplicationController
   # GET /donations/new
   # GET /donations/new.xml
   def new
+    get_organization
+    get_segment
     @donation = Donation.new
+    @donation.segment_id = @segment
 
     respond_to do |format|
       format.html # new.html.erb
@@ -41,13 +44,18 @@ class DonationsController < ApplicationController
   # POST /donations
   # POST /donations.xml
   def create
+    get_organization
+    get_segment
     @donation = Donation.new(params[:donation])
+    @donation.segment_id = params[:segment]
+    @donation.organization = @organization
+    @donation.account = current_account 
 
     respond_to do |format|
       if @donation.save
         flash[:notice] = 'Donation was successfully created.'
-        format.html { redirect_to(@donation) }
-        format.xml  { render :xml => @donation, :status => :created, :location => @donation }
+        format.html { redirect_back_or_default('/')} #redirect_to(@donation)  
+	format.xml  { render :xml => @donation, :status => :created, :location => @donation }
       else
         format.html { render :action => "new" }
         format.xml  { render :xml => @donation.errors, :status => :unprocessable_entity }
@@ -83,4 +91,33 @@ class DonationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def select_organization
+    begin
+      @organization = Organization.find(params[:organization][:id])
+      redirect_to  :controller =>  'donations', :action => 'new', :organization => @organization
+    rescue
+      render :action => 'choose_organization' and return
+    end
+
+  end
+
+  private
+
+  def get_organization
+    begin
+      @organization = Organization.find(params[:organization] )
+    rescue
+      render :action => 'choose_organization' and return
+    end
+  end
+
+  def get_segment
+    begin
+      @segment = Segment.find(params[:segment]) 
+    rescue
+      @segment = @organization.segments.first
+    end 
+  end
+
 end

@@ -1,0 +1,11 @@
+<h1>Choose Organization </h1>
+
+<%= form_tag :controller => 'donations', :action => 'select_organization'  %>
+  <p><lable for="donation_organization" >Organization:</label>
+    <%= select( "organization", "id", Organization.find(:all).collect {|o| [ o.name, o.id ] },
+               { :include_blank => true }) -%>
+   <p>
+     <%= submit_tag "Choose" %>
+   </p>
+
+ </form>

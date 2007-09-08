@@ -1,0 +1,12 @@
+<h1>Editing badge_access_code</h1>
+
+<%= error_messages_for :badge_access_code %>
+
+<% form_for(@badge_access_code) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @badge_access_code %> |
+<%= link_to 'Back', badge_access_codes_path %>

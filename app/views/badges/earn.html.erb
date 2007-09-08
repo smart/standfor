@@ -1,0 +1,14 @@
+<h1>Earn This Badge!</h1>
+
+<ul>
+<% @badge.requirements.each do |requirement| %>
+<li> 
+<%= requirement.name -%> 
+
+<p> 
+<%= requirement.description -%> 
+</p>
+
+</li>
+<% end %>
+</ul>

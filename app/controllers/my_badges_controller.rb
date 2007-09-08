@@ -1,5 +1,9 @@
 class MyBadgesController < ApplicationController
   layout 'default'
+
+  before_filter :get_badge  
+  before_filter :badge_authorization_required
+
   # GET /my_badges
   # GET /my_badges.xml
   def index
@@ -42,11 +46,13 @@ class MyBadgesController < ApplicationController
   # POST /my_badges.xml
   def create
     @my_badge = MyBadge.new(params[:my_badge])
+    @my_badge.account = current_account 
+    @my_badge.badge  = @badge 
 
     respond_to do |format|
       if @my_badge.save
         flash[:notice] = 'MyBadge was successfully created.'
-        format.html { redirect_to(@my_badge) }
+        format.html {redirect_to :controller =>'customize', :action =>'index', :id => @my_badge }
         format.xml  { render :xml => @my_badge, :status => :created, :location => @my_badge }
       else
         format.html { render :action => "new" }
@@ -83,4 +89,21 @@ class MyBadgesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+   def customize 
+    @my_badge = MyBadge.find(params[:id])
+   end
+  
+
+ private
+
+  def get_badge
+     params[:my_badge] ||= {}
+    begin
+     @badge = Badge.find(params[:badge_id])
+    rescue
+     @badge = Badge.find(params[:id])
+    end
+  end
+
 end
