@@ -1,4 +1,6 @@
 class AccountBadgeAuthorizationsController < ApplicationController
+  before_filter :account_required
+  layout 'default'
   # GET /account_badge_authorizations
   # GET /account_badge_authorizations.xml
   def index
@@ -24,6 +26,7 @@ class AccountBadgeAuthorizationsController < ApplicationController
   # GET /account_badge_authorizations/new
   # GET /account_badge_authorizations/new.xml
   def new
+    @requirement = Requirement.find(params[:requirement])
     @account_badge_authorization = AccountBadgeAuthorization.new
 
     respond_to do |format|
@@ -40,12 +43,25 @@ class AccountBadgeAuthorizationsController < ApplicationController
   # POST /account_badge_authorizations
   # POST /account_badge_authorizations.xml
   def create
-    @account_badge_authorization = AccountBadgeAuthorization.new(params[:account_badge_authorization])
+    @requirement = Requirement.find(params[:requirement])
+
+    begin
+     @badge_access_code = BadgeAccessCode.find(:first, :conditions => ["value = ? and badge_id = ?", params[:account_badge_authorization][:code],  @requirement.badge.id ] )
+    rescue
+	render :action => "new" and return
+    end
+ 
+    @account_badge_authorization = AccountBadgeAuthorization.new()
+    @account_badge_authorization.account = current_account 
+    @account_badge_authorization.badge = @requirement.badge
+    @account_badge_authorization.badge_access_code = @badge_access_code 
 
     respond_to do |format|
+      
       if @account_badge_authorization.save
         flash[:notice] = 'AccountBadgeAuthorization was successfully created.'
-        format.html { redirect_to(@account_badge_authorization) }
+        #format.html { redirect_to(@account_badge_authorization) }
+        format.html { redirect_back_or_default('/') }
         format.xml  { render :xml => @account_badge_authorization, :status => :created, :location => @account_badge_authorization }
       else
         format.html { render :action => "new" }

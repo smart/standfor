@@ -1,11 +1,15 @@
-<h1>New account_badge_authorization</h1>
+<h1>Enter A Valid Access Code</h1>
 
 <%= error_messages_for :account_badge_authorization %>
 
-<% form_for(@account_badge_authorization) do |f| %>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
+<% form_for :account_badge_authorization, :url => {:action  => :create,:requirement => @requirement.id }, :method => :post  do |f| %>
 
-<%= link_to 'Back', account_badge_authorizations_path %>
+  <p>
+    <%= f.text_field :code  -%>
+  </p>
+
+  <p>
+    <%= f.submit "Enter Code" %>
+  </p>
+
+<% end %>

@@ -86,6 +86,11 @@ class RequirementsController < ApplicationController
 
   def complete
     @requirement = Requirement.find(params[:id])
+    if @requirement.class.to_s == 'DonationRequirement'
+	redirect_to(:controller  => 'donations', :action => 'new', :organization => @requirement.badge.organization) and return
+    elsif @requirement.class.to_s == 'CodeRequirement'
+	redirect_to(:controller  => 'account_badge_authorizations', :action => 'new', :requirement => @requirement ) and return
+    end
   end
 
 end
