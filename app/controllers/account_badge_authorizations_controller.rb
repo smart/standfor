@@ -45,11 +45,10 @@ class AccountBadgeAuthorizationsController < ApplicationController
   def create
     @requirement = Requirement.find(params[:requirement])
 
-    begin
      @badge_access_code = BadgeAccessCode.find(:first, :conditions => ["value = ? and badge_id = ?", params[:account_badge_authorization][:code],  @requirement.badge.id ] )
-    rescue
+     if @badge_access_code.nil? 
 	render :action => "new" and return
-    end
+     end
  
     @account_badge_authorization = AccountBadgeAuthorization.new()
     @account_badge_authorization.account = current_account 
