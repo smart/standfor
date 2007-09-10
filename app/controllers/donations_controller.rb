@@ -44,17 +44,17 @@ class DonationsController < ApplicationController
   # POST /donations
   # POST /donations.xml
   def create
-    get_organization
-    get_segment
+    @badge = Badge.find(params[:badge])
+    @segment = Segment.find(params[:segment])
     @donation = Donation.new(params[:donation])
-    @donation.segment_id = params[:segment]
-    @donation.organization = @organization
+    @donation.segment_id =  @segment.id
+    @donation.organization_id = @badge.organization.id
     @donation.account = current_account 
 
     respond_to do |format|
       if @donation.save
         flash[:notice] = 'Donation was successfully created.'
-        format.html { redirect_back_or_default('/')} #redirect_to(@donation)  
+        format.html { redirect_back_or_default('/') } #redirect_to(@donation)  
 	format.xml  { render :xml => @donation, :status => :created, :location => @donation }
       else
         format.html { render :action => "new" }

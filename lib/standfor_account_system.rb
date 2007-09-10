@@ -26,6 +26,7 @@ module StandforAccountSystem
    end
 
     def redirect_back_or_default(default)
+      #session[:return_to] << "&method=post" if !session[:return_to].nil? 
       session[:return_to] ? redirect_to(session[:return_to]) : redirect_to(default)
       session[:return_to] = nil
     end

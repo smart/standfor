@@ -2,7 +2,8 @@ class Account < ActiveRecord::Base
    has_many :organizations
    has_many :my_badges
    has_many :donations
-   has_many :account_badge_authorizations
+
+   has_and_belongs_to_many :access_codes
 
    validates_presence_of :first_name,:last_name,:phone,:email,:city,:state,:zip, :country 
    validates_length_of :email, :within => 3..100

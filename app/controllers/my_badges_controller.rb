@@ -1,8 +1,9 @@
 class MyBadgesController < ApplicationController
   layout 'default'
 
-  before_filter :get_badge  
-  before_filter :badge_authorization_required
+  #before_filter :get_badge  
+  before_filter :account_required
+  #
 
   # GET /my_badges
   # GET /my_badges.xml
@@ -30,6 +31,9 @@ class MyBadgesController < ApplicationController
   # GET /my_badges/new.xml
   def new
     @my_badge = MyBadge.new
+    store_location
+    get_segment
+    get_badge
 
     respond_to do |format|
       format.html # new.html.erb
@@ -45,9 +49,20 @@ class MyBadgesController < ApplicationController
   # POST /my_badges
   # POST /my_badges.xml
   def create
-    @my_badge = MyBadge.new(params[:my_badge])
+    #raise 
+    get_badge
+    get_segment
+
+    @my_badge = MyBadge.find_by_badge_id(@badge.id)
+    @my_badge = MyBadge.new(params[:my_badge]) if @my_badge.nil?
     @my_badge.account = current_account 
     @my_badge.badge  = @badge 
+
+    if !params[:my_badge].nil? and !params[:my_badge][:access_code].nil?
+      	 @badge.access_codes.each do |c|
+	    current_account.access_codes << c if c.value == params[:my_badge][:access_code]
+         end
+    end
 
     respond_to do |format|
       if @my_badge.save
@@ -93,17 +108,17 @@ class MyBadgesController < ApplicationController
    def customize 
     @my_badge = MyBadge.find(params[:id])
    end
-  
+
 
  private
 
   def get_badge
      params[:my_badge] ||= {}
-    begin
-     @badge = Badge.find(params[:badge_id])
-    rescue
-     @badge = Badge.find(params[:id])
-    end
+     @badge = Badge.find(params[:badge])
+  end
+
+  def get_segment
+     @segment = Segment.find(params[:segment])
   end
 
 end

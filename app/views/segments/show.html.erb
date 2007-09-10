@@ -7,11 +7,12 @@
 
 <%= link_to 'view this badge', badge -%> 
 | 
-<%= link_to 'I want this badge  this badge', 
-	:controller => 'my_badges', 
-	:action =>  'new', 
-	:badge_id =>  badge.id -%> 
 
+<%= link_to 'I want this badge  this badge', 
+	{:controller => 'my_badges', 
+	 :action =>  'new', :segment => @segment, 
+	 :badge =>  badge  } -%> 
+ 
 </li>
 <% end %>
 </ul>

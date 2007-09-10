@@ -1,6 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :account_badge_authorizations
-
   map.resources :badge_access_codes
 
   map.resources :requirements

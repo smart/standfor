@@ -4,12 +4,15 @@
 
 ActiveRecord::Schema.define(:version => 10) do
 
-  create_table "account_badge_authorizations", :force => true do |t|
-    t.integer  "account_id"
-    t.integer  "badge_id"
-    t.integer  "badge_access_code_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table "access_codes", :force => true do |t|
+    t.integer "scope_id",                                  :null => false
+    t.string  "scope_type", :default => "CodeRequirement", :null => false
+    t.string  "value",      :default => "",                :null => false
+  end
+
+  create_table "access_codes_accounts", :id => false, :force => true do |t|
+    t.integer "access_code_id"
+    t.integer "account_id"
   end
 
   create_table "accounts", :force => true do |t|
@@ -26,11 +29,6 @@ ActiveRecord::Schema.define(:version => 10) do
     t.date    "created_at"
     t.date    "updated_at"
     t.boolean "status",     :default => true
-  end
-
-  create_table "badge_access_codes", :force => true do |t|
-    t.integer "badge_id"
-    t.string  "value"
   end
 
   create_table "badges", :force => true do |t|
