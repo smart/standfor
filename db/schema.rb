@@ -55,7 +55,8 @@ ActiveRecord::Schema.define(:version => 14) do
     t.integer  "organization_id"
     t.integer  "amount"
     t.integer  "segment_id"
-    t.integer  "billing_record_id"
+    t.string   "payment_authorization"
+    t.string   "last_four_digits",      :limit => 4
     t.datetime "created_at"
     t.datetime "updated_at"
   end

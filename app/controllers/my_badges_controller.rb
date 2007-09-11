@@ -2,7 +2,8 @@ class MyBadgesController < ApplicationController
   layout 'default'
 
   #before_filter :get_badge  
-  before_filter :account_required
+  #before_filter :account_required
+  before_filter :login_required
   #
 
   # GET /my_badges
