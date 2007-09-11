@@ -1,8 +1,16 @@
 <h2>Authorization New</h2>
 
+<h3><%= @badge.organization.name  -%></h3>
+<h3><%= @badge.name -%></h3>
+<h3>$<%= @amount -%></h3>
+<h3><%= @segment.name  -%></h3>
+
 <% form_for :authorization , 
 	    @authorization,  
-	    :url  => {:action => "create", :amount => @amount  }, :method => :post  do |f| %>
+	    :url  => {:action => "create", 
+		      :amount => @amount , 
+		      :badge => @badge, 
+		      :segment => @segment }, :method => :post  do |f| %>
 
 <p>
 <label for="creditcard_first_name">First Name:</label>

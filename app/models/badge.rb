@@ -2,6 +2,7 @@ class Badge < ActiveRecord::Base
   belongs_to :organization
   has_many :requirements
   has_many :my_badges
+  has_many :authorizations
 
 
   def authorized?(account)
@@ -27,5 +28,9 @@ class Badge < ActiveRecord::Base
      requirement = DonationRequirement.find_by_badge_id(self.id) 
      requirement
   end
+
+   def paid?
+     Authorization.exists?(:badge_id  => self.id, :status => true )
+   end
 
 end

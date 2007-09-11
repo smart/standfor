@@ -47,12 +47,12 @@ class DonationsController < ApplicationController
 
     @badge = Badge.find(params[:badge])
     @segment = Segment.find(params[:segment])
-    return false if !payment_authorization_required( params[:donation][:amount], @badge.organization, @segment )
+    return false if !payment_authorization_required( params[:donation][:amount], @badge, @segment )
     @donation = Donation.new(params[:donation])
     @donation.segment_id =  @segment.id
     @donation.organization_id = @badge.organization.id
-    @donation.payment_authorization = session[:authorization][:authorization_code]
-    @donation.last_four_digits = session[:authorization][:last_four_digits]
+    @donation.payment_authorization = @authorization.authorization_code
+    @donation.last_four_digits = @authorization.last_four_digits 
     @donation.account = current_account 
 
     respond_to do |format|

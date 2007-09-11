@@ -34,17 +34,14 @@ module StandforAccountSystem
    end
 =end
 
-    def payment_authorization_required(amount, organization, segment )
-       session[:payment_return_to] = request.request_uri
-       if session[:authorization].nil?
-            redirect_to(:controller => 'authorizations', 
-			:action => 'new', 
-			:amount => amount, 
-			:organization => organization,
-			:segment => segment) and return false
-
-       end
-       return true
+    def payment_authorization_required(amount, badge, segment )
+       @authorization = badge.authorizations.find_by_badge_id_and_account_id(badge.id, current_account.id)
+        if @authorization.nil?
+          redirect_to(:controller => 'authorizations', :action => 'new', :amount => amount, 
+		   :badge => badge, :segment => segment) and return false
+	else
+           return true	
+        end
     end
 
   
