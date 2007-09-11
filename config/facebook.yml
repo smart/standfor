@@ -1,0 +1,33 @@
+
+development:
+    key: 54f7cf6cb7906adfab9cf9b78959d57d
+    secret: f1f120d91c12b6bf598bd20b9c7685e8
+    canvas_path: /sympacttest/
+    callback_path: http://www.sympact.net
+    tunnel:
+      username: smartocci
+      host: td1.sympact.net
+      port: 8888
+      local_port: 3000
+
+test:
+    key: YOUR_API_KEY_HERE
+    secret: YOUR_API_SECRET_HERE
+    canvas_path: /yourAppName/
+    callback_path: /path/to/your/callback/
+    tunnel:
+      username: yourLoginName
+      host: www.yourexternaldomain.com
+      port: 1234
+      local_port: 5678
+
+production:
+    key: YOUR_API_KEY_HERE
+    secret: YOUR_API_SECRET_HERE
+    canvas_path: /yourAppName/
+    callback_path: /path/to/your/callback/
+    tunnel:
+      username: yourLoginName
+      host: www.yourexternaldomain.com
+      port: 1234
+      local_port: 5678
