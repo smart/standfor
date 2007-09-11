@@ -44,9 +44,10 @@ class DonationsController < ApplicationController
   # POST /donations
   # POST /donations.xml
   def create
-    return false unless payment_authorization_required( params[:donation][:amount] )
+
     @badge = Badge.find(params[:badge])
     @segment = Segment.find(params[:segment])
+    return false if !payment_authorization_required( params[:donation][:amount], @badge.organization, @segment )
     @donation = Donation.new(params[:donation])
     @donation.segment_id =  @segment.id
     @donation.organization_id = @badge.organization.id
