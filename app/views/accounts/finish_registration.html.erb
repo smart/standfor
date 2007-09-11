@@ -1,0 +1,21 @@
+<h1>Settings</h1>
+
+<%= error_messages_for :user %>
+<% form_for :account, current_account, { :url => {:action => :save_registration}, :html => {:method => :put} } do |f| -%>
+
+<p><label for="nickname">Nickname</label><br/>
+<%= f.text_field :nickname %></p>
+
+<p><label for="fullname">Fullname</label><br/>
+<%= f.text_field :fullname %></p>
+
+<p><label for="email">Primary Email</label><br/>
+<%= f.text_field :primary_email %></p>
+
+<
+<p>
+  <%= submit_tag 'Save', :disable_with => "Saving&hellip;" %>
+  <%= link_to 'logout', logout_url %>
+  <%= link_to "destroy account", account_path(@account), :method => :delete %>
+</p>
+<% end -%>

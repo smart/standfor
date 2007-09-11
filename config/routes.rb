@@ -3,7 +3,21 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :requirements
 
-
+  # Youser routes
+   map.login   '/login',  :controller => 'sessions', :action => 'new'
+  map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
+  map.signup  '/signup', :controller => 'accounts',   :action => 'new'
+  
+  map.open_id_complete         'sessions', :controller => "sessions", :action => "create", :requirements => { :method => :get }
+  map.open_id_complete_on_accounts 'accounts',    :controller => "accounts",    :action => "create", :requirements => { :method => :get }
+  map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
+  map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
+  map.resources :accounts do |user|
+    user.resources :acconts_openids
+  end
+  map.resource :sessions
+  # end youser routes
+  # 
   map.resources :my_badges, :badges, :organizations, :accounts, :donations, :segments
 
   # The priority is based upon order of creation: first created -> highest priority.

@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 10) do
+ActiveRecord::Schema.define(:version => 14) do
 
   create_table "access_codes", :force => true do |t|
     t.integer "scope_id",                                  :null => false
@@ -16,19 +16,29 @@ ActiveRecord::Schema.define(:version => 10) do
   end
 
   create_table "accounts", :force => true do |t|
-    t.string  "first_name"
-    t.string  "last_name"
-    t.string  "phone"
-    t.string  "email"
-    t.string  "address_1"
-    t.string  "address_2"
-    t.string  "city"
-    t.string  "state"
-    t.string  "zip"
-    t.string  "country"
-    t.date    "created_at"
-    t.date    "updated_at"
-    t.boolean "status",     :default => true
+    t.string   "phone"
+    t.string   "address_1"
+    t.string   "address_2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "country"
+    t.date     "created_at"
+    t.date     "updated_at"
+    t.boolean  "status",                    :default => true
+    t.string   "fullname"
+    t.string   "nickname"
+    t.string   "primary_email"
+    t.string   "remember_token"
+    t.datetime "remember_token_expires_at"
+  end
+
+  create_table "authenticators", :force => true do |t|
+    t.string   "auth_type",  :default => "", :null => false
+    t.string   "auth_token"
+    t.integer  "account_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "badges", :force => true do |t|
@@ -50,11 +60,39 @@ ActiveRecord::Schema.define(:version => 10) do
     t.datetime "updated_at"
   end
 
+  create_table "local_users", :force => true do |t|
+    t.string   "login"
+    t.string   "email"
+    t.string   "crypted_password", :limit => 40
+    t.string   "salt",             :limit => 40
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "my_badges", :force => true do |t|
     t.integer  "badge_id"
     t.integer  "account_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "open_id_authentication_associations", :force => true do |t|
+    t.binary  "server_url"
+    t.string  "handle"
+    t.binary  "secret"
+    t.integer "issued"
+    t.integer "lifetime"
+    t.string  "assoc_type"
+  end
+
+  create_table "open_id_authentication_nonces", :force => true do |t|
+    t.string  "nonce"
+    t.integer "created"
+  end
+
+  create_table "open_id_authentication_settings", :force => true do |t|
+    t.string "setting"
+    t.binary "value"
   end
 
   create_table "organizations", :force => true do |t|

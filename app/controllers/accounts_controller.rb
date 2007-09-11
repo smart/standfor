@@ -1,91 +1,35 @@
 class AccountsController < ApplicationController
-  layout 'default'
-  helper 'accounts'
-  # GET /accounts
-  # GET /accounts.xml
-  def index
-    @accounts = Account.find(:all)
+  # Be sure to include AuthenticationSystem in Application Controller instead
+  # If you want "remember me" functionality, add this before_filter to Application Controller
+  before_filter :login_from_cookie
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @accounts }
-    end
-  end
-
-  # GET /accounts/1
-  # GET /accounts/1.xml
-  def show
-    @account = Account.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @account }
-    end
-  end
-
-  # GET /accounts/new
-  # GET /accounts/new.xml
+  # render new.rhtml
   def new
-    @account = Account.new
-
-    respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @account }
+  end
+  
+  def finish_registration
+    @account = current_account
+  end
+  
+  def save_registration
+    @account = current_account
+    if current_account.update_attributes(params[:account])
+      redirect_back_or_default('/')
+      false
+    else
+      render :action => 'finish_registration'
     end
   end
 
-  # GET /accounts/1/edit
-  def edit
-    @account = Account.find(params[:id])
-  end
-
-  # POST /accounts
-  # POST /accounts.xml
   def create
-    @account = Account.new(params[:account])
-
-    respond_to do |format|
-      if @account.save
-	session[:account] = @account
-        flash[:notice] = 'Account was successfully created.'
-        format.html { 
-		redirect_to(@account) if session['return_to'].nil?
-		redirect_to(session['return_to']) if !session['return_to'].nil?
-	}
-        format.xml  { render :xml => @account, :status => :created, :location => @account }
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @account.errors, :status => :unprocessable_entity }
-      end
+    @local_user = LocalUser.new(params[:account])
+    if @local_user.save!
+      successful_local_user_login(@local_user)
+      return false
+    else
+      render :action => "new"
     end
   end
+  
 
-  # PUT /accounts/1
-  # PUT /accounts/1.xml
-  def update
-    @account = Account.find(params[:id])
-
-    respond_to do |format|
-      if @account.update_attributes(params[:account])
-        flash[:notice] = 'Account was successfully updated.'
-        format.html { redirect_to(@account) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @account.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /accounts/1
-  # DELETE /accounts/1.xml
-  def destroy
-    @account = Account.find(params[:id])
-    @account.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(accounts_url) }
-      format.xml  { head :ok }
-    end
-  end
 end
