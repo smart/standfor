@@ -6,7 +6,8 @@ class CreateDonations < ActiveRecord::Migration
       t.column :organization_id, :integer
       t.column :amount, :integer
       t.column :segment_id, :integer
-      t.column :billing_record_id, :integer
+      t.column :payment_authorization, :string
+      t.column :last_four_digits, :string, :limit => 4
       t.timestamps 
     end
   end

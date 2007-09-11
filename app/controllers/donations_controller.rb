@@ -44,15 +44,19 @@ class DonationsController < ApplicationController
   # POST /donations
   # POST /donations.xml
   def create
+    return false unless payment_authorization_required( params[:donation][:amount] )
     @badge = Badge.find(params[:badge])
     @segment = Segment.find(params[:segment])
     @donation = Donation.new(params[:donation])
     @donation.segment_id =  @segment.id
     @donation.organization_id = @badge.organization.id
+    @donation.payment_authorization = session[:authorization][:authorization_code]
+    @donation.last_four_digits = session[:authorization][:last_four_digits]
     @donation.account = current_account 
 
     respond_to do |format|
       if @donation.save
+        session[:authorization] = nil
         flash[:notice] = 'Donation was successfully created.'
         format.html { redirect_back_or_default('/') } #redirect_to(@donation)  
 	format.xml  { render :xml => @donation, :status => :created, :location => @donation }
