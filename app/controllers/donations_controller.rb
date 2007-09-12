@@ -1,5 +1,6 @@
 class DonationsController < ApplicationController
   layout 'default'
+  before_filter :login_required ,:only => [:create]
   # GET /donations
   # GET /donations.xml
   def index
@@ -25,10 +26,9 @@ class DonationsController < ApplicationController
   # GET /donations/new
   # GET /donations/new.xml
   def new
-    get_organization
-    get_segment
-    @donation = Donation.new
-    @donation.segment_id = @segment
+    get_donation_info
+    @donation = @organization.donations.build
+    @donation.segment = @segment
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,25 +43,25 @@ class DonationsController < ApplicationController
 
   # POST /donations
   # POST /donations.xml
+  #
   def create
-
-    @badge = Badge.find(params[:badge])
-    @segment = Segment.find(params[:segment])
-    return false if !payment_authorization_required( params[:donation][:amount], @badge, @segment )
-    @donation = Donation.new(params[:donation])
-    @donation.segment_id =  @segment.id
-    @donation.organization_id = @badge.organization.id
-    @donation.payment_authorization = @authorization.authorization_code
-    @donation.last_four_digits = @authorization.last_four_digits 
-    @donation.account = current_account 
+    get_donation_info
+    @donation = session[:donation] || @organization.donations.new(params[:donation])
+    @donation.segment =  @segment
+    @donation.badge =  @badge
+    @donation.account = current_account
+    return false unless charge_card
+    @donation.payment_authorization = @authorization
+    @donation.last_four_digits = @last_four_digits  
 
     respond_to do |format|
       if @donation.save
-        session[:authorization] = nil
+        session[:donation] = nil
         flash[:notice] = 'Donation was successfully created.'
-        format.html { redirect_back_or_default('/') } #redirect_to(@donation)  
+        format.html { donation_redirect } #redirect_to(@donation)  
 	format.xml  { render :xml => @donation, :status => :created, :location => @donation }
       else
+        #THROW REALLY NASTY ERROR HERE
         format.html { render :action => "new" }
         format.xml  { render :xml => @donation.errors, :status => :unprocessable_entity }
       end
@@ -107,22 +107,63 @@ class DonationsController < ApplicationController
 
   end
 
+  def donation_redirect 
+     if @badge and @segment 
+       redirect_to :controller=>'my_badges', :action => 'new', :badge  => @badge , :segment => @segment 
+     elsif @segment
+       redirect_to :controller=>'segments',:action => 'show',:segment => @segment 
+     else
+       redirect_to :controller=>'organziations',:action => 'show',:organization=>@organization
+     end
+     false
+  end
+
+   def charge_card
+      if creditcard_required 
+         gateway = ActiveMerchant::Billing::BogusGateway.new
+         response = gateway.authorize(@donation.amount, @creditcard)
+         if response.success?
+	   @authorization = response.authorization 
+	   @last_four_digits = session[:last_four] 
+           session[:creditcard] = nil
+           session[:last_four] = nil
+           session[:donation] = nil
+           return true
+        else
+          no_card
+        end
+     else
+       return false
+     end
+     
+   end
+
+   def creditcard_required
+      if session[:creditcard].nil?
+        no_card 
+        return false
+      else
+	@creditcard = session[:creditcard]
+        return true
+      end
+   end
+
+   def no_card
+       session['payment_redirect'] = request.request_uri 
+       session[:donation] = @donation
+       redirect_to :controller => 'authorizations', :action => 'new' and return false
+   end
+  
   private
 
-  def get_organization
+  def get_donation_info
     begin
       @organization = Organization.find(params[:organization] )
     rescue
       render :action => 'choose_organization' and return
     end
+    @segment = (params[:segment] ? @organization.segments.find(params[:segment]) : nil)
+    @badge = (params[:badge] ? @organization.badges.find(params[:badge]) : nil)
   end
-
-  def get_segment
-    begin
-      @segment = Segment.find(params[:segment]) 
-    rescue
-      @segment = @organization.segments.first
-    end 
-  end
-
+   
 end

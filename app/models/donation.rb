@@ -1,5 +1,6 @@
 class Donation < ActiveRecord::Base
    belongs_to :account
    belongs_to :organization
-   has_one :segment
+   belongs_to :segment
+   belongs_to :badge
 end

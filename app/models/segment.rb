@@ -1,5 +1,5 @@
 class Segment < ActiveRecord::Base
    belongs_to :organization
-   belongs_to :donation
+   has_many :donations
    validates_presence_of :name, :keyword
 end

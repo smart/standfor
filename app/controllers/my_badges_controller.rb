@@ -57,7 +57,7 @@ class MyBadgesController < ApplicationController
     @my_badge = MyBadge.find_by_badge_id(@badge.id)
     @my_badge = MyBadge.new(params[:my_badge]) if @my_badge.nil?
     @my_badge.account = current_account 
-    @my_badge.badge  = @badge 
+    @my_badge.badge = @badge 
 
     if !params[:my_badge].nil? and !params[:my_badge][:access_code].nil?
       	 @badge.access_codes.each do |c|

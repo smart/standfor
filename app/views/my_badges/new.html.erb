@@ -6,7 +6,7 @@
 
 
 <% form_for :my_badge, 
-	:url  => {:action => "create", :badge => @badge, :segment => @segment }, 
+	:url  => {:action => "create", :organization => @organization, :segment => @segment, :badge => @badge || nil }, 
 	:method => :post  do |f| %>
 
 
@@ -26,21 +26,10 @@
 <% if !@badge.required_donation.nil?  and !@badge.authorized?(current_account ) %>
 
 <% @donation = Donation.new(:amount => @badge.required_donation.value ) %>
-
-<% form_for :donation, @donation, 
-	:url  => {:controller => "donations", :action => "create", 
-		:badge => @badge, :segment => @segment }, 
-	:method => :post  do |f| %>
-
-  <p>
-    <label>Donate to the <b><%= @badge.organization.name -%></b> $</label>
-    <%= f.text_field :amount, :size => 6 -%> 
-  <p>
-
-    <%= submit_tag "Donate" %>
-  </p>
-
-<% end %>
+ <%= link_to 'donate', :controller => "donations", :action => "new", 
+		  :badge => @badge, 
+		  :segment => @segment, 
+		  :organization => @badge.organization  -%>
 
 
 <% end %>

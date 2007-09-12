@@ -18,7 +18,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resource :sessions
   # end youser routes
   # 
-  map.resources :my_badges, :badges, :organizations, :accounts, :donations, :segments
+  map.resources :my_badges, :badges, :organizations, :accounts, :segments
 
   # The priority is based upon order of creation: first created -> highest priority.
   
@@ -41,8 +41,6 @@ ActionController::Routing::Routes.draw do |map|
   map.connect ':controller/service.wsdl', :action => 'wsdl'
   map.connect '/', :controller => 'site', :action => 'index'
   map.connect '/catalog', :controller => 'badges', :action => 'index'
-
-  map.donation_create 'donate', :controller => 'donations', :action => 'create',  :requirements  => {:method => :get }
 
   #map.connect '/get/badge/:badge_id', :controller => 'my_badges', :action => 'new'
 
