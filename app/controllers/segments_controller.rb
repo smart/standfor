@@ -2,6 +2,11 @@ class SegmentsController < ApplicationController
   layout 'default'
   # GET /segments
   # GET /segments.xml
+  
+  def initialize
+    @context = 'segments'
+  end
+  
   def index
     @segments = Segment.find(:all)
 

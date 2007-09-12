@@ -78,16 +78,30 @@ a:hover {
 
 /* segment page specific styles */
 
-#badges {
+.badges {
+  float:right;
+  width:445px;
+}
 
+.badges h2 {
+  font-size:75%;
+  margin-bottom:5px !important;
+}
+
+body.segments .interior {
+  width:230px;
+  float:left;
+  display:inline;
 }
 
 /* customize page specific styles */
 
 #preview {
-  /*width:390px;*/
+  width:420px;
   float:left;
-  margin-right:15px;
+}
+#badge {
+  width:390px;
 }
 
 #howto {
@@ -98,7 +112,7 @@ a:hover {
 }
 
 #howto, #options {
-  /*width:330px;*/
+  width:300px;
   float:right;
   margin-right:5px;
 }
@@ -234,7 +248,7 @@ a:hover {
   padding:0px;
 }
 
-.box h1, .box h2 {
+.box h1 {
     height:34px;
     font-size:1em;
     padding-bottom:15px;
@@ -246,6 +260,17 @@ a:hover {
 
 .box.shadow h1 a, .box.default h1 a, .box.shadow h1 a:visited, .box.default h1 a:visited {
   color:#fff;
+}
+
+.box.interior h1 {
+  display:none;
+}
+
+/* sitewide tools */
+
+.clear {
+  clear:both;
+  display:block;
 }
 
 /* Form validation errors */
