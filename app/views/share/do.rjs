@@ -1,0 +1,8 @@
+if !@failed
+  page.replace_html 'share-options', :partial => 'response', :locals => {:response => @response }
+else
+ page.replace_html 'share-options', "There was a problem sharing."
+end
+
+page.visual_effect :highlight, 'share-options'
+

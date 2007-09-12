@@ -42,6 +42,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/', :controller => 'site', :action => 'index'
   map.connect '/catalog', :controller => 'badges', :action => 'index'
 
+  map.connect '/:organization/:segment', :controller => 'segments', :action => 'show'
+
   #map.connect '/get/badge/:badge_id', :controller => 'my_badges', :action => 'new'
 
   # Install the default route as the lowest priority.

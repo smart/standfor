@@ -1,0 +1,25 @@
+<div class="oi1">
+  <div id="preview">
+    <% content_box( "Your Charity Badge", :class => "shadow" ) do -%>
+      <div id="badge">
+        <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
+      </div>
+        <%= link_to 'home', :controller => 'site', :action => 'index' -%>
+    <% end %>
+  </div>
+  <div id="howto">
+    <% content_box( "How to Share your Badge", :class => "basic" ) do -%>
+      <p>Share your badge by clicking....
+      </p>
+    <% end %>
+  </div>
+  <div id="options">
+    <%= render :partial => "webapps", :locals => {:my_badge => @my_badge, :shares => @shares  }  -%> 
+  </div>
+  <div id="toolbar">
+    <% content_box( "Web Applications", :class => "light" ) do -%>
+      <div id="share-options">
+      </div>
+    <% end %>
+  </div>
+</div>
