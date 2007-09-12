@@ -1,20 +1,254 @@
-body { background-color: #fff; color: #333; }
+/* Main site styles */
+* {
+  margin:0;
+  padding:0;
+}
+
+body { 
+  background-color:#fff; 
+  color:#333;
+}
 
 body, p, ol, ul, td {
-  font-family: verdana, arial, helvetica, sans-serif;
-  font-size:   13px;
-  line-height: 18px;
+  font-family:helvetica, arial, verdana, sans-serif;
+  font-size:1em;
+}
+
+ul, li {
+  list-style-type:none;
+}
+
+h1 {
+  font-size:130%;
+  line-height:34px;
+}
+
+h2 {
+  font-size:120%;
+}
+
+h3 {
+  font-size:110%;
+}
+
+h4 {
+  font-size:115%;
 }
 
 pre {
-  background-color: #eee;
-  padding: 10px;
-  font-size: 11px;
+  background-color:#eee;
+  padding:10px;
+  font-size:11px;
 }
 
-a { color: #000; }
-a:visited { color: #666; }
-a:hover { color: #fff; background-color:#000; }
+a { 
+  color:#000; 
+}
+a:visited { 
+  color:#666; 
+}
+a:hover { 
+  color:#fff; 
+  background-color:#000; 
+}
+
+/* layout specific styles */
+
+#container {
+
+}
+
+#content {
+  width:760px;
+  float:left;
+}
+
+#sidebar {
+  width:239px;
+  float:right;
+}
+
+#footer {
+  clear:both;
+}
+
+.oi1 {
+  margin:10px;
+}
+
+/* segment page specific styles */
+
+#badges {
+
+}
+
+/* customize page specific styles */
+
+#preview {
+  /*width:390px;*/
+  float:left;
+  margin-right:15px;
+}
+
+#howto {
+  font-size:75%;
+}
+#howto h1 {
+  padding-bottom:0px;
+}
+
+#howto, #options {
+  /*width:330px;*/
+  float:right;
+  margin-right:5px;
+}
+
+#options {
+  clear:right;
+}
+
+#toolbar {
+  clear:both;
+}
+
+/* box styles */
+
+.box {
+  position:relative;
+  margin:0px auto;
+  min-width:8em;
+  max-width:760px; /* based on image dimensions - not quite consistent with drip styles yet */
+  z-index:1;
+  margin-left:15px; /* default, width of left corner */
+  margin-bottom:0.5em; /* spacing under dialog */
+}
+
+.default .content,
+.default .t,
+.default .b,
+.default .b div {
+  background:transparent url(/images/boxes/solid-smooth-darkhead.png) no-repeat top right;
+}
+
+.shadow .content,
+.shadow .t,
+.shadow .b,
+.shadow .b div {
+  background:transparent url(/images/boxes/solid-shadow-darkhead.png) no-repeat top right;
+}
+
+.basic .content,
+.basic .t,
+.basic .b,
+.basic .b div {
+  background:transparent url(/images/boxes/basic-roundbox.png) no-repeat top right;
+}
+
+.light .content,
+.light .t,
+.light .b,
+.light .b div {
+  background:transparent url(/images/boxes/gradient-shadow-lighthead.png) no-repeat top right;
+}
+
+.interior .content,
+.interior .t,
+.interior .b,
+.interior .b div {
+  background:transparent url(/images/boxes/interior-250h.png) no-repeat top right;
+}
+
+.interior {
+  margin-bottom:0px;
+}
+
+.interior .content {
+  min-height:250px;
+  _height:250px;
+}
+
+.box .content {
+  position:relative;
+  zoom:1;
+  _overflow-y:hidden;
+  padding:0px 15px 0px 0px;
+}
+
+.light .content {
+    min-height:225px;
+    _height:225px;
+}
+
+.box .t {
+  /* top+left vertical slice */
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:15px; /* top slice width */
+  margin-left:-15px;
+  height:100%;
+  _height:1600px; /* arbitrary long height, IE 6 */
+  background-position:top left;
+}
+
+.box .b {
+  /* bottom */
+  position:relative;
+  width:100%;
+}
+
+.box .b,
+.box .b div {
+  height:15px; /* height of bottom cap/shade */
+  font-size:1px;
+}
+
+.box .b {
+  background-position:bottom right;
+}
+
+.box .b div {
+  position:relative;
+  width:15px; /* bottom corner width */
+  margin-left:-15px;
+  background-position:bottom left;
+}
+
+.box .hd,
+.box .bd,
+.box .ft {
+  position:relative;
+}
+
+.box .wrapper {
+  /* extra content protector - preventing vertical overflow (past background) */
+  position:static;
+  max-height:1000px;
+  overflow:auto; /* note that overflow:auto causes a rather annoying redraw "lag" in Firefox 2, and may degrade performance. Might be worth trying without if you aren't worried about height/overflow issues. */
+}
+
+.box h1,
+.box h2,
+.box p {
+  margin:0px; /* margins will blow out backgrounds, leaving whitespace. */
+  padding:0px;
+}
+
+.box h1, .box h2 {
+    height:34px;
+    font-size:1em;
+    padding-bottom:15px;
+}
+
+.box.shadow h1, .box.default h1 {
+  color:#fff;
+}
+
+.box.shadow h1 a, .box.default h1 a, .box.shadow h1 a:visited, .box.default h1 a:visited {
+  color:#fff;
+}
+
+/* Form validation errors */
 
 .fieldWithErrors {
   padding: 2px;

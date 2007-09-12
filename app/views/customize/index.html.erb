@@ -1,8 +1,37 @@
-<h1>Customization Home </h1>
-
-
-<img src="<%=ADISERVER-%>/adis/<%= @my_badge.adi_id -%>.gif?&draft=true&rand=<%=rand(100).to_s-%>" class="listing" >
-
-<br />
-
-<%= link_to 'share my bage', :controller => 'share', :action => 'index', :id => @my_badge -%>
+<div class="oi1">
+  <div id="preview">
+    <% content_box( "Your Charity Badge", :class => "shadow" ) do -%>
+      <div id="badge">
+        <img src="<%=ADISERVER-%>/adis/<%= @my_badge.adi_id -%>.gif?&draft=true&rand=<%=rand(100).to_s-%>" class="listing" >
+      </div>
+      <br/><%= link_to 'share my badge', :controller => 'share', :action => 'index', :id => @my_badge -%>
+    <% end %>
+  </div>
+  <div id="howto">
+    <% content_box( "How to Customize your Badge", :class => "basic" ) do -%>
+      <p>
+        Choose from the categories below to change the appearance of your badge. You will be shown 
+        several options that allow you to modify your badge to suit your tastes. Once you are satisfied 
+        with your changes, click the save and share button to commit your changes and post to various 
+        social networking sites!
+      </p>
+    <% end %>
+  </div>
+  <div id="options">
+    <h2>Your Options</h2>
+      <ul>
+        <li>Images</li>
+        <li>Font</li>
+        <li>Messages</li>
+        <li>Color</li>
+        <li>Edges</li>
+      </ul>
+  </div>
+  <div id="toolbar">
+    <% content_box( "Tool Type", :class => "light" ) do -%>
+      <div id="tool-options">
+      
+      </div>
+    <% end %>
+  </div>
+</div>

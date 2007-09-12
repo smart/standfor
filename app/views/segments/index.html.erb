@@ -1,14 +1,24 @@
 <h1>Giving Segments</h1>
 
-<ul>
+
 
 <% @segments.each do |segment| %>
-
-<li><%= link_to segment.name, segment  -%></li>
-
+  <div class="oi1">
+  <% content_box(link_to segment.name, segment) do -%>
+      <% content_box ("test", :class => "interior" ) do -%>
+      <p>This page should consolidate with the respective show page for each segment</p>
+      <% end %>
+    <div class="badges">
+      <h2>You can show your support with these customizable badges</h2>
+        <%= image_tag ( "placeholders/awareness.jpg", :alt => "Awareness" ) %>
+        <%= image_tag ( "placeholders/donation.jpg", :alt => "Make a donation" ) %>
+        <%= image_tag ( "placeholders/life.jpg", :alt => "Cut for Life" ) %>
+        <%= image_tag ( "placeholders/volunteer.jpg", :alt => "Volunteer" ) %>
+    </div>
+  <% end %>
+  </div>
 <% end  %>
 
-</ul>
 
 <% if false %>
 <table>

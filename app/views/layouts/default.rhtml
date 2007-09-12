@@ -8,11 +8,23 @@
   <%= stylesheet_link_tag 'default' %>
 </head>
 <body>
-
-<h1>Standforus</h1>
-<p style="color: green"><%= flash[:notice] %></p>
-
-<%= yield  %>
-
+  <div id="header">
+    <h1>Standforus</h1>
+    <p>Your Branding goes here</a>
+  </div>
+  <div id="container">
+    <div id="content">
+      <p style="color: green"><%= flash[:notice] %></p>
+      <%= yield  %>
+    </div>
+    <div id="sidebar">
+      <ul>
+        <li>Space for sidebar over here</li>
+      </ul>
+    </div>
+  </div>
+  <div id="footer"
+    <p>footer text goes here</p>
+  </div>
 </body>
 </html>
