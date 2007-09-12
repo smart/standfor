@@ -1,0 +1,14 @@
+<% customization.custom_options.attributes.each  do |key, val| %>
+
+<div style="background:<%=val-%>;" >
+<%= link_to_remote(val,
+            :url => {:controller => "/customize",
+                     :action => 'update',
+                     :id  => my_badge ,
+                     :option_value => val,
+                     :customization => u(customization.name) },
+            :before => "Element.show('indicator')",
+            :complete => "Element.hide('indicator')" ) -%>
+</div>
+<% end %>
+

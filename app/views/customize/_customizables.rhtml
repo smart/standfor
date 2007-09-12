@@ -1,0 +1,14 @@
+<ul>
+<% customizables.each do |customizable| %>
+<li>
+<%= link_to_remote customizable.name ,   
+          :url => {:controller => "/customize",
+                   :action => 'choose_customizable' ,
+                   :customizable_name => customizable.name,
+                   :id => my_badge  } ,
+         :before =>   "Element.show('indicator')",
+         :complete => "Element.hide('indicator')" -%>
+</li>
+<% end %>
+</ul>
+<img src="/images/indicator.gif" id="indicator" style="display:none;" >

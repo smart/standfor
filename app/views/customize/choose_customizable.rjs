@@ -1,0 +1,1 @@
+page.replace_html 'tool-options', :partial => "customizable_options", :locals => {:my_badge => @my_badge, :customization => @customization }

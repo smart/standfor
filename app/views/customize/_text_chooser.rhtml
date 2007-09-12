@@ -1,0 +1,12 @@
+<%= form_remote_tag :url => { 	:controller => "/customize",
+                  		:action  => "update", 
+				:id => my_badge, 
+				:customization => u(customization.name) } ,
+                    :before => "Element.show('indicator')",
+                    :complete => "Element.hide('indicator')" -%>
+<textarea rows="6" cols="40" name="option_value" >
+<%= (customization.draft_value.nil? || customization.empty? ) ? customization.current_value : customization.draft_value -%>
+</textarea>
+<%= submit_tag  "Update #{customization.name}"  -%>
+</form>
+

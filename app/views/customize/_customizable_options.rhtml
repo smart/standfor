@@ -1,0 +1,7 @@
+<% if customization.customizable_type == 'CustomText' %>
+ <%= render :partial => 'text_chooser', :locals => {:my_badge => my_badge, :customization => customization }  -%>
+<% elsif customization.customizable_type == 'CustomImage' %>
+ <%= render :partial => 'image_chooser', :locals => {:my_badge => my_badge, :customization => customization }  -%>
+<% elsif customization.customizable_type == 'CustomColor' %>
+ <%= render :partial => 'color_chooser', :locals => {:my_badge => my_badge, :customization => customization }  -%>
+<% end %>
