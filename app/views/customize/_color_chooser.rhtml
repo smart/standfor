@@ -1,6 +1,6 @@
 <% customization.custom_options.attributes.each  do |key, val| %>
 
-<div style="background:<%=val-%>;" >
+<div style="background:<%=val-%>;">
 <%= link_to_remote(val,
             :url => {:controller => "/customize",
                      :action => 'update',
@@ -11,4 +11,4 @@
             :complete => "Element.hide('indicator')" ) -%>
 </div>
 <% end %>
-
+<span class="clear"></span>

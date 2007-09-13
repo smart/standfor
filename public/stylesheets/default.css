@@ -42,14 +42,18 @@ pre {
 }
 
 a { 
-  color:#000; 
+  color:#000;
+  text-decoration:none;
 }
 a:visited { 
   color:#666; 
 }
 a:hover { 
-  color:#fff; 
-  background-color:#000; 
+  color:#fff;
+}
+
+img {
+  border:0px;
 }
 
 /* layout specific styles */
@@ -155,7 +159,7 @@ body.segments .interior {
 .basic .t,
 .basic .b,
 .basic .b div {
-  background:transparent url(/images/boxes/basic-roundbox.png) no-repeat top right;
+  background:transparent url(/images/boxes/basic-round.png) no-repeat top right;
 }
 
 .light .content,
@@ -170,6 +174,13 @@ body.segments .interior {
 .interior .b,
 .interior .b div {
   background:transparent url(/images/boxes/interior-250h.png) no-repeat top right;
+}
+
+.basicborder .content,
+.basicborder .t,
+.basicborder .b,
+.basicborder .b div {
+  background:transparent url(/images/boxes/basic-round-border.png) no-repeat top right;
 }
 
 .interior {
@@ -254,11 +265,11 @@ body.segments .interior {
     padding-bottom:15px;
 }
 
-.box.shadow h1, .box.default h1 {
+.shadow h1, .default h1 {
   color:#fff;
 }
 
-.box.shadow h1 a, .box.default h1 a, .box.shadow h1 a:visited, .box.default h1 a:visited {
+.box .shadow h1 a, .box .default h1 a, .box .shadow h1 a:visited, .box .default h1 a:visited {
   color:#fff;
 }
 
@@ -267,6 +278,25 @@ body.segments .interior {
 }
 
 /* sitewide tools */
+
+.large-button {
+  display:block;
+  height:48px;
+  background:transparent url(/images/buttons/large-left-5bg.png) no-repeat top left;
+  text-align:center;
+  vertical-align:middle;
+  margin-top:10px;
+}
+
+.large-button a {
+  display:block;
+  height:48px;
+  background:transparent url(/images/buttons/large-right-5bg.png) no-repeat top right;
+}
+
+.large-button img {
+  margin-top:8px;
+}
 
 .clear {
   clear:both;
