@@ -5,8 +5,8 @@
       <div id="badge">
         <%= render :partial => "current_view", :locals => {:my_badge => @my_badge } -%>
       </div>
+      <%= button(:image => 'labels/saveshare.png', :alt => 'Save and Share', :controller => 'share', :action => 'index', :id => @my_badge, :class => 'large-button' ) %>
       
-      <%= large_button(link_to(image_tag("labels/saveshare.png", :alt => "Save and Share"), :controller => 'share', :action => 'index', :id => @my_badge ) ) -%>
     <% end %>
   </div>
   <div id="howto">
@@ -26,7 +26,7 @@
   <div id="toolbar">
     <% content_box( "Tool Type", :class => "light" ) do -%>
       <div id="tool-options">
-      
+        <span class="min-height"></span>
       </div>
     <% end %>
   </div>

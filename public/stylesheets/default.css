@@ -123,10 +123,79 @@ body.segments .interior {
 
 #options {
   clear:right;
+  margin-top:5px;
+}
+#options li {
+  display:block;
+  line-height:35px;
+  width:50%;
+  float:left;
+  height:35px;
+  font-size:65%;
+  background-position:top left;
+  background-repeat:no-repeat;
+  margin-bottom:5px;
+}
+
+#options li a {
+  padding-left:35px;
+}
+
+#options li.edges {
+  background-image:url(/images/icons/edges.png);
+}
+
+#options li.fonts {
+  background-image:url(/images/icons/font.png);
+}
+#options li.images {
+  background-image:url(/images/icons/picture.png);
+}
+
+#options a {
+  display:block;
 }
 
 #toolbar {
   clear:both;
+}
+
+#tool-options .min-height {
+  height:225px;
+}
+
+/* donation page specific style */
+#donation {
+  width:460px;
+  float:left;
+}
+#amount {
+  float:left;
+  width:205px;
+}
+#amount input {
+  border:1px solid black;
+  width: 60px;
+}
+#preferences {
+  float:left;
+  width:205px;
+}
+#privacy {
+  float:right;
+  width:205px;
+}
+#optional {
+  float:right;
+  width:205px;
+}
+#donate {
+  float:left;
+  width:205px;
+}
+#about {
+  float:right;
+  width:240px;
 }
 
 /* box styles */
@@ -187,11 +256,6 @@ body.segments .interior {
   margin-bottom:0px;
 }
 
-.interior .content {
-  min-height:250px;
-  _height:250px;
-}
-
 .box .content {
   position:relative;
   zoom:1;
@@ -201,7 +265,6 @@ body.segments .interior {
 
 .light .content {
     min-height:225px;
-    _height:225px;
 }
 
 .box .t {
@@ -296,6 +359,10 @@ body.segments .interior {
 
 .large-button img {
   margin-top:8px;
+}
+
+.min-height {
+  display:block;
 }
 
 .clear {

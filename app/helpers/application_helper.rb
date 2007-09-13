@@ -27,17 +27,9 @@ module ApplicationHelper
     concat("</div>", block.binding)
   end
   
-#  def button(opts = {})
-#    image = image_tag(opts[:image], :alt => opts[:alt])
-#    controller = opts[:controller]
-#    action = opts[:action]
-#    id = opts[:id]
-#    html = content_tag(:span, link_to(image, :controller => controller, :action => action, :id => id), :class => opts[:class])
-#    return html
-#  end
-  
-  def large_button(image_link)
-    html = content_tag(:span, image_link, :class => 'large-button')
+  def button(opts = {})
+    image = image_tag(opts[:image], :alt => opts[:alt])
+    html = content_tag(:span, link_to(image, :controller => opts[:controller], :action => opts[:action], :id => opts[:id]), :class => opts[:class])
     return html
   end
   

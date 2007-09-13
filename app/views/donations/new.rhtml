@@ -14,26 +14,28 @@
           <%= f.text_field :amount -%>
         </p>
       <% end %>
-      <div id="preferences">
+      <% content_box( "Preferences", :class => "basicborder", :id => "preferences" ) do -%>
         <p>
           Donation preferences go here. Fieldsets in form_for?
         </p>
-      </div>
-      <div id="privacy">
+      <% end %>
+      <% content_box( "Privacy", :class => "basicborder", :id => "privacy" ) do -%>
         <p>
           Privacy settings go here.
-      </div>
-      <div id="optional">
+        </p>
+      <% end %>
+      <% content_box( "Optional", :class => "basicborder", :id => "optional" ) do -%>
         <p>
           Segment:<strong><%= @segment.name -%></strong>
         </p>
         <p>
           Dedication:
         </p>
-      </div>
-      <div id="donate">
+      <% end %>
+      <% content_box( "Donate!", :class => "basicborder", :id => "donate" ) do -%>
         <%= f.submit "Donate!" %>
-      </div>
+      <% end %>
+      <span class="clear"></span>
     <% end %>
   <% end %>
   <% content_box( "About your Donation", :class => "basic", :id => "about" ) do -%>

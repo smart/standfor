@@ -12,12 +12,12 @@ class Customization < AdiserverResource
   end
   
   
-  def icon
+  def icon_class
     return "picture.png" if /picture/i.match(name)
-    return "edges.png" if name  == "Top Color"
-    return 'edges.png' if name == "Bottom Color"
-    return "font.png" if name == "Statement Text"
-    return "picture.png" if name == "Background Image"
+    return "edges" if name  == "Top Color"
+    return "edges" if name == "Bottom Color"
+    return "fonts" if name == "Statement Text"
+    return "images" if name == "Background Image"
     return "font.png"
   end
  
