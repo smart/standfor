@@ -113,11 +113,11 @@ class DonationsController < ApplicationController
 
   def donation_redirect 
      if @badge and @segment 
-       redirect_to :controller=>'my_badges', :action => 'new', :badge  => @badge , :segment => @segment 
+       redirect_to :controller=>'my_badges', :action => 'new', :badge  => @badge , :segment => @segment.site_name
      elsif @segment
-       redirect_to :controller=>'segments',:action => 'show',:segment => @segment 
+       redirect_to :controller=>'segments',:action => 'show',:segment => @segment.site_name
      else
-       redirect_to :controller=>'organziations',:action => 'show',:organization=>@organization
+       redirect_to :controller=>'organziations',:action => 'show',:organization => @organization.site_name
      end
      false
   end

@@ -14,13 +14,19 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.xml
   def show
-    begin
       @organization = Organization.find_by_site_name(params[:organization])
-    rescue
-      flash[:notice] = "Organization #{params[:organization]} could not be found." 
-      redirect_to :action => :index and return false
-      #@organization = Organization.find_by_name(params[:id].gsub('-', ' ' ) )
-    end
+
+      if @organization.nil?
+        flash[:notice] = "Organization #{params[:organization]} could not be found." 
+        redirect_to :action => :index and return false
+      end
+
+      if @organization.segments.size == 1 
+          redirect_to :controller => 'segments', :action => 'show', 
+		    :organization => @organization.site_name, 
+		    :segment => @organization.segments.first.site_name 
+        return false
+      end
 
     respond_to do |format|
       format.html # show.html.erb

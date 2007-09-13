@@ -1,13 +1,17 @@
 <h2>Segment - Show</h2>
 
+<%= link_to 'donate now', 
+	:controller => 'donations', 
+	:action => 'new', 
+	:segment => @segment.site_name, 
+	:organization => @organization.site_name -%>
+
 <ul>
-<% @segment.organization.badges.each do |badge| %>
+<% @segment.badges.each do |badge| %>
 <li>
 <%= badge.name -%> 
-
 <%= link_to 'view this badge', badge -%> 
 | 
-
 <%= link_to 'I want this badge  this badge', 
 	{:controller => 'my_badges', 
 	 :action =>  'new', :segment => @segment.site_name, 
@@ -16,8 +20,3 @@
 </li>
 <% end %>
 </ul>
-
-<% if false %>
-<%= link_to 'Edit', edit_segment_path(@segment) %> |
-<%= link_to 'Back', segments_path %>
-<% end %>
