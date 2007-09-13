@@ -14,7 +14,11 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.xml
   def show
-    @organization = Organization.find_by_name(params[:id])
+    begin
+      @organization = Organization.find(params[:id])
+    rescue
+      @organization = Organization.find_by_name(params[:id].gsub('-', ' ' ) )
+    end
 
     respond_to do |format|
       format.html # show.html.erb
