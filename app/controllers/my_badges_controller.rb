@@ -111,6 +111,7 @@ class MyBadgesController < ApplicationController
    end
 
 
+
  private
 
   def get_badge
