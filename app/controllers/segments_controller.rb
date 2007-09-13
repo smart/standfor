@@ -19,7 +19,7 @@ class SegmentsController < ApplicationController
   # GET /segments/1
   # GET /segments/1.xml
   def show
-
+    @segment = Segment.find(params[:id]) if !params[:id].nil? and params[:id].match(/\d+/)
     @segment = Segment.find(params[:segment]) if !params[:segment].nil?
     @segment = Segment.find_by_name(params[:name].gsub('-', ' ')) if @segment.nil?
 
