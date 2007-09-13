@@ -1,1 +1,12 @@
-image chooser
+<ul>
+<% ['inthelight.jpg','kids.jpg', 'loungelizard.jpg'].each do |imagename|  %>
+<li><%= link_to_remote(imagename , 
+		:url => {:controller => 'customize', 
+			 :action => :update,
+			 :id => my_badge, 
+			 :customization => u(customization.name), 
+			 :option_value  => imagename } ) -%> 
+</li>
+
+<% end %>
+</ul>

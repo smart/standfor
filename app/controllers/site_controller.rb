@@ -19,9 +19,6 @@ class SiteController < ApplicationController
      current_account.donations.each do |d| 
        d.destroy
      end
-     current_account.access_codes.each do |ac|
-	ac.destroy
-     end
 
      current_account.my_badges.each do |mb|
        mb.destroy

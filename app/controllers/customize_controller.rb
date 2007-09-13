@@ -1,4 +1,5 @@
 class CustomizeController < ApplicationController
+  require 'RMagick'
   layout 'default'
 
    before_filter :get_my_badge
@@ -18,10 +19,11 @@ class CustomizeController < ApplicationController
 				       :params =>{:adi_id => @my_badge.adi_id})
      @option_value = params[:option_value]  || ''
      @customization.draft_value = @option_value
-    if !params[:photo_id].nil?
-      @photo = Photo.find(params[:photo_id])
-      image = Magick::Image::read(@photo.full_filename).first
-      @customization.draft_value = @photo.filename
+
+     if @customization.name == 'Background Image' 
+      path = File.join(RAILS_ROOT,'public', 'images', 'customization', @option_value )  
+      image = Magick::Image::read(path).first
+      @customization.draft_value = @option_value 
       @customization.image_data = Base64.encode64(image.to_blob)
     end
      @customization.save
