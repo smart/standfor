@@ -7,9 +7,17 @@ class SiteController < ApplicationController
    end
 
    def clear
-     Donation.find_all_by_account_id().each do |d| 
+     current_account.donations.each do |d| 
        d.destroy
      end
+     current_account.access_codes.each do |ac|
+	ac.destroy
+     end
+
+     current_account.my_badges.each do |mb|
+       mb.destroy
+     end
+
      redirect_to '/'
    end
 
