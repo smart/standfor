@@ -1,4 +1,4 @@
-<h2>Segement - Show</h2>
+<h2>Segment - Show</h2>
 
 <ul>
 <% @segment.organization.badges.each do |badge| %>
@@ -10,8 +10,8 @@
 
 <%= link_to 'I want this badge  this badge', 
 	{:controller => 'my_badges', 
-	 :action =>  'new', :segment => @segment, 
-	 :badge =>  badge  } -%> 
+	 :action =>  'new', :segment => @segment.site_name, 
+	 :badge => badge  } -%> 
  
 </li>
 <% end %>

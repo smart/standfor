@@ -1,4 +1,5 @@
 class SegmentsController < ApplicationController
+  before_filter :init, :except => [:new, :index, :create ]
   layout 'default'
   # GET /segments
   # GET /segments.xml
@@ -19,10 +20,7 @@ class SegmentsController < ApplicationController
   # GET /segments/1
   # GET /segments/1.xml
   def show
-    @segment = Segment.find(params[:id]) if !params[:id].nil? and params[:id].match(/\d+/)
-    @segment = Segment.find(params[:segment]) if !params[:segment].nil?
-    @segment = Segment.find_by_name(params[:name].gsub('-', ' ')) if @segment.nil?
-
+    #@segment = Segment.find(params[:segment]) 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @segment }
@@ -42,7 +40,7 @@ class SegmentsController < ApplicationController
 
   # GET /segments/1/edit
   def edit
-    @segment = Segment.find(params[:id])
+    #@segment = Segment.find(params[:id])
   end
 
   # POST /segments
@@ -53,7 +51,7 @@ class SegmentsController < ApplicationController
     respond_to do |format|
       if @segment.save
         flash[:notice] = 'Segment was successfully created.'
-        format.html { redirect_to(@segment) }
+        format.html { redirect_to :action  => :index }
         format.xml  { render :xml => @segment, :status => :created, :location => @segment }
       else
         format.html { render :action => "new" }
@@ -65,12 +63,12 @@ class SegmentsController < ApplicationController
   # PUT /segments/1
   # PUT /segments/1.xml
   def update
-    @segment = Segment.find(params[:id])
+    #@segment = Segment.find(params[:id])
 
     respond_to do |format|
       if @segment.update_attributes(params[:segment])
         flash[:notice] = 'Segment was successfully updated.'
-        format.html { redirect_to(@segment) }
+        format.html { redirect_to :action  => :index }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -82,7 +80,7 @@ class SegmentsController < ApplicationController
   # DELETE /segments/1
   # DELETE /segments/1.xml
   def destroy
-    @segment = Segment.find(params[:id])
+    #@segment = Segment.find(params[:id])
     @segment.destroy
 
     respond_to do |format|
@@ -90,4 +88,14 @@ class SegmentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+   def init
+     begin
+       @segment = Segment.find_by_site_name(params[:segment])
+     rescue
+       @segment = Segment.find_by_id(params[:id]) if !params[:id].nil?
+     end
+     @organization = @segment.organization
+   end
+
 end

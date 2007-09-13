@@ -1,7 +1,7 @@
 <ul>
 <% @organization.segments.each do |segment| %>
 
-<li><%= link_to segment.name, :controller => 'segments', :action => 'show', :name => segment.name.gsub(' ', '-'), :organization => segment.organization.name.gsub(' ', '-' ) -%></li>
+<li><%= link_to segment.name, :controller => 'segments', :action => 'show', :segment => segment.site_name, :organization => @organization.site_name -%></li>
 
 <% end %>
 </ul>

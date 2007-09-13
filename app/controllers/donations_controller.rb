@@ -1,6 +1,10 @@
 class DonationsController < ApplicationController
   layout 'default'
   before_filter :login_required ,:only => [:create]
+  #before_filter :organization_required
+  #before_filter :segment_required
+  #before_filter :badge_required
+
   # GET /donations
   # GET /donations.xml
   def index
@@ -158,11 +162,11 @@ class DonationsController < ApplicationController
 
   def get_donation_info
     begin
-      @organization = Organization.find(params[:organization] )
+      @organization = Organization.find_by_site_name(params[:organization] )
     rescue
       render :action => 'choose_organization' and return
     end
-    @segment = (params[:segment] ? @organization.segments.find(params[:segment]) : nil)
+    @segment = (params[:segment] ? @organization.segments.find_by_site_name(params[:segment]) : nil)
     @badge = (params[:badge] ? @organization.badges.find(params[:badge]) : nil)
   end
    

@@ -15,9 +15,11 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1.xml
   def show
     begin
-      @organization = Organization.find(params[:id])
+      @organization = Organization.find_by_site_name(params[:organization])
     rescue
-      @organization = Organization.find_by_name(params[:id].gsub('-', ' ' ) )
+      flash[:notice] = "Organization #{params[:organization]} could not be found." 
+      redirect_to :action => :index and return false
+      #@organization = Organization.find_by_name(params[:id].gsub('-', ' ' ) )
     end
 
     respond_to do |format|
@@ -67,7 +69,8 @@ class OrganizationsController < ApplicationController
     respond_to do |format|
       if @organization.update_attributes(params[:organization])
         flash[:notice] = 'Organization was successfully updated.'
-        format.html { redirect_to(@organization) }
+        #format.html { redirect_to(@organization) }
+        format.html { redirect_to :controller => 'organizations', :action => 'show' , :organization=> @organization.site_name  }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

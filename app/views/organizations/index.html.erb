@@ -1,18 +1,11 @@
-<h1>Listing organizations</h1>
+<h1>Participating Organizations</h1>
 
-<table>
-  <tr>
-  </tr>
+<ul>
+<% @organizations.each do |organization|%>
+<li>
+<%= link_to organization.name, :controller => 'organizations', :action => 'show', :organization => organization.site_name  %>
+</li>
 
-<% for organization in @organizations %>
-  <tr>
-    <td><%= link_to 'Show', organization %></td>
-    <td><%= link_to 'Edit', edit_organization_path(organization) %></td>
-    <td><%= link_to 'Destroy', organization, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
+<% end  %>
 
-<br />
-
-<%= link_to 'New organization', new_organization_path %>
+</ul>

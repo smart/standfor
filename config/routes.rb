@@ -42,7 +42,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/', :controller => 'site', :action => 'index'
   map.connect '/catalog', :controller => 'badges', :action => 'index'
 
-  map.connect '/support/:organization/:name', :controller => 'segments', :action => 'show'
+  map.connect '/support/:organization/:segment', :controller => 'segments', :action => 'show'
+  map.connect '/:organization', :controller => 'organizations', :action => 'show'
 
   #map.connect '/get/badge/:badge_id', :controller => 'my_badges', :action => 'new'
 

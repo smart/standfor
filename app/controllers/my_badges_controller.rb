@@ -53,9 +53,9 @@ class MyBadgesController < ApplicationController
     #raise 
     get_badge
     get_segment
+    #@my_badge = MyBadge.find_by_account_id_and_badge_id(@badge.id)
+    @my_badge = MyBadge.new(params[:my_badge])
 
-    @my_badge = MyBadge.find_by_badge_id(@badge.id)
-    @my_badge = MyBadge.new(params[:my_badge]) if @my_badge.nil?
     @my_badge.account = current_account 
     @my_badge.badge = @badge 
 
@@ -115,12 +115,11 @@ class MyBadgesController < ApplicationController
  private
 
   def get_badge
-     params[:my_badge] ||= {}
      @badge = Badge.find(params[:badge])
   end
 
   def get_segment
-     @segment = Segment.find(params[:segment])
+     @segment = Segment.find_by_site_name(params[:segment])
   end
 
 end

@@ -1,10 +1,8 @@
 <h1>Giving Segments</h1>
 
-
-
 <% @segments.each do |segment| %>
   <div class="oi1">
-  <% content_box(link_to segment.name, segment) do -%>
+  <% content_box(link_to(segment.name, :controller => 'segments', :action => 'show', :segment => segment.site_name), segment ) do -%>
       <% content_box ("test", :class => "interior" ) do -%>
       <p>This page should consolidate with the respective show page for each segment</p>
       <% end %>
@@ -19,20 +17,3 @@
   <% end %>
   </div>
 <% end  %>
-
-
-<% if false %>
-<table>
-  <tr>
-  </tr>
-<% for segment in @segments %>
-  <tr>
-    <td><%= link_to 'Show', segment %></td>
-    <td><%= link_to 'Edit', edit_segment_path(segment) %></td>
-    <td><%= link_to 'Destroy', segment, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-<br />
-<%= link_to 'New segment', new_segment_path %>
-<% end %>

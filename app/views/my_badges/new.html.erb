@@ -28,8 +28,8 @@
 <% @donation = Donation.new(:amount => @badge.required_donation.value ) %>
  <%= link_to 'donate', :controller => "donations", :action => "new", 
 		  :badge => @badge, 
-		  :segment => @segment, 
-		  :organization => @badge.organization  -%>
+		  :segment => @segment.site_name, 
+		  :organization => @badge.organization.site_name  -%>
 
 
 <% end %>
