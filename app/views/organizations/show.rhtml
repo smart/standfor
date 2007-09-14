@@ -1,0 +1,11 @@
+<% content_box(@organization.name + " stands for:") do %>
+  <% @organization.segments.each do |segment| %>
+    <% content_box(link_to(segment.name, :controller => 'segments', :action => 'show', :segment => segment.site_name, :organization => @organization.site_name), :class => 'basicborder') do %>
+      <p>
+        Description of each segment goes here. Maybe use textile or something
+        to allow easy formatting and insertion of images etc.
+      </p>
+    <% end %>
+  <% end %>
+  <span class="clear"></span>
+<% end %>

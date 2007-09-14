@@ -49,7 +49,7 @@ a:visited {
   color:#666; 
 }
 a:hover { 
-  color:#fff;
+  color:#808080;
 }
 
 img {
@@ -106,6 +106,9 @@ body.segments .interior {
 }
 #badge {
   width:390px;
+}
+#badge .min-height {
+  height:160px;
 }
 
 #howto {
@@ -164,14 +167,37 @@ body.segments .interior {
   height:225px;
 }
 
+.palette {
+
+}
+.palette li {
+  padding:2px;
+  border:1px solid black;
+  float:left;
+  margin:0px 4px 4px 0px;
+}
+.palette li a {
+  width:35px;
+  height:35px;
+  display:block;
+  
+}
+.palette span {
+  display:block;
+  border:1px solid black;
+  
+}
+
 /* donation page specific styles */
 #donation {
   width:460px;
   float:left;
+  display:inline;
 }
 #amount {
   float:left;
   width:200px;
+  display:inline;
 }
 #amount input {
   width: 60px;
@@ -180,6 +206,7 @@ body.segments .interior {
   float:left;
   width:200px;
   clear:left;
+  display:inline;
 }
 #privacy {
   float:right;
@@ -193,6 +220,10 @@ body.segments .interior {
   float:left;
   width:200px;
   clear:left;
+  display:inline;
+}
+#donate h1 {
+  display:none;
 }
 #about {
   float:right;
@@ -372,8 +403,15 @@ body.segments .interior {
   text-transform:lowercase;
 }
 
-.box .shadow h1 a, .box .default h1 a, .box .shadow h1 a:visited, .box .default h1 a:visited {
+.box.shadow h1 a, .box.default h1 a, .box.shadow h1 a:visited, .box.default h1 a:visited {
   color:#fff;
+}
+
+.box.basicborder h1 a, .box.basicborder h1 a:visited {
+  color:#000;
+}
+.box.basicborder h1 a:hover {
+  color:#808080;
 }
 
 .box.interior h1 {
