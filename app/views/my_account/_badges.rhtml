@@ -1,0 +1,8 @@
+<ul>
+<%  current_account.my_badges.each do |my_badge|%>
+<li>
+<%= link_to my_badge.badge.name, :controller => 'my_badges', :action => 'show', :id => my_badge -%> 
+<%= my_badge.badge.segment.name -%> 
+</li>
+<% end %>
+</ul>

@@ -12,6 +12,13 @@
   <div id="header">
     <h1>standfor:us</h1>
     <p>Your Branding goes here</a>
+
+    <% if current_account != :false %>
+     <%= link_to 'my account', :controller => 'my_account', :action => 'index' -%>
+    <% else  %>
+     <%= link_to 'login', :controller => 'sessions', :action => 'new' -%>
+    <% end %>
+
   </div>
   <div id="container">
     <div id="content">

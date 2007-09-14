@@ -62,4 +62,8 @@ class Account< ActiveRecord::Base
     self.remember_token            = nil
     save(false)
   end
+
+  def total_donations
+     Donation.sum(:amount, :conditions =>{ :account_id => self.id } )
+  end
 end

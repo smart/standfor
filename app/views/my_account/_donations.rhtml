@@ -1,0 +1,18 @@
+<p>
+Total Donations: $<%= current_account.total_donations -%>
+</p>
+<ul>
+<% current_account.donations.each do |donation| %>
+<li>
+
+<%= donation.created_at.strftime("%B %d, %Y") -%>
+|
+<%= donation.organization.name -%>
+|
+<%= donation.segment.name -%>
+|
+<%= donation.amount -%>
+
+ </li>
+<% end %>
+</ul>
