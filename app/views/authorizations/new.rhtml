@@ -1,5 +1,4 @@
-<h2>Authorization New</h2>
-
+<% content_box ("How Will you Pay?", :id => "payment", :class => "shadow" ) do  %>
 
 <% form_for :authorization , 
 	    @authorization,  
@@ -41,4 +40,16 @@
  <%= f.submit 'enter' -%>
 </p>
 
+<% end %>
+<% end %>
+
+<% content_box("Donation Summary", :id => "summary", :class => "basic") do -%>
+  <ul>
+    <li>Amount:</li>
+    <li>Donation Type:</li>
+    <li>Privacy Settings:</li>
+    <li>Segment:</li>
+    <li>Dedication:</li>
+  </ul>
+  <%= button(:image => "labels/modify.png", :alt => "Modify Donation", :link => "", :class => "large-button") -%>
 <% end %>

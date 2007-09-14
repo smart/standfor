@@ -266,6 +266,17 @@ body.segments .interior {
   margin-right:165px;
 }
 
+/* payment page specific styles */
+#payment {
+  width:460px;
+  float:left;
+  display:inline;
+}
+#summary {
+  float:right;
+  width:240px;
+}
+
 /* box styles */
 
 .box {

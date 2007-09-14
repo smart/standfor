@@ -1,4 +1,4 @@
-<h1>Get This Badge </h1>
+<% content_box("Get this Badge", :id => "get-badge", :class => "shadow" ) do %>
 
 <%= error_messages_for :my_badge %>
 
@@ -34,4 +34,5 @@
 		  :organization => @badge.organization.site_name  -%>
 
 
+<% end %>
 <% end %>
