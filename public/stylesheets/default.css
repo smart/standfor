@@ -277,6 +277,19 @@ body.segments .interior {
   width:240px;
 }
 
+/* requirements page specific styles */
+.my-badges #preview {
+  width:390px;
+}
+#requirements {
+  width:285px;
+  float:right;
+}
+
+#requirements .or {
+  margin:5px 0px 0px 100px;
+}
+
 /* box styles */
 
 .box {
@@ -417,8 +430,7 @@ body.segments .interior {
 .box.shadow h1 a, .box.default h1 a, .box.shadow h1 a:visited, .box.default h1 a:visited {
   color:#fff;
 }
-
-.box.basicborder h1 a, .box.basicborder h1 a:visited {
+.box.basicborder h1, .box.basicborder h1 a, .box.basicborder h1 a:visited {
   color:#000;
 }
 .box.basicborder h1 a:hover {

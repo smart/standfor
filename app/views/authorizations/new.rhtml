@@ -51,7 +51,5 @@
     <li>Segment:</li>
     <li>Dedication:</li>
   </ul>
-  <%= button(:image => "labels/modify.png", :alt => "Modify Donation", :link => "", :class => "large-button") -%>
+  <%= button(:image => "labels/modify.png", :alt => "Modify Donation", :link => @return_to, :class => "large-button") -%>
 <% end %>
-
-<%= link_back 'cancel/change', @return_to  %>

@@ -1,21 +1,35 @@
-<h2>Segment - Show</h2>
-
-
 <% content_box(link_to(@segment.name, :controller => 'segments', :action => 'show', :segment => @segment.site_name), @segment ) do -%>
   <% content_box ("test", :class => "interior" ) do -%>
-    <p><%= link_to 'donate now', 
-            :controller => 'donations', 
+    <p>
+      This is where the full details about each segment will go.
+    </p>
+    <p>
+      Some more text to demonstrate the background gradients.
+    </p>
+    <p>
+      This area should support textile to allow clients to add their own formatting and images etc.
+    </p>
+    <%= button(:image => "labels/donate.png", :alt => "Donate!", :link => url_for(:controller => 'donations', 
             :action => 'new', 
             :segment => @segment.site_name, 
-            :organization => @organization.site_name -%>
-    </p>
+            :organization => @organization.site_name), :class => "large-button" ) -%>
   <% end %>
   <div class="badges">
-    <h2>You can show your support with these customizable badges</h2>
-      <%= image_tag ( "placeholders/awareness.jpg", :alt => "Awareness" ) %>
-      <%= image_tag ( "placeholders/donation.jpg", :alt => "Make a donation" ) %>
-      <%= image_tag ( "placeholders/life.jpg", :alt => "Cut for Life" ) %>
-      <%= image_tag ( "placeholders/volunteer.jpg", :alt => "Volunteer" ) %>
+    <h2>You can show your support with these badges. Click a badge to customize.</h2>
+      <!-- fix below code to be properly dynamic -->
+      <%= link_to(image_tag( "placeholders/awareness.jpg", :alt => "Awareness"), {:controller => 'my_badges', 
+	             :action =>  'new', :segment => "hunger", :organization => "giftoflife",
+	             :badge => 1  }) %>
+      <%= link_to(image_tag( "placeholders/donation.jpg", :alt => "Make a donation" ), {:controller => 'my_badges', 
+	             :action =>  'new', :segment => "hunger", :organization => "giftoflife",
+	             :badge => 1  }) %>
+      <%= link_to(image_tag( "placeholders/life.jpg", :alt => "Cut for Life" ), {:controller => 'my_badges', 
+	             :action =>  'new', :segment => "hunger", :organization => "giftoflife",
+	             :badge => 1  }) %>
+      <%= link_to(image_tag( "placeholders/volunteer.jpg", :alt => "Volunteer" ), {:controller => 'my_badges', 
+	             :action =>  'new', :segment => "hunger", :organization => "giftoflife",
+	             :badge => 1  }) %>
+      <!--
     <ul>
       <% @segment.badges.each do |badge| %>
         <li>
@@ -25,6 +39,7 @@
 	             :action =>  'new', :segment => @segment.site_name, :organization => @segment.organization.site_name,
 	             :badge => badge  } -%> 
        </li>
+       -->
       <% end %>
     </ul>
   </div>

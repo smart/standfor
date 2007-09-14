@@ -8,6 +8,11 @@ class MyBadgesController < ApplicationController
 
   # GET /my_badges
   # GET /my_badges.xml
+  
+  def initialize
+    @context = "my-badges"
+  end
+  
   def index
     @my_badges = MyBadge.find(:all)
 
