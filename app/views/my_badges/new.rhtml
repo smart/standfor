@@ -6,33 +6,34 @@
 
 <p><%= image_tag("/images/examples/#{@badge.id}.gif")  -%> </p>
 
-
 <% form_for :my_badge, 
-	:url  => {:action => "create", :organization => @segment.organization.site_name, :segment => @segment.site_name, :badge => @badge || nil }, 
-	:method => :post  do |f| %>
-
+	:url  => {:action => "create", 
+		  :organization => @segment.organization.site_name, 
+		  :segment => @segment.site_name, 
+		  :badge => @badge || nil }, 
+		  :method => :post  do |f| %>
 
 <% if !@badge.access_codes.empty? and  !@badge.authorized?(current_account ) %>
-  <p>
     <label>Please enter your access code:</label>
-    <%= f.text_field :access_code %>
-  </p>
+    <%= f.text_field :access_code, :size => 6 %>
+    <%= submit_tag "Enter Code" %>
 <% end %>
-  
-  <p>
-    <%= submit_tag "Give Me My Badge" %>
-  </p>
+ 
+<% if @badge.authorized?(current_account) %>
+<%= submit_tag "Give Me This  Badge" %>
+<% end %>
 
 <% end %>
 
 <% if !@badge.required_donation.nil?  and !@badge.authorized?(current_account ) %>
 
 <% @donation = Donation.new(:amount => @badge.required_donation.value ) %>
+
  <%= link_to 'donate', :controller => "donations", :action => "new", 
 		  :badge => @badge, 
 		  :segment => @segment.site_name, 
 		  :organization => @badge.organization.site_name  -%>
 
-
 <% end %>
+
 <% end %>
