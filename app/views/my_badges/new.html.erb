@@ -4,6 +4,8 @@
 
 <p><%= @badge.name  -%> </p>
 
+<p><%= image_tag("/images/examples/#{@badge.id}.gif")  -%> </p>
+
 
 <% form_for :my_badge, 
 	:url  => {:action => "create", :organization => @organization, :segment => @segment, :badge => @badge || nil }, 
