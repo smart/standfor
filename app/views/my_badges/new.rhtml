@@ -8,7 +8,7 @@
 
 
 <% form_for :my_badge, 
-	:url  => {:action => "create", :organization => @organization, :segment => @segment, :badge => @badge || nil }, 
+	:url  => {:action => "create", :organization => @segment.organization.site_name, :segment => @segment.site_name, :badge => @badge || nil }, 
 	:method => :post  do |f| %>
 
 

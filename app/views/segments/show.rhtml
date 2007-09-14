@@ -20,9 +20,9 @@
       <% @segment.badges.each do |badge| %>
         <li>
           <%= badge.name -%> 
-            <%= link_to 'I want this badge  this badge', 
+            <%= link_to 'I want this badge', 
 	             {:controller => 'my_badges', 
-	             :action =>  'new', :segment => @segment.site_name, 
+	             :action =>  'new', :segment => @segment.site_name, :organization => @segment.organization.site_name,
 	             :badge => badge  } -%> 
        </li>
       <% end %>
