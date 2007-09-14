@@ -1,9 +1,11 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
+  layout 'default'
   # Be sure to include YouserSystem in Application Controller instead
   include YouserSystem
   # If you want "remember me" functionality, add this before_filter to Application Controller
   before_filter :login_from_cookie
+  
 
   # render new.rhtml
   def new

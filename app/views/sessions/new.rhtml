@@ -1,0 +1,39 @@
+<% content_box( "Three Ways to Login!", :id => "login" ) do -%>
+  <% form_tag sessions_path do -%>
+    <% content_box( (image_tag "labels/alreadymember.png", :alt => "Already a Member?" ), :class => "basicborder", :id => "member-login" ) do -%>
+      <p>
+        <label for="login">Login:</label><%= text_field_tag 'login' %>
+      </p>
+      <p>
+        <label for="password">Password:</label><%= password_field_tag 'password' %>
+      </p>
+      <p>
+        <label for="remember_me">Remember me:</label><%= check_box_tag 'remember_me' %>
+      </p>
+      <p>
+        <%= submit_tag 'Sign in', :disable_with => "Signing in&hellip;" %>
+        <%= (image_tag "labels/notmember.png", :alt => "Not a Member?", :class => "img-pos" )%>
+        <%= button(:image => 'labels/signup.png', :alt => 'Sign Up', :link => signup_url, :class => 'large-button' ) %>
+        
+      </p>
+    <% end %>
+    <%= image_tag("labels/or.png", :alt => "or", :class => "or") %>
+    <% content_box( (image_tag "labels/open-login.png", :alt => "Login with openID" ), :class => "basicborder", :id => "open-login" ) do -%>
+      <p>
+        <label for="openid_url">OpenID:</label><%= text_field_tag "openid_url" %>
+      </p>
+    <% end %>
+    <%= image_tag("labels/also.png", :alt => "also", :class => "also" ) %>
+    <% content_box( (image_tag "labels/facebook-login.png", :alt => "Login through Facebook" ), :class => "basicborder", :id => "facebook-login" ) do -%>
+      <p>
+        <label for="facebook">Facebook Login?</label><%= check_box_tag 'facebook' %>
+      </p>
+    <% end %>
+  <% end -%>
+  <span class="clear"></span>
+<% end %>
+
+
+
+
+

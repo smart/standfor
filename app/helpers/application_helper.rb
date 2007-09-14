@@ -29,7 +29,8 @@ module ApplicationHelper
   
   def button(opts = {})
     image = image_tag(opts[:image], :alt => opts[:alt])
-    html = content_tag(:span, link_to(image, :controller => opts[:controller], :action => opts[:action], :id => opts[:id]), :class => opts[:class])
+    link = opts[:link]
+    html = content_tag(:span, link_to(image, link), :class => opts[:class])
     return html
   end
   

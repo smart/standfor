@@ -76,7 +76,7 @@ img {
   clear:both;
 }
 
-.oi1 {
+.oi-wrapper {
   margin:10px;
 }
 
@@ -164,38 +164,75 @@ body.segments .interior {
   height:225px;
 }
 
-/* donation page specific style */
+/* donation page specific styles */
 #donation {
   width:460px;
   float:left;
 }
 #amount {
   float:left;
-  width:205px;
+  width:200px;
 }
 #amount input {
-  border:1px solid black;
   width: 60px;
 }
 #preferences {
   float:left;
-  width:205px;
+  width:200px;
+  clear:left;
 }
 #privacy {
   float:right;
-  width:205px;
+  width:200px;
 }
 #optional {
   float:right;
-  width:205px;
+  width:200px;
 }
 #donate {
   float:left;
-  width:205px;
+  width:200px;
+  clear:left;
 }
 #about {
   float:right;
   width:240px;
+}
+
+/* login page specific styles */
+
+#login {
+
+}
+#member-login {
+  width:250px;
+  float:left;
+  display:inline;
+}
+#member-login h1 img {
+  padding-left:22px;
+}
+#member-login .img-pos {
+  padding-left:24px;
+}
+#open-login, #facebook-login {
+  width:370px;
+}
+#open-login {
+  float:right;
+}
+#facebook-login {
+  float:right;
+}
+#login .or {
+  float:left;
+  margin-top:20px;
+}
+
+#login .also {
+  float:right;
+  margin-top:-5px;
+  margin-right:165px;
 }
 
 /* box styles */
@@ -251,6 +288,8 @@ body.segments .interior {
 .basicborder .b div {
   background:transparent url(/images/boxes/basic-round-border.png) no-repeat top right;
 }
+
+
 
 .interior {
   margin-bottom:0px;
@@ -330,6 +369,7 @@ body.segments .interior {
 
 .shadow h1, .default h1 {
   color:#fff;
+  text-transform:lowercase;
 }
 
 .box .shadow h1 a, .box .default h1 a, .box .shadow h1 a:visited, .box .default h1 a:visited {
@@ -338,6 +378,15 @@ body.segments .interior {
 
 .box.interior h1 {
   display:none;
+}
+.basicborder h1 {
+  padding-bottom:0;
+}
+
+/* basic form styles */
+input {
+  border:2px solid #808080;
+  background-color:#d4d6d7;
 }
 
 /* sitewide tools */
@@ -358,7 +407,7 @@ body.segments .interior {
 }
 
 .large-button img {
-  margin-top:8px;
+
 }
 
 .min-height {

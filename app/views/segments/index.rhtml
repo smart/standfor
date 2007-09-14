@@ -1,7 +1,6 @@
 <h1>Giving Segments</h1>
 
 <% @segments.each do |segment| %>
-  <div class="oi1">
   <% content_box(link_to(segment.name, :controller => 'segments', :action => 'show', :segment => segment.site_name), segment ) do -%>
       <% content_box ("test", :class => "interior" ) do -%>
       <p>This page should consolidate with the respective show page for each segment</p>
@@ -15,5 +14,4 @@
     </div>
     <span class="clear"></span>
   <% end %>
-  </div>
 <% end  %>

@@ -1,33 +1,32 @@
-<div class="oi1">
 <%= link_to 'delete my donations' , :controller  => 'site', :action => 'clear' -%>
-  <div id="preview">
-    <% content_box( "Your Charity Badge", :class => "shadow" ) do -%>
-      <div id="badge">
-        <%= render :partial => "current_view", :locals => {:my_badge => @my_badge } -%>
-      </div>
-      <%= button(:image => 'labels/saveshare.png', :alt => 'Save and Share', :controller => 'share', :action => 'index', :id => @my_badge, :class => 'large-button' ) %>
-      
-    <% end %>
-  </div>
-  <div id="howto">
-    <% content_box( "How to Customize your Badge", :class => "basic" ) do -%>
-      <p>
-        Choose from the categories below to change the appearance of your badge. You will be shown 
-        several options that allow you to modify your badge to suit your tastes. Once you are satisfied 
-        with your changes, click the save and share button to commit your changes and post to various 
-        social networking sites!
-      </p>
-    <% end %>
-  </div>
-  <div id="options">
-   <%= render :partial => 'customizables', 
-	      :locals => {:my_badge => @my_badge, :customizables => @customizables   }  -%>
-  </div>
-  <div id="toolbar">
-    <% content_box( "Tool Type", :class => "light" ) do -%>
-      <div id="tool-options">
-        <span class="min-height"></span>
-      </div>
-    <% end %>
-  </div>
+<div id="preview">
+  <% content_box( "Your Charity Badge", :class => "shadow" ) do -%>
+    <div id="badge">
+      <%= render :partial => "current_view", :locals => {:my_badge => @my_badge } -%>
+    </div>
+    <%= button(:image => 'labels/saveshare.png', :alt => 'Save and Share', :link => url_for(:controller => 'share', :action => 'index', :id => @my_badge), :class => 'large-button' ) %>
+    
+  <% end %>
 </div>
+<div id="howto">
+  <% content_box( "How to Customize your Badge", :class => "basic" ) do -%>
+    <p>
+      Choose from the categories below to change the appearance of your badge. You will be shown 
+      several options that allow you to modify your badge to suit your tastes. Once you are satisfied 
+      with your changes, click the save and share button to commit your changes and post to various 
+      social networking sites!
+    </p>
+  <% end %>
+</div>
+<div id="options">
+ <%= render :partial => 'customizables', 
+      :locals => {:my_badge => @my_badge, :customizables => @customizables   }  -%>
+</div>
+<div id="toolbar">
+  <% content_box( "Tool Type", :class => "light" ) do -%>
+    <div id="tool-options">
+      <span class="min-height"></span>
+    </div>
+  <% end %>
+</div>
+
