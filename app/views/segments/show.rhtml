@@ -1,7 +1,6 @@
 <h2>Segment - Show</h2>
 
 
-
 <% content_box(link_to(@segment.name, :controller => 'segments', :action => 'show', :segment => @segment.site_name), @segment ) do -%>
   <% content_box ("test", :class => "interior" ) do -%>
     <p><%= link_to 'donate now', 
@@ -21,8 +20,6 @@
       <% @segment.badges.each do |badge| %>
         <li>
           <%= badge.name -%> 
-            <%= link_to 'view this badge', badge -%> 
-            | 
             <%= link_to 'I want this badge  this badge', 
 	             {:controller => 'my_badges', 
 	             :action =>  'new', :segment => @segment.site_name, 

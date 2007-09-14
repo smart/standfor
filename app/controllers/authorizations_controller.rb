@@ -1,6 +1,7 @@
 class AuthorizationsController < ApplicationController
   require 'active_merchant'
   layout 'default'
+  before_filter :init
 
   def new
     @authorization = Authorization.new
@@ -28,5 +29,13 @@ class AuthorizationsController < ApplicationController
      end
 
   end
+
+  def back
+    redirect_to :back
+  end
+
+   def init
+      @return_to = session['donate_return_to']  || ''
+   end
 
 end

@@ -30,6 +30,7 @@ class DonationsController < ApplicationController
   # GET /donations/new
   # GET /donations/new.xml
   def new
+    session['donate_return_to'] = request.request_uri 
     get_donation_info
     @donation = @organization.donations.build
     @donation.segment = @segment
