@@ -5,7 +5,7 @@
 <p><%= @badge.name  -%> </p>
 
 <p><%= image_tag("/images/examples/#{@badge.id}.gif")  -%> </p>
-<p>Description of badge can go here</p>
+<p><%= @badge.description -%></p>
 </div>
 <% content_box("Badge Requirements", :id => "requirements", :class => "basicborder") do %>
 <% form_for :my_badge, 

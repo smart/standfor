@@ -14,32 +14,30 @@
             :segment => @segment.site_name, 
             :organization => @organization.site_name), :class => "large-button" ) -%>
   <% end %>
-  <div class="badges">
+
+<style>
+  .requiresLogin {border:2px solid blue;	}
+  .needsDonation {border:2px solid yellow;	}
+  .alreadyHas {border:2px solid red;		}
+  .badgeAvailable {border:2px solid green;	}
+</style>
+
+<div class="badges">
     <h2>You can show your support with these badges. Click a badge to customize.</h2>
+
       <!-- fix below code to be properly dynamic -->
-      <%= link_to(image_tag( "placeholders/awareness.jpg", :alt => "Awareness"), {:controller => 'my_badges', 
-	             :action =>  'new', :segment => "hunger", :organization => "giftoflife",
-	             :badge => 1  }) %>
-      <%= link_to(image_tag( "placeholders/donation.jpg", :alt => "Make a donation" ), {:controller => 'my_badges', 
-	             :action =>  'new', :segment => "hunger", :organization => "giftoflife",
-	             :badge => 1  }) %>
-      <%= link_to(image_tag( "placeholders/life.jpg", :alt => "Cut for Life" ), {:controller => 'my_badges', 
-	             :action =>  'new', :segment => "hunger", :organization => "giftoflife",
-	             :badge => 1  }) %>
-      <%= link_to(image_tag( "placeholders/volunteer.jpg", :alt => "Volunteer" ), {:controller => 'my_badges', 
-	             :action =>  'new', :segment => "hunger", :organization => "giftoflife",
-	             :badge => 1  }) %>
-      <!--
-    <ul>
-      <% @segment.badges.each do |badge| %>
-        <li>
-          <%= badge.name -%> 
-            <%= link_to 'I want this badge', 
-	             {:controller => 'my_badges', 
-	             :action =>  'new', :segment => @segment.site_name, :organization => @segment.organization.site_name,
-	             :badge => badge  } -%> 
-       </li>
-       -->
+
+      <% @segment.badges.each do |badge| %> 
+
+       <% @class = badge.account_access(current_account)  %>
+
+      <%= link_to(image_tag( "placeholders/awareness.jpg", :alt => "Awareness", :class => @class ), 
+		{:controller => 'my_badges', 
+		 :action =>  'new', 
+		 :segment => @segment.site_name, 
+		 :organization => @segment.organization.site_name, 
+		 :badge => badge.id  }) %>
+
       <% end %>
     </ul>
   </div>

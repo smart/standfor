@@ -22,7 +22,7 @@ class Badge < ActiveRecord::Base
   end
 
   def requires_donation?
-     DontationRequirement.exists?(:badge_id => self.id) 
+     DonationRequirement.exists?(:badge_id => self.id) 
   end
 
   def required_donation  
@@ -34,4 +34,14 @@ class Badge < ActiveRecord::Base
      Authorization.exists?(:badge_id  => self.id, :status => true )
    end
 
+    def account_access(account) 
+       return 'requiresLogin'  	if account == :false  
+       return 'alreadyHas'  	if self.belongs_to?(account) 
+       return 'needsDonation' 	if self.requires_donation?  and !(self.authorized?(account))   
+       return 'badgeAvailable'    
+    end
+
+     def belongs_to?(account)
+	return MyBadge.exists?(:account_id => account.id, :badge_id  => self.id )
+     end 
 end
