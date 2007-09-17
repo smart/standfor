@@ -1,6 +1,10 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :badge_access_codes
 
+  map.connect "/:organization/:segment/:controller/:action"
+  #map.connect "/:organization/:segment/donate/:action", :controller => "donations"
+  #map.connect "/:organization/:segment/badges/:action", :controller => "badges"
+  #map.connect "/:organization/:segment/authorizations/:action", :controller => "authorizations">
+  map.resources :badge_access_codes
   map.resources :requirements
 
   # Youser routes

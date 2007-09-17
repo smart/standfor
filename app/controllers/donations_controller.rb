@@ -51,16 +51,16 @@ class DonationsController < ApplicationController
   #
   def create
     get_donation_info
-    session[:donation] = @donation = session[:donation] || @organization.donations.new(params[:donation])
+    @donation = session[:donation] || @organization.donations.new(params[:donation])
     @donation.segment =  @segment
     @donation.badge =  @badge
     @donation.account = current_account
-    session['confirmation_return']  = request.request_uri
-    confirmation_required or return false
-    #return false unless charge_card
-
+    return false unless creditcard_required
+    return false unless confirmation_required
+    return false unless charge_card 
     @donation.payment_authorization = @authorization
     @donation.last_four_digits = @last_four_digits  
+    session[:donation] = @donation
 
     respond_to do |format|
       if @donation.save
@@ -106,15 +106,6 @@ class DonationsController < ApplicationController
     end
   end
 
-   def confirmation
-      if params[:id].nil? or params[:id] != 'yes'
-         render :action => 'confirmation' 
-      else
-         session[:order_confirmed] = true 
-         redirect_to session['confirmation_return'] 
-      end
-   end
-
   def select_organization
     begin
       @organization = Organization.find(params[:organization][:id])
@@ -137,47 +128,63 @@ class DonationsController < ApplicationController
   end
 
    def charge_card
-      if creditcard_required 
-         gateway = ActiveMerchant::Billing::BogusGateway.new
-         response = gateway.authorize(@donation.amount, @creditcard)
-         if response.success?
-	   @authorization = response.authorization 
-	   @last_four_digits = session[:last_four] 
-           session[:creditcard] = nil
-           session[:last_four] = nil
-           session[:donation] = nil
-           return true
-        else
-          no_card
-        end
+     gateway = ActiveMerchant::Billing::BogusGateway.new
+     response = gateway.authorize(@donation.amount, @creditcard)
+     if response.success?
+       @authorization = response.authorization 
+       @last_four_digits = session[:last_four] 
+       session[:creditcard] = nil
+       session[:last_four] = nil
+       session[:donation] = nil
+       return true
      else
-       return false
+       no_card
      end
-     
+     return false
    end
 
+   def confirmation
+      get_donation_info
+      if params[:id].nil? or params[:id] != 'yes'
+         render :action => 'confirmation' 
+      else
+         session[:order_confirmed] = true 
+         redirect_to  :controller => 'donations' , :action => 'create' and return false 
+      end
+   end
+
+
    def creditcard_required
+
       if session[:creditcard].nil?
         no_card 
-        return false
       else
 	@creditcard = session[:creditcard]
-        return true
+        return true 
       end
+      return false
    end
 
    def confirmation_required
       if session[:order_confirmed].nil?
-         redirect_to :action => 'confirmation' and return false
+         no_confirmation
       else
-         session[:order_confirmed] = true
+        @confirmation = session[:order_confirmed]
+        return true 
       end
+      return false
    end
 
    def no_card
        session['payment_redirect'] = request.request_uri 
        session[:donation] = @donation
        redirect_to :controller => 'authorizations', :action => 'new' and return false
+   end
+
+   def no_confirmation
+       session['confirmation_redirect'] = request.request_uri 
+       session[:donation] = @donation
+       redirect_to :controller => 'donations', :action => 'confirmation', :organization => @organization.site_name, :segment =>  @segment.site_name   and return false
    end
   
   private
