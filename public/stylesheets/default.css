@@ -7,6 +7,8 @@
 body { 
   background-color:#fff; 
   color:#333;
+  width:980px;
+  margin:0 auto;
 }
 
 body, p, ol, ul, td {
@@ -61,15 +63,46 @@ img {
 #container {
 
 }
-
+#navigation {
+	height:42px;
+	background:url(/images/boxes/navigation-header.png) no-repeat top left;
+	margin:0px 0px 0px 0px;
+	line-height:35px;
+}
+#navigation ul {
+	margin-left:10px;
+}
+#navigation li {
+	padding-left:30px;
+	background:url(/images/icons/nav-breadcrumb.png) no-repeat top left;
+	float:left;
+	height:39px;
+}
+#navigation li.first {
+	background:url(/images/icons/nav-start.png) no-repeat top left;
+}
+#navigation a {
+	display:block;
+}
+#login-button {
+	height:42px;
+	width:245px;
+	background:url(/images/boxes/navigation-header.png) no-repeat top right;
+	float:right;
+}
+#login-button img {
+	margin:4px 0px 0px 10px;
+}
 #content {
-  width:760px;
+  width:740px;
   float:left;
 }
 
 #sidebar {
-  width:239px;
+  width:222px;
   float:right;
+  margin:0px 5px 0px 0px;
+  background:grey;
 }
 
 #footer {
@@ -77,7 +110,7 @@ img {
 }
 
 .oi-wrapper {
-  margin:10px;
+  
 }
 
 /* segment page specific styles */
@@ -451,7 +484,18 @@ input {
 }
 
 /* sitewide tools */
-
+.small-button {
+	display:block;
+	height:23px;
+	background:transparent url(/images/buttons/small-left-trans.png) no-repeat top left;
+	text-align:center;
+	vertical-align:middle;
+}
+.small-button a {
+	display:block;
+	height:23px;
+	background:transparent url(/images/buttons/small-right-trans.png) no-repeat top right;
+}
 .large-button {
   display:block;
   height:48px;

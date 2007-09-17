@@ -21,6 +21,21 @@
 
   </div>
   <div id="container">
+  	<div id="navigation">
+  		<ul>
+  		    <li class="first"><a href="#"><%= link_to(image_tag('labels/standfor.png', :alt => 'standfor'), "#") -%></a></li>
+  		    <li><a href="#">Organization</a></li>
+  		    <li><a href="#">Segment</a></li>
+  		    <li><a href="#">Category</a></li>
+  		</ul>
+  		<div id="login-button">
+  			<% if current_account != :false %>
+     			<%= link_to image_tag('buttons/logout.png', :alt => 'Logoutin'), logout_path %>
+    		<% else  %>
+				<%= link_to image_tag('buttons/login.png', :alt => 'Login'), login_path %>
+			<% end %>
+  		</div>
+  	</div>
     <div id="content">
       <div class="oi-wrapper">
         <p style="color: green"><%= flash[:notice] %></p>
@@ -32,6 +47,7 @@
         <li>Space for sidebar over here</li>
       </ul>
     </div>
+  <span class="clear"></span>
   </div>
   <div id="footer"
     <p>footer text goes here</p>
