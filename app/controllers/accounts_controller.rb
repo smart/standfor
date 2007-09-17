@@ -30,6 +30,5 @@ class AccountsController < ApplicationController
       render :action => "new"
     end
   end
-  
 
 end

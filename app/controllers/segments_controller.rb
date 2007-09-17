@@ -80,7 +80,7 @@ class SegmentsController < ApplicationController
   # DELETE /segments/1
   # DELETE /segments/1.xml
   def destroy
-    #@segment = Segment.find(params[:id])
+    @segment = Segment.find(params[:id])
     @segment.destroy
 
     respond_to do |format|

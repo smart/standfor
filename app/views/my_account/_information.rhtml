@@ -1,0 +1,21 @@
+<ol>
+<li>Full Name: <%= @account.fullname -%></li> 
+<li>Address 1:<%= @account.address_1-%></li>
+<li>Address 2<%= @account.address_2-%></li>
+<li>City: <%= @account.city-%></li>
+<li>State: <%= @account.state-%></li>
+<li>Zip: <%= @account.zip-%></li>
+<li>Country:<%= @account.country-%></li>
+<li>Phone:<%= @account.phone-%></li>
+<li>Nickname:<%= @account.nickname-%></li>
+<li>Email:<%= @account.primary_email-%></li>
+<li>Phone:<%= @account.phone -%></li>
+</ol>
+
+
+<%= link_to_remote 'edit ', 
+	:url => { :controller  => 'my_account', 
+		  :action => 'edit', 
+		  :id => @account, 
+		  :div=> 'my_account_info' }  -%>
+
