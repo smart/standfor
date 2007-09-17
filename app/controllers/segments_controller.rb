@@ -1,5 +1,5 @@
 class SegmentsController < ApplicationController
-  before_filter :init, :except => [:new, :index, :create ]
+  before_filter :init, :only => [:show]
   layout 'default'
   # GET /segments
   # GET /segments.xml
@@ -40,7 +40,7 @@ class SegmentsController < ApplicationController
 
   # GET /segments/1/edit
   def edit
-    #@segment = Segment.find(params[:id])
+    @segment = Segment.find(params[:id])
   end
 
   # POST /segments
@@ -63,7 +63,7 @@ class SegmentsController < ApplicationController
   # PUT /segments/1
   # PUT /segments/1.xml
   def update
-    #@segment = Segment.find(params[:id])
+    @segment = Segment.find(params[:id])
 
     respond_to do |format|
       if @segment.update_attributes(params[:segment])
@@ -91,9 +91,9 @@ class SegmentsController < ApplicationController
 
    def init
      begin
-       @segment = Segment.find_by_site_name(params[:segment])
+       @segment = Segment.find_by_site_name(params[:segment]) unless params[:segment].nil?
      rescue
-       @segment = Segment.find_by_id(params[:id]) if !params[:id].nil?
+       @segment = Segment.find(params[:id]) if !params[:id].nil?
      end
      @organization = @segment.organization
    end

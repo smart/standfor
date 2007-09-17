@@ -16,6 +16,10 @@
    <%= f.text_field :site_name -%>
   </p>
 
+  <p><lable for="segment_site_name" >Description:</label>
+   <%= f.text_area :description -%>
+  </p>
+
   <p><lable for="segment_organization" >Organization:</label>
     <%= f.select( "organization_id", Organization.find(:all).collect {|o| [ o.name, o.id ] }, 
 		{ :include_blank => true }) -%>

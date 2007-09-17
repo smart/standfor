@@ -3,7 +3,7 @@
 <% @segments.each do |segment| %>
   <% content_box(link_to(segment.name, :controller => 'segments', :action => 'show', :segment => segment.site_name), segment ) do -%>
       <% content_box ("test", :class => "interior" ) do -%>
-      <p>This page should consolidate with the respective show page for each segment</p>
+      <p><%= segment.description -%></p>
       <% end %>
     <div class="badges">
       <h2>You can show your support with these customizable badges</h2>

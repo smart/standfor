@@ -1,3 +1,7 @@
+<p>
+<%= @organization.description %>
+</p>
+
 <% content_box(@organization.name + " stands for:") do %>
   <% @organization.segments.each do |segment| %>
     <% content_box(link_to(segment.name, :controller => 'segments', :action => 'show', :segment => segment.site_name, :organization => @organization.site_name), :class => 'basicborder') do %>
