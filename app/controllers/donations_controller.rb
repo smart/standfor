@@ -30,6 +30,10 @@ class DonationsController < ApplicationController
   # GET /donations/new
   # GET /donations/new.xml
   def new
+    begin
+      session['badge'] = Badge.find(params[:badge])
+    rescue
+    end
     session['donate_return_to'] = request.request_uri 
     get_donation_info
     @donation = @organization.donations.build
@@ -53,7 +57,7 @@ class DonationsController < ApplicationController
     get_donation_info
     @donation = session[:donation] || @organization.donations.new(params[:donation])
     @donation.segment =  @segment
-    @donation.badge =  @badge
+    @donation.badge =  @badge 
     @donation.account = current_account
     return false unless creditcard_required
     return false unless confirmation_required
@@ -66,6 +70,7 @@ class DonationsController < ApplicationController
       if @donation.save
         session[:donation] = nil
         session[:order_confirmed] = nil
+        session[:badge] = nil
         flash[:notice] = 'Donation was successfully created.'
         format.html { donation_redirect } #redirect_to(@donation)  
 	format.xml  { render :xml => @donation, :status => :created, :location => @donation }
@@ -118,6 +123,7 @@ class DonationsController < ApplicationController
 
   def donation_redirect 
      if @badge and @segment 
+       session[:badge] = nil
        redirect_to :controller=>'my_badges', :action => 'new', :badge  => @badge , :segment => @segment.site_name
      elsif @segment
        redirect_to :controller=>'segments',:action => 'show',:segment => @segment.site_name
@@ -196,7 +202,8 @@ class DonationsController < ApplicationController
       render :action => 'choose_organization' and return
     end
     @segment = (params[:segment] ? @organization.segments.find_by_site_name(params[:segment]) : nil)
-    @badge = (params[:badge] ? @organization.badges.find(params[:badge]) : nil)
+    @badge = (params[:badge] ? @organization.badges.find(params[:badge]) : session[:badge] )
+    session[:badge] = @badge
   end
    
 end

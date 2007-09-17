@@ -2,4 +2,4 @@
 
 <p>I allow my card to be charged $<%= session[:donation].amount -%> </p>
 
-<%= link_to 'continue', :controller => 'donations', :action =>  'confirmation', :id => 'yes', :organization => @organization.site_name, :segment => @segment.site_name  -%>
+<%= link_to 'continue', :controller => 'donations', :action =>  'confirmation', :id => 'yes', :organization => @organization.site_name, :segment => @segment.site_name -%>
