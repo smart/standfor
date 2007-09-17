@@ -51,17 +51,21 @@ class DonationsController < ApplicationController
   #
   def create
     get_donation_info
-    @donation = session[:donation] || @organization.donations.new(params[:donation])
+    session[:donation] = @donation = session[:donation] || @organization.donations.new(params[:donation])
     @donation.segment =  @segment
     @donation.badge =  @badge
     @donation.account = current_account
-    return false unless charge_card
+    session['confirmation_return']  = request.request_uri
+    confirmation_required or return false
+    #return false unless charge_card
+
     @donation.payment_authorization = @authorization
     @donation.last_four_digits = @last_four_digits  
 
     respond_to do |format|
       if @donation.save
         session[:donation] = nil
+        session[:order_confirmed] = nil
         flash[:notice] = 'Donation was successfully created.'
         format.html { donation_redirect } #redirect_to(@donation)  
 	format.xml  { render :xml => @donation, :status => :created, :location => @donation }
@@ -101,6 +105,15 @@ class DonationsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+   def confirmation
+      if params[:id].nil? or params[:id] != 'yes'
+         render :action => 'confirmation' 
+      else
+         session[:order_confirmed] = true 
+         redirect_to session['confirmation_return'] 
+      end
+   end
 
   def select_organization
     begin
@@ -150,6 +163,14 @@ class DonationsController < ApplicationController
       else
 	@creditcard = session[:creditcard]
         return true
+      end
+   end
+
+   def confirmation_required
+      if session[:order_confirmed].nil?
+         redirect_to :action => 'confirmation' and return false
+      else
+         session[:order_confirmed] = true
       end
    end
 
