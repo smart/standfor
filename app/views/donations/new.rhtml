@@ -12,7 +12,7 @@
         <label for="donation_amount" >Amount:</label>
         <%= f.text_field :amount -%>
       </p>
-      <span class="clear"><span>
+      <span class="clear"></span>
     <% end %>
     <% content_box( (image_tag "labels/privacy.png", :alt => "Privacy" ), :class => "basicborder", :id => "privacy" ) do -%>
       <p>
@@ -35,7 +35,7 @@
     <% end %>
     <% content_box( "Donate!", :class => "basicborder", :id => "donate" ) do -%>
     	<%= form_button("labels/donate.png", "Donate", :type => "submit") -%>
-      <span class="clear"><span>
+      <span class="clear"></span>
     <% end %>
     <span class="clear"></span>
   <% end %>

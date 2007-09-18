@@ -326,7 +326,22 @@ body.segments .interior {
 #register form {
 	width:450px;
 }
+/* my account specific styles */
 
+#my-badges {
+	width:300px;
+	float:right;
+}
+#my-donations {
+	float:left;
+	width:370px;
+}
+#my-info {
+	clear:both;
+}
+#my-info form {
+	width:350px;
+}
 /* box styles */
 
 .box {
@@ -518,7 +533,7 @@ form li {
 	border:none;
 	background:none;
 	cursor:pointer;
-	width:100%;
+	/*width:100%;*/
 }
 
 /* sitewide tools */
@@ -560,6 +575,7 @@ form li {
 .clear {
   clear:both;
   display:block;
+  height:0px;
 }
 
 /* Form validation errors */
