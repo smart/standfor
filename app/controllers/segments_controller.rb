@@ -1,5 +1,5 @@
 class SegmentsController < ApplicationController
-  before_filter :init, :only => [:show]
+  before_filter :get_segment, :only => [:show]
   layout 'default'
   # GET /segments
   # GET /segments.xml
@@ -89,7 +89,7 @@ class SegmentsController < ApplicationController
     end
   end
 
-   def init
+   def get_segment
      begin
        @segment = Segment.find_by_site_name(params[:segment]) unless params[:segment].nil?
      rescue
