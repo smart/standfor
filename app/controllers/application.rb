@@ -8,4 +8,11 @@ class ApplicationController < ActionController::Base
   #
   session :session_key => '_standfor_session_id'
 
+  before_filter :init
+  
+  def init
+    @organization = Organization.find_by_site_name(params[:organization])if !params[:organization].nil?
+    @segment = Segment.find_by_site_name(params[:segment]) if !params[:segment].nil?
+  end
+
 end

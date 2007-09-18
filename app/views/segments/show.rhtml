@@ -1,18 +1,14 @@
 <% content_box(link_to(@segment.name, :controller => 'segments', :action => 'show', :segment => @segment.site_name), @segment ) do -%>
   <% content_box ("test", :class => "interior" ) do -%>
     <p>
-      This is where the full details about each segment will go.
+     <%= @segment.description -%>
     </p>
-    <p>
-      Some more text to demonstrate the background gradients.
-    </p>
-    <p>
-      This area should support textile to allow clients to add their own formatting and images etc.
-    </p>
-    <%= button(:image => "labels/donate.png", :alt => "Donate!", :link => url_for(:controller => 'donations', 
-            :action => 'new', 
-            :segment => @segment.site_name, 
-            :organization => @organization.site_name), :class => "large-button" ) -%>
+    <%= button(:image => "labels/donate.png", :alt => "Donate!", 
+	:link => url_for(:controller => 'donations', 
+            		 :action => 'new', 
+            		 :segment => @segment.site_name, 
+            		 :organization => @organization.site_name), 
+	:class => "large-button" ) -%>
   <% end %>
 
 <style>
@@ -24,21 +20,15 @@
 
 <div class="badges">
     <h2>You can show your support with these badges. Click a badge to customize.</h2>
-
-      <!-- fix below code to be properly dynamic -->
-
-      <% @segment.badges.each do |badge| %> 
-
-       <% @class = badge.account_access(current_account)  %>
-
-      <%= link_to(image_tag( "placeholders/awareness.jpg", :alt => "Awareness", :class => @class ), 
-		{:controller => 'my_badges', 
-		 :action =>  'new', 
-		 :segment => @segment.site_name, 
-		 :organization => @segment.organization.site_name, 
-		 :badge => badge.id  }) %>
-
-      <% end %>
+<% @segment.badges.each do |badge| %> 
+<% @class = badge.account_access(current_account)  %>
+<%= link_to(image_tag( "placeholders/awareness.jpg", :alt => "Awareness", :class => @class ), 
+	{:controller => 'my_badges', 
+	 :action =>  'new', 
+	 :segment => @segment.site_name, 
+	 :organization => @segment.organization.site_name, 
+	 :badge => badge.id  }) %>
+<% end %>
     </ul>
   </div>
   <span class="clear"></span>

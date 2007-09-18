@@ -1,0 +1,7 @@
+<% if !@organization.nil? %>
+<li><%= link_to @organization.name, :controller => 'organizations' , :action => 'show', :organization => @organization.site_name -%></li>
+<% end %>
+
+<% if !@segment.nil? %>
+<li><%= link_to @segment.name, :controller => 'segments' , :action => 'show', :segment => @segment.site_name-%></li>
+<% end %>
