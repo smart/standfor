@@ -22,6 +22,7 @@ ActionController::Routing::Routes.draw do |map|
    embedded.connect '/my/account', :controller => 'my_account', :action => 'index'
    embedded.connect '/:organization/:segment', :controller => 'segments', :action => 'show'
    embedded.connect '/:segment', :controller => 'segments', :action => 'show'
+   embedded.connect '/:organization', :controller => 'organizations', :action => 'show'
    embedded.connect "/:segment/:controller/:action"
   end
 
