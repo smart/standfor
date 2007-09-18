@@ -21,12 +21,12 @@ ActionController::Routing::Routes.draw do |map|
    embedded.connect '/', :controller => 'organizations', :action => 'show'
    embedded.connect '/my/account', :controller => 'my_account', :action => 'index'
    embedded.connect '/:organization/:segment', :controller => 'segments', :action => 'show'
-   embedded.connect ':segment', :controller => 'segments', :action => 'show'
-   #embedded.connect "/:segment/:controller/:action"
+   embedded.connect '/:segment', :controller => 'segments', :action => 'show'
+   embedded.connect "/:segment/:controller/:action"
   end
 
-  map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:host => /standfor.(\w+).org/ } 
-  map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:subdomain => /(\w+).standfor.org/ } 
+  #map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:host => /standfor.(\w+).org/ } 
+  #map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:subdomain => /(\w+).standfor.org/ } 
 
 
   map.connect "/rcss/:rcss.css", :controller => "rcss", :action => "rcss"
