@@ -1,5 +1,15 @@
-<h1>Confirm</h1>
-
+<% content_box("Confirm your Payment Details", :id => "payment", :class => "shadow") do %>
+	
 <p>I allow my card to be charged $<%= session[:donation].amount -%> </p>
 
-<%= link_to 'continue', :controller => 'donations', :action =>  'confirmation', :id => 'yes', :organization => @organization.site_name, :segment => @segment.site_name -%>
+<%= button(:image => 'labels/confirm.png', :alt => "Confirm", :link => url_for(:controller => 'donations', :action =>  'confirmation', :id => 'yes', :organization => @organization.site_name, :segment => @segment.site_name), :class => 'large-button' ) -%>
+<% end %>
+<% content_box("Donation Summary", :id => "summary", :class => "basic") do -%>
+	<ul>
+	    <li>Amount:</li>
+	    <li>Donation Type:</li>
+	    <li>Privacy Settings:</li>
+	    <li>Segment:</li>
+	    <li>Dedication:</li>
+	</ul>
+<% end %>

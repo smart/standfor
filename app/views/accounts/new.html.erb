@@ -1,22 +1,31 @@
-<h1>Register</h1>
+<% content_box('Create a Standfor:us Account', :id => 'register', :class => 'shadow') do -%>
 
-<%= error_messages_for :account -%>
-<% form_for :account, :url => accounts_path do |f| -%>
-
-<p><label for="account_login">Login / Nickname</label><br/>
-<%= f.text_field :login %></p>
-
-<p><label for="account_email">Email</label><br/>
-<%= f.text_field :email %></p>
-
-<p><label for="account_password">Password</label><br/>
-<%= f.password_field :password %></p>
-
-<p><label for="account_password_confirmation">Confirm Password</label><br/>
-<%= f.password_field :password_confirmation %></p>
-
-<p>
-  <%= submit_tag 'Sign in', :disable_with => "Signing in&hellip;" %>
-  <%= link_to 'Login', login_url %>
-</p>
+	<%= error_messages_for :account -%>
+	<% form_for :account, :url => accounts_path do |f| -%>
+	<ul>
+		<li>
+			<label for="account_login">Username:</label>
+			<%= f.text_field :login %>
+		</li>
+		<li>
+			<label for="account_email">Email:</label>
+			<%= f.text_field :email %>
+		</li>
+		<li>
+			<label for="account_password">Password:</label>
+			<%= f.password_field :password %>
+		</li>
+		<li>
+			<label for="account_password_confirmation">Confirm Password:</label>
+			<%= f.password_field :password_confirmation %>
+		</li>
+		<li>
+			<% content_tag :button, :type => 'submit', :class => 'replace-button' do -%>
+				<%= button(:image => 'labels/register.png', :alt => "Register", :link => "", :class => 'large-button' ) -%>
+			<% end %>
+		  <!--<%= link_to 'Login', login_url %>-->
+		</li>
+	</ul>
+	<span class="clear"></span>
+	<% end -%>
 <% end -%>

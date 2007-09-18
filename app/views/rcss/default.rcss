@@ -322,6 +322,10 @@ body.segments .interior {
 #requirements .or {
   margin:5px 0px 0px 100px;
 }
+/* register page specific styles */
+#register form {
+	width:450px;
+}
 
 /* box styles */
 
@@ -377,7 +381,9 @@ body.segments .interior {
   background:transparent url(/images/boxes/basic-round-border.png) no-repeat top right;
 }
 
-
+.basicborder .content {
+	padding-top:10px;
+}
 
 .interior {
   margin-bottom:0px;
@@ -499,14 +505,14 @@ input, textarea, select, radio {
 	background-color:#d4d6d7;
 	text-align:left;
 	margin-bottom:5px;
-	font-size:110%;
 	width:60%;
 }
 form li {
 	clear:both;
+	vertical-align:middle;
 }
 
-form .replace-button {
+.replace-button {
 	margin:0;
 	padding:0;
 	border:none;

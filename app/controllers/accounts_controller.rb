@@ -2,7 +2,7 @@ class AccountsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   # If you want "remember me" functionality, add this before_filter to Application Controller
   before_filter :login_from_cookie
-
+	layout 'default'
   # render new.rhtml
   def new
   end

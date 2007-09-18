@@ -11,18 +11,12 @@
 			<li>
 				<label for="remember_me">Remember me:</label><%= check_box_tag 'remember_me' %>
 			</li>
-			<li>
-				<% content_tag :button, :type => 'submit', :class => 'replace-button' do -%>
-					<%= button(:image => 'labels/login.png', :alt => "Login", :link => "", :class => 'large-button' ) -%>
-				<% end %>
-			</li>
-			<li>
-				<%= (image_tag "labels/notmember.png", :alt => "Not a Member?", :class => "img-pos" )%>
-			</li>
-			<li>
-				<%= button(:image => 'labels/signup.png', :alt => 'Sign Up', :link => signup_url, :class => 'large-button' ) %>
-			</li>
 		</ul>
+			<%= form_button("labels/login.png", "Login", :type => "submit") -%>
+			
+			<%= (image_tag "labels/notmember.png", :alt => "Not a Member?", :class => "img-pos" )%>
+			<%= button(:image => 'labels/signup.png', :alt => 'Sign Up', :link => signup_url, :class => 'large-button' ) %>
+		
 	    <% end %>
 	    <%= image_tag("labels/or.png", :alt => "or", :class => "or") %>
 		    <% content_box( (image_tag "labels/open-login.png", :alt => "Login with openID" ), :class => "basicborder", :id => "open-login" ) do -%>

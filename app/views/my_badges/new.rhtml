@@ -23,7 +23,8 @@
  
 <% if @badge.authorized?(current_account) %>
 <p>You have met all the requirements for this badge!</p>
-<%= submit_tag "Customize This  Badge" %>
+<%= form_button("labels/customize.png", "Customize this Badge", :type => "submit") -%>
+<span class="clear"></span>
 <% end %>
 
 <% end %>
