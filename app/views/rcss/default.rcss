@@ -478,9 +478,41 @@ body.segments .interior {
 }
 
 /* basic form styles */
-input {
-  border:2px solid #808080;
-  background-color:#d4d6d7;
+form {
+	margin:0px auto;
+}
+form, fieldset, label, input {
+    margin:0;
+    padding:0;
+}
+label {
+    float:left;
+    text-align:right;
+    display:block;
+    margin-right:10px;
+    width:30%;
+}
+
+input, textarea, select, radio {
+    float:left;
+	border:2px solid #808080;
+	background-color:#d4d6d7;
+	text-align:left;
+	margin-bottom:5px;
+	font-size:110%;
+	width:60%;
+}
+form li {
+	clear:both;
+}
+
+form .replace-button {
+	margin:0;
+	padding:0;
+	border:none;
+	background:none;
+	cursor:pointer;
+	width:100%;
 }
 
 /* sitewide tools */
