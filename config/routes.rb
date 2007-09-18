@@ -16,7 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :my_badges, :badges, :organizations, :accounts, :segments
 
   # end youser routes
-
+=begin
   map.with_options :conditions => {:subdomain => /standfor/ },:embedded => true do |embedded| 
    embedded.connect '/', :controller => 'organizations', :action => 'show'
    embedded.connect '/my/account', :controller => 'my_account', :action => 'index'
@@ -25,6 +25,7 @@ ActionController::Routing::Routes.draw do |map|
    embedded.connect '/:organization', :controller => 'organizations', :action => 'show'
    embedded.connect "/:segment/:controller/:action"
   end
+=end
 
   #map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:host => /standfor.(\w+).org/ } 
   #map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:subdomain => /(\w+).standfor.org/ } 
