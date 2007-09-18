@@ -1,5 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
-
+  map.connect "/rcss/:rcss.css", :controller => "rcss", :action => "rcss"
+  map.connect "/rcss/:rcss/:organization.css", :controller => "rcss", :action => "rcss"
   map.connect "/:organization/:segment/:controller/:action"
   #map.connect "/:organization/:segment/donate/:action", :controller => "donations"
   #map.connect "/:organization/:segment/badges/:action", :controller => "badges"

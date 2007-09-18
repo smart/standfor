@@ -1,0 +1,584 @@
+/* Main site styles */
+* {
+  margin:0;
+  padding:0;
+}
+
+body { 
+  background-color:#fff; 
+  color:#333;
+  width:980px;
+  margin:0 auto;
+}
+
+body, p, ol, ul, td {
+  font-family:helvetica, arial, verdana, sans-serif;
+  font-size:1em;
+}
+
+ul, li {
+  list-style-type:none;
+}
+
+h1 {
+  font-size:130%;
+  line-height:34px;
+}
+
+h2 {
+  font-size:120%;
+}
+
+h3 {
+  font-size:110%;
+}
+
+h4 {
+  font-size:115%;
+}
+
+pre {
+  background-color:#eee;
+  padding:10px;
+  font-size:11px;
+}
+
+a { 
+  color:#000;
+  text-decoration:none;
+}
+a:visited { 
+  color:#666; 
+}
+a:hover { 
+  color:#808080;
+}
+
+img {
+  border:0px;
+}
+
+/* layout specific styles */
+
+#container {
+
+}
+#navigation {
+	height:42px;
+	background:url(/images/boxes/navigation-header.png) no-repeat top left;
+	margin:0px 0px 0px 0px;
+	line-height:35px;
+}
+#navigation ul {
+	margin-left:10px;
+}
+#navigation li {
+	padding-left:30px;
+	background:url(/images/icons/nav-breadcrumb.png) no-repeat top left;
+	float:left;
+	height:39px;
+}
+#navigation li.first {
+	background:url(/images/icons/nav-start.png) no-repeat top left;
+}
+#navigation a {
+	display:block;
+}
+#login-button {
+	height:42px;
+	width:245px;
+	background:url(/images/boxes/navigation-header.png) no-repeat top right;
+	float:right;
+}
+#login-button img {
+	margin:4px 0px 0px 10px;
+}
+#content {
+  width:740px;
+  float:left;
+}
+
+#sidebar {
+  width:222px;
+  float:right;
+  margin:0px 5px 0px 0px;
+  background:grey;
+}
+
+#footer {
+  clear:both;
+}
+
+.oi-wrapper {
+  
+}
+
+/* segment page specific styles */
+
+.badges {
+  float:right;
+  width:445px;
+}
+
+.badges h2 {
+  font-size:75%;
+  margin-bottom:5px !important;
+}
+
+body.segments .interior {
+  width:230px;
+  float:left;
+  display:inline;
+}
+
+/* customize page specific styles */
+
+#preview {
+  width:420px;
+  float:left;
+}
+#badge {
+  width:390px;
+}
+#badge .min-height {
+  height:160px;
+}
+
+#howto {
+  font-size:75%;
+}
+#howto h1 {
+  padding-bottom:0px;
+}
+
+#howto, #options {
+  width:300px;
+  float:right;
+  margin-right:5px;
+}
+
+#options {
+  clear:right;
+  margin-top:5px;
+}
+#options li {
+  display:block;
+  line-height:35px;
+  width:50%;
+  float:left;
+  height:35px;
+  font-size:65%;
+  background-position:top left;
+  background-repeat:no-repeat;
+  margin-bottom:5px;
+}
+
+#options li a {
+  padding-left:35px;
+}
+
+#options li.edges {
+  background-image:url(/images/icons/edges.png);
+}
+
+#options li.fonts {
+  background-image:url(/images/icons/font.png);
+}
+#options li.images {
+  background-image:url(/images/icons/picture.png);
+}
+
+#options a {
+  display:block;
+}
+
+#toolbar {
+  clear:both;
+}
+
+#tool-options .min-height {
+  height:225px;
+}
+
+.palette {
+
+}
+.palette li {
+  padding:2px;
+  border:1px solid black;
+  float:left;
+  margin:0px 4px 4px 0px;
+}
+.palette li a {
+  width:35px;
+  height:35px;
+  display:block;
+  
+}
+.palette span {
+  display:block;
+  border:1px solid black;
+  
+}
+
+/* donation page specific styles */
+#donation {
+  width:460px;
+  float:left;
+  display:inline;
+}
+#amount {
+  float:left;
+  width:200px;
+  display:inline;
+}
+#amount input {
+  width: 60px;
+}
+#preferences {
+  float:left;
+  width:200px;
+  clear:left;
+  display:inline;
+}
+#privacy {
+  float:right;
+  width:200px;
+}
+#optional {
+  float:right;
+  width:200px;
+}
+#donate {
+  float:left;
+  width:200px;
+  clear:left;
+  display:inline;
+}
+#donate h1 {
+  display:none;
+}
+#about {
+  float:right;
+  width:240px;
+}
+
+/* login page specific styles */
+
+#login {
+
+}
+#member-login {
+  width:250px;
+  float:left;
+  display:inline;
+}
+#member-login h1 img {
+  padding-left:22px;
+}
+#member-login .img-pos {
+  padding-left:24px;
+}
+#open-login, #facebook-login {
+  width:370px;
+}
+#open-login {
+  float:right;
+}
+#facebook-login {
+  float:right;
+}
+#login .or {
+  float:left;
+  margin-top:20px;
+}
+
+#login .also {
+  float:right;
+  margin-top:-5px;
+  margin-right:165px;
+}
+
+/* payment page specific styles */
+#payment {
+  width:460px;
+  float:left;
+  display:inline;
+}
+#summary {
+  float:right;
+  width:240px;
+}
+
+/* requirements page specific styles */
+.my-badges #preview {
+  width:390px;
+}
+#requirements {
+  width:285px;
+  float:right;
+}
+
+#requirements .or {
+  margin:5px 0px 0px 100px;
+}
+
+/* box styles */
+
+.box {
+  position:relative;
+  margin:0px auto;
+  min-width:8em;
+  max-width:760px; /* based on image dimensions - not quite consistent with drip styles yet */
+  z-index:1;
+  margin-left:15px; /* default, width of left corner */
+  margin-bottom:0.5em; /* spacing under dialog */
+}
+
+.default .content,
+.default .t,
+.default .b,
+.default .b div {
+  background:transparent url(/images/boxes/solid-smooth-darkhead.png) no-repeat top right;
+}
+
+.shadow .content,
+.shadow .t,
+.shadow .b,
+.shadow .b div {
+  background:transparent url(/images/boxes/solid-shadow-darkhead.png) no-repeat top right;
+}
+
+.basic .content,
+.basic .t,
+.basic .b,
+.basic .b div {
+  background:transparent url(/images/boxes/basic-round.png) no-repeat top right;
+}
+
+.light .content,
+.light .t,
+.light .b,
+.light .b div {
+  background:transparent url(/images/boxes/gradient-shadow-lighthead.png) no-repeat top right;
+}
+
+.interior .content,
+.interior .t,
+.interior .b,
+.interior .b div {
+  background:transparent url(/images/boxes/interior-250h.png) no-repeat top right;
+}
+
+.basicborder .content,
+.basicborder .t,
+.basicborder .b,
+.basicborder .b div {
+  background:transparent url(/images/boxes/basic-round-border.png) no-repeat top right;
+}
+
+
+
+.interior {
+  margin-bottom:0px;
+}
+
+.box .content {
+  position:relative;
+  zoom:1;
+  _overflow-y:hidden;
+  padding:0px 15px 0px 0px;
+}
+
+.light .content {
+    min-height:225px;
+}
+
+.box .t {
+  /* top+left vertical slice */
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:15px; /* top slice width */
+  margin-left:-15px;
+  height:100%;
+  _height:1600px; /* arbitrary long height, IE 6 */
+  background-position:top left;
+}
+
+.box .b {
+  /* bottom */
+  position:relative;
+  width:100%;
+}
+
+.box .b,
+.box .b div {
+  height:15px; /* height of bottom cap/shade */
+  font-size:1px;
+}
+
+.box .b {
+  background-position:bottom right;
+}
+
+.box .b div {
+  position:relative;
+  width:15px; /* bottom corner width */
+  margin-left:-15px;
+  background-position:bottom left;
+}
+
+.box .hd,
+.box .bd,
+.box .ft {
+  position:relative;
+}
+
+.box .wrapper {
+  /* extra content protector - preventing vertical overflow (past background) */
+  position:static;
+  max-height:1000px;
+  overflow:auto; /* note that overflow:auto causes a rather annoying redraw "lag" in Firefox 2, and may degrade performance. Might be worth trying without if you aren't worried about height/overflow issues. */
+}
+
+.box h1,
+.box h2,
+.box p {
+  margin:0px; /* margins will blow out backgrounds, leaving whitespace. */
+  padding:0px;
+}
+
+.box h1 {
+    height:34px;
+    font-size:1em;
+    padding-bottom:15px;
+}
+
+.shadow h1, .default h1 {
+  color:#fff;
+  text-transform:lowercase;
+}
+
+.box.shadow h1 a, .box.default h1 a, .box.shadow h1 a:visited, .box.default h1 a:visited {
+  color:#fff;
+}
+.box.basicborder h1, .box.basicborder h1 a, .box.basicborder h1 a:visited {
+  color:#000;
+}
+.box.basicborder h1 a:hover {
+  color:#808080;
+}
+
+.box.interior h1 {
+  display:none;
+}
+.basicborder h1 {
+  padding-bottom:0;
+}
+
+/* basic form styles */
+input {
+  border:2px solid #808080;
+  background-color:#d4d6d7;
+}
+
+/* sitewide tools */
+.small-button {
+	display:block;
+	height:23px;
+	background:transparent url(/images/buttons/small-left-trans.png) no-repeat top left;
+	text-align:center;
+	vertical-align:middle;
+}
+.small-button a {
+	display:block;
+	height:23px;
+	background:transparent url(/images/buttons/small-right-trans.png) no-repeat top right;
+}
+.large-button {
+  display:block;
+  height:48px;
+  background:transparent url(/images/buttons/large-left-5bg.png) no-repeat top left;
+  text-align:center;
+  vertical-align:middle;
+  margin-top:10px;
+}
+
+.large-button a {
+  display:block;
+  height:48px;
+  background:transparent url(/images/buttons/large-right-5bg.png) no-repeat top right;
+}
+
+.large-button img {
+
+}
+
+.min-height {
+  display:block;
+}
+
+.clear {
+  clear:both;
+  display:block;
+}
+
+/* Form validation errors */
+
+.fieldWithErrors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#errorExplanation {
+  width: 400px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 12px;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+}
+
+#errorExplanation h2 {
+  text-align: left;
+  font-weight: bold;
+  padding: 5px 5px 5px 15px;
+  font-size: 12px;
+  margin: -7px;
+  background-color: #c00;
+  color: #fff;
+}
+
+#errorExplanation p {
+  color: #333;
+  margin-bottom: 0;
+  padding: 5px;
+}
+
+#errorExplanation ul li {
+  font-size: 12px;
+  list-style: square;
+}
+
+div.uploadStatus {
+  margin: 5px;
+}
+
+div.progressBar {
+  margin: 5px;
+}
+
+div.progressBar div.border {
+  background-color: #fff;
+  border: 1px solid grey;
+  width: 100%;
+}
+
+div.progressBar div.background {
+  background-color: #333;
+  height: 18px;
+  width: 0%;
+}
+
