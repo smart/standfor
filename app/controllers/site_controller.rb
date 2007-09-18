@@ -1,6 +1,14 @@
 class SiteController < ApplicationController
    layout 'default'
 
+    def setorg
+       if request.host.match(/statndfor(\w+).org/)   
+	  site_name = request.host.match(/statndfor(\w+).org/)[1]    
+          @organization = Organization.find_by_site_name(site_name)
+	  redirect_to :controller => 'organizations' , :action => 'show' , :organization => site_name
+       end
+    end
+
     def index
       if params[:organization].nil?
         redirect_to :controller => 'organizations', :action  => 'index'

@@ -1,0 +1,1 @@
+require 'url_for_domain'

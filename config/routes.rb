@@ -1,4 +1,17 @@
 ActionController::Routing::Routes.draw do |map|
+
+  map.with_options :conditions => {:subdomain => /standfor/ },:embedded => true do |embedded| 
+   embedded.connect '/', :controller => 'organizations', :action => 'show'
+   embedded.connect '/my/account', :controller => 'my_account', :action => 'index'
+   embedded.connect '/:organization/:segment', :controller => 'segments', :action => 'show'
+   embedded.connect "/:segment/:controller/:action"
+   embedded.connect '/:segment', :controller => 'segments', :action => 'show'
+  end
+
+  map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:host => /standfor.(\w+).org/ } 
+  map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:subdomain => /(\w+).standfor.org/ } 
+
+
   map.connect "/rcss/:rcss.css", :controller => "rcss", :action => "rcss"
   map.connect "/rcss/:rcss/:organization.css", :controller => "rcss", :action => "rcss"
   map.connect "/:organization/:segment/:controller/:action"
@@ -45,15 +58,12 @@ ActionController::Routing::Routes.draw do |map|
   #
   map.connect ':controller/service.wsdl', :action => 'wsdl'
   map.connect '/catalog', :controller => 'badges', :action => 'index'
-
   map.connect '/my/account', :controller => 'my_account', :action => 'index'
-  map.connect '/support/:organization/:segment', :controller => 'segments', :action => 'show'
   map.connect '/:organization', :controller => 'organizations', :action => 'show'
   map.connect '/', :controller => 'site', :action => 'index'
-
   #map.connect '/get/badge/:badge_id', :controller => 'my_badges', :action => 'new'
-
   # Install the default route as the lowest priority.
+  #map.connect '/support/:organization/:segment', :controller => 'segments', :action => 'show'
   map.connect ':controller/:action/:id.:format'
   map.connect ':controller/:action/:id'
 end

@@ -11,8 +11,15 @@ class ApplicationController < ActionController::Base
   before_filter :init
   
   def init
-    @organization = Organization.find_by_site_name(params[:organization])if !params[:organization].nil?
-    @segment = Segment.find_by_site_name(params[:segment]) if !params[:segment].nil?
+   
+    if params[:embedded]
+       site_name = request.host.match(/standfor\.(\w+)\.org/)[1]    
+       params[:organization] = site_name
+    end
+
+      @organization = Organization.find_by_site_name(params[:organization], :include => :segments )  if !params[:organization].nil?
+      @segment = @organization.segments.find_by_site_name(params[:segment]) if !params[:segment].nil?
+ 
   end
 
 end
