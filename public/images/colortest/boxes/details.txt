@@ -1,0 +1,9 @@
+basic - 1 solid fill
+basicborder - same fill as above plus 1 px border. Prob. color the border.
+
+default - solid fill and dark heading
+shadow - same two files as above plus drop shadow
+
+light - gradient fill, light heading, dropshadow
+
+interior/250 - gradient fill, 1 px border
