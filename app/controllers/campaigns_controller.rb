@@ -1,7 +1,9 @@
 class CampaignsController < ApplicationController
   layout 'default' 
   before_filter :login_required
-  before_filter :organization_required
+  before_filter :organization_required, :except => [:denied]
+  access_control [:new, :create, :update, :edit, :delete]  => 'admin' 
+
   # GET /campaigns
   # GET /campaigns.xml
   def index
@@ -85,6 +87,18 @@ class CampaignsController < ApplicationController
     end
   end
 
+  def denied
+  end
+
+  protected
+
+  def permission_denied
+    flash[:notice] = "You don't have privileges to access this action" 
+    render :template => '/shared/permission_denied'
+    #redirect_to :action => 'denied' and return false
+  end
+
+  private
 
   def organization_required
     @organization = Organization.find(params[:organization_id])

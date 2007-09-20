@@ -13,8 +13,10 @@ ActionController::Routing::Routes.draw do |map|
   end
 
   map.resources :organizations do |organizations|
-     organizations.resources :campaigns, :name_prefix => 'organization_' 
+     organizations.resources :campaigns , :name_prefix => 'organization_' 
+     organizations.resources :segments  , :name_prefix => 'organization_' 
   end
+
   map.resource :sessions, :my_badges, :badges
   map.resources :badge_access_codes,:organizations,:accounts,:segments,:requirements, :campaigns
   # end youser routes
