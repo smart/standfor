@@ -262,6 +262,10 @@ body.segments .interior {
   float:right;
   width:240px;
 }
+#donate .submitBtn img {
+	padding-right:25px;
+	padding-left:20px;
+}
 
 /* login page specific styles */
 
@@ -335,6 +339,7 @@ body.segments .interior {
 #my-donations {
 	float:left;
 	width:370px;
+	display:inline;
 }
 #my-info {
 	clear:both;
@@ -490,6 +495,14 @@ body.segments .interior {
 .box.basicborder h1 a:hover {
   color:#808080;
 }
+.box.basicborder .b,
+.box.basicborder .b div {
+  height:15px; /* height of bottom cap/shade */
+  font-size:1px;
+}
+.box.basicborder .content, .box.interior .content {
+	padding-top:10px;
+}
 
 .box.interior h1 {
   display:none;
@@ -499,33 +512,7 @@ body.segments .interior {
 }
 
 /* basic form styles */
-form {
-	margin:0px auto;
-}
-form, fieldset, label, input {
-    margin:0;
-    padding:0;
-}
-label {
-    float:left;
-    text-align:right;
-    display:block;
-    margin-right:10px;
-    width:30%;
-}
 
-input, textarea, select, radio {
-    float:left;
-	border:2px solid #808080;
-	background-color:#d4d6d7;
-	text-align:left;
-	margin-bottom:5px;
-	width:60%;
-}
-form li {
-	clear:both;
-	vertical-align:middle;
-}
 
 .replace-button {
 	margin:0;
@@ -534,6 +521,49 @@ form li {
 	background:none;
 	cursor:pointer;
 	/*width:100%;*/
+}
+
+/* button basic styles */
+button { 
+  border:0; 
+  cursor:pointer; 
+  font-weight:bold; 
+  padding:0 20px 0 0; 
+  text-align:center; 
+  margin:0 0 0 15px;
+}
+button span { 
+  position:relative; 
+  display:block; 
+  white-space:nowrap; 
+  padding:0 0 0 20px;
+  margin-left:-15px;
+}
+
+/* button unique styles */
+button.submitBtn { 
+  background:url(/images/buttons/large.png) right no-repeat; 
+  font-size:1.3em; 
+}
+button.submitBtn span { 
+  height:48px; 
+  line-height:48px;
+	background:url(/images/buttons/large.png) left no-repeat;
+  color:#fff; 
+}
+button.submitBtn:hover {
+	background:url(/images/buttons/large-hover.png) right no-repeat; 
+}
+button.submitBtn:hover span {
+	background:url(/images/buttons/large-hover.png) left no-repeat; 
+}
+
+* html button { 
+  width:auto; 
+  overflow:visible; 
+}
+* html button span { 
+  /*margin-top:1px; */
 }
 
 /* sitewide tools */

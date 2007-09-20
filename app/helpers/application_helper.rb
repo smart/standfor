@@ -42,6 +42,10 @@ module ApplicationHelper
 		end
 	
   end
+  
+  def new_button(opts = {})
+  	
+  end
 
 #  def markaby(&proc)
 #    assigns = {}

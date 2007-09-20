@@ -34,8 +34,8 @@
       </p>
     <% end %>
     <% content_box( "Donate!", :class => "basicborder", :id => "donate" ) do -%>
-    	<%= form_button("labels/donate.png", "Donate", :type => "submit") -%>
-      <span class="clear"></span>
+    	<button type="submit" value="submit" class="submitBtn"><span><%= image_tag "labels/donate.png" -%></span></button>
+      
     <% end %>
     <span class="clear"></span>
   <% end %>
