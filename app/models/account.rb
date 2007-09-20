@@ -3,6 +3,7 @@ class Account< ActiveRecord::Base
   has_many :my_badges
   has_many :donations
   has_and_belongs_to_many :access_codes
+  has_and_belongs_to_many :roles
   attr_accessor :create_auth_token
   attr_accessor :create_authenticator
   has_many :authenticators

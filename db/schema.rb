@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 20) do
+ActiveRecord::Schema.define(:version => 100) do
 
   create_table "access_codes", :force => true do |t|
     t.integer "scope_id",                                  :null => false
@@ -33,6 +33,11 @@ ActiveRecord::Schema.define(:version => 20) do
     t.datetime "remember_token_expires_at"
   end
 
+  create_table "accounts_roles", :id => false, :force => true do |t|
+    t.integer "account_id"
+    t.integer "role_id"
+  end
+
   create_table "authenticators", :force => true do |t|
     t.string   "auth_type",  :default => "", :null => false
     t.string   "auth_token"
@@ -59,6 +64,18 @@ ActiveRecord::Schema.define(:version => 20) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "description"
+    t.integer  "campaign_id"
+  end
+
+  create_table "campaigns", :force => true do |t|
+    t.string   "name"
+    t.text     "description"
+    t.integer  "segment_id"
+    t.integer  "admin_id"
+    t.integer  "goal"
+    t.date     "end_date"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "donations", :force => true do |t|
@@ -136,6 +153,10 @@ ActiveRecord::Schema.define(:version => 20) do
     t.string  "value"
     t.string  "description"
     t.string  "type"
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string "title"
   end
 
   create_table "segments", :force => true do |t|

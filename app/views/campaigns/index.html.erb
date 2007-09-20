@@ -1,0 +1,23 @@
+<h1>Listing campaigns</h1>
+
+<table>
+  <tr>
+   <th>name</th>
+   <th>description</th>
+   <th>goal</th>
+  </tr>
+
+<% for campaign in @campaigns %>
+  <tr>
+    <td><%= link_to campaign.name, organization_campaign_path(campaign.organization, campaign) -%></td>
+    <td><%= truncate(campaign.description, 20 ) -%></td>
+    <td><%= campaign.goal -%></td>
+    <td><%= link_to 'Edit', edit_organization_campaign_path(campaign.organization, campaign) %></td>
+    <td><%= link_to 'Destroy', organization_campaign_path(campaign.organization, campaign), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New campaign', new_organization_campaign_path %>

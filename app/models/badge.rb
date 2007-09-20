@@ -5,6 +5,7 @@ class Badge < ActiveRecord::Base
   has_many :my_badges
   has_many :authorizations
   has_many :donations
+  belongs_to :campaign
 
   def authorized?(account)
     self.requirements.each do |req| 

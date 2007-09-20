@@ -1,0 +1,22 @@
+<ul>
+<li><label for="campaign_name" >Name:</label>
+   <%= f.text_field :name -%>
+</li>
+
+<li><label for="campaign_description" >Description:</label>
+   <%= f.text_area :description-%>
+</li>
+
+<li><label for="campaign_segment" >Segment</label>
+<%= f.select("segment_id", organization.segments.collect {|s| [ s.name, s.id]}) -%>
+</li>
+
+<li><label for="campaign_goal" >Goal:</label>
+   <%= f.text_field :goal-%>
+</li>
+
+<li> <label for="campaign_end_date" >Ending Date:</label>
+   <p> <%= f.date_select :end_date -%></p>
+</li>
+
+</ul>
