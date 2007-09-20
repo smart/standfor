@@ -513,15 +513,72 @@ body.segments .interior {
 
 /* basic form styles */
 
-
-.replace-button {
-	margin:0;
-	padding:0;
-	border:none;
-	background:none;
-	cursor:pointer;
-	/*width:100%;*/
+form {
+	margin:0px;
+	padding:0px;
+	font-family:arial;
+	font-size:70%;
 }
+   
+form input,
+form select,
+form textarea {
+    font-size:110%;
+    font-family:arial;
+}
+   
+form textarea {
+    height:100px;
+}
+   
+form fieldset {
+    border:1px solid #CCCCCC;
+    margin:0px;
+    padding:10px;
+    display:block;
+}
+
+form legend {
+    color:#666666;
+    margin:0px;
+    padding:0px;
+    font-family:arial;
+    font-size:130%;
+    padding:0px 0px 0px 0px;
+    *margin:0px 0px 0px -6px;
+}
+   
+    /**************** Forms Styles Finish ****************/
+/**************** List Styles Start ******************/
+   
+form dl {
+	margin:15px 0px 0px 0px;
+    padding:0px;
+    width:auto;
+    clear:both;
+}
+form dt {
+    float:left;
+    width:125px;
+    margin:0px 0px 5px 0px;
+    color:#000000;
+    font-size:110%;
+}
+form dd {
+    margin:0px 0px 10px 125px;
+    color:#666666;
+    _text-indent:-3px !important;
+}
+form dd label {
+    vertical-align:top;
+    *vertical-align:baseline;
+    margin:0px 8px 0px 0px;
+    line-height:1.6em;
+}
+   
+    /**************** List Styles Finish *****************/
+
+
 
 /* button basic styles */
 button { 

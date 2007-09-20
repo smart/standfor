@@ -3,45 +3,36 @@
 <% form_for :authorization , 
 	    @authorization,  
 	    :url  => {:action => "create" , :amount => @amount }, :method => :post  do |f| %>
-<ul>
-	<li>
-		<label for="creditcard_first_name">First Name:</label>
-	 	<%= f.text_field :first_name , :size => 20 -%>
-	</li>
-	
-	<li>
-		<label for="creditcard_last_name">Last Name:</label>
-		<%= f.text_field :last_name, :size => 20 -%>
-	</li>
-	
-	<li>
-		<label for="creditcard_type">Card Type:</label>
-		<%= f.select :card_type, ["Visa", "Master Card", "Discover"] %>
-	</li>
-	
-	<li>
-		<label for="creditcard_number">Card Number:</label>
-		<%= f.text_field :number -%>
-	</li>
-	
-	<li>
-		<label for="creditcard_expiration_month">Exp. Month:</label>
-		<%= select_month(Date.today)%>
-	</li>
-	<li>
-		<label for="creditcard_expiration_month">Exp. Year:</label>
-		<%= select_year(Date.today)%>
-	</li>
-	
-	<li>
-	 <label for="creditcard_verification_value">Verification Value:</label>
-	 <%= f.text_field :verification_value, :size => 6 -%>
-	</li>
-	<li>
-		<%= button(:image => "labels/donate.png", :alt => "Donate!",  :type => "submit", :class => "large-button" ) -%>
-	</li>
-	<span class="clear"></span>
-</ul>
+			<fieldset>
+				<legend>Customer Information</legend>
+					<dl>
+						<dt><label for="creditcard_first_name">First Name:</label></dt>
+							<dd><%= f.text_field :first_name , :size => 20 -%></dd>
+						
+						<dt><label for="creditcard_last_name">Last Name:</label></dt>
+							<dd><%= f.text_field :last_name, :size => 20 -%></dd>
+					</dl>
+			</fieldset>
+			<fieldset>
+				<legend>Credit Card Details</legend>
+					<dl>
+						<dt><label for="creditcard_type">Card Type:</label></dt>
+							<dd><%= f.select :card_type, ["Visa", "Master Card", "Discover"] %></dd>
+						
+						<dt><label for="creditcard_number">Card Number:</label></dt>
+							<dd><%= f.text_field :number -%></dd>
+						
+						<dt><label for="creditcard_expiration_month">Exp. Month:</label></dt>
+							<dd><%= select_month(Date.today)%></dd>
+						
+						<dt><label for="creditcard_expiration_month">Exp. Year:</label></dt>
+							<dd><%= select_year(Date.today)%></dd>
+						
+						<dt><label for="creditcard_verification_value">Verification Value:</label></dt>
+							<dd><%= f.text_field :verification_value, :size => 6 -%></dd>
+					</dl>
+			</fieldset>
+			<%= button(:image => "labels/donate.png", :alt => "Donate!",  :type => "submit", :class => "large-button" ) -%>
 <% end %>
 <% end %>
 

@@ -2,7 +2,7 @@
 <div id="preview">
   <% content_box( "Your Charity Badge", :class => "shadow" ) do -%>
     <div id="badge">
-      <%= render :partial => "current_view", :locals => {:my_badge => @my_badge } -%>
+      <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
     </div>
     <%= button(:image => 'labels/saveshare.png', :alt => 'Save and Share', :link => url_for(:controller => 'share', :action => 'index', :id => @my_badge), :class => 'large-button' ) %>
     
