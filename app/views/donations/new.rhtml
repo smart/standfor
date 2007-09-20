@@ -31,16 +31,10 @@
       </p>
       <p>
         Dedication:
-      </p>
-
-       <%= link_to_function "this will be a button", "document.forms[0].submit()" -%>
-
-  <% end %>
-<%if false %>
+      </p>   
+   	<% end %>
     <% content_box( "Donate!", :class => "basicborder", :id => "donate" ) do -%>
-    	<button type="submit" value="submit" class="submitBtn"><span><%= image_tag "labels/donate.png" -%></span></button>
-<% end %>
-
+    	<%= button(:image => "labels/donate.png", :alt => "Donate!",  :type => "submit", :class => "large-button" ) -%>
     <% end %>
     <span class="clear"></span>
   <% end %>

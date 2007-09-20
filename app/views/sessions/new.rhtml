@@ -12,7 +12,7 @@
 				<label for="remember_me">Remember me:</label><%= check_box_tag 'remember_me' %>
 			</li>
 		</ul>
-			<%= form_button("labels/login.png", "Login", :type => "submit") -%>
+			<%= button(:image => "labels/login.png", :alt => "Login",  :type => "submit", :class => "large-button" ) -%>
 			
 			<%= (image_tag "labels/notmember.png", :alt => "Not a Member?", :class => "img-pos" )%>
 			<%= button(:image => 'labels/signup.png', :alt => 'Sign Up', :link => signup_url, :class => 'large-button' ) %>

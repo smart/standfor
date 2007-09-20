@@ -29,8 +29,12 @@ module ApplicationHelper
   
   def button(opts = {})
     image = image_tag(opts[:image], :alt => opts[:alt])
-    link = opts[:link]
-    html = content_tag(:span, link_to(image, link), :class => opts[:class])
+    link = opts[:link] ? opts[:link] : "document.forms[0].submit()"
+    if opts[:type] == "submit"
+    	html = content_tag(:span, link_to_function(image, link), :class => opts[:class])
+	else
+		html = content_tag(:span, link_to(image, link), :class => opts[:class])
+	end
     return html
   end
   

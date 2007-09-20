@@ -501,7 +501,7 @@ body.segments .interior {
   font-size:1px;
 }
 .box.basicborder .content, .box.interior .content {
-	padding-top:10px;
+	padding-top:15px;
 }
 
 .box.interior h1 {
@@ -585,7 +585,7 @@ button.submitBtn:hover span {
   background:transparent url(/images/buttons/large-left-5bg.png) no-repeat top left;
   text-align:center;
   vertical-align:middle;
-  margin-top:10px;
+  /*margin-top:10px;*/
 }
 
 .large-button a {
