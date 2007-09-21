@@ -1,12 +1,10 @@
 class DonationsController < ApplicationController
-  layout 'default'
-  before_filter :login_required ,:only => [:create]
-  #before_filter :organization_required
-  #before_filter :segment_required
-  #before_filter :badge_required
-
   # GET /donations
   # GET /donations.xml
+  layout 'default'
+  before_filter :login_required
+  before_filter :get_organization
+  before_filter :get_segment
   def index
     @donations = Donation.find(:all)
 
@@ -30,15 +28,7 @@ class DonationsController < ApplicationController
   # GET /donations/new
   # GET /donations/new.xml
   def new
-    begin
-      session['badge'] = Badge.find(params[:badge])
-    rescue
-    end
-    session['donate_return_to'] = request.request_uri 
-    get_donation_info
-    @donation = @organization.donations.build
-    @donation.segment = @segment
-
+    @donation = Donation.new
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @donation }
@@ -52,30 +42,25 @@ class DonationsController < ApplicationController
 
   # POST /donations
   # POST /donations.xml
-  #
   def create
+    @donation = Donation.new(params[:donation])
     get_donation_info
-    @donation = session[:donation] || @organization.donations.new(params[:donation])
-    @donation.segment =  @segment
-    @donation.badge =  @badge 
-    @donation.account = current_account
     return false unless creditcard_required
     return false unless confirmation_required
     return false unless charge_card 
+    @donation.organization = @organization
+    @donation.segment = @segment
+    @donation.account = current_account 
     @donation.payment_authorization = @authorization
     @donation.last_four_digits = @last_four_digits  
-    session[:donation] = @donation
 
     respond_to do |format|
       if @donation.save
-        session[:donation] = nil
-        session[:order_confirmed] = nil
-        session[:badge] = nil
         flash[:notice] = 'Donation was successfully created.'
-        format.html { donation_redirect } #redirect_to(@donation)  
-	format.xml  { render :xml => @donation, :status => :created, :location => @donation }
+        format.html { redirect_to(@donation) }
+        format.html { redirect_to organization_segment_donation_url(@organization, @segment, @donation) }
+        format.xml  { render :xml => @donation, :status => :created, :location => @donation }
       else
-        #THROW REALLY NASTY ERROR HERE
         format.html { render :action => "new" }
         format.xml  { render :xml => @donation.errors, :status => :unprocessable_entity }
       end
@@ -90,7 +75,7 @@ class DonationsController < ApplicationController
     respond_to do |format|
       if @donation.update_attributes(params[:donation])
         flash[:notice] = 'Donation was successfully updated.'
-        format.html { redirect_to(@donation) }
+        format.html { redirect_to organization_segment_donation_url(@organization, @segment, @donation ) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -111,27 +96,46 @@ class DonationsController < ApplicationController
     end
   end
 
-  def select_organization
-    begin
-      @organization = Organization.find(params[:organization][:id])
-      redirect_to  :controller =>  'donations', :action => 'new', :organization => @organization
-    rescue
-      render :action => 'choose_organization' and return
-    end
+   def confirmation
+      get_donation_info
+      if params[:id].nil? or params[:id] != 'yes'
+         render :action => 'confirmation' 
+      else
+         session[:order_confirmed] = true 
+         redirect_to  :controller => 'donations' , :action => 'create' and return false 
+      end
+   end
+ 
+  protected
 
+  def get_donation_info
+    @badge = session[:badge]
   end
 
-  def donation_redirect 
-     if @badge and @segment 
-       session[:badge] = nil
-       redirect_to :controller=>'my_badges', :action => 'new', :badge  => @badge , :segment => @segment.site_name
-     elsif @segment
-       redirect_to :controller=>'segments',:action => 'show',:segment => @segment.site_name
+  # need a valid credit card
+  def creditcard_required
+     if session[:creditcard].nil?
+       no_card 
      else
-       redirect_to :controller=>'organziations',:action => 'show',:organization => @organization.site_name
-     end
-     false
+      @creditcard = session[:creditcard]
+        return true 
+      end
+      return false
   end
+
+  def no_card
+       session['payment_redirect'] = request.request_uri 
+       session[:donation] = @donation
+       redirect_to :controller => 'authorizations', :action => 'new' and return false
+   end
+
+   def confirmation_required
+      if params[:confirmed].nil? and params[:confirmed] !=  'yes'
+        render :template => '/donations/confirmation' and return false
+      else
+        return true
+      end
+   end
 
    def charge_card
      gateway = ActiveMerchant::Billing::BogusGateway.new
@@ -147,63 +151,19 @@ class DonationsController < ApplicationController
        no_card
      end
      return false
-   end
+  end
 
-   def confirmation
-      get_donation_info
-      if params[:id].nil? or params[:id] != 'yes'
-         render :action => 'confirmation' 
-      else
-         session[:order_confirmed] = true 
-         redirect_to  :controller => 'donations' , :action => 'create' and return false 
-      end
-   end
-
-
-   def creditcard_required
-
-      if session[:creditcard].nil?
-        no_card 
-      else
-	@creditcard = session[:creditcard]
-        return true 
-      end
-      return false
-   end
-
-   def confirmation_required
-      if session[:order_confirmed].nil?
-         no_confirmation
-      else
-        @confirmation = session[:order_confirmed]
-        return true 
-      end
-      return false
-   end
-
-   def no_card
-       session['payment_redirect'] = request.request_uri 
-       session[:donation] = @donation
-       redirect_to :controller => 'authorizations', :action => 'new' and return false
-   end
-
-   def no_confirmation
-       session['confirmation_redirect'] = request.request_uri 
-       session[:donation] = @donation
-       redirect_to :controller => 'donations', :action => 'confirmation', :organization => @organization.site_name, :segment =>  @segment.site_name   and return false
-   end
-  
   private
 
-  def get_donation_info
-    begin
-      @organization = Organization.find_by_site_name(params[:organization] )
-    rescue
-      render :action => 'choose_organization' and return
-    end
-    @segment = (params[:segment] ? @organization.segments.find_by_site_name(params[:segment]) : nil)
-    @badge = (params[:badge] ? @organization.badges.find(params[:badge]) : session[:badge] )
-    session[:badge] = @badge
+   # user need to confirm purchase amount
+
+  private
+  def get_organization
+    @organization = Organization.find(params[:organization_id]) 
   end
-   
+
+  def get_segment
+    @segment= Segment.find(params[:segment_id]) 
+  end
+
 end

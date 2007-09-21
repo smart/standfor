@@ -20,9 +20,10 @@
 <div id="navigation">
   <ul>
    <li class="first"><%= link_to(image_tag('labels/standfor.png', :alt => 'standfor'), "#") -%></li>
-
+<% if false %>
 <%= render :partial => '/shared/breadcrumbs', 
 	   :locals =>{:organization => @organization,:segment => @segment } -%>
+<% end %>
 </ul>
 
 <div id="login-button">

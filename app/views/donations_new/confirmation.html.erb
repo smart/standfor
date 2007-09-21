@@ -1,0 +1,20 @@
+<h1>Confirmation</h1>
+
+<p>
+<%= @organization.name -%>
+</p>
+
+<p>
+<%= @segment.name -%>
+</p>
+
+<p>
+<%= @donation.amount -%>
+</p>
+
+<% form_for(:donation, :url =>  organization_segment_donations_path(@organization, @segment)) do |f| %>
+   <%= f.hidden_field  'amount' %>
+   <%= hidden_field_tag  'confirmed', 'yes' %>
+ <%= f.submit "Confirm Order" %>
+<% end %>
+<%= link_to 'Back', organization_segment_donations_path %>

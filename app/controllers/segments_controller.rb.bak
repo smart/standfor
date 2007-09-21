@@ -1,10 +1,15 @@
 class SegmentsController < ApplicationController
+  before_filter :get_segment, :only => [:show]
   layout 'default'
-  before_filter :organization_required, :except => [:denied]
   # GET /segments
   # GET /segments.xml
+  
+  def initialize
+    @context = 'segments'
+  end
+  
   def index
-    @segments = Segments.find(:all)
+    @segments = Segment.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,8 +20,7 @@ class SegmentsController < ApplicationController
   # GET /segments/1
   # GET /segments/1.xml
   def show
-    @segment = Segment.find(params[:id])
-
+    #@segment = Segment.find(params[:segment]) 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @segment }
@@ -26,7 +30,7 @@ class SegmentsController < ApplicationController
   # GET /segments/new
   # GET /segments/new.xml
   def new
-    @segment = Segments.new
+    @segment = Segment.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -36,22 +40,22 @@ class SegmentsController < ApplicationController
 
   # GET /segments/1/edit
   def edit
-    @segment = Segments.find(params[:id])
+    @segment = Segment.find(params[:id])
   end
 
   # POST /segments
   # POST /segments.xml
   def create
     @segment = Segment.new(params[:segment])
-    @segment.organization = @organization 
+
     respond_to do |format|
       if @segment.save
-        flash[:notice] = 'Segments was successfully created.'
-        format.html { redirect_to organization_segment_url(@segment.organization, @segment) }
-        format.xml  { render :xml => @segments, :status => :created, :location => @segment }
+        flash[:notice] = 'Segment was successfully created.'
+        format.html { redirect_to :action  => :index }
+        format.xml  { render :xml => @segment, :status => :created, :location => @segment }
       else
         format.html { render :action => "new" }
-        format.xml  { render :xml => @segments.errors, :status => :unprocessable_entity }
+        format.xml  { render :xml => @segment.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -60,10 +64,11 @@ class SegmentsController < ApplicationController
   # PUT /segments/1.xml
   def update
     @segment = Segment.find(params[:id])
+
     respond_to do |format|
       if @segment.update_attributes(params[:segment])
-        flash[:notice] = 'Segments was successfully updated.'
-        format.html { redirect_to organization_segment_url(@segment.organization, @segment) }
+        flash[:notice] = 'Segment was successfully updated.'
+        format.html { redirect_to :action  => :index }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -84,9 +89,13 @@ class SegmentsController < ApplicationController
     end
   end
 
-  private
-  def organization_required
-    @organization = Organization.find(params[:organization_id])
-  end
+   def get_segment
+     begin
+       @segment = Segment.find_by_site_name(params[:segment]) unless params[:segment].nil?
+     rescue
+       @segment = Segment.find(params[:id]) if !params[:id].nil?
+     end
+     @organization = @segment.organization
+   end
 
 end

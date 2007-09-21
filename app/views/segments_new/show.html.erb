@@ -1,0 +1,8 @@
+<ul>
+<li><%= @segment.name-%></li>
+<li><%= @segment.description-%></li>
+<li><%= @segment.keyword-%></li>
+</ul>
+
+<%= link_to 'Edit', edit_organization_segment_path(@organization, @segment) %> |
+<%= link_to 'Back', organization_segment_path %>

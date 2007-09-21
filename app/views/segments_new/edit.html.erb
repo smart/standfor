@@ -1,0 +1,15 @@
+<h1>Editing segments</h1>
+
+<%= error_messages_for :segments %>
+<% form_for(@segment, :url => organization_segment_path(@organization), :method => :put ) do |f| %>
+
+   <%= render :partial => 'fields', :locals => {:f => f, :organization => @organization} -%>
+
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', organization_segment_path(@segment.organization, @segment) -%>
+|
+ <%= link_to 'Back', organization_segments_path %>

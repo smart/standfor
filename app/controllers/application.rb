@@ -11,6 +11,7 @@ class ApplicationController < ActionController::Base
   before_filter :init
   
   def init
+    return true
     if params[:embedded]
        site_name = request.host.match(/standfor\.(\w+)\.org/)[1]    
        params[:organization] = site_name

@@ -12,13 +12,16 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :acconts_openids
   end
 
+  map.resources :badge_access_codes,:organizations,:accounts,:segments,:requirements,:campaigns, :donations
+  map.resource :sessions, :my_badges, :badges
+
   map.resources :organizations do |organizations|
      organizations.resources :campaigns , :name_prefix => 'organization_' 
-     organizations.resources :segments  , :name_prefix => 'organization_' 
+     organizations.resources :segments  , :name_prefix => 'organization_'  do |segments|
+         segments.resources :donations
+     end
   end
 
-  map.resource :sessions, :my_badges, :badges
-  map.resources :badge_access_codes,:organizations,:accounts,:segments,:requirements, :campaigns
   # end youser routes
 =begin
   map.with_options :conditions => {:subdomain => /standfor/ },:embedded => true do |embedded| 

@@ -14,6 +14,8 @@ class OrganizationsController < ApplicationController
   # GET /organizations/1
   # GET /organizations/1.xml
   def show
+     @organization = Organization.find(params[:id])
+     if false
       @organization = Organization.find_by_site_name(params[:organization])
 
       if @organization.nil?
@@ -27,6 +29,7 @@ class OrganizationsController < ApplicationController
 		    :segment => @organization.segments.first.site_name 
         return false
       end
+    end
 
     respond_to do |format|
       format.html # show.html.erb

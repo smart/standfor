@@ -80,7 +80,6 @@ ActiveRecord::Schema.define(:version => 100) do
 
   create_table "donations", :force => true do |t|
     t.integer  "account_id"
-    t.integer  "badge_id"
     t.integer  "organization_id"
     t.integer  "amount"
     t.integer  "segment_id"

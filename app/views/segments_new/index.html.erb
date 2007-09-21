@@ -1,0 +1,18 @@
+<h1>Listing segments</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for segments in @segments %>
+  <tr>
+    <td><%= link_to 'Show', segments %></td>
+    <td><%= link_to 'Edit', edit_segments_path(segments) %></td>
+    <td><%= link_to 'Destroy', segments, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New segments', new_organization_segment_path %>

@@ -1,0 +1,12 @@
+<h1>New donation</h1>
+
+<%= error_messages_for :donation %>
+
+<% form_for(:donation, :url =>  organization_segment_donations_path(@organization, @segment)) do |f| %>
+ <%= render :partial => 'fields', :locals => {:f => f} -%>
+  <p>
+    <%= f.submit "Donate" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', organization_segment_donations_path %>

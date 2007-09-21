@@ -7,7 +7,7 @@ class CampaignsController < ApplicationController
   # GET /campaigns
   # GET /campaigns.xml
   def index
-    @campaigns = Campaign.find(:all)
+    @campaigns = Campaign.find(:all, :conditions => ["organization_id = ? ",  @organization.id]  )
 
     respond_to do |format|
       format.html # index.html.erb
@@ -99,7 +99,6 @@ class CampaignsController < ApplicationController
   end
 
   private
-
   def organization_required
     @organization = Organization.find(params[:organization_id])
   end

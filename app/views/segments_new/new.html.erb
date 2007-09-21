@@ -1,0 +1,12 @@
+<h1>New segments</h1>
+
+<%= error_messages_for :segments %>
+
+<% form_for(:segment, :url =>  organization_segments_path(@organization), :method => :post ) do |f| %>
+   <%= render :partial => 'fields', :locals => {:f => f, :organization => @organization} -%>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', organization_segments_path %>

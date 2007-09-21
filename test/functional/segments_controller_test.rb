@@ -24,15 +24,15 @@ class SegmentsControllerTest < Test::Unit::TestCase
     assert_response :success
   end
 
-  def test_should_create_segment
-    assert_difference('Segment.count') do
-      post :create, :segment => { }
+  def test_should_create_segments
+    assert_difference('Segments.count') do
+      post :create, :segments => { }
     end
 
-    assert_redirected_to segment_path(assigns(:segment))
+    assert_redirected_to segments_path(assigns(:segments))
   end
 
-  def test_should_show_segment
+  def test_should_show_segments
     get :show, :id => 1
     assert_response :success
   end
@@ -42,13 +42,13 @@ class SegmentsControllerTest < Test::Unit::TestCase
     assert_response :success
   end
 
-  def test_should_update_segment
-    put :update, :id => 1, :segment => { }
-    assert_redirected_to segment_path(assigns(:segment))
+  def test_should_update_segments
+    put :update, :id => 1, :segments => { }
+    assert_redirected_to segments_path(assigns(:segments))
   end
 
-  def test_should_destroy_segment
-    assert_difference('Segment.count', -1) do
+  def test_should_destroy_segments
+    assert_difference('Segments.count', -1) do
       delete :destroy, :id => 1
     end
 
