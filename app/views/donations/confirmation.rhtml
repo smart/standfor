@@ -1,8 +1,21 @@
 <% content_box("Confirm your Payment Details", :id => "payment", :class => "shadow") do %>
-	
-<p>I allow my card to be charged $<%= session[:donation].amount -%> </p>
+<p>I allow my card to be charged $<%= @donation.amount -%> </p>
+<% form_for(:donation, :url =>  organization_segment_donations_path(@organization, @segment)) do |f| %>
+  <%= f.hidden_field  'amount' %>
+  <%= hidden_field_tag  'confirmed', 'yes' %>
 
-<%= button(:image => 'labels/confirm.png', :alt => "Confirm", :link => url_for(:controller => 'donations', :action =>  'confirmation', :id => 'yes', :organization => @organization.site_name, :segment => @segment.site_name), :class => 'large-button' ) -%>
+<% if false %>
+this helper appears to lose the 'POST' context.  We need to find a solution that is rest compliant.
+ <%= button(:image => 'labels/confirm.png', :alt => "Confirm", 
+	:link => organization_segment_donations_path(@organization, @segment), :class => 'large-button' ) -%>
+<% end %>
+
+  <p>
+    <%= f.submit "Confirm" %>
+  </p>
+
+<% end %>
+
 <% end %>
 <% content_box("Donation Summary", :id => "summary", :class => "basic") do -%>
 	<ul>

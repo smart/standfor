@@ -19,10 +19,10 @@ class AuthorizationsController < ApplicationController
   	:last_name  => params[:authorization][:last_name]			)
      if creditcard.valid?
         creditcard.number = 1.to_s
-        session[:last_four] =params[:authorization][:number].strip.slice(-4,4)
+        session[:last_four] = params[:authorization][:number].strip.slice(-4,4)
         session[:creditcard] = creditcard
-        redirect_to session['payment_redirect'] 
-        session['payment_redirect']  = nil
+        redirect_to session[:authorization_redirect] 
+        session[:authorization_redirect]  = nil
         return false
      else
         render :action => 'new'

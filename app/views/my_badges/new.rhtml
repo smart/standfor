@@ -1,44 +1,49 @@
 <% content_box("Get this Badge", :id => "get-badge", :class => "shadow" ) do %>
-
 <%= error_messages_for :my_badge %>
 <div id="preview">
 <p><%= @badge.name  -%> </p>
-
 <p><%= image_tag("/images/examples/#{@badge.id}.gif")  -%> </p>
 <p><%= @badge.description -%></p>
 </div>
-<% content_box("Badge Requirements", :id => "requirements", :class => "basicborder") do %>
-<% form_for :my_badge, 
-	:url  => {:action => "create", 
-		  :organization => @segment.organization.site_name, 
-		  :segment => @segment.site_name, 
-		  :badge => @badge || nil }, 
-		  :method => :post  do |f| %>
 
-<% if !@badge.access_codes.empty? and  !@badge.authorized?(current_account ) %>
+<% if @badge.authorized?(current_account) %>
+<% content_box("Get This Badge", :id => "requirements", :class => "basicborder") do %>
+<% form_for :my_badge, :url => badge_my_badges_path(@badge) , :method => :post  do |f| %>
+<p>You have met all the requirements for this badge!</p>
+
+<% if false %>
+  <%= form_button("labels/customize.png", "Customize this Badge", :type => "submit") -%>
+<% end %>
+  <%= f.submit 'customize' -%>
+
+ <% end %>
+ <% end %>
+<span class="clear"></span>
+ <% end %>
+
+
+<% if !@badge.access_codes.empty? and !@badge.authorized?(current_account) %>
+<% content_box("Badge Requirements", :id => "requirements", :class => "basicborder") do %>
     <label>If you have an access code you can enter it below:</label><br />
+    <% form_for :my_badge, :url => badge_my_badges_path(@badge) , :method => :post  do |f| %>
     <%= f.text_field :access_code, :size => 6 %>
     <%= submit_tag "Enter Code" %>
-<% end %>
- 
-<% if @badge.authorized?(current_account) %>
-<p>You have met all the requirements for this badge!</p>
-<%= form_button("labels/customize.png", "Customize this Badge", :type => "submit") -%>
-<span class="clear"></span>
-<% end %>
-
+    <span class="clear"></span>
+  <% end %>
 <% end %>
 
 <% if !@badge.required_donation.nil?  and !@badge.authorized?(current_account ) %>
+
 <%= image_tag ( "labels/or.png", :alt => "or", :class => "or" ) %><br />
 
 <% @donation = Donation.new(:amount => @badge.required_donation.value ) %>
-<%= button(:image => "labels/donate.png", :alt => "Donate!", :link => url_for(:controller => "donations", :action => "new", 
-		  :badge => @badge, 
-		  :segment => @segment.site_name, 
-		  :organization => @badge.organization.site_name), :class => "large-button" ) -%>
+<% form_for :my_badge, :url => badge_my_badges_path(@badge) , :method => :post  do |f| %>
+<%= button(:image => "labels/donate.png", :alt => "Donate!", 
+	:link =>  new_organization_segment_donation_path(@badge.organization, @badge.segment  ), 
+	:class => "large-button" ) -%>
+    <span class="clear"></span>
+<% end %>
+<% end %>
 
 <% end %>
-<% end %>
-<span class="clear"></span>
 <% end %>

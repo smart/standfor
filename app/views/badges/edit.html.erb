@@ -2,29 +2,16 @@
 
 <%= error_messages_for :badge %>
 
-<% form_for(@badge) do |f| %>
+<% form_for(@badge, :url => organization_segment_badge_path(@organization, @segment ), :method => :put ) do |f| %>
 
-  <p><lable for="badge_name" >Name:</label>
-   <%= f.text_field :name -%>
-  </p>
+<%= render :partial => 'fields', :locals => {:f => f } %>
 
-  <p><lable for="badge_organization" >Organization:</label>
-    <%= f.select( "organization_id", Organization.find(:all).collect {|o| [ o.name, o.id ] }, 
-		{ :include_blank => true }) -%>
-  </p>
+<p>
+ <%= f.submit "Update" %>
+</p>
 
-  <p><lable for="badge_structure_id" >Structure ID:</label>
-   <%= f.text_field :structure_id-%>
-  </p>
-
-  <p><lable for="badge_description" >Description:</label>
-   <%= f.text_area :description -%>
-  </p>
-
-  <p>
-    <%= f.submit "Update" %>
-  </p>
 <% end %>
 
-<%= link_to 'Show', @badge %> |
-<%= link_to 'Back', badges_path %>
+<%= link_to 'Show', organization_segment_badges_path(@organization,@segment) %> 
+|
+<%= link_to 'Back', organization_segment_badges_path(@organization, @segment) %>

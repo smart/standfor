@@ -1,11 +1,7 @@
 <%= error_messages_for :donation %>
 
-<% form_for :donation, @donation, 
-    :url => {	:controller => 'donations', 
-    :action  => 'create', 
-		:segment => @segment.site_name,
-		:organization => @organization.site_name ,
-		:badge => @badge } do |f| %>
+<% form_for(:donation, :url =>  organization_segment_donations_path(@organization, @segment)) do |f| %>
+
   <% content_box( "Make a Donation", :class => "shadow", :id => "donation" ) do -%>
     <% content_box( (image_tag "labels/give.png", :alt => "Donation Amount" ), :class => "basicborder", :id => "amount" ) do -%>
       <p>

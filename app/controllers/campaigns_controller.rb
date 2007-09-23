@@ -1,7 +1,7 @@
 class CampaignsController < ApplicationController
   layout 'default' 
   before_filter :login_required
-  before_filter :organization_required, :except => [:denied]
+  before_filter :organization_and_segment_required, :except => [:denied]
   access_control [:new, :create, :update, :edit, :delete]  => 'admin' 
 
   # GET /campaigns
@@ -45,11 +45,12 @@ class CampaignsController < ApplicationController
   # POST /campaigns.xml
   def create
     @campaign = Campaign.new(params[:campaign])
+    @campaign.organization  = @organization 
     @campaign.admin_id = current_account.id 
     respond_to do |format|
       if @campaign.save
         flash[:notice] = 'Campaign was successfully created.'
-        format.html { redirect_to organization_campaign_url(@campaign.organization, @campaign) }
+        format.html { redirect_to organization_segment_campaign_url(@organization, @segment, @segment) }
         format.xml  { render :xml => @campaign, :status => :created, :location => @campaign }
       else
         format.html { render :action => "new" }
@@ -63,10 +64,11 @@ class CampaignsController < ApplicationController
   def update
     @campaign = Campaign.find(params[:id])
     @campaign.admin_id = current_account.id 
+    @campaign.organization  = @organization 
     respond_to do |format|
       if @campaign.update_attributes(params[:campaign])
         flash[:notice] = 'Campaign was successfully updated.'
-        format.html { redirect_to organization_campaign_url(@campaign.organization, @campaign) }
+        format.html { redirect_to organization_segment_campaign_url(@organization, @segment, @segment) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -99,8 +101,9 @@ class CampaignsController < ApplicationController
   end
 
   private
-  def organization_required
+  def organization_and_segment_required
     @organization = Organization.find(params[:organization_id])
+    @segment = Segment.find(params[:segment_id])
   end
 
 end

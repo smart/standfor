@@ -1,0 +1,8 @@
+<h1>Amount</h1>
+
+<%= form_tag  :controller => 'donations', :action => 'choose_amount'  -%>
+
+<label for="dontation_amount">Choose Amount </label>
+<%= text_field 'donations', 'amount'  %>
+ <%= submit_tag 'choose amount' -%>
+</form>

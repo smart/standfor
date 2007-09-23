@@ -32,6 +32,10 @@ class SiteController < ApplicationController
        mb.destroy
      end
 
+    self.current_account.forget_me if logged_in?
+    cookies.delete :auth_token
+    reset_session
+
      redirect_to '/'
    end
 

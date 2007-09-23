@@ -1,6 +1,11 @@
 <ul>
 <% if current_account != :false %>
 <li> <%= link_to 'my account', :controller => 'my_account', :action => 'index' -%> </li>
+
+<% if RAILS_ENV  == 'development' %>
+<li><%= link_to 'reset', :controller => 'site' , :action => 'clear' %> </li>
+<% end %>
+
 <li> Total Donations: $<%= current_account.total_donations -%> </li>
 <% else  %>
 <li> <%= link_to 'login', :controller => 'sessions', :action => 'new' -%> </li>

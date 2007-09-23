@@ -1,16 +1,4 @@
-<% content_box(link_to(@segment.name, :controller => 'segments', :action => 'show', :segment => @segment.site_name), @segment ) do -%>
-  <% content_box ("test", :class => "interior" ) do -%>
-    <p>
-     <%= @segment.description -%>
-    </p>
-    <%= button(:image => "labels/donate.png", :alt => "Donate!", 
-	:link => url_for(:controller => 'donations', 
-            		 :action => 'new', 
-            		 :segment => @segment.site_name, 
-            		 :organization => @organization.site_name), 
-	:class => "large-button" ) -%>
-  <% end %>
-
+<% content_box(@segment.name, organization_segment_path ) do -%>
 <style>
   .requiresLogin {border:2px solid blue;	}
   .needsDonation {border:2px solid yellow;	}
@@ -18,18 +6,26 @@
   .badgeAvailable {border:2px solid green;	}
 </style>
 
+  <% content_box ("test", :class => "interior" ) do -%>
+    <p>
+     <%= @segment.description -%>
+    </p>
 <div class="badges">
-    <h2>You can show your support with these badges. Click a badge to customize.</h2>
+<h2>You can show your support with these badges. Click a badge to customize.</h2>
+
 <% @segment.badges.each do |badge| %> 
 <% @class = badge.account_access(current_account)  %>
-<%= link_to(image_tag( "placeholders/awareness.jpg", :alt => "Awareness", :class => @class ), 
-	{:controller => 'my_badges', 
-	 :action =>  'new', 
-	 :segment => @segment.site_name, 
-	 :organization => @segment.organization.site_name, 
-	 :badge => badge.id  }) %>
+<%= link_to( image_tag("/images/examples/#{badge.id}.gif" ),  new_badge_my_badge_path(badge), :class => @class ) %>
+
 <% end %>
-    </ul>
-  </div>
-  <span class="clear"></span>
+
+</div>
+<span class="clear"></span>
+    <%= button(:image => "labels/donate.png", :alt => "Donate!", 
+	:link => new_organization_segment_donation_path(@organization, @segment) ,
+	:class => "large-button" ) -%>
+  <% end %>
+
+
+
 <% end %>

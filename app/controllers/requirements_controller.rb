@@ -1,5 +1,7 @@
 class RequirementsController < ApplicationController
   layout  'default'
+  helper 'requirements'
+  before_filter :get_badge
   # GET /requirements
   # GET /requirements.xml
   def index
@@ -41,12 +43,12 @@ class RequirementsController < ApplicationController
   # POST /requirements
   # POST /requirements.xml
   def create
-    @requirement = Requirement.new(params[:requirement])
-
+    @requirement = params[:requirement][:req_type].constantize.new(params[:requirement])
+    @requirement.badge = @badge
     respond_to do |format|
       if @requirement.save
         flash[:notice] = 'Requirement was successfully created.'
-        format.html { redirect_to(@requirement) }
+        format.html { redirect_to badge_requirement_url(@badge, @requirement ) }
         format.xml  { render :xml => @requirement, :status => :created, :location => @requirement }
       else
         format.html { render :action => "new" }
@@ -63,7 +65,7 @@ class RequirementsController < ApplicationController
     respond_to do |format|
       if @requirement.update_attributes(params[:requirement])
         flash[:notice] = 'Requirement was successfully updated.'
-        format.html { redirect_to(@requirement) }
+        format.html { redirect_to badge_requirement_url(@badge, @requirement ) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -91,6 +93,11 @@ class RequirementsController < ApplicationController
     elsif @requirement.class.to_s == 'CodeRequirement'
 	redirect_to(:controller  => 'account_badge_authorizations', :action => 'new', :requirement => @requirement ) and return
     end
+  end
+  
+  private 
+  def get_badge
+    @badge = Badge.find(params[:badge_id])
   end
 
 end

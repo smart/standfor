@@ -1,5 +1,6 @@
 class BadgesController < ApplicationController
   layout 'default'
+  before_filter :get_organization_and_segment
   # GET /badges
   # GET /badges.xml
   def index
@@ -46,7 +47,7 @@ class BadgesController < ApplicationController
     respond_to do |format|
       if @badge.save
         flash[:notice] = 'Badge was successfully created.'
-        format.html { redirect_to(@badge) }
+        format.html { redirect_to organization_segment_badge_url(@organization, @segment,  @badge) }
         format.xml  { render :xml => @badge, :status => :created, :location => @badge }
       else
         format.html { render :action => "new" }
@@ -63,7 +64,7 @@ class BadgesController < ApplicationController
     respond_to do |format|
       if @badge.update_attributes(params[:badge])
         flash[:notice] = 'Badge was successfully updated.'
-        format.html { redirect_to(@badge) }
+        format.html { redirect_to organization_segment_badge_url(@organization,@segment,  @badge) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -79,13 +80,19 @@ class BadgesController < ApplicationController
     @badge.destroy
 
     respond_to do |format|
-      format.html { redirect_to(badges_url) }
+      format.html { redirect_to(organization_badges_url) }
       format.xml  { head :ok }
     end
   end
 
   def requirements 
     @badge = Badge.find(params[:id])
+  end
+
+  private
+  def get_organization_and_segment
+   @organization = Organization.find(params[:organization_id])
+   @segment = Segment.find(params[:segment_id])
   end
 
 end

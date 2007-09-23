@@ -1,11 +1,8 @@
 class MyBadgesController < ApplicationController
   layout 'default'
-
-  #before_filter :get_badge  
-  #before_filter :account_required
   before_filter :login_required
-  #
 
+  before_filter :get_badge
   # GET /my_badges
   # GET /my_badges.xml
   
@@ -14,7 +11,7 @@ class MyBadgesController < ApplicationController
   end
   
   def index
-    @my_badges = MyBadge.find(:all)
+    @my_badges = current_account.my_badges.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -37,10 +34,8 @@ class MyBadgesController < ApplicationController
   # GET /my_badges/new.xml
   def new
     @my_badge = MyBadge.new
-    store_location
-    get_segment
-    get_badge
-
+    session[:badge] = @badge
+    session[:my_badge_return_to] = request.request_uri 
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @my_badge }
@@ -55,12 +50,7 @@ class MyBadgesController < ApplicationController
   # POST /my_badges
   # POST /my_badges.xml
   def create
-    #raise 
-    get_badge
-    get_segment
-    #@my_badge = MyBadge.find_by_account_id_and_badge_id(@badge.id)
     @my_badge = MyBadge.new(params[:my_badge])
-
     @my_badge.account = current_account 
     @my_badge.badge = @badge 
 
@@ -73,7 +63,7 @@ class MyBadgesController < ApplicationController
     respond_to do |format|
       if @my_badge.save
         flash[:notice] = 'MyBadge was successfully created.'
-        format.html {redirect_to :controller =>'customize', :action =>'index', :id => @my_badge }
+        format.html { redirect_to :controller =>'customize', :action =>'index', :id => @my_badge  and return false }
         format.xml  { render :xml => @my_badge, :status => :created, :location => @my_badge }
       else
         format.html { render :action => "new" }
@@ -114,17 +104,11 @@ class MyBadgesController < ApplicationController
    def customize 
     @my_badge = MyBadge.find(params[:id])
    end
+  
+   private
 
-
-
- private
-
-  def get_badge
-     @badge = Badge.find(params[:badge])
-  end
-
-  def get_segment
-     @segment = Segment.find_by_site_name(params[:segment])
-  end
+   def get_badge
+     @badge = Badge.find(params[:badge_id])
+   end
 
 end

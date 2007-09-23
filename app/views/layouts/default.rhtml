@@ -27,11 +27,14 @@
 </ul>
 
 <div id="login-button">
+
 <% if current_account != :false %>
 <%= link_to image_tag('buttons/logout.png', :alt => 'Logoutin'), logout_path %>
 <% else  %>
 <%= link_to image_tag('buttons/login.png', :alt => 'Login'), login_path %>
 <% end %>
+
+
 </div>
 </div>
 

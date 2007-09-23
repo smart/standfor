@@ -6,13 +6,13 @@
 
 <% for requirement in @requirements %>
   <tr>
-    <td><%= link_to 'Show', requirement %></td>
-    <td><%= link_to 'Edit', edit_requirement_path(requirement) %></td>
-    <td><%= link_to 'Destroy', requirement, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', badge_requirement_path(@badge, requirement) %></td>
+    <td><%= link_to 'Edit', edit_badge_requirement_path(@badge, requirement) %></td>
+    <td><%= link_to 'Destroy', badge_requirement_path(@badge,requirement), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New requirement', new_requirement_path %>
+<%= link_to 'New requirement', new_badge_requirement_path(@badge) %>

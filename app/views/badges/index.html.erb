@@ -1,29 +1,28 @@
 <h1>Badge Catalog</h1>
 
+<% if false %>
 <ul>
 <% @badges.each do |badge| %>
-
-<li><%= link_to badge.name, :controller => 'badges' , :action => 'show'  -%> </li>
-
+<li><%= link_to badge.name, organization_badge_path(@organization, badge ) %></li>
 <% end %>
 </ul>
+<%= link_to 'New badge', new_organization_badge_path %>
+<% else  %>
 
-<% if false %>
-TODO: DELETE THIS SCAFFOLD  CODE ONCE THE LGOIC IS CLEAR
 <table>
   <tr>
   </tr>
 
 <% for badge in @badges %>
   <tr>
-    <td><%= link_to 'Show', badge %></td>
-    <td><%= link_to 'Edit', edit_badge_path(badge) %></td>
-    <td><%= link_to 'Destroy', badge, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', organization_segment_badge_path( @organization, @segment, badge ) %></td>
+    <td><%= link_to  badge.name , organization_segment_badge_path(@organization, @segment, badge) %></td>
+    <td><%= link_to 'Edit', edit_organization_segment_badge_path(@organization, @segment, badge ) %></td>
+    <td><%= link_to 'Destroy', organization_segment_badge_path(@organization, @segment, badge ), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<%= link_to 'New badge', new_organization_segment_badge_path(@organization, @segment) %>
 
-<%= link_to 'New badge', new_badge_path %>
 <% end %>

@@ -2,10 +2,13 @@
 
 <%= error_messages_for :requirement %>
 
-<% form_for(@requirement) do |f| %>
-  <p>
+<% form_for(:requirement , :url =>  badge_requirements_path(@badge), :method => :post ) do |f| %>
+<ul>
+  <%= render :partial => 'fields', :locals => {:f => f } %>
+  <li>
     <%= f.submit "Create" %>
-  </p>
+  </li>
+</ul>
 <% end %>
 
-<%= link_to 'Back', requirements_path %>
+<%= link_to 'Back', badge_requirements_path(@badge) %>

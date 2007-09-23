@@ -16,7 +16,7 @@ class SegmentsController < ApplicationController
   # GET /segments/1.xml
   def show
     @segment = Segment.find(params[:id])
-
+    session[:segment_return_to] = request.request_uri 
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @segment }
@@ -27,7 +27,6 @@ class SegmentsController < ApplicationController
   # GET /segments/new.xml
   def new
     @segment = Segments.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @segment }

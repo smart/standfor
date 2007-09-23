@@ -68,10 +68,11 @@ ActiveRecord::Schema.define(:version => 100) do
   end
 
   create_table "campaigns", :force => true do |t|
+    t.integer  "organization_id"
+    t.integer  "admin_id"
+    t.integer  "segment_id"
     t.string   "name"
     t.text     "description"
-    t.integer  "segment_id"
-    t.integer  "admin_id"
     t.integer  "goal"
     t.date     "end_date"
     t.datetime "created_at"

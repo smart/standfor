@@ -1,5 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-
   map.login   '/login',  :controller => 'sessions', :action => 'new'
   map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
   map.signup  '/signup', :controller => 'accounts',   :action => 'new'
@@ -8,19 +7,26 @@ ActionController::Routing::Routes.draw do |map|
   map.open_id_complete_on_accounts 'accounts',    :controller => "accounts",    :action => "create", :requirements => { :method => :get }
   map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
   map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
+
+  map.resources :accounts, :my_badges
+  map.resource :sessions
+
   map.resources :accounts do |user|
     user.resources :acconts_openids
   end
 
-  map.resources :badge_access_codes,:organizations,:accounts,:segments,:requirements,:campaigns, :donations
-  map.resource :sessions, :my_badges, :badges
-
   map.resources :organizations do |organizations|
-     organizations.resources :campaigns , :name_prefix => 'organization_' 
-     organizations.resources :segments  , :name_prefix => 'organization_'  do |segments|
+     organizations.resources :segments , :name_prefix => 'organization_'  do |segments|
          segments.resources :donations
+         segments.resources :campaigns
+         segments.resources :badges
      end
   end
+
+  map.resources :badges do |badges|
+     badges.resources :requirements , :name_prefix => 'badge_' 
+     badges.resources :my_badges, :name_prefix => 'badge_' 
+  end 
 
   # end youser routes
 =begin
