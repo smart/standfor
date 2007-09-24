@@ -1,6 +1,6 @@
 <%= error_messages_for :donation %>
 
-<% form_for(:donations, :url =>  details_organization_segment_donations_path(@organization, @segment)) do |f| %>
+<% form_for(:donations, :url =>  details_organization_segment_donations_path(@organization, @segment), :html => {:id => 'donation-form'} ) do |f| %>
 
   <% content_box( "Make a Donation", :class => "shadow", :id => "donation" ) do -%>
     <% content_box( (image_tag "labels/give.png", :alt => "Donation Amount" ), :class => "basicborder", :id => "amount" ) do -%>
@@ -30,7 +30,7 @@
       </p>   
    	<% end %>
     <% content_box( "Donate!", :class => "basicborder", :id => "donate" ) do -%>
-    	<%= button(:image => "labels/donate.png", :alt => "Donate!",  :type => "submit", :class => "large-button" ) -%>
+    	<%= button(:image => "labels/donate.png", :alt => "Donate!",  :type => "submit", :class => "large-button", :form_id => 'donation-form' ) -%>
     <% end %>
     <span class="clear"></span>
   <% end %>

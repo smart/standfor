@@ -112,7 +112,16 @@ img {
 .oi-wrapper {
   
 }
+/* organization page specific styles */
 
+#overview .basicborder {
+	width:250px;
+	float:right;
+}
+#description {
+	width:440px;
+	float:left;
+}
 /* segment page specific styles */
 
 .badges {
@@ -125,7 +134,7 @@ img {
   margin-bottom:5px !important;
 }
 
-body.segments .interior {
+.segment .interior {
   width:230px;
   float:left;
   display:inline;
@@ -254,6 +263,9 @@ body.segments .interior {
   width:200px;
   clear:left;
   display:inline;
+}
+#donate.basicborder .content {
+	padding-top:15px;
 }
 #donate h1 {
   display:none;
@@ -501,7 +513,7 @@ body.segments .interior {
   font-size:1px;
 }
 .box.basicborder .content, .box.interior .content {
-	padding-top:15px;
+	/*padding-top:15px;*/
 }
 
 .box.interior h1 {
@@ -552,24 +564,26 @@ form legend {
 /**************** List Styles Start ******************/
    
 form dl {
-	margin:15px 0px 0px 0px;
+	margin:0px 0px 15px 0px;
     padding:0px;
     width:auto;
     clear:both;
 }
 form dt {
     float:left;
-    width:125px;
+    width:40%;
     margin:0px 0px 5px 0px;
     color:#000000;
     font-size:110%;
+    clear:both;
+    text-align:right;
 }
 form dd {
-    margin:0px 0px 10px 125px;
+    margin:0px 0px 10px 40%;
     color:#666666;
     _text-indent:-3px !important;
 }
-form dd label {
+form dt label {
     vertical-align:top;
     *vertical-align:baseline;
     margin:0px 8px 0px 0px;

@@ -2,9 +2,11 @@
 
 <p>I allow my card to be charged $<%= @current_donation.amount -%> </p>
 
-<%= form_tag  :controller => 'donations', :action => 'create'   %>
+<%= form_tag({:controller => 'donations', :action => 'create'}, {:id => 'confirm-form'})   %>
   <%= hidden_field_tag  'confirmed', 'yes' %>
-  <%= submit_tag 'confirm' %>
+  
+  <%= button(:image => "labels/confirm.png", :alt => "confirm", 
+	:class => "large-button", :form_id => "confirm-form", :type => 'submit' ) -%>
 </form>
 
 <% end %>

@@ -1,4 +1,4 @@
-<% content_box(@segment.name, organization_segment_path ) do -%>
+<% content_box(@segment.name, :class => 'segment shadow') do -%>
 <style>
   .requiresLogin {border:2px solid blue;	}
   .needsDonation {border:2px solid yellow;	}
@@ -22,10 +22,11 @@
 <%= link_to( image_tag("/images/examples/#{badge.id}.gif" ),  new_badge_my_badge_path(badge), :class => @class ) %>
 
 
-<span class="clear"></span>
+
     
   <% end %>
+  
 </div>
-
+<span class="clear"></span>
 
 <% end %>
