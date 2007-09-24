@@ -1,18 +1,18 @@
 --- 
 organizations_001: 
   created_on: "2007-09-24"
-  city: New York
-  address1: Address Line One
+  city: Great Neck
+  address1: 475 Northern Blvd
   name: Gift Of Life
-  zip: 02138
-  address2: Address Line Two
-  address3: Address Line Three
+  zip: "11021"
+  address2: Suite 25
+  address3: 
   updated_on: "2007-09-24"
   url: http://www.giftoflife.com
   country: USA
   id: "1"
-  description: New York based charity comitted to getting medical care to children.
-  site_name: giftoflie
+  description: The Gift Of Life was launched in 1974 when the Manhasset, NY Rotary Club answered a request for help from the Kampala Rotary Club in Uganda. The GIFT OF LIFE is a nonprofit, tax-exempt corporation, the majority of the Board of Directors and members are active Rotarians. The primary purpose of this program is to help needy children receive corrective heart surgery at Gift of Life Participating Hospitals. The program reaches youngsters throughout the world, including the United States.
+  site_name: giftoflife
   fax: "2121121111"
   phone: "2121121111"
   statement: Helping Childen one at time.

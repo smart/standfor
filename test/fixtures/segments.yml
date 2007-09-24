@@ -1,19 +1,19 @@
 --- 
 segments_001: 
-  name: General Fund
+  name: Children's Fund
   updated_at: 2007-09-24 00:31:37
   id: "1"
-  description: Help support our general fund.
-  site_name: general
+  description: The Gift of Life on-going mission to provide children from all of the world with life saving surgery.
+  site_name: childrensfund
   organization_id: "1"
-  keyword: children
+  keyword: childrens
   created_at: 2007-09-24 00:31:37
 segments_002: 
-  name: Cut For Life
+  name: Freeman's Legions
   updated_at: 2007-09-24 00:31:37
   id: "2"
-  description: Raise funds for our 10,000 child.
-  site_name: cutforlife
+  description: Helping children in war-torn reqions of the world.
+  site_name: freemanslegions
   organization_id: "1"
   keyword: children
   created_at: 2007-09-24 00:31:37

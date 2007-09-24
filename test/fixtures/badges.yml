@@ -2,20 +2,20 @@
 badges_001: 
   structure_id: "1"
   segment_id: "1"
-  name: Gift of Life Awareness
+  name: Gift of Life Awareness Badge
   updated_at: 2007-09-24 00:31:37
   campaign_id: "1"
   id: "1"
-  description: Raise awareness about Gift of Life
+  description: Help children receive needed medical attention by supporting thet Gift of Life
   organization_id: "1"
   created_at: 2007-09-24 00:31:37
 badges_002: 
   structure_id: "1"
   segment_id: "2"
-  name: Support the Cut For Life
+  name: Freeman's Legions Awareness Badge 
   updated_at: 2007-09-24 00:31:37
   campaign_id: "1"
   id: "2"
-  description: Support the Cut of Life
+  description: Help childern in worn-torn parts of the world by supporting Freeman's Legions 
   organization_id: "1"
   created_at: 2007-09-24 00:31:37

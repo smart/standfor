@@ -1,4 +1,12 @@
 --- 
+local_users_002: 
+  salt: 4b28224b105b813d112cb346b2b22d13651ee2cc
+  updated_at: 2007-09-24 17:16:21
+  crypted_password: c1be0bd3cc8c2bd9b5bfbbfe083b87eadf6df7aa
+  id: "2"
+  login: robbie
+  created_at: 2007-09-24 17:16:21
+  email: robbie@giftoflife.org
 local_users_001: 
   salt: 80a9754b21c507d5d18c1f29a97a999023238f02
   updated_at: 2007-09-24 00:34:09

@@ -20,3 +20,10 @@ authenticators_003:
   auth_token: elmo
   auth_type: LocalUser
   created_at: 2007-09-24 00:40:22
+authenticators_004: 
+  updated_at: 2007-09-24 17:16:21
+  account_id: "1"
+  id: "4"
+  auth_token: robbie
+  auth_type: LocalUser
+  created_at: 2007-09-24 17:16:21

@@ -1,14 +1,14 @@
 <% content_box(@organization.name + " stands for:", :id => 'overview') do %>
-	<div id="description">
-		<p>
-			<%= @organization.description %>
-		</p>	
-	</div>
-	<% content_box("Our Causes", :class => 'basicborder') do %>
-		<% @organization.segments.each do |segment| %>
-			<h3><%= link_to(segment.name, organization_segment_path(@organization, segment))%></h3>
-      		<p><%= segment.description-%></p>
-    	<% end %>
-  	<% end %>
+ <div id="description">
+  <p>
+   <%= @organization.description %>
+  </p> 
+ </div>
+ <% content_box("Our Causes", :class => 'basicborder') do %>
+  <% @organization.segments.each do |segment| %>
+   <h3><%= link_to(segment.name, organization_segment_path(@organization, segment))%></h3>
+        <p><%= segment.description-%></p>
+     <% end %>
+   <% end %>
   <span class="clear">&nbsp</span>
 <% end %>

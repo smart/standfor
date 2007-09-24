@@ -4,46 +4,12 @@ accounts_001:
   city: 
   updated_at: "2007-09-24"
   zip: 
-  primary_email: elmo@yahoo.com
-  nickname: elmo
+  primary_email: robbie@giftoflife.org
+  nickname: robbie
   remember_token_expires_at: 
-  fullname: Elliott Blatt
+  fullname: Robert Donno
   country: 
   id: "1"
-  address_1: 
-  remember_token: 
-  address_2: 
-  phone: 
-  created_at: "2007-09-24"
-  state: 
-accounts_002: 
-  status: "1"
-  city: 
-  updated_at: "2007-09-24"
-  zip: 
-  primary_email: elmo@yahoo.com
-  nickname: elmo
-  remember_token_expires_at: 
-  fullname: 
-  country: 
-  id: "3"
-  address_1: 
-  remember_token: 
-  address_2: 
-  phone: 
-  created_at: "2007-09-24"
-  state: 
-accounts_003: 
-  status: "1"
-  city: 
-  updated_at: "2007-09-24"
-  zip: 
-  primary_email: elmo@yahoo.com
-  nickname: elmo
-  remember_token_expires_at: 
-  fullname: Elliott Blatt
-  country: 
-  id: "4"
   address_1: 
   remember_token: 
   address_2: 
