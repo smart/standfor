@@ -13,7 +13,7 @@ class ModifyAccounts < ActiveRecord::Migration
   def self.down
     remove_column :accounts, :fullname
     remove_column :accounts, :nickname
-    remove_column :primary_email
+    remove_column :accounts, :primary_email
     remove_column :accounts, :remember_token
     remove_column :accounts, :remember_token_expires_at
     add_column :accounts, :email, :string

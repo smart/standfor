@@ -1,0 +1,22 @@
+--- 
+authenticators_001: 
+  updated_at: 2007-09-24 00:34:09
+  account_id: "2"
+  id: "1"
+  auth_token: elmo
+  auth_type: LocalUser
+  created_at: 2007-09-24 00:34:09
+authenticators_002: 
+  updated_at: 2007-09-24 00:40:14
+  account_id: "3"
+  id: "2"
+  auth_token: elmo
+  auth_type: LocalUser
+  created_at: 2007-09-24 00:40:14
+authenticators_003: 
+  updated_at: 2007-09-24 00:40:22
+  account_id: "4"
+  id: "3"
+  auth_token: elmo
+  auth_type: LocalUser
+  created_at: 2007-09-24 00:40:22

@@ -1,0 +1,9 @@
+--- 
+local_users_001: 
+  salt: 80a9754b21c507d5d18c1f29a97a999023238f02
+  updated_at: 2007-09-24 00:34:09
+  crypted_password: da4379378b716c20dfd72a53eca74ccc0320c3d0
+  id: "1"
+  login: elmo
+  created_at: 2007-09-24 00:34:09
+  email: elmo@yahoo.com

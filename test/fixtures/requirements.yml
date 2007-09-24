@@ -1,9 +1,29 @@
-# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
-one:
-  id: 1
-  created_at: 2007-09-06 17:49:03
-  updated_at: 2007-09-06 17:49:03
-two:
-  id: 2
-  created_at: 2007-09-06 17:49:03
-  updated_at: 2007-09-06 17:49:03
+--- 
+requirements_001: 
+  name: Gift of Life Awareness access code requiremed
+  badge_id: "1"
+  type: CodeRequirement
+  id: "1"
+  description: Please enter your access code.
+  value: abcde
+requirements_002: 
+  name: Gift of Life Awareness donation requirement
+  badge_id: "1"
+  type: DonationRequirement
+  id: "2"
+  description: This badge requires a donation to Gift Of Life
+  value: "100"
+requirements_003: 
+  name: Support the Cut For Life access code requirement
+  badge_id: "2"
+  type: CodeRequirement
+  id: "3"
+  description: Please enter your access code.
+  value: wxyz
+requirements_004: 
+  name: Support the Cut For Life donation requirement
+  badge_id: "2"
+  type: DonationRequirement
+  id: "4"
+  description: This badge requires a donation to Gift Of Life
+  value: "100"

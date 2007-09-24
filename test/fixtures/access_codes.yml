@@ -1,0 +1,11 @@
+--- 
+access_codes_001: 
+  id: "1"
+  value: abcde
+  scope_type: Requirement
+  scope_id: "1"
+access_codes_002: 
+  id: "2"
+  value: wxyz
+  scope_type: Requirement
+  scope_id: "3"
