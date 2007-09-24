@@ -1,18 +1,11 @@
 <p>
 Total Donations: $<%= current_account.total_donations -%>
 </p>
-<ul>
 <% current_account.donations.each do |donation| %>
-<li>
-
-<%= donation.created_at.strftime("%B %d, %Y") -%>
-|
-<%= donation.organization.name -%>
-|
-<%= donation.segment.name -%>
-|
-<%= donation.amount -%>
-
- </li>
-<% end %>
+<ul>
+	<li><strong><%= donation.created_at.strftime("%B %d, %Y") -%></strong></li>
+	<li>Donated $<%= donation.amount -%> to <%= donation.organization.name -%></li>
+	<li>This donation was made to the <%= donation.segment.name -%> segment</li>
 </ul>
+<% end %>
+
