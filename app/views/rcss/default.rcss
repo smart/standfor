@@ -363,7 +363,7 @@ body.segments .interior {
 .default .t,
 .default .b,
 .default .b div {
-  background:transparent url(/images/boxes/solid-smooth-darkhead.png) no-repeat top right;
+  background:transparent url(<%= style_image_path("solid_smooth_dark_head") || "/images/boxes/solid-smooth-darkhead.png" -%>) no-repeat top right;
 }
 
 .shadow .content,

@@ -2,14 +2,8 @@ class RcssController < ApplicationController
   caches_page :rcss
   layout nil
   def rcss
-    #params[:styled_id]
-    #@styled = StyleSetting.find(params[:styled_id])
-    #@color1 = @styled.color1
-    #@color2 = @styled.color2
-    #@color3 = @styled.color3
-    #@styled_id = @styled.id.to_s
-    # :rcssfile is defined in routes.rb
-    #p params[:rcss]
+    p "===Style Info==="
+    p @style_info
     if @stylefile = params[:rcss]
       #prep stylefile with relative path and correct extension
       @stylefile.gsub!(/.css$/, '')

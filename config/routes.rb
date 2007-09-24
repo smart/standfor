@@ -17,7 +17,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resources :organizations do |organizations|
      organizations.resources :segments , :name_prefix => 'organization_'  do |segments|
-         segments.resources :donations
+         segments.resources :donations, :collection => { :details=>:any, :confirm => :any, :payment => :any }
          segments.resources :campaigns
          segments.resources :badges
      end
@@ -42,8 +42,8 @@ ActionController::Routing::Routes.draw do |map|
   #map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:host => /standfor.(\w+).org/ } 
   #map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:subdomain => /(\w+).standfor.org/ } 
   map.connect "/rcss/:rcss.css", :controller => "rcss", :action => "rcss"
-  map.connect "/rcss/:rcss/:organization.css", :controller => "rcss", :action => "rcss"
-
+  map.connect "/rcss/:rcss/:style_info.css", :controller => "rcss", :action => "rcss"
+  map.connect "/style/:action/:style_info.:ext", :controller => "style"
   #map.connect "/:organization/:segment/:controller/:action"
   #map.connect "/:organization/:segment/donate/:action", :controller => "donations"
   #map.connect "/:organization/:segment/badges/:action", :controller => "badges"
