@@ -7,6 +7,13 @@
   <title>Standforus</title>
   <%= stylesheet_link_tag '/rcss/default' + (params[:organization] ? "/#{params[:organization]}" : "") %>
   <%= javascript_include_tag :defaults %>
+  <!--[if lt IE 7]>
+	<script type="text/javascript" charset="utf-8">
+	//<![CDATA[
+	  new HoverBehavior('span');
+	//]]>
+	</script>
+  <![endif]-->
 </head>
 <body class="<%= @context || "uninitialized" -%>">
   <div id="header">

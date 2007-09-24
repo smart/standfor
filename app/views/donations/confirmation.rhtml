@@ -8,6 +8,7 @@
 this helper appears to lose the 'POST' context.  We need to find a solution that is rest compliant.
  <%= button(:image => 'labels/confirm.png', :alt => "Confirm", 
 	:link => organization_segment_donations_path(@organization, @segment), :class => 'large-button' ) -%>
+<%= link_to 'continue', :controller => 'donations', :action =>  'confirmation', :id => 'yes', :organization => @organization.site_name, :segment => @segment.site_name  -%>
 <% end %>
 
   <p>

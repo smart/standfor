@@ -1,6 +1,14 @@
 <% content_box( "Three Ways to Login!", :id => "login" ) do -%>
   <% form_tag sessions_path do -%>
     <% content_box( (image_tag "labels/alreadymember.png", :alt => "Already a Member?" ), :class => "basicborder", :id => "member-login" ) do -%>
+    <dl>
+    	<dt><label for="login">Username:</label></dt>
+    		<dd><%= text_field_tag 'login', :size => 20 -%></dd>
+    	<dt><label for="password">Password:</label></dt>
+    		<dd><%= password_field_tag 'password', :size => 20 -%></dd>
+    	<dt><label for="remember_me">Remember Me:</label></dt>
+    		<dd><%= check_box_tag 'remember_me' -%></dd>
+    </dl>
     	<ul>
 			<li>
 				<label for="login">Login:</label><%= text_field_tag 'login' %>
