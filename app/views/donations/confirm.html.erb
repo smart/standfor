@@ -1,20 +1,10 @@
 <% content_box("Confirm your Payment Details", :id => "payment", :class => "shadow") do %>
 
-<p>I allow my card to be charged $<%= session[:amount] -%> </p>
+<p>I allow my card to be charged $<%= @current_donation.amount -%> </p>
 
-<%= form_tag  :controller => 'donations', :action => 'choose_confirm'   %>
+<%= form_tag  :controller => 'donations', :action => 'create'   %>
   <%= hidden_field_tag  'confirmed', 'yes' %>
   <%= submit_tag 'confirm' %>
 </form>
 
-<% end %>
-<% content_box("Donation Summary", :id => "summary", :class => "basic") do -%>
- <ul>
- <li>Amount:</li>
- <li>Donation Type:</li>
- <li>Privacy Settings:</li>
- <li>Segment:</li>
- <li>Dedication:</li>
- </ul>
- <%= button(:image => "labels/modify.png", :alt => "Modify Donation", :link => @return_to, :class => "large-button") -%>
 <% end %>

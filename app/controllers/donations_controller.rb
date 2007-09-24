@@ -4,9 +4,9 @@ class DonationsController < ApplicationController
   layout 'default'
   before_filter :login_required
   before_filter :segment_required
-  before_filter :donation_required, :only => [:new, :details, :payment, :create]
-  before_filter :details_required, :only => [:new, :create]
-  before_filter :creditcard_required, :only => [:new, :create]
+  before_filter :donation_required, :only => [:confirm, :details, :payment, :create]
+  before_filter :details_required, :only => [:confirm, :create]
+  before_filter :creditcard_required, :only => [:confirm, :create]
   before_filter :confirmation_required, :only => [:create]
   before_filter :authorization_required, :only => [:create]
   
@@ -32,12 +32,18 @@ class DonationsController < ApplicationController
 
   # GET /donations/new
   # GET /donations/new.xml
-  def new
+  def new    
+    current_donation = new_donation
+    redirect_to :action => :confirm
+  end
+  
+  def confirm
     respond_to do |format|
       format.html { }
       format.xml  { render :xml => @donation }
     end
   end
+  
 
   # GET /donations/1/edit
   def edit
@@ -52,7 +58,7 @@ class DonationsController < ApplicationController
     respond_to do |format|
       if @donation.save
         flash[:notice] = 'Donation was successfully created.'
-        current_donation = nil
+        session[:donation] = nil
         format.html { redirect_to "/" and return false }
         format.xml  { render :xml => @donation, :status => :created, :location => @donation }
       else
@@ -97,6 +103,7 @@ class DonationsController < ApplicationController
        if !params[:donations][:amount].nil? and params[:donations][:amount].to_i > 0
           current_donation.amount = params[:donations][:amount].to_i
   	      redirect_to_donation_url
+  	      return false
        else
          flash[:notice] = "amount invalid #{params[:donations][:amount] }"
        end
@@ -104,8 +111,8 @@ class DonationsController < ApplicationController
    end
     
   def payment
+
     if params[:authorization]
-      @amount = current_donation.amount
       creditcard = ActiveMerchant::Billing::CreditCard.new(
      	:type       => params[:authorization][:card_type].downcase		,
     	:number     => params[:authorization][:number]				,
@@ -117,6 +124,7 @@ class DonationsController < ApplicationController
           creditcard.number = 1.to_s
           current_donation.last_four = params[:authorization][:number].strip.slice(-4,4)
           current_donation.creditcard = creditcard
+          p current_donation
           redirect_to_donation_url
           return false
        else
@@ -166,14 +174,21 @@ class DonationsController < ApplicationController
 
   private  
     def donation_required
-      current_donation ? true : false
+      valid_donation ? true : (redirect_to :action => :new and return false)
     end
     
-     def redirect_to_donation_url
-    #redirect_to new_organizatons_segments_donations_path(@organization, @segment)
-    redirect_to :action => "new"
-    return false
-  end
+    def valid_donation
+      return false if current_donation.nil?
+      return false if current_donation.segment != @segment
+      return false if current_donation.organization != @organization
+      return false if current_donation.account != current_account
+      return true
+    end
+    
+    def redirect_to_donation_url
+      redirect_to :action => "confirm"
+      return false
+    end
     
   # Accesses the current donation from the session.
     def current_donation

@@ -1,6 +1,6 @@
 <% content_box ("How Will you Pay?", :id => "payment", :class => "shadow" ) do %>
 
-<% form_for :authorization, :url => url_for(:action => "payment" ) , :method => :post do |f| %>
+<% form_for :authorization, :url => payment_organization_segment_donations_path(@organization, @segment) , :method => :post do |f| %>
    <fieldset>
     <legend>Customer Information</legend>
      <dl>
