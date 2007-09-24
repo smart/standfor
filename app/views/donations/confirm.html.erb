@@ -8,3 +8,13 @@
 </form>
 
 <% end %>
+<% content_box("Donation Summary", :id => "summary", :class => "basic") do -%>
+ <ul>
+ <li>Amount:</li>
+ <li>Donation Type:</li>
+ <li>Privacy Settings:</li>
+ <li>Segment:</li>
+ <li>Dedication:</li>
+ </ul>
+ <%= button(:image => "labels/modify.png", :alt => "Modify Donation", :link => @return_to, :class => "large-button") -%>
+<% end %>

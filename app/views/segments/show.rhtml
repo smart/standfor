@@ -6,10 +6,14 @@
   .badgeAvailable {border:2px solid green;	}
 </style>
 
-  <% content_box ("test", :class => "interior" ) do -%>
+  <% content_box ("test", :class => "interior", :id => "details" ) do -%>
     <p>
      <%= @segment.description -%>
     </p>
+<%= button(:image => "labels/donate.png", :alt => "Donate!", 
+	:link => new_organization_segment_donation_path(@organization, @segment) ,
+	:class => "large-button" ) -%>
+<% end %>
 <div class="badges">
 <h2>You can show your support with these badges. Click a badge to customize.</h2>
 
@@ -17,15 +21,11 @@
 <% @class = badge.account_access(current_account)  %>
 <%= link_to( image_tag("/images/examples/#{badge.id}.gif" ),  new_badge_my_badge_path(badge), :class => @class ) %>
 
-<% end %>
 
-</div>
 <span class="clear"></span>
-    <%= button(:image => "labels/donate.png", :alt => "Donate!", 
-	:link => new_organization_segment_donation_path(@organization, @segment) ,
-	:class => "large-button" ) -%>
+    
   <% end %>
-
+</div>
 
 
 <% end %>

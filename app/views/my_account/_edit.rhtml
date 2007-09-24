@@ -2,7 +2,7 @@
 <%= error_messages_for :account %>
 
 <% form_remote_for :my_account, @account, 
-	:url => {:controller => 'my_account', :action => 'update', :id => @account }  do |f| %>
+	:url => {:controller => 'my_account', :action => 'update', :id => @account }, :html => {:id => 'edit-account-form'}  do |f| %>
 	<ul>
 		<li>
 			<label for="account_fullname" >Full Name:</label>
@@ -57,7 +57,7 @@
 		</li>
 		
 		<li>
-			<%= form_button("labels/update.png", "Update") %>
+			<%= button(:image => "labels/update.png", :alt => "Update", :form_id => 'edit-account-form', :type => 'submit', :class => 'large-button') %>
 		</li>
 	</ul>
 	<span class="clear"></span>

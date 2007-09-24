@@ -3,6 +3,8 @@ class SegmentsController < ApplicationController
   before_filter :organization_required, :except => [:denied]
   # GET /segments
   # GET /segments.xml
+  
+  
   def index
     @segments = Segments.find(:all)
 
