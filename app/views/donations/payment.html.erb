@@ -2,18 +2,14 @@
 
 <% form_for :authorization, :url => url_for(:action => "payment" ) , :method => :post, :html => { :id => 'authorization-form' } do |f| %>
    <fieldset>
-    <legend>Customer Information</legend>
+    <legend>Credit Card Details</legend>
      <dl>
       <dt><label for="creditcard_first_name">First Name:</label></dt>
        <dd><%= f.text_field :first_name , :size => 20 -%></dd>
       
       <dt><label for="creditcard_last_name">Last Name:</label></dt>
        <dd><%= f.text_field :last_name, :size => 20 -%></dd>
-     </dl>
-   </fieldset>
-   <fieldset>
-    <legend>Credit Card Details</legend>
-     <dl>
+
       <dt><label for="creditcard_type">Card Type:</label></dt>
        <dd><%= f.select :card_type, ["Visa", "Master Card", "Discover"] %></dd>
       

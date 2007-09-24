@@ -140,7 +140,7 @@ img {
   display:inline;
 }
 
-/* customize page specific styles */
+/* customize & share page specific styles */
 
 #preview {
   width:420px;
@@ -160,13 +160,13 @@ img {
   padding-bottom:0px;
 }
 
-#howto, #options {
+#howto, #options, #networks {
   width:300px;
   float:right;
   margin-right:5px;
 }
 
-#options {
+#options, #networks {
   clear:right;
   margin-top:5px;
 }
@@ -181,6 +181,8 @@ img {
   background-repeat:no-repeat;
   margin-bottom:5px;
 }
+
+
 
 #options li a {
   padding-left:35px;
@@ -197,7 +199,7 @@ img {
   background-image:url(/images/icons/picture.png);
 }
 
-#options a {
+#options, #network a {
   display:block;
 }
 
@@ -229,6 +231,10 @@ img {
   border:1px solid black;
   
 }
+
+/* share page specific styles */
+
+#networks 
 
 /* donation page specific styles */
 #donation {
@@ -546,8 +552,9 @@ form textarea {
 form fieldset {
     border:1px solid #CCCCCC;
     margin:0px;
-    padding:10px;
+    padding:10px 10px 0px 10px;
     display:block;
+    margin-bottom:10px;
 }
 
 form legend {

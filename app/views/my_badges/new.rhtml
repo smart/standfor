@@ -8,14 +8,14 @@
 
 <% if @badge.authorized?(current_account) %>
 <% content_box("Get This Badge", :id => "requirements", :class => "basicborder") do %>
-<% form_for :my_badge, :url => badge_my_badges_path(@badge) , :method => :post  do |f| %>
+<% form_for :my_badge, :url => badge_my_badges_path(@badge) , :method => :post, :html => {:id => 'tocustomize-form' }  do |f| %>
 <p>You have met all the requirements for this badge!</p>
 
 <% if false %>
-  <%= form_button("labels/customize.png", "Customize this Badge", :type => "submit") -%>
+  
 <% end %>
 
-  <%= f.submit 'customize' -%>
+  <%= button(:image => "labels/customize.png", :alt => "Customize!", :class => "large-button", :form_id => "tocustomize-form", :type => 'submit' ) -%>
 
  <% end %>
  <% end %>
