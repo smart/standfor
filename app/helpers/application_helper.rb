@@ -100,4 +100,8 @@ module ApplicationHelper
         ["WI","Wisconsin"], ["WY","Wyoming"]]
    end
   
+  def style_image_path(path, ext = "png")
+    return false if @style_info.nil?
+    return url_for(:controller => "style", :ext => ext, :action => path, :style_info =>@style_info )
+  end
 end

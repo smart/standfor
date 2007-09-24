@@ -1,0 +1,10 @@
+<% content_box("Confirm your Payment Details", :id => "payment", :class => "shadow") do %>
+
+<p>I allow my card to be charged $<%= @current_donation.amount -%> </p>
+
+<%= form_tag  :controller => 'donations', :action => 'create'   %>
+  <%= hidden_field_tag  'confirmed', 'yes' %>
+  <%= submit_tag 'confirm' %>
+</form>
+
+<% end %>

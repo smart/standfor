@@ -1,0 +1,40 @@
+<%= error_messages_for :donation %>
+
+<% form_for(:donations, :url =>  details_organization_segment_donations_path(@organization, @segment)) do |f| %>
+
+  <% content_box( "Make a Donation", :class => "shadow", :id => "donation" ) do -%>
+    <% content_box( (image_tag "labels/give.png", :alt => "Donation Amount" ), :class => "basicborder", :id => "amount" ) do -%>
+      <p>
+        <label for="donation_amount" >Amount:</label>
+        <%= f.text_field :amount -%>
+      </p>
+      <span class="clear"></span>
+    <% end %>
+    <% content_box( (image_tag "labels/privacy.png", :alt => "Privacy" ), :class => "basicborder", :id => "privacy" ) do -%>
+      <p>
+        Privacy settings go here.
+      </p>
+    <% end %>
+    <% content_box( (image_tag "labels/preferences.png", :alt => "Preferences" ), :class => "basicborder", :id => "preferences" ) do -%>
+      <p>
+        Donation preferences go here. Fieldsets in form_for?
+      </p>
+    <% end %>
+    
+    <% content_box( (image_tag "labels/optional.png", :alt => "Optional" ), :class => "basicborder", :id => "optional" ) do -%>
+      <p>
+        Segment:<strong><%= @segment.name -%></strong>
+      </p>
+      <p>
+        Dedication:
+      </p>   
+   	<% end %>
+    <% content_box( "Donate!", :class => "basicborder", :id => "donate" ) do -%>
+    	<%= button(:image => "labels/donate.png", :alt => "Donate!",  :type => "submit", :class => "large-button" ) -%>
+    <% end %>
+    <span class="clear"></span>
+  <% end %>
+<% end %>
+<% content_box( "About your Donation", :class => "basic", :id => "about" ) do -%>
+  <p>Some details about your donation go here. How your money helps. Information about tax benefits etc.</p>
+<% end %>

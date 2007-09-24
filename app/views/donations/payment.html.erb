@@ -1,0 +1,55 @@
+<% content_box ("How Will you Pay?", :id => "payment", :class => "shadow" ) do %>
+
+<% form_for :authorization, :url => url_for(:action => "payment" ) , :method => :post do |f| %>
+   <fieldset>
+    <legend>Customer Information</legend>
+     <dl>
+      <dt><label for="creditcard_first_name">First Name:</label></dt>
+       <dd><%= f.text_field :first_name , :size => 20 -%></dd>
+      
+      <dt><label for="creditcard_last_name">Last Name:</label></dt>
+       <dd><%= f.text_field :last_name, :size => 20 -%></dd>
+     </dl>
+   </fieldset>
+   <fieldset>
+    <legend>Credit Card Details</legend>
+     <dl>
+      <dt><label for="creditcard_type">Card Type:</label></dt>
+       <dd><%= f.select :card_type, ["Visa", "Master Card", "Discover"] %></dd>
+      
+      <dt><label for="creditcard_number">Card Number:</label></dt>
+       <dd><%= f.text_field :number -%></dd>
+      
+      <dt><label for="creditcard_expiration_month">Exp. Month:</label></dt>
+       <dd><%= select_month(Date.today)%></dd>
+      
+      <dt><label for="creditcard_expiration_month">Exp. Year:</label></dt>
+       <dd><%= select_year(Date.today)%></dd>
+      
+      <dt><label for="creditcard_verification_value">Verification Value:</label></dt>
+       <dd><%= f.text_field :verification_value, :size => 6 -%></dd>
+     </dl>
+   </fieldset>
+
+<% if false %>
+    <%= button(:image => "labels/donate.png", :alt => "Donate!", 
+	:link =>  url_for(:controller => 'authorizations', :action => 'create' ),
+	:class => "large-button" ) -%>
+<% end %>
+
+<%= f.submit 'donate'%>
+
+<% end %>
+
+<% end %>
+
+<% content_box("Donation Summary", :id => "summary", :class => "basic") do -%>
+ <ul>
+ <li>Amount:</li>
+ <li>Donation Type:</li>
+ <li>Privacy Settings:</li>
+ <li>Segment:</li>
+ <li>Dedication:</li>
+ </ul>
+ <%= button(:image => "labels/modify.png", :alt => "Modify Donation", :link => @return_to, :class => "large-button") -%>
+<% end %>

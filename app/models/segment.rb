@@ -4,4 +4,5 @@ class Segment < ActiveRecord::Base
    has_many :badges
    has_many :campaigns
    validates_presence_of :name, :keyword
+   has_one :style_info, :as => :scope
 end

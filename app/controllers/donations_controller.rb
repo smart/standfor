@@ -3,7 +3,13 @@ class DonationsController < ApplicationController
   # GET /donations.xml
   layout 'default'
   before_filter :login_required
-  before_filter :get_organization_and_segment, :except => [:amount, :choose_amount, :confirm, :choose_confirm]
+  before_filter :segment_required
+  before_filter :donation_required, :only => [:new, :amount, :choose_amount, :contirm, :choose_confirm]
+  before_filter :details_required, :only => [:new, :create]
+  before_filter :creditcard_required, :only => [:new, :create]
+  before_filter :confirmation_required, :only => [:create]
+  before_filter :authorization_required, :only => [:create]
+  #before_filter :get_organization_and_segment, :except => [:amount, :choose_amount, :confirm, :choose_confirm]
   def index
     @donations = Donation.find(:all)
 
@@ -27,14 +33,11 @@ class DonationsController < ApplicationController
   # GET /donations/new
   # GET /donations/new.xml
   def new
-    @donation = Donation.new
-    return false unless amount_required
-    @donation.amount = session[:amount] 
-    return false unless creditcard_required
-    return false unless confirmation_required
-    return false unless authorization_required 
+    p "awesome city"
+    p current_donation
+    p "coolio"
     respond_to do |format|
-      format.html # new.html.erb
+      format.html { }
       format.xml  { render :xml => @donation }
     end
   end
@@ -47,36 +50,18 @@ class DonationsController < ApplicationController
   # POST /donations
   # POST /donations.xml
   def create
-    @donation = Donation.new(params[:donation])
-    @donation.organization = @organization
-    @donation.segment = @segment
-    @donation.account = current_account 
-    @donation.payment_authorization = session[:authorization_code]
-    @donation.last_four_digits = session[:last_four] 
-
+    @donation = current_donation
+    p "=======dd"
+    p @donation
     respond_to do |format|
       if @donation.save
+        p @donation
         flash[:notice] = 'Donation was successfully created.'
-	session[:creditcard] = nil
-	session[:order_confirmed] = nil
-	session[:last_four] = nil
-	session[:amount] = nil 
-	session[:donation] = nil 
-	session[:badge] = nil
-	session[:authorization] = nil
-        format.html { 
-           if !session[:my_badge_return_to ].nil?
-		redirect_to session[:my_badge_return_to]
-            elsif !session[:segment_return_to].nil?
-		redirect_to session[:segment_return_to] and return false 
-            else 
-   		raise
-	    end
-	    return false
-	}
-
+        current_donation = nil
+        format.html { redirect_to "/" and return false }
         format.xml  { render :xml => @donation, :status => :created, :location => @donation }
       else
+        flash[:notice] = "There was an error saving your donation please try to submit again or email help@standfor.us"
         format.html { render :action => "new" }
         format.xml  { render :xml => @donation.errors, :status => :unprocessable_entity }
       end
@@ -121,103 +106,126 @@ class DonationsController < ApplicationController
       end
    end
  
-   def amount
-   end
-
-   def choose_amount
-      if !params[:donations][:amount].nil? and params[:donations][:amount].to_i > 0
- 	session[:amount] = params[:donations][:amount].to_i
-	redirect_to session[:amount_return_to]  and return false
-      end
-      flash[:notice] = "amount invalid #{params[:donations][:amount] }"
-      render :action => :amount
+   def details
+     if params[:donations]
+       if !params[:donations][:amount].nil? and params[:donations][:amount].to_i > 0
+          current_donation.amount = params[:donations][:amount].to_i
+  	      redirect_to_donation_url
+       else
+         flash[:notice] = "amount invalid #{params[:donations][:amount] }"
+       end
+     end
    end
 
     def confirm
-    end
-
-    def choose_confirm
-      if  params[:confirmed] == 'yes'
-         session[:order_confirmed] = 'yes' 
-	 redirect_to session[:confirmation_redirect]  and return false
+      if params[:confirmed]
+        if  params[:confirmed] == 'yes'
+         current_donation.confirmed = true 
+	       redirect_to_donation_url
+	     else
+	       flash[:notice] = "You must confirm your order to continue"
+	     end
       end
-      render :action => :confirm
     end
+    
+  def payment
+    if params[:authorization]
+      @amount = current_donation.amount
+      creditcard = ActiveMerchant::Billing::CreditCard.new(
+     	:type       => params[:authorization][:card_type].downcase		,
+    	:number     => params[:authorization][:number]				,
+    	:month      => params[:date][:month]					,
+    	:year       => params[:date][:year]					,
+    	:first_name => params[:authorization][:first_name]			,
+    	:last_name  => params[:authorization][:last_name]			)
+       if creditcard.valid?
+          creditcard.number = 1.to_s
+          current_donation.last_four = params[:authorization][:number].strip.slice(-4,4)
+          current_donation.creditcard = creditcard
+          redirect_to_donation_url
+          return false
+       else
+         flash[:notice] = creditcard.errors
+       end
+    else
+      @authorization = Authorization.new
+      @amount = current_donation.amount
+    end
+    respond_to do |format|
+      format.html 
+      format.xml  { render :xml => @authorization }
+    end
+  end
 
   protected
 
   # need a valid credit card
 
-  def amount_required
-    if session[:amount].nil? 
-        session[:amount_return_to] = request.request_uri
-	redirect_to url_for(:action => :amount) and return false  
-    else
-        return true
-    end
+  def details_required
+    current_donation.amount ? true : (redirect_to url_for(:action => :details) and return false)
   end
-
-   def confirmation_required
-      if session[:order_confirmed].nil? or session[:order_confirmed] != 'yes' 
-	session[:confirmation_redirect] = request.request_uri
-	redirect_to url_for(:action => :confirm) and return false  
-      else
-        return true
-      end
-   end
-
+  
   def creditcard_required
-     if session[:creditcard].nil?
-       no_card 
-     else
-      @creditcard = session[:creditcard]
-        return true 
-      end
-      return false
+    current_donation.creditcard ? true :  (redirect_to :action => 'payment' and return false)
   end
-
-  def no_card
-       session[:authorization_redirect] = request.request_uri 
-       session[:donation] = @donation
-       redirect_to :controller => 'authorizations', :action => 'new' and return false
+  
+  def confirmation_required
+    (params[:confirmed] == "yes") ? true : (redirect_to :action => "new" and return false)
+   end
+   
+   def authorization_required
+     current_donation.authorization ? true : authorize_card
    end
 
-  def authorization_required
-     if session[:authorization_code].nil?
- 	 session[:authorization_redirect] = request.request_uri  
-         gateway = ActiveMerchant::Billing::BogusGateway.new
-         response = gateway.authorize(@donation.amount, session[:creditcard])
-         if response.success?
-           session[:authorization_code] = response.authorization 
-           return true
-         else
-           redirect_to :controller => 'authorizations', :action => 'new' and return false
-         end
+  def authorize_card
+    gateway = ActiveMerchant::Billing::BogusGateway.new
+    response = gateway.authorize(current_donation.amount, current_donation.creditcard)
+      if response.success?
+        current_donation.authorization = response.authorization 
+        return true
       else
-           return true 
+        flash[:notice]  = "Authorization of your credit card failed, please check your info and try again"
+        redirect_to :action => 'payment' and return false
       end
   end
 
-   def charge_card
-     gateway = ActiveMerchant::Billing::BogusGateway.new
-     response = gateway.authorize(@donation.amount, @creditcard)
-     if response.success?
-       session[:authorization_code] = response.authorization 
-       return true
-     else
-       no_card
-     end
-     return false
+  private  
+    def donation_required
+      current_donation ? true : false
+    end
+    
+     def redirect_to_donation_url
+    #redirect_to new_organizatons_segments_donations_path(@organization, @segment)
+    redirect_to :action => "new"
+    return false
   end
-
-  private
-
-   # user need to confirm purchase amount
-
-  private
-  def get_organization_and_segment
-    @organization = Organization.find(params[:organization_id]) 
-    @segment= Segment.find(params[:segment_id]) 
-  end
+    
+  # Accesses the current donation from the session.
+    def current_donation
+      @current_donation ||= (session[:donation]) || new_donation
+    end
+    
+    # Store the given account in the session.
+    def current_donation=(new_donation)
+      session[:donation] = (new_donation.nil? || new_donation.is_a?(Symbol)) ? nil : new_donation
+      @current_donation = new_donation
+    end
+    
+    def new_donation
+      begin
+        donation = Donation.new()
+        donation.organization = @organization
+        donation.segment = @segment
+        donation.account = current_account 
+        session[:donation] = donation
+        return donation
+      rescue 
+        return false
+      end
+    end
+    
+    def self.included(base)
+      base.send :helper_method, :current_donation
+    end
 
 end
