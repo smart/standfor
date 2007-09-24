@@ -4,12 +4,12 @@ class DonationsController < ApplicationController
   layout 'default'
   before_filter :login_required
   before_filter :segment_required
-  before_filter :donation_required, :only => [:new, :amount, :choose_amount, :contirm, :choose_confirm]
+  before_filter :donation_required, :only => [:new, :details, :payment, :create]
   before_filter :details_required, :only => [:new, :create]
   before_filter :creditcard_required, :only => [:new, :create]
   before_filter :confirmation_required, :only => [:create]
   before_filter :authorization_required, :only => [:create]
-  #before_filter :get_organization_and_segment, :except => [:amount, :choose_amount, :confirm, :choose_confirm]
+  
   def index
     @donations = Donation.find(:all)
 
@@ -33,9 +33,6 @@ class DonationsController < ApplicationController
   # GET /donations/new
   # GET /donations/new.xml
   def new
-    p "awesome city"
-    p current_donation
-    p "coolio"
     respond_to do |format|
       format.html { }
       format.xml  { render :xml => @donation }
@@ -51,11 +48,9 @@ class DonationsController < ApplicationController
   # POST /donations.xml
   def create
     @donation = current_donation
-    p "=======dd"
-    p @donation
+
     respond_to do |format|
       if @donation.save
-        p @donation
         flash[:notice] = 'Donation was successfully created.'
         current_donation = nil
         format.html { redirect_to "/" and return false }
@@ -97,15 +92,6 @@ class DonationsController < ApplicationController
     end
   end
 
-   def confirmation
-      if params[:id].nil? or params[:id] != 'yes'
-         render :action => 'confirmation' 
-      else
-         session[:order_confirmed] = true 
-         redirect_to  :controller => 'donations' , :action => 'create' and return false 
-      end
-   end
- 
    def details
      if params[:donations]
        if !params[:donations][:amount].nil? and params[:donations][:amount].to_i > 0
@@ -116,17 +102,6 @@ class DonationsController < ApplicationController
        end
      end
    end
-
-    def confirm
-      if params[:confirmed]
-        if  params[:confirmed] == 'yes'
-         current_donation.confirmed = true 
-	       redirect_to_donation_url
-	     else
-	       flash[:notice] = "You must confirm your order to continue"
-	     end
-      end
-    end
     
   def payment
     if params[:authorization]
@@ -181,7 +156,7 @@ class DonationsController < ApplicationController
     gateway = ActiveMerchant::Billing::BogusGateway.new
     response = gateway.authorize(current_donation.amount, current_donation.creditcard)
       if response.success?
-        current_donation.authorization = response.authorization 
+        current_donation.payment_authorization = response.authorization 
         return true
       else
         flash[:notice]  = "Authorization of your credit card failed, please check your info and try again"
