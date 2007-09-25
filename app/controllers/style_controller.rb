@@ -56,6 +56,8 @@ class StyleController < ApplicationController
    
    def header_arrow
      list = Magick::ImageList.new
+     backshadow = Magick::Image.read(RAILS_ROOT + "/public/images/colortest/header/bullets/background_shadow.png")
+     list << backshadow.first
      shadow = Magick::Image.read(RAILS_ROOT + "/public/images/colortest/header/bullets/arrowshadow.png")
      list << shadow.first
      list <<  color_image( RAILS_ROOT + "/public/images/colortest/header/bullets/background.png", style_info.color_secondary)
@@ -66,10 +68,22 @@ class StyleController < ApplicationController
    
    def header_bullet
      list = Magick::ImageList.new 
+     backshadow = Magick::Image.read(RAILS_ROOT + "/public/images/colortest/header/bullets/background_shadow.png")
+     list << backshadow.first
      list <<  color_image( RAILS_ROOT + "/public/images/colortest/header/bullets/background.png", style_info.color_secondary)
      shadow = Magick::Image.read(RAILS_ROOT + "/public/images/colortest/header/bullets/bulletshadow.png")
      list << shadow.first
      list << color_image(RAILS_ROOT + "/public/images/colortest/header/bullets/bullet.png", style_info.color_primary)
+     @output_image = list.flatten_images
+     output
+   end
+   
+   def header_standfor
+     list = Magick::ImageList.new 
+     #backshadow = Magick::Image.read(RAILS_ROOT + "/public/images/colortest/header/bullets/background_shadow.png")
+     #list << backshadow.first
+     #list <<  color_image( RAILS_ROOT + "/public/images/colortest/header/bullets/background.png", style_info.color_secondary)
+     list << color_image(RAILS_ROOT + "/public/images/colortest/header/standfor.png", style_info.color_primary)
      @output_image = list.flatten_images
      output
    end
