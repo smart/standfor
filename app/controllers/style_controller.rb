@@ -9,7 +9,7 @@ class StyleController < ApplicationController
     
     box_fill = Magick::Image.read(RAILS_ROOT + "/public/images/colortest/boxes/shadow/fill.png")
     list << box_fill.first
-    list << color_image(RAILS_ROOT + "/public/images/colortest/boxes/headers/dark.png", style_info.color_primary)
+    list << color_overlay(RAILS_ROOT + "/public/images/colortest/boxes/headers/dark.png", style_info.color_primary)
     @output_image = list.flatten_images
      output
   end
@@ -80,9 +80,9 @@ class StyleController < ApplicationController
    
    def header_standfor
      list = Magick::ImageList.new 
-     #backshadow = Magick::Image.read(RAILS_ROOT + "/public/images/colortest/header/bullets/background_shadow.png")
-     #list << backshadow.first
-     #list <<  color_image( RAILS_ROOT + "/public/images/colortest/header/bullets/background.png", style_info.color_secondary)
+     backshadow = Magick::Image.read(RAILS_ROOT + "/public/images/colortest/header/standfor_shadow.png")
+     list << backshadow.first
+     list <<  color_image( RAILS_ROOT + "/public/images/colortest/header/standfor_background.png", style_info.color_secondary)
      list << color_image(RAILS_ROOT + "/public/images/colortest/header/standfor.png", style_info.color_primary)
      @output_image = list.flatten_images
      output
@@ -96,17 +96,21 @@ class StyleController < ApplicationController
     send_data @output_image.to_blob, :filename => params[:action] + '.' + params[:ext], :type =>'image/' + params[:ext], :disposition => 'inline'
   end
  
-  def color_image(base_image, color1 = "black", color2 = "snow")
-    begin
+  def color_image(base_image, color1 = "black")
+    #begin
       list = Magick::ImageList.new
       image =  Magick::Image.read(base_image).first
       list << image
-      gradient = Magick::Image.read("gradient:#{color1}-#{color2} -resize 45") { self.size = "10x100" }
-      list << gradient.first
+      gradient_list = Magick::ImageList.new
+      gradient1 = Magick::Image.read("gradient:black-#{color1} -resize 45") { self.size = "10x100" }
+      gradient_list << gradient1.first
+      gradient2 = Magick::Image.read("gradient:#{color1}-snow -resize 45") { self.size = "10x100" }
+      gradient_list << gradient2.first
+      list << gradient_list.append(true)
       return list.fx("v.p{0,u*v.h}")
-    rescue
-      return image =  Magick::Image.read(base_image).first
-    end
+#    rescue
+#      return image =  Magick::Image.read(base_image).first
+#    end
   end
 
 end

@@ -44,6 +44,8 @@ ActionController::Routing::Routes.draw do |map|
   map.connect "/rcss/:rcss.css", :controller => "rcss", :action => "rcss"
   map.connect "/rcss/:rcss/:style_info.css", :controller => "rcss", :action => "rcss"
   map.connect "/style/:action/:style_info.:ext", :controller => "style"
+  map.connect "/text/:action/:text.:ext", :controller => "text"
+  map.connect "/text/:text.:ext", :controller => "text", :action => "index"
   #map.connect "/:organization/:segment/:controller/:action"
   #map.connect "/:organization/:segment/donate/:action", :controller => "donations"
   #map.connect "/:organization/:segment/badges/:action", :controller => "badges"
