@@ -60,7 +60,6 @@ class BadgesController < ApplicationController
   # PUT /badges/1.xml
   def update
     @badge = Badge.find(params[:id])
-
     respond_to do |format|
       if @badge.update_attributes(params[:badge])
         flash[:notice] = 'Badge was successfully updated.'

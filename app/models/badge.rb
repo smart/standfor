@@ -6,6 +6,8 @@ class Badge < ActiveRecord::Base
   has_many :authorizations
   has_many :donations
   belongs_to :campaign
+  #attr_accessor :tag_list
+  acts_as_taggable
 
   def authorized?(account)
     self.requirements.each do |req| 
