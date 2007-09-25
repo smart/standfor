@@ -22,14 +22,42 @@ class TextController < ApplicationController
     background = params[:background] || "transparent"
     font = params[:font] || RAILS_ROOT + "/lib/fonts/VAGROBDT.PFB"
     gravity = Magick::CenterGravity
-    pointsize = params[:pointsize] || 30
+    pointsize = params[:pointsize] || 28
     width = params[:width] || nil
     height = params[:height] || nil
     left = params[:left] || 0
     top = params[:top] || 0
     create_text(text, color, background, font, gravity, pointsize, width, height, left, top)
   end
-
+  
+  def basicborder_header
+  	text = params[:text] || ""
+    color = params[:color] || "black"
+    background = params[:background] || "transparent"
+    font = params[:font] || RAILS_ROOT + "/lib/fonts/VAGROBDT.PFB"
+    gravity = Magick::CenterGravity
+    pointsize = params[:pointsize] || 20
+    width = params[:width] || nil
+    height = params[:height] || nil
+    left = params[:left] || 0
+    top = params[:top] || 0
+    create_text(text, color, background, font, gravity, pointsize, width, height, left, top)
+  end
+  
+  def button_text
+  	text = params[:text] || ""
+    color = params[:color] || "black"
+    background = params[:background] || "transparent"
+    font = params[:font] || RAILS_ROOT + "/lib/fonts/VAGROBDT.PFB"
+    gravity = Magick::CenterGravity
+    pointsize = params[:pointsize] || 32
+    width = params[:width] || nil
+    height = params[:height] || 48
+    left = params[:left] || 0
+    top = params[:top] || 0
+    create_text(text, color, background, font, gravity, pointsize, width, height, left, top)
+  end
+  
   def index
     text = params[:text] || ""
     font = params[:font] || RAILS_ROOT + "/lib/fonts/VAGROBDT.PFB"
@@ -45,6 +73,7 @@ class TextController < ApplicationController
    end 
   
   def create_text(text, color, background, font, gravity, pointsize, width, height, left, top )
+  	text = CGI.unescape(text)
     listing_name = Magick::Image.read("label:#{text}" ) do
       self.size =  "#{width}x#{height}"   if ( pointsize == "fit" && (width || height) )
       self.fill = color

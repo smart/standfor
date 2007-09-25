@@ -1,15 +1,15 @@
-<% content_box("Confirm your Payment Details", :id => "payment", :class => "shadow") do %>
+<% content_box("confirm your payment details", :id => "payment", :class => "shadow") do %>
 
 <p>I allow my card to be charged $<%= @current_donation.amount -%> </p>
 
 <%= form_tag({:controller => 'donations', :action => 'create'}, {:id => 'confirm-form'})   %>
   <%= hidden_field_tag  'confirmed', 'yes' %>
   
-  <%= button(:image => "labels/confirm.png", :alt => "confirm", 
+  <%= button(:image => "/text/button_text/confirm.png", :alt => "confirm", 
 	:class => "large-button", :form_id => "confirm-form", :type => 'submit' ) -%>
 </form>
 
 <% end %>
-<% content_box( "About your Donation", :class => "basic", :id => "about" ) do -%>
+<% content_box( "about your donation", :class => "basic", :id => "about" ) do -%>
   <p>Some details about your donation go here. How your money helps. Information about tax benefits etc.</p>
 <% end %>

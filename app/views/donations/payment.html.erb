@@ -1,4 +1,4 @@
-<% content_box ("How Will you Pay?", :id => "payment", :class => "shadow" ) do %>
+<% content_box ("how will you pay?", :id => "payment", :class => "shadow" ) do %>
 
 <% form_for :authorization, :url => url_for(:action => "payment" ) , :method => :post, :html => { :id => 'authorization-form' } do |f| %>
    <fieldset>
@@ -28,12 +28,12 @@
    </fieldset>
 
 <% if false %>
-    <%= button(:image => "labels/donate.png", :alt => "Donate!", 
+    <%= button(:image => "/text/button_text/donate!.png", :alt => "Donate!", 
 	:link =>  url_for(:controller => 'authorizations', :action => 'create' ),
 	:class => "large-button" ) -%>
 <% end %>
 
-<%= button(:image => "labels/donate.png", :alt => "Donate!", 
+<%= button(:image => "/text/button_text/donate!.png", :alt => "Donate!", 
 	:class => "large-button", :form_id => "authorization-form", :type => 'submit' ) -%>
 
 <% end %>
@@ -48,5 +48,5 @@
  <li>Segment:</li>
  <li>Dedication:</li>
  </ul>
- <%= button(:image => "labels/modify.png", :alt => "Modify Donation", :link => @return_to, :class => "large-button") -%>
+ <%= button(:image => "/text/button_text/modify.png", :alt => "Modify Donation", :link => @return_to, :class => "large-button") -%>
 <% end %>

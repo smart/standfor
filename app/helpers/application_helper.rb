@@ -17,10 +17,15 @@ module ApplicationHelper
 #  end
 
   def content_box(header_text, opts = {}, &block)
+  	escaped_text = CGI.escape(header_text)
+  	image_path = "/text/header_text/#{escaped_text}.png"
+	image_path = "/text/basicborder_header/#{escaped_text}.png" if (opts[:class] == 'basicborder' || opts[:class] == 'basic' )
+	image_path = "/text/header_text/#{escaped_text}.png?color=black" if (opts[:class] == 'light' )
+  	header_image = image_tag("#{image_path}", :alt => header_text)
     concat("<div " + (opts[:id] ? "id=\"#{opts[:id]}\" " : "") + "class=\"" + (opts[:class] ? "#{opts[:class]} box\"" : "default box\"") +">", block.binding )   
     concat("<div class=\"content\">", block.binding)
     concat("  <div class=\"t\"></div>", block.binding)
-    concat("  <h1>#{header_text}</h1>", block.binding)
+    concat("  <h1>#{header_image}</h1>", block.binding)
     yield
     concat("</div>", block.binding)
     concat("<div class=\"b\"><div></div></div>", block.binding)

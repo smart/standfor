@@ -1,6 +1,6 @@
 <div class="oi1">
   <div id="preview">
-    <% content_box( "Your Charity Badge", :class => "shadow" ) do -%>
+    <% content_box( "your charity badge", :class => "shadow" ) do -%>
       <div id="badge">
         <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
       </div>
@@ -8,7 +8,7 @@
     <% end %>
   </div>
   <div id="howto">
-    <% content_box( "How to Share your Badge", :class => "basic" ) do -%>
+    <% content_box( "how to share your badge", :class => "basic" ) do -%>
       <p>Share your badge by clicking....
       </p>
     <% end %>
@@ -17,7 +17,7 @@
     <%= render :partial => "webapps", :locals => {:my_badge => @my_badge, :shares => @shares  }  -%> 
   </div>
   <div id="toolbar">
-    <% content_box( "Web Applications", :class => "light" ) do -%>
+    <% content_box( "web applications", :class => "light" ) do -%>
       <div id="share-options">
       </div>
     <% end %>

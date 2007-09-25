@@ -533,15 +533,16 @@ img {
 form {
 	margin:0px;
 	padding:0px;
-	font-family:arial;
-	font-size:70%;
 }
    
 form input,
 form select,
 form textarea {
-    font-size:110%;
+    font-size:100%;
     font-family:arial;
+    width:100%;
+    border:1px solid gray;
+    background:lightgrey;
 }
    
 form textarea {
@@ -585,7 +586,7 @@ form dt {
     text-align:right;
 }
 form dd {
-    margin:0px 0px 10px 40%;
+    margin:0px 0px 10px 41%;
     color:#666666;
     _text-indent:-3px !important;
 }

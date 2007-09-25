@@ -1,4 +1,4 @@
-<% content_box("Get this Badge", :id => "get-badge", :class => "shadow" ) do %>
+<% content_box("get this badge", :id => "get-badge", :class => "shadow" ) do %>
 <%= error_messages_for :my_badge %>
 <div id="preview">
 <p><%= @badge.name  -%> </p>
@@ -15,7 +15,7 @@
 			  
 			<% end %>
 
-  			<%= button(:image => "labels/customize.png", :alt => "Customize!", :class => "large-button", :form_id => "tocustomize-form", :type => 'submit' ) -%>
+  			<%= button(:image => "/text/button_text/customize!.png", :alt => "Customize!", :class => "large-button", :form_id => "tocustomize-form", :type => 'submit' ) -%>
 
 		<% end %>
  	<% end %>
@@ -38,7 +38,7 @@
 
 		<% @donation = Donation.new(:amount => @badge.required_donation.value ) %>
 		<% form_for :my_badge, :url => badge_my_badges_path(@badge) , :method => :post  do |f| %>
-			<%= button(:image => "labels/donate.png", :alt => "Donate!", :link =>  new_organization_segment_donation_path(@badge.organization, @badge.segment  ), :class => "large-button" ) -%>
+			<%= button(:image => "/text/button_text/donate!.png", :alt => "Donate!", :link =>  new_organization_segment_donation_path(@badge.organization, @badge.segment  ), :class => "large-button" ) -%>
 	    	<span class="clear"></span>
 		<% end %>
 	<% end %>
