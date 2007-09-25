@@ -5,6 +5,7 @@ class ApplicationController < ActionController::Base
   include StandforAccountSystem 
   include YouserSystem
   include SegmentSystem
+  include StyleSystem
   # Pick a unique cookie name to distinguish our session data from others'
   #
   session :session_key => '_standfor_session_id'
@@ -20,20 +21,7 @@ class ApplicationController < ActionController::Base
     end
   end
   
-  def load_style_info
-    begin      
-      if params[:style_info] 
-        @style_info = StyleInfo.find(params[:style_info])  
-      else
-        @style_info = @organization.style_info unless @organization.nil?
-        unless @segment.nil?
-          @style_info = @segment.style_info unless @segment.style_info.nil?
-        end
-      end
-    rescue 
-      return @style_info = nil
-    end
-  end
+  
   
   def init
     if false  and params[:embedded]
@@ -41,8 +29,9 @@ class ApplicationController < ActionController::Base
        params[:organization] = site_name
     end
     @organization = Organization.find(params[:organization_id], :include => [:segments, :style_info]) if !params[:organization_id].nil?
-    p @organization
     @segment = @organization.segments.find(params[:segment_id], :include => [:style_info]) if !params[:segment_id].nil?
   end
+  
+  
 
 end

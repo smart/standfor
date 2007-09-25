@@ -65,7 +65,7 @@ img {
 }
 #navigation {
 	height:42px;
-	background:url(/images/boxes/navigation-header.png) no-repeat top left;
+	background:url(<%= style_image_path("header_bar") || "/images/boxes/navigation-header.png" -%>) no-repeat top left;
 	margin:0px 0px 0px 0px;
 	line-height:35px;
 }
@@ -74,12 +74,12 @@ img {
 }
 #navigation li {
 	padding-left:30px;
-	background:url(/images/icons/nav-breadcrumb.png) no-repeat top left;
+	background:url(<%= style_image_path("header_arrow") || "/images/icons/nav-breadcrumb.png" -%>) no-repeat top left;
 	float:left;
 	height:39px;
 }
 #navigation li.first {
-	background:url(/images/icons/nav-start.png) no-repeat top left;
+	background:url(<%= style_image_path("header_bullet") || "/images/icons/nav-start.png" -%>) no-repeat top left;
 }
 #navigation a {
 	display:block;
@@ -87,7 +87,7 @@ img {
 #login-button {
 	height:42px;
 	width:245px;
-	background:url(/images/boxes/navigation-header.png) no-repeat top right;
+	background:url(<%= style_image_path("header_bar") || "/images/boxes/navigation-header.png" -%>) no-repeat top right;
 	float:right;
 }
 #login-button img {
@@ -387,7 +387,7 @@ img {
 .shadow .t,
 .shadow .b,
 .shadow .b div {
-  background:transparent url(/images/boxes/solid-shadow-darkhead.png) no-repeat top right;
+  background:transparent url(<%= style_image_path("solid_shadow_dark_head") || "/images/boxes/solid-shadow-darkhead.png" -%>) no-repeat top right;
 }
 
 .basic .content,
@@ -401,7 +401,7 @@ img {
 .light .t,
 .light .b,
 .light .b div {
-  background:transparent url(/images/boxes/gradient-shadow-lighthead.png) no-repeat top right;
+  background:transparent url(<%= style_image_path("gradient_shadow_light_head") || "/images/boxes/gradient-shadow-lighthead.png" -%>) no-repeat top right;
 }
 
 .interior .content,
@@ -659,19 +659,19 @@ button.submitBtn:hover span {
 .large-button {
   display:block;
   height:48px;
-  background:transparent url(/images/buttons/large.png) no-repeat top left;
+  background:transparent url(<%= style_image_path("button_large") || "/images/buttons/large.png" -%>) no-repeat top left;
   text-align:center;
   vertical-align:middle;
   margin-right:15px;
 }
 .large-button:hover {
-  background:transparent url(/images/buttons/large-hover.png) no-repeat top left;
+  background:transparent url(<%= style_image_path("button_large_hover") || "/images/buttons/large-hover.png" -%>) no-repeat top left;
 }
 
 .large-button a {
   display:block;
   height:48px;
-  background:transparent url(/images/buttons/large.png) no-repeat top right;
+  background:transparent url(<%= style_image_path("button_large") || "/images/buttons/large.png" -%>) no-repeat top right;
 
   position:relative;
   top:0px;
@@ -679,7 +679,7 @@ button.submitBtn:hover span {
 
 }
 .large-button a:hover {
-  background:transparent url(/images/buttons/large-hover.png) no-repeat top right;
+  background:transparent url(<%= style_image_path("button_large_hover") || "/images/buttons/large-hover.png" -%>) no-repeat top right;
 }
 
 
