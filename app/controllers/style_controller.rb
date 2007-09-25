@@ -9,7 +9,7 @@ class StyleController < ApplicationController
     
     box_fill = Magick::Image.read(RAILS_ROOT + "/public/images/colortest/boxes/shadow/fill.png")
     list << box_fill.first
-    list << color_overlay(RAILS_ROOT + "/public/images/colortest/boxes/headers/dark.png", style_info.color_primary)
+    list << color_image(RAILS_ROOT + "/public/images/colortest/boxes/headers/dark.png", style_info.color_primary)
     @output_image = list.flatten_images
      output
   end

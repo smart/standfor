@@ -1,9 +1,8 @@
 module StyleSystem
 
   def style_info
-    @style_info ||= load_from_param || load_from_segment || load_from_organization
-    p "sick"
-    p @style_info
+    @style_info ||= load_from_param || load_from_segment || load_from_organization || session[:style_info]
+    session[:style_info] = @style_info
     return @style_info
   end
   
