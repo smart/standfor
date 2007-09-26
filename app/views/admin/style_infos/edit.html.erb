@@ -1,0 +1,12 @@
+<h1>Editing style_info</h1>
+
+<%= error_messages_for :style_info %>
+
+<% form_for(@style_info) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @style_info %> |
+<%= link_to 'Back', style_infos_path %>

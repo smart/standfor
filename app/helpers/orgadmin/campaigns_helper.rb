@@ -1,0 +1,2 @@
+module Orgadmin::CampaignsHelper
+end

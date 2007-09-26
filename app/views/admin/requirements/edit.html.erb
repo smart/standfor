@@ -1,0 +1,12 @@
+<h1>Editing requirement</h1>
+
+<%= error_messages_for :requirement %>
+
+<% form_for(@requirement) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @requirement %> |
+<%= link_to 'Back', requirements_path %>

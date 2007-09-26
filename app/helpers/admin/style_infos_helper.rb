@@ -1,0 +1,2 @@
+module Admin::StyleInfosHelper
+end

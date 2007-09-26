@@ -15,13 +15,9 @@ class ApplicationController < ActionController::Base
   
    def print_info
     if !fbsession.nil?
-      p "======"
       p fbsession.session_key.to_s
-      p "======="
     end
   end
-  
-  
   
   def init
     if false  and params[:embedded]
@@ -32,6 +28,9 @@ class ApplicationController < ActionController::Base
     @segment = @organization.segments.find(params[:segment_id], :include => [:style_info]) if !params[:segment_id].nil?
   end
   
-  
+  def permission_denied
+    flash[:notice] = "You don't have privileges to access this action"
+    render :template => '/shared/permission_denied'
+  end  
 
 end

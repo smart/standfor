@@ -1,0 +1,2 @@
+module Orgadmin::BadgesHelper
+end

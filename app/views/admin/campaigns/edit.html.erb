@@ -1,0 +1,12 @@
+<h1>Editing campaign</h1>
+
+<%= error_messages_for :campaign %>
+
+<% form_for(@campaign) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @campaign %> |
+<%= link_to 'Back', campaigns_path %>

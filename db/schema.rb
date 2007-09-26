@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 27) do
+ActiveRecord::Schema.define(:version => 28) do
 
   create_table "access_codes", :force => true do |t|
     t.integer "scope_id",                                  :null => false
@@ -128,24 +128,25 @@ ActiveRecord::Schema.define(:version => 27) do
   end
 
   create_table "organizations", :force => true do |t|
-    t.string "name"
-    t.string "address1"
-    t.string "address2"
-    t.string "address3"
-    t.string "city"
-    t.string "state"
-    t.string "zip"
-    t.string "country"
-    t.string "phone"
-    t.string "fax"
-    t.string "email"
-    t.string "url"
-    t.string "statement"
-    t.text   "description"
-    t.date   "created_on"
-    t.date   "updated_on"
-    t.string "keyword"
-    t.string "site_name"
+    t.string  "name"
+    t.string  "address1"
+    t.string  "address2"
+    t.string  "address3"
+    t.string  "city"
+    t.string  "state"
+    t.string  "zip"
+    t.string  "country"
+    t.string  "phone"
+    t.string  "fax"
+    t.string  "email"
+    t.string  "url"
+    t.string  "statement"
+    t.text    "description"
+    t.date    "created_on"
+    t.date    "updated_on"
+    t.string  "keyword"
+    t.string  "site_name"
+    t.integer "admin_id"
   end
 
   create_table "requirements", :force => true do |t|

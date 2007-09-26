@@ -1,0 +1,2 @@
+module Orgadmin::SegmentsHelper
+end

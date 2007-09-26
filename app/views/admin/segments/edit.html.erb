@@ -1,0 +1,12 @@
+<h1>Editing segment</h1>
+
+<%= error_messages_for :segment %>
+
+<% form_for(@segment) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @segment %> |
+<%= link_to 'Back', segments_path %>
