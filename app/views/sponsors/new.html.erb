@@ -1,0 +1,11 @@
+<h1>New sponsor</h1>
+
+<%= error_messages_for :sponsor %>
+
+<% form_for(@sponsor) do |f| %>
+  <p>
+    <%= f.submit "Create" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', sponsors_path %>

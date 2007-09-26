@@ -2,13 +2,13 @@ class CampaignsController < ApplicationController
   layout 'default' 
   before_filter :login_required
   before_filter :organization_and_segment_required, :except => [:denied]
-  access_control [:new, :create, :update, :edit, :delete]  => 'admin' 
 
   # GET /campaigns
   # GET /campaigns.xml
   def index
-    @campaigns = Campaign.find(:all, :conditions => ["organization_id = ? ",  @organization.id]  )
-
+    @campaigns = Campaign.find(:all, 
+		:conditions => ["organization_id = ? and admin_id = ? ",  
+				@organization.id, current_account.id ]  )
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @campaigns }
@@ -38,7 +38,7 @@ class CampaignsController < ApplicationController
 
   # GET /campaigns/1/edit
   def edit
-    @campaign = Campaign.find(params[:id])
+    @campaign = Campaign.find(params[:id], :conditions => ["admin_id = ? ", current_account.id ] )
   end
 
   # POST /campaigns

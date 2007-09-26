@@ -1,11 +1,14 @@
 class BadgesController < ApplicationController
   layout 'default'
   before_filter :get_organization_and_segment
+  #access_control [:new, :create, :update, :edit, :delete, :index]  => "admin" 
+
   # GET /badges
   # GET /badges.xml
   def index
-    @badges = Badge.find(:all)
-
+    check_authorization
+    @badges = Badge.find(:all, 
+		:conditions => ["organization_id = ? and segment_id = ?", @organization.id, @segment.id ] )
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @badges }
@@ -79,7 +82,7 @@ class BadgesController < ApplicationController
     @badge.destroy
 
     respond_to do |format|
-      format.html { redirect_to(organization_badges_url) }
+      format.html { redirect_to(organization_segment_badges_url) }
       format.xml  { head :ok }
     end
   end
@@ -87,6 +90,18 @@ class BadgesController < ApplicationController
   def requirements 
     @badge = Badge.find(params[:id])
   end
+
+  def permission_denied
+    flash[:notice] = "You don't have privileges to access this action" 
+    render :template => '/shared/permission_denied'
+    #redirect_to :action => 'denied' and return false
+  end
+
+  protected
+
+  def check_authorization
+   return true
+  end 
 
   private
   def get_organization_and_segment

@@ -6,7 +6,8 @@ class Badge < ActiveRecord::Base
   has_many :authorizations
   has_many :donations
   belongs_to :campaign
-  #attr_accessor :tag_list
+  has_many :sponsorships, :as => :sponsorable 
+  has_many :sponsors, :through => :sponsorships 
   acts_as_taggable
 
   def authorized?(account)

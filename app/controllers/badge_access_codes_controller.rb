@@ -1,9 +1,9 @@
 class BadgeAccessCodesController < ApplicationController
   # GET /badge_access_codes
   # GET /badge_access_codes.xml
+  before_filter :get_organization 
   def index
     @badge_access_codes = BadgeAccessCode.find(:all)
-
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @badge_access_codes }
@@ -82,4 +82,10 @@ class BadgeAccessCodesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  private
+  def get_organization
+    @organization = Organization.find(params[:organization_id] )
+  end
+
 end
