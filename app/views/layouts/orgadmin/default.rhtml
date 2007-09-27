@@ -58,13 +58,14 @@ window.attachEvent("onload", correctPNG);
 
   </div>
 <div id="container">
-
+<% if false %>
 <div id="navigation">
   <ul>
    <li class="first"><%= link_to(image_tag((style_image_path("header_standfor") || "labels/standfor.png"), :alt => 'standfor'), '/') -%></li>
 <%= render :partial => '/shared/breadcrumbs', 
 	   :locals =>{:organization => @organization,:segment => @segment } -%>
 </ul>
+<% end %>
 
 <div id="login-button">
 

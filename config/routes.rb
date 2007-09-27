@@ -28,6 +28,19 @@ ActionController::Routing::Routes.draw do |map|
      badges.resources :my_badges, :name_prefix => 'badge_' 
   end 
 
+ map.namespace(:admin) do |admin|
+    admin.resources :organizations do |organizations|
+       organizations.resources :segments 
+    end
+ end
+
+ map.namespace(:orgadmin) do |admin|
+    admin.resources :organizations do |organizations|
+       organizations.resources :segments 
+       organizations.resources :campaigns
+    end
+ end
+
   # end youser routes
 =begin
   map.with_options :conditions => {:subdomain => /standfor/ },:embedded => true do |embedded| 

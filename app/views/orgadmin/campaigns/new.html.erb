@@ -1,11 +1,14 @@
 <h1>New campaign</h1>
-
 <%= error_messages_for :campaign %>
 
-<% form_for(@campaign) do |f| %>
-  <p>
+<% form_for(@campaign, :url => orgadmin_organization_campaign_path(@organization, @campaign), :method => :post ) do |f| %>
+ <ul>
+  <%= render :partial => 'fields', :locals => {:f => f } -%>
+  <li>
     <%= f.submit "Create" %>
-  </p>
+  </li>
+ </ul>
 <% end %>
 
-<%= link_to 'Back', campaigns_path %>
+<%= link_to 'Show', orgadmin_organization_campaign_path(@organization, @campaign) %>
+| <%= link_to 'Back', orgadmin_organization_campaigns_path(@organization) %>

@@ -3,7 +3,7 @@ class Orgadmin::SegmentsController < ApplicationController
   # GET /orgadmin_segments
   # GET /orgadmin_segments.xml
   def index
-    @orgadmin_segments = Orgadmin::Segment.find(:all)
+    @segments = Segment.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,7 +14,7 @@ class Orgadmin::SegmentsController < ApplicationController
   # GET /orgadmin_segments/1
   # GET /orgadmin_segments/1.xml
   def show
-    @segment = Orgadmin::Segment.find(params[:id])
+    @segment = Segment.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -25,7 +25,7 @@ class Orgadmin::SegmentsController < ApplicationController
   # GET /orgadmin_segments/new
   # GET /orgadmin_segments/new.xml
   def new
-    @segment = Orgadmin::Segment.new
+    @segment = Segment.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,18 +35,18 @@ class Orgadmin::SegmentsController < ApplicationController
 
   # GET /orgadmin_segments/1/edit
   def edit
-    @segment = Orgadmin::Segment.find(params[:id])
+    @segment = Segment.find(params[:id])
   end
 
   # POST /orgadmin_segments
   # POST /orgadmin_segments.xml
   def create
-    @segment = Orgadmin::Segment.new(params[:segment])
+    @segment = Segment.new(params[:segment])
 
     respond_to do |format|
       if @segment.save
-        flash[:notice] = 'Orgadmin::Segment was successfully created.'
-        format.html { redirect_to(@segment) }
+        flash[:notice] = 'Segment was successfully created.'
+        format.html { redirect_to orgadmin_organization_segment_url(@organization, @segment) }
         format.xml  { render :xml => @segment, :status => :created, :location => @segment }
       else
         format.html { render :action => "new" }
@@ -58,12 +58,12 @@ class Orgadmin::SegmentsController < ApplicationController
   # PUT /orgadmin_segments/1
   # PUT /orgadmin_segments/1.xml
   def update
-    @segment = Orgadmin::Segment.find(params[:id])
+    @segment = Segment.find(params[:id])
 
     respond_to do |format|
       if @segment.update_attributes(params[:segment])
-        flash[:notice] = 'Orgadmin::Segment was successfully updated.'
-        format.html { redirect_to(@segment) }
+        flash[:notice] = 'Segment was successfully updated.'
+        format.html { redirect_to orgadmin_organization_segment_url(@organization, @segment) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -75,7 +75,7 @@ class Orgadmin::SegmentsController < ApplicationController
   # DELETE /orgadmin_segments/1
   # DELETE /orgadmin_segments/1.xml
   def destroy
-    @segment = Orgadmin::Segment.find(params[:id])
+    @segment = Segment.find(params[:id])
     @segment.destroy
 
     respond_to do |format|

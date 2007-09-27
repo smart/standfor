@@ -2,11 +2,14 @@
 
 <%= error_messages_for :segment %>
 
-<% form_for(@segment) do |f| %>
-  <p>
+<% form_for(@segment, :url => orgadmin_organization_segment_path(@organization, @segment), :method => :put ) do |f| %>
+ <ul>
+  <%= render :partial => 'fields', :locals => {:f => f } -%>
+  <li>
     <%= f.submit "Update" %>
-  </p>
+  </li>
+ </ul>
 <% end %>
 
-<%= link_to 'Show', @segment %> |
-<%= link_to 'Back', segments_path %>
+<%= link_to 'Show', orgadmin_organization_segment_path(@organization, @segment) %>
+| <%= link_to 'Back', orgadmin_organization_segments_path(@organization) %>
