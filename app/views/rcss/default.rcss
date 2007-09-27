@@ -246,8 +246,11 @@ img {
   width:200px;
   display:inline;
 }
-#amount input {
-  width: 60px;
+#amount .input dd {
+  margin-left:40%;
+}
+#amount .input dt {
+	width:40%;
 }
 #preferences {
   float:left;
@@ -294,9 +297,10 @@ img {
   float:left;
   display:inline;
 }
+/*
 #member-login h1 img {
   padding-left:22px;
-}
+}*/
 #member-login .img-pos {
   padding-left:24px;
 }
@@ -319,7 +323,28 @@ img {
   margin-top:-5px;
   margin-right:165px;
 }
-
+#open-id dd {
+	margin-right:100px;
+	margin-left:20%;
+}
+#open-id dt {
+	width:20%;
+}
+#member-login .input dd {
+	margin-left:40%;
+}
+#member-login .input dt {
+	width:40%;
+}
+#member-login .checkbox dt {
+	width:75%;
+}
+#member-login .checkbox dd {
+	margin-left:25%;
+}
+#member-login .input input, #open-id input {
+	_width:90%;
+}
 /* payment page specific styles */
 #payment {
   width:460px;
@@ -329,6 +354,17 @@ img {
 #summary {
   float:right;
   width:240px;
+}
+#authorization-form .verification dt,
+#authorization-form .expiration dt {
+	/*width:50%;*/
+}
+#authorization-form .verification dd,
+#authorization-form .expiration dd {
+	/*margin-left:50%;*/
+}
+#authorization-form .verification input {
+	width:100px;
 }
 
 /* requirements page specific styles */
@@ -347,6 +383,12 @@ img {
 #register form {
 	width:450px;
 }
+#register form .input dt {
+	width:45%;
+}
+#register form .input dd {
+	margin-left:45%;
+}
 /* my account specific styles */
 
 #my-badges {
@@ -364,6 +406,18 @@ img {
 #my-info form {
 	width:350px;
 }
+
+/* account settings specific styles */
+#settings-form {
+	width:400px;
+	margin:0;
+	float:left;
+}
+#settings #dialog {
+	float:right;
+	width:275px;
+}
+
 /* box styles */
 
 .box {
@@ -526,38 +580,37 @@ img {
 }
 .basicborder h1 {
   padding-bottom:0;
+  padding-top:5px;
 }
 
 /* basic form styles */
 
-form {
-	margin:0px;
-	padding:0px;
-}
-   
-form input,
-form select,
-form textarea {
-    font-size:100%;
-    font-family:arial;
-    width:100%;
-    border:1px solid gray;
-    background:lightgrey;
-}
-   
-form textarea {
-    height:100px;
-}
-   
-form fieldset {
-    border:1px solid #CCCCCC;
-    margin:0px;
-    padding:10px 10px 0px 10px;
-    display:block;
-    margin-bottom:10px;
+form{
+    margin:0px auto;
+    padding:0px;
 }
 
-form legend {
+form input,
+form select,
+form textarea{
+    font-size:110%;
+    font-family:arial;
+    
+}
+
+form textarea{
+    height:100px;
+}
+
+form fieldset{
+    border:1px solid #CCCCCC;
+    margin:0px 0px 10px 0px;
+    padding:10px 10px 0px 10px;
+    display:block;
+    
+}
+
+form legend{
     color:#666666;
     margin:0px;
     padding:0px;
@@ -566,84 +619,60 @@ form legend {
     padding:0px 0px 0px 0px;
     *margin:0px 0px 0px -6px;
 }
-   
-    /**************** Forms Styles Finish ****************/
-/**************** List Styles Start ******************/
-   
-form dl {
-	margin:0px 0px 15px 0px;
+
+form label {
+	padding-right:5px;
+}
+
+/* basic form list items */
+
+form dl{
+    margin:0px 0px 0px 0px;
     padding:0px;
     width:auto;
     clear:both;
 }
-form dt {
+
+form dt{
     float:left;
-    width:40%;
-    margin:0px 0px 5px 0px;
+    width:33%;
+    margin:0px 0px 0px 0px;
     color:#000000;
     font-size:110%;
-    clear:both;
     text-align:right;
 }
-form dd {
-    margin:0px 0px 10px 41%;
+
+form dd{
+    margin:0px 0px 0px 33%;
+    padding-bottom:10px;
     color:#666666;
     _text-indent:-3px !important;
 }
-form dt label {
+
+form dd label{
     vertical-align:top;
     *vertical-align:baseline;
     margin:0px 8px 0px 0px;
     line-height:1.6em;
 }
+
+form .input input {
+	width:100%;
+	border:1px solid grey;
+}
+form .input dt {
+	padding:2px 0px 0px 0px;
+}
+form .triplet input {
+	width:30%;
+}
+form .checkbox dt {
+	width:50%;
+}
+form .checkbox dd {
+	margin-left:50%;
+}
    
-    /**************** List Styles Finish *****************/
-
-
-
-/* button basic styles 
-button { 
-  border:0; 
-  cursor:pointer; 
-  font-weight:bold; 
-  padding:0 20px 0 0; 
-  text-align:center; 
-  margin:0 0 0 15px;
-}
-button span { 
-  position:relative; 
-  display:block; 
-  white-space:nowrap; 
-  padding:0 0 0 20px;
-  margin-left:-15px;
-}*/
-
-/* button unique styles 
-button.submitBtn { 
-  background:url(/images/buttons/large.png) right no-repeat; 
-  font-size:1.3em; 
-}
-button.submitBtn span { 
-  height:48px; 
-  line-height:48px;
-	background:url(/images/buttons/large.png) left no-repeat;
-  color:#fff; 
-}
-button.submitBtn:hover {
-	background:url(/images/buttons/large-hover.png) right no-repeat; 
-}
-button.submitBtn:hover span {
-	background:url(/images/buttons/large-hover.png) left no-repeat; 
-}
-
-* html button { 
-  width:auto; 
-  overflow:visible; 
-}
-* html button span { 
-  /*margin-top:1px; 
-}*/
-
 /* sitewide tools */
 .small-button {
 	display:block;
@@ -664,6 +693,7 @@ button.submitBtn:hover span {
   text-align:center;
   vertical-align:middle;
   margin-right:15px;
+  clear:both;
 }
 .large-button:hover {
   background:transparent url(<%= style_image_path("button_large_hover") || "/images/buttons/large-hover.png" -%>) no-repeat top left;

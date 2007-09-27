@@ -1,7 +1,7 @@
 <% content_box ("how will you pay?", :id => "payment", :class => "shadow" ) do %>
 
 <% form_for :authorization, :url => url_for(:action => "payment" ) , :method => :post, :html => { :id => 'authorization-form' } do |f| %>
-   <fieldset>
+   <fieldset class="input">
     <legend>Credit Card Details</legend>
      <dl>
       <dt><label for="creditcard_first_name">First Name:</label></dt>
@@ -15,14 +15,13 @@
       
       <dt><label for="creditcard_number">Card Number:</label></dt>
        <dd><%= f.text_field :number -%></dd>
-      
-      <dt><label for="creditcard_expiration_month">Exp. Month:</label></dt>
-       <dd><%= select_month(Date.today)%></dd>
-      
-      <dt><label for="creditcard_expiration_month">Exp. Year:</label></dt>
-       <dd><%= select_year(Date.today)%></dd>
-      
-      <dt><label for="creditcard_verification_value">Verification Value:</label></dt>
+   </dl>
+   <dl class="expiration">   
+      <dt><label for="creditcard_expiration_month_year">Expiration:</label></dt>
+       <dd><%= select_month(Date.today)%><%= select_year(Date.today)%></dd>
+   	</dl>
+    <dl class="verification">  
+      <dt><label for="creditcard_verification_value">Verification:</label></dt>
        <dd><%= f.text_field :verification_value, :size => 6 -%></dd>
      </dl>
    </fieldset>

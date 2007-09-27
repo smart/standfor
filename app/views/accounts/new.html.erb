@@ -1,31 +1,27 @@
-<% content_box('Create a Standfor:us Account', :id => 'register', :class => 'shadow') do -%>
+<% content_box('create a standfor:us account', :id => 'register', :class => 'shadow') do -%>
 
 	<%= error_messages_for :account -%>
-	<% form_for :account, :url => accounts_path do |f| -%>
-	<ul>
-		<li>
-			<label for="account_login">Username:</label>
-			<%= f.text_field :login %>
-		</li>
-		<li>
-			<label for="account_email">Email:</label>
-			<%= f.text_field :email %>
-		</li>
-		<li>
-			<label for="account_password">Password:</label>
-			<%= f.password_field :password %>
-		</li>
-		<li>
-			<label for="account_password_confirmation">Confirm Password:</label>
-			<%= f.password_field :password_confirmation %>
-		</li>
-		<li>
-			<% content_tag :button, :type => 'submit', :class => 'replace-button' do -%>
-				<%= button(:image => 'labels/register.png', :alt => "Register", :link => "", :class => 'large-button' ) -%>
-			<% end %>
-		  <!--<%= link_to 'Login', login_url %>-->
-		</li>
-	</ul>
+	<% form_for :account, :url => accounts_path, :html => { :id => "register-form" } do |f| -%>
+	<fieldset class="input">
+		<dl>
+			<dt><label for="account_login">Username:</label></dt>
+				<dd><%= f.text_field :login %></dd>
+		</dl>
+		<dl>
+			<dt><label for="account_email">Email:</label></dt>
+				<dd><%= f.text_field :email %></dd>
+		</dl>
+		<dl>
+			<dt><label for="account_password">Password:</label></dt>
+				<dd><%= f.password_field :password %></dd>
+		</dl>
+		<dl>
+			<dt><label for="account_password_confirmation">Confirm Password:</label></dt>
+				<dd><%= f.password_field :password_confirmation %></dd>
+		</dl>
+	</fieldset>
+	<%= button(:image => "/text/button_text/signup!.png", :alt => "Login",  :type => "submit", :class => "large-button", :form_id => 'register-form' ) -%>		
+
 	<span class="clear"></span>
 	<% end -%>
 <% end -%>

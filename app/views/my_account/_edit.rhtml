@@ -4,7 +4,7 @@
 <% form_remote_for :my_account, @account, 
  :url => {:controller => 'my_account', :action => 'update', :id => @account }, :html => {:id => 'edit-account-form'}  do |f| %>
 
-<fieldset>
+<fieldset class="input">
 	<legend>Edit your Info</legend>
 		<dl>
 			<dt><label for="account_fullname" >Full Name:</label></dt>
@@ -33,6 +33,7 @@
 		<% if false %>
    <%= button(:image => "labels/update.png", :alt => "Update", :form_id => 'edit-account-form', :type => 'submit', :class => 'large-button') %>
 <% end %>
+<%= button(:image => "labels/update.png", :alt => "Update", :form_id => 'edit-account-form', :type => 'submit', :class => 'large-button', :value => 'update') %>
    <%= f.submit 'update' %>
 </fieldset>
  <span class="clear"></span>
