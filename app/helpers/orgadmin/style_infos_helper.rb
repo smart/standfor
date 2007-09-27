@@ -1,0 +1,2 @@
+module Orgadmin::StyleInfosHelper
+end

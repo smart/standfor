@@ -1,0 +1,10 @@
+<ol>
+<% %w{color_primary color_secondary color_third color_standfor_1 color_standfor_2 color_header_1 color_header_2 color_button_1 color_button_2 color_fill_1 color_fill_2 }.each do |field| %>
+<li><%= field -%> : <%= @style_info.send(field) -%> </li>
+<% end %>
+</ol>
+
+<br />
+
+<%= link_to 'Edit', edit_orgadmin_organization_style_info_path(@organization, @style_info) %> |
+<%= link_to 'Back', orgadmin_organization_style_infos_path(@organization ) %>

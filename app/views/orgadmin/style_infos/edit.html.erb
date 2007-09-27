@@ -1,0 +1,16 @@
+<h1>Editing style_info</h1>
+
+<%= error_messages_for :style_info %>
+
+<% form_for(@style_info, :url => orgadmin_organization_style_info_path(@organization, @style_info), :method => :put ) do |f| %>
+ <ul>
+  <%= render :partial => 'fields' , :locals => {:f => f} -%>
+  <li>
+    <%= f.submit "Update" %>
+  </li>
+ </ul>
+<% end %>
+
+<%= link_to 'Show', orgadmin_organization_style_info_path(@organization, @style_info ) %> 
+|
+<%= link_to 'Back', orgadmin_organization_style_infos_path(@organization) %>

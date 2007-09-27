@@ -1,5 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-
   map.login   '/login',  :controller => 'sessions', :action => 'new'
   map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
   map.signup  '/signup', :controller => 'accounts',   :action => 'new'
@@ -8,7 +7,7 @@ ActionController::Routing::Routes.draw do |map|
   map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
   map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
 
-  map.resources :accounts, :my_badges, :campaigns, :sponsors, :sytle_infos, :badges, :oranizations, :segments, :requirements, :style_infos
+  map.resources :accounts, :my_badges, :campaigns, :sponsors, :badges, :oranizations, :segments, :requirements, :style_infos
   map.resource :sessions
 
   map.resources :accounts do |user|
@@ -38,6 +37,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :organizations do |organizations|
        organizations.resources :segments 
        organizations.resources :campaigns
+       organizations.resources :style_infos
     end
  end
 
