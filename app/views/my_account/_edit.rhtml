@@ -1,39 +1,50 @@
-
 <%= error_messages_for :account %>
-
 <% form_remote_for :my_account, @account, 
- :url => {:controller => 'my_account', :action => 'update', :id => @account }, :html => {:id => 'edit-account-form'}  do |f| %>
-
+   :url => { :controller => 'my_account', 
+     :action => 'update', 
+     :id => @account }, 
+  :html => {:id => 'edit-account-form'}  do |f| %>
 <fieldset class="input">
-	<legend>Edit your Info</legend>
-		<dl>
-			<dt><label for="account_fullname" >Full Name:</label></dt>
-				<dd><%= f.text_field :fullname -%></dd>
-			<dt><label for="account_nickname" >Nick Name:</label></dt>
-				<dd><%= f.text_field :nickname -%></dd>
-			<dt><label for="account_phone" >Phone:</label></dt>
-				<dd><%= f.text_field :phone -%></dd>
-			<% if false %>
-			<dt><label for="account_email" >Primary Email:</label></dt>
-				<dd><%= f.text_field :primary_email -%></dd>
-			<% end  %>
-			<dt><label for="account_address_1" >Address 1:</label></dt>
-				<dd><%= f.text_field :address_1 -%></dd>
-			<dt><label for="account_address_2" >Address 2:</label></dt>
-				<dd><%= f.text_field :address_2 -%></dd>
-			<dt><label for="account_city" >City:</label></dt>
-				<dd><%= f.text_field :city -%></dd>
-			<dt><label for="account_state" >State:</label></dt>
-				<dd><%= f.select 'state', select_state_for_account -%></dd>
-			<dt><label for="account_zip" >Zip:</label></dt>
-				<dd><%= f.text_field :zip-%></dd>
-			<dt><label for="account_country" >Country:</label></dt>
-				<dd><%= f.country_select :country, ['United States', 'Canada' ], :size => 30 -%></dd>
-		</dl>
-		<% if false %>
+ <legend>Edit your Info</legend>
+  <dl>
+   <dt><label for="account_fullname" >Full Name:</label></dt>
+    <dd><%= f.text_field :fullname -%></dd>
+   <dt><label for="account_nickname" >Nick Name:</label></dt>
+    <dd><%= f.text_field :nickname -%></dd>
+   <dt><label for="account_phone" >Phone:</label></dt>
+    <dd><%= f.text_field :phone -%></dd>
+
+<% if false %>
+   <dt><label for="account_email" >Primary Email:</label></dt>
+    <dd><%= f.text_field :primary_email -%></dd>
+<% end  %>
+
+   <dt><label for="account_address_1" >Address 1:</label></dt>
+    <dd><%= f.text_field :address_1 -%></dd>
+   <dt><label for="account_address_2" >Address 2:</label></dt>
+    <dd><%= f.text_field :address_2 -%></dd>
+   <dt><label for="account_city" >City:</label></dt>
+    <dd><%= f.text_field :city -%></dd>
+   <dt><label for="account_state" >State:</label></dt>
+    <dd><%= f.select 'state', select_state_for_account -%></dd>
+   <dt><label for="account_zip" >Zip:</label></dt>
+    <dd><%= f.text_field :zip-%></dd>
+   <dt><label for="account_country" >Country:</label></dt>
+    <dd><%= f.country_select :country, ['United States', 'Canada' ], :size => 30 -%></dd>
+  </dl>
+
+<% if false %>
    <%= button(:image => "labels/update.png", :alt => "Update", :form_id => 'edit-account-form', :type => 'submit', :class => 'large-button') %>
 <% end %>
-<%= button(:image => "labels/update.png", :alt => "Update", :form_id => 'edit-account-form', :type => 'submit', :class => 'large-button', :value => 'update') %>
+
+<%= button( :image => "labels/update.png", 
+     :alt => "Update", 
+     :form_id => 'edit-account-form', 
+     :url => "/my_account/update/#{@account.id}", 
+     :type => 'remote_submit', 
+     :class => 'large-button', 
+     :value => 'update') %>
+
    <%= f.submit 'update' %>
 </fieldset>
  <span class="clear"></span>

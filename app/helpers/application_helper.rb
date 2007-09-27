@@ -35,12 +35,16 @@ module ApplicationHelper
   def button(opts = {})
     image = image_tag(opts[:image], :alt => opts[:alt])
     link = opts[:link] ? opts[:link] : "document.getElementById('#{opts[:form_id]}').submit()"
-    
     if opts[:type] == "submit"
-    	html = content_tag(:span, link_to_function(image, link), :class => opts[:class])
-	else
-		html = content_tag(:span, link_to(image, link), :class => opts[:class])
-	end
+      html = content_tag(:span, link_to_function(image, link), :class => opts[:class])
+    elsif opts[:type] == "remote_submit"
+     @form = opts[:form_id] 
+     @url = opts[:url] 
+     link = remote_function(:url => @url , :with => "Form.serialize('#{@form}')" )
+      html = content_tag(:span, link_to_function(image, link), :class => opts[:class])
+    else
+     html = content_tag(:span, link_to(image, link), :class => opts[:class])
+    end
     return html
   end
   
