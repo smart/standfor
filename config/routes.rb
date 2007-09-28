@@ -29,8 +29,11 @@ ActionController::Routing::Routes.draw do |map|
   end 
 
  map.namespace(:admin) do |admin|
+    admin.resources :sponsors
     admin.resources :organizations do |organizations|
        organizations.resources :segments 
+       organizations.resources :campaigns
+       organizations.resources :style_infos
     end
  end
 

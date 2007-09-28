@@ -1,11 +1,12 @@
 class Admin::SegmentsController < ApplicationController
   layout '/admin/default'
   before_filter :login_required 
+  before_filter :get_organization
   access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin" 
   # GET /admin_segments
   # GET /admin_segments.xml
   def index
-    @segments = Admin::Segment.find(:all)
+    @segments = Segment.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +17,7 @@ class Admin::SegmentsController < ApplicationController
   # GET /admin_segments/1
   # GET /admin_segments/1.xml
   def show
-    @segment = Admin::Segment.find(params[:id])
+    @segment = Segment.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +28,7 @@ class Admin::SegmentsController < ApplicationController
   # GET /admin_segments/new
   # GET /admin_segments/new.xml
   def new
-    @segment = Admin::Segment.new
+    @segment = Segment.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,17 +38,17 @@ class Admin::SegmentsController < ApplicationController
 
   # GET /admin_segments/1/edit
   def edit
-    @segment = Admin::Segment.find(params[:id])
+    @segment = Segment.find(params[:id])
   end
 
   # POST /admin_segments
   # POST /admin_segments.xml
   def create
-    @segment = Admin::Segment.new(params[:segment])
+    @segment = Segment.new(params[:segment])
 
     respond_to do |format|
       if @segment.save
-        flash[:notice] = 'Admin::Segment was successfully created.'
+        flash[:notice] = 'Segment was successfully created.'
         format.html { redirect_to(@segment) }
         format.xml  { render :xml => @segment, :status => :created, :location => @segment }
       else
@@ -60,11 +61,11 @@ class Admin::SegmentsController < ApplicationController
   # PUT /admin_segments/1
   # PUT /admin_segments/1.xml
   def update
-    @segment = Admin::Segment.find(params[:id])
+    @segment = Segment.find(params[:id])
 
     respond_to do |format|
       if @segment.update_attributes(params[:segment])
-        flash[:notice] = 'Admin::Segment was successfully updated.'
+        flash[:notice] = 'Segment was successfully updated.'
         format.html { redirect_to(@segment) }
         format.xml  { head :ok }
       else
@@ -77,7 +78,7 @@ class Admin::SegmentsController < ApplicationController
   # DELETE /admin_segments/1
   # DELETE /admin_segments/1.xml
   def destroy
-    @segment = Admin::Segment.find(params[:id])
+    @segment = Segment.find(params[:id])
     @segment.destroy
 
     respond_to do |format|
@@ -85,4 +86,11 @@ class Admin::SegmentsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+ 
+  private
+
+  def get_organization
+   @oranization = Organization.find(params[:organization_id])
+  end
+
 end

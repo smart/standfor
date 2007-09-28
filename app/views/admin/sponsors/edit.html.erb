@@ -1,12 +1,14 @@
-<h1>Editing sponsor</h1>
+<h1>New Sponsor</h1>
 
 <%= error_messages_for :sponsor %>
-
-<% form_for(@sponsor) do |f| %>
-  <p>
-    <%= f.submit "Update" %>
-  </p>
+<% form_for(@sponsor, :url => admin_sponsor_path(@sponsor), :method => :put) do |f| %>
+ <ul>
+  <%= render :partial => 'fields', :locals => {:f => f } -%>
+  <li>
+    <%= f.submit "Create" %>
+  </li>
+ <ul>
 <% end %>
 
-<%= link_to 'Show', @sponsor %> |
-<%= link_to 'Back', sponsors_path %>
+<%= link_to 'Back', admin_sponsors_path %>
+<%= link_to 'Show', admin_sponsor_path(@sponsor) %>

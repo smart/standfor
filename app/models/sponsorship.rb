@@ -17,7 +17,6 @@ class Sponsorship < ActiveRecord::Base
      return 1000 if end_date.nil?
      return (end_date - Date.today).to_i
    end 
-     
    
    def unique_total
      self.sponsorship_hits.count(:group => :ip).length * (unique_rate || 0)
@@ -35,7 +34,6 @@ class Sponsorship < ActiveRecord::Base
    def golden_total
      self.sponsorship_clicks.count("golden = true") * (golden_link_rate || 0 )
    end
-   
    
    def total_spent
      return unique_total + hits_total + click_total + golden_total

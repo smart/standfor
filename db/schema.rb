@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 28) do
+ActiveRecord::Schema.define(:version => 31) do
 
   create_table "access_codes", :force => true do |t|
     t.integer "scope_id",                                  :null => false
@@ -183,12 +183,61 @@ ActiveRecord::Schema.define(:version => 28) do
 
   create_table "sponsors", :force => true do |t|
     t.string   "name"
+    t.string   "site_name"
+    t.string   "logo"
+    t.string   "address1"
+    t.string   "address2"
+    t.string   "address3"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "country"
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "email"
+    t.string   "url"
+    t.text     "statement"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sponsorship_clicks", :force => true do |t|
+    t.integer  "sponsorship_id"
+    t.integer  "my_badge_id"
+    t.boolean  "golden",             :default => false
+    t.integer  "sponsorship_hit_id"
+    t.string   "ip"
+    t.string   "referrer"
+    t.string   "cookies"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sponsorship_hits", :force => true do |t|
+    t.integer  "my_badge_id"
+    t.integer  "sponsorship_id"
+    t.boolean  "golden",         :default => false
+    t.string   "ip"
+    t.string   "domain"
+    t.string   "host"
+    t.string   "referrer"
+    t.string   "cookies"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   create_table "sponsorships", :force => true do |t|
     t.integer "sponsor_id"
+    t.integer "max_amount"
+    t.date    "start_date"
+    t.date    "end_date"
+    t.integer "num_golden_links"
+    t.float   "golden_link_rate"
+    t.float   "click_rate"
+    t.float   "unique_rate"
+    t.float   "hit_rate"
+    t.float   "awareness_point_rate"
+    t.string  "type"
     t.integer "sponsorable_id"
     t.string  "sponsorable_type"
   end

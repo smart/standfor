@@ -1,11 +1,12 @@
 class Admin::OrganizationsController < ApplicationController
   layout '/admin/default'
+  helper 'organizations'
   before_filter :login_required 
   access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin" 
   # GET /admin_organizations
   # GET /admin_organizations.xml
   def index
-    @organizations = Admin::Organization.find(:all)
+    @organizations = Organization.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +17,7 @@ class Admin::OrganizationsController < ApplicationController
   # GET /admin_organizations/1
   # GET /admin_organizations/1.xml
   def show
-    @organization = Admin::Organization.find(params[:id])
+    @organization = Organization.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +28,7 @@ class Admin::OrganizationsController < ApplicationController
   # GET /admin_organizations/new
   # GET /admin_organizations/new.xml
   def new
-    @organization = Admin::Organization.new
+    @organization = Organization.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,18 +38,23 @@ class Admin::OrganizationsController < ApplicationController
 
   # GET /admin_organizations/1/edit
   def edit
-    @organization = Admin::Organization.find(params[:id])
+    @organization = Organization.find(params[:id])
   end
 
   # POST /admin_organizations
   # POST /admin_organizations.xml
   def create
-    @organization = Admin::Organization.new(params[:organization])
+    @organization = Organization.new(params[:organization])
 
     respond_to do |format|
       if @organization.save
-        flash[:notice] = 'Admin::Organization was successfully created.'
-        format.html { redirect_to(@organization) }
+       @style_info = StyleInfo.new
+       @style_info.scope_type =  'Organization'
+       @style_info.scope_id =  @organization.id
+       @style_info.save
+       @organization.reload
+        flash[:notice] = 'Organization was successfully created.'
+        format.html { redirect_to admin_organization_url(@organization) }
         format.xml  { render :xml => @organization, :status => :created, :location => @organization }
       else
         format.html { render :action => "new" }
@@ -60,12 +66,12 @@ class Admin::OrganizationsController < ApplicationController
   # PUT /admin_organizations/1
   # PUT /admin_organizations/1.xml
   def update
-    @organization = Admin::Organization.find(params[:id])
+    @organization = Organization.find(params[:id])
 
     respond_to do |format|
       if @organization.update_attributes(params[:organization])
-        flash[:notice] = 'Admin::Organization was successfully updated.'
-        format.html { redirect_to(@organization) }
+        flash[:notice] = 'Organization was successfully updated.'
+        format.html { redirect_to admin_organization_url(@organization) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -77,7 +83,7 @@ class Admin::OrganizationsController < ApplicationController
   # DELETE /admin_organizations/1
   # DELETE /admin_organizations/1.xml
   def destroy
-    @organization = Admin::Organization.find(params[:id])
+    @organization = Organization.find(params[:id])
     @organization.destroy
 
     respond_to do |format|

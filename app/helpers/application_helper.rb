@@ -40,7 +40,7 @@ module ApplicationHelper
     elsif opts[:type] == "remote_submit"
      @form = opts[:form_id] 
      @url = opts[:url] 
-     link = remote_function(:url => @url , :with => "Form.serialize('#{@form}')" )
+      link = remote_function(:url => @url , :with => "Form.serialize('#{@form}')" )
       html = content_tag(:span, link_to_function(image, link), :class => opts[:class])
     else
      html = content_tag(:span, link_to(image, link), :class => opts[:class])

@@ -19,6 +19,10 @@ class Sponsor < ActiveRecord::Base
     end
     return total
   end
+
+  def to_param
+    "#{id}"
+  end
      
 
 end

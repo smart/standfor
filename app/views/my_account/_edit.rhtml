@@ -33,10 +33,6 @@
     <dd><%= f.country_select :country, ['United States', 'Canada' ], :size => 30 -%></dd>
   </dl>
 
-<% if false %>
-   <%= button(:image => "labels/update.png", :alt => "Update", :form_id => 'edit-account-form', :type => 'submit', :class => 'large-button') %>
-<% end %>
-
 <%= button( :image => "labels/update.png", 
      :alt => "Update", 
      :form_id => 'edit-account-form', 
@@ -45,7 +41,6 @@
      :class => 'large-button', 
      :value => 'update') %>
 
-   <%= f.submit 'update' %>
 </fieldset>
  <span class="clear"></span>
 <% end %>

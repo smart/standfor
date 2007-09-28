@@ -1,3 +1,9 @@
+<h1>Campaigns Show</h1>
+<ol>
+<% %w{name description goal end_date }.each do |field| %>
+<li><%= field -%>: <%= @campaign.send(field)-%></li>
+<% end  %>
+</ol>
 
-<%= link_to 'Edit', edit_campaign_path(@campaign) %> |
-<%= link_to 'Back', campaigns_path %>
+<%= link_to 'Edit', edit_admin_organization_campaign_path(@organization, @campaign) %> |
+<%= link_to 'Back', admin_organization_campaigns_path(@organization) %>

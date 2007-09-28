@@ -1,11 +1,13 @@
 class Admin::SponsorsController < ApplicationController
   layout '/admin/default'
+  helper 'sponsors'
   before_filter :login_required 
   access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin" 
+
   # GET /admin_sponsors
   # GET /admin_sponsors.xml
   def index
-    @sponsors = Admin::Sponsor.find(:all)
+    @sponsors = Sponsor.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
@@ -16,7 +18,7 @@ class Admin::SponsorsController < ApplicationController
   # GET /admin_sponsors/1
   # GET /admin_sponsors/1.xml
   def show
-    @sponsor = Admin::Sponsor.find(params[:id])
+    @sponsor = Sponsor.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -27,7 +29,7 @@ class Admin::SponsorsController < ApplicationController
   # GET /admin_sponsors/new
   # GET /admin_sponsors/new.xml
   def new
-    @sponsor = Admin::Sponsor.new
+    @sponsor = Sponsor.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -37,17 +39,17 @@ class Admin::SponsorsController < ApplicationController
 
   # GET /admin_sponsors/1/edit
   def edit
-    @sponsor = Admin::Sponsor.find(params[:id])
+    @sponsor = Sponsor.find(params[:id])
   end
 
   # POST /admin_sponsors
   # POST /admin_sponsors.xml
   def create
-    @sponsor = Admin::Sponsor.new(params[:sponsor])
+    @sponsor = Sponsor.new(params[:sponsor])
 
     respond_to do |format|
       if @sponsor.save
-        flash[:notice] = 'Admin::Sponsor was successfully created.'
+        flash[:notice] = 'Sponsor was successfully created.'
         format.html { redirect_to(@sponsor) }
         format.xml  { render :xml => @sponsor, :status => :created, :location => @sponsor }
       else
@@ -60,11 +62,11 @@ class Admin::SponsorsController < ApplicationController
   # PUT /admin_sponsors/1
   # PUT /admin_sponsors/1.xml
   def update
-    @sponsor = Admin::Sponsor.find(params[:id])
+    @sponsor = Sponsor.find(params[:id])
 
     respond_to do |format|
       if @sponsor.update_attributes(params[:sponsor])
-        flash[:notice] = 'Admin::Sponsor was successfully updated.'
+        flash[:notice] = 'Sponsor was successfully updated.'
         format.html { redirect_to(@sponsor) }
         format.xml  { head :ok }
       else
@@ -77,7 +79,7 @@ class Admin::SponsorsController < ApplicationController
   # DELETE /admin_sponsors/1
   # DELETE /admin_sponsors/1.xml
   def destroy
-    @sponsor = Admin::Sponsor.find(params[:id])
+    @sponsor = Sponsor.find(params[:id])
     @sponsor.destroy
 
     respond_to do |format|

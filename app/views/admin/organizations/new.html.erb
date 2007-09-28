@@ -2,10 +2,17 @@
 
 <%= error_messages_for :organization %>
 
-<% form_for(@organization) do |f| %>
-  <p>
+<% form_for(@organization, :url => admin_organization_path(@organization), :method => :post) do |f| %>
+
+  <ul>
+  <%= render :partial => 'fields' , :locals => {:f => f } -%>
+
+  <li>
     <%= f.submit "Create" %>
-  </p>
+  </li>
+
+ </ul>
+
 <% end %>
 
 <%= link_to 'Back', organizations_path %>

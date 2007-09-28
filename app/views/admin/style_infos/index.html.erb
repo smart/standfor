@@ -6,13 +6,18 @@
 
 <% for style_info in @style_infos %>
   <tr>
-    <td><%= link_to 'Show', style_info %></td>
-    <td><%= link_to 'Edit', edit_style_info_path(style_info) %></td>
-    <td><%= link_to 'Destroy', style_info, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', admin_organization_style_info_path(@organization, style_info ) %></td>
+    <td><%= link_to 'Edit', edit_admin_organization_style_info_path(@organization, style_info) %></td>
+
+<% if false %>
+    <td><%= link_to 'Destroy', admin_organization_style_info_path(@organization, style_info), :confirm => 'Are you sure?', :method => :delete %></td>
+<% end %>
+
   </tr>
 <% end %>
 </table>
 
+<% if false %>
 <br />
-
 <%= link_to 'New style_info', new_style_info_path %>
+<% end %>

@@ -1,3 +1,15 @@
+<ol>
+<% %w{ name address1 address2 address3 city state zip country phone fax email url statement description created_on updated_on keyword site_name }.each do |field| %>
+<li><%= field -%>: <%= @organization.send(field)-%></li>
+<% end  %>
+</ol>
 
-<%= link_to 'Edit', edit_organization_path(@organization) %> |
-<%= link_to 'Back', organizations_path %>
+<ol>
+<li><%= link_to 'segments',  admin_organization_segments_path(@organization) -%></li>
+<li><%= link_to 'campaigns',  admin_organization_campaigns_path(@organization) -%></li>
+<li><%= link_to 'color scheme',  admin_organization_style_info_path(@organization, @organization.style_info) -%></li>
+</ol>
+
+<%= link_to 'Edit', edit_admin_organization_path(@organization) %> |
+<%= link_to 'Back', admin_organizations_path %>
+
