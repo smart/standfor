@@ -1,5 +1,6 @@
 class Sponsor < ActiveRecord::Base
   has_many :sponsorships
+  has_and_belongs_to_many :accounts
 
   def sponsored 
      sponsorships.collect {|sponsorship| sponsorship.sponsorable }
@@ -10,5 +11,14 @@ class Sponsor < ActiveRecord::Base
     sponsorships.create :sponsorable => sponsorable 
     return true 
   end
+  
+  def total_spent
+    total = 0
+    sponsorships.each do |sponsorship|
+      total += sponsorship.total_spent 
+    end
+    return total
+  end
+     
 
 end

@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  map.view_badge "/standfor/:id.:ext", :controller => "adis", :action => "index"
   map.login   '/login',  :controller => 'sessions', :action => 'new'
   map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
   map.signup  '/signup', :controller => 'accounts',   :action => 'new'

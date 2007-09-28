@@ -2,8 +2,9 @@ class MyBadge < ActiveRecord::Base
   belongs_to :account
   belongs_to :badge
   attr_accessor :build_data, :access_code
-
   validates_presence_of :account_id
+  has_many :sponsorship_hits
+  has_many :sponsorship_clicks
 
   def validate_on_create
      unless self.badge.authorized?(self.account)
@@ -17,6 +18,15 @@ class MyBadge < ActiveRecord::Base
           self.adi_id  = adi.id
         end
       end
+   end
+   
+   def all_sponsorships
+   #refactor this into one SQL
+     my_sponsors = []
+     my_sponsors << self.badge.sponsorships
+     my_sponsors << self.badge.segment.sponsorships
+     my_sponsors << self.badge.segment.organization.sponsorships
+     my_sponsors.flatten
    end
 
 end
