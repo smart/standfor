@@ -12,10 +12,16 @@
    <% end %>
   <span class="clear">&nbsp</span>
 
-<% if current_account.is_sponsor? %>
- <%= link_to 'Sponsor',  '/sponsorships/new'  -%> 
-<% else %>
-<%= link_to 'Become A Sponsor',  new_sponsor_path -%>
+<% if current_account != :false %>
+  <% if current_account.is_sponsor? %>
+   <%= link_to 'Sponsor',  
+	:controller=> 'sponsorships', 
+	:action => 'new', 
+	:sponsorable_type => 'Organization' , 
+	:sponsorable_id => @organization.id   -%> 
+  <% else %>
+   <%= link_to 'Become A Sponsor',  new_sponsor_path -%>
+   <% end %>
 <% end %>
 
 <% end %>
