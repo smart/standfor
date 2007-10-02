@@ -5,10 +5,9 @@
 }
 
 body { 
-  background-color:#fff; 
   color:#333;
-  width:980px;
-  margin:0 auto;
+  background:#fff url(/images/header/body_background.png) repeat-y top center;
+  
 }
 
 body, p, ol, ul, td {
@@ -59,9 +58,19 @@ img {
 }
 
 /* layout specific styles */
+#header {
+	height:150px;
+	background:url(<%= style_image_path("header_corners") || "/images/header/header_corners_default.png" -%>) no-repeat top center;
+	margin-bottom:10px;
+}
 
-#container {
-
+#container, #header-image {
+	width:980px;
+  margin:0 auto;
+}
+#header-image {
+	height:150px;
+	background:url(<%= style_image_path("header") || "/images/header/header_default.png" -%>) no-repeat top center;
 }
 #navigation {
 	height:42px;

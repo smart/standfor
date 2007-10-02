@@ -52,13 +52,13 @@ window.attachEvent("onload", correctPNG);
 </head>
 <body class="<%= @context || "uninitialized" -%>">
   <div id="header">
-    <h1>standfor:us</h1>
-    <p>Your Branding goes here</p>
-
-
+  	<div id="header-image">
+	    <h1>standfor:us</h1>
+	    <p>Your Branding goes here</p>
+		</div>
   </div>
 <div id="container">
-
+<!--
 <div id="navigation">
   <ul>
    <li class="first"><%= link_to(image_tag((style_image_path("header_standfor") || "labels/standfor.png"), :alt => 'standfor'), '/') -%></li>
@@ -76,8 +76,9 @@ window.attachEvent("onload", correctPNG);
 
 
 </div>
-</div>
 
+</div>
+-->
     <div id="content">
       <div class="oi-wrapper">
         <p style="color: green"><%= flash[:notice] %></p>
