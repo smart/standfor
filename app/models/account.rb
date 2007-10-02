@@ -68,4 +68,9 @@ class Account< ActiveRecord::Base
   def total_donations
      Donation.sum(:amount, :conditions =>{ :account_id => self.id } )
   end
+
+  def is_sponsor?
+    return Sponsor.exists?(:account_id => self.id )
+  end
+  
 end

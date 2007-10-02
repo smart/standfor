@@ -12,8 +12,11 @@
    <% end %>
   <span class="clear">&nbsp</span>
 
-
+<% if current_account.is_sponsor? %>
+ <%= link_to 'Sponsor',  '/sponsorships/new'  -%> 
+<% else %>
 <%= link_to 'Become A Sponsor',  new_sponsor_path -%>
+<% end %>
 
 <% end %>
 
