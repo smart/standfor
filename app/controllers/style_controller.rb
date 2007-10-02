@@ -1,6 +1,29 @@
 class StyleController < ApplicationController
   caches_page :solid_shadow_dark_head, :gradient_shadow_light_head, :header_bar, :default
   
+  def header
+  
+  header_image = Magick::Image.read( RAILS_ROOT + "/public/images/header/header_image.png").first
+  bar = color_image(RAILS_ROOT + "/public/images/header/bar_fill.png", style_info.color_primary)
+  bar.resize!(header_image.columns, bar.rows)
+  return_image = Magick::Image.new(header_image.columns, header_image.rows + bar.rows) { self.background_color = "transparent"} 
+  return_image.composite!(bar, Magick::SouthGravity, Magick::OverCompositeOp)
+  image_list = Magick::ImageList.new
+    image_list << header_image  
+    wet_image = header_image.wet_floor( 0.5, 2.75)
+    image_list << wet_image
+    header_wet = image_list.append(true)
+  return_image.composite!(header_wet,Magick::NorthGravity, Magick::OverCompositeOp)
+  @output_image = return_image
+  output
+  end
+  
+  def top_bar
+     bar = color_image(RAILS_ROOT + "/public/images/header/bar_fill.png", style_info.color_primary)
+    @output_image = bar   
+    output
+  end
+  
   def solid_shadow_dark_head
     p params[:style_info]
     list = Magick::ImageList.new
