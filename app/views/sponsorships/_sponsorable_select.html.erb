@@ -1,0 +1,15 @@
+<ol style="list-style-type:lower-alpha;">
+  <li style="list-style-type:lower-alpha;">
+  <label><%= sponsorable.name -%></label>
+  <%= sponsorship_checkbox(sponsorable, @checked ) -%>
+<% if sponsorable.class.to_s == 'Organization' %>
+   <% sponsorable.segments.each do |segment| -%>
+     <%= render :partial => 'sponsorable_select', :locals =>  {:f => f, :sponsorable => segment } %>
+   <% end %>
+<% elsif sponsorable.class.to_s == 'Segment' %>
+   <% sponsorable.badges.each do |badge| -%>
+     <%= render :partial => 'sponsorable_select', :locals =>  {:f => f, :sponsorable => badge } %>
+   <% end %>
+<% end %>  
+  </li>
+</ol>

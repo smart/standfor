@@ -1,6 +1,7 @@
 class SponsorshipsController < ApplicationController
   layout 'default'
-  before_filter  :login_required
+  helper 'sponsorships'
+  before_filter :login_required
   before_filter :get_sponsor
   # GET /sponsorships
   # GET /sponsorships.xml
@@ -28,7 +29,10 @@ class SponsorshipsController < ApplicationController
   # GET /sponsorships/new.xml
   def new
     @sponsorship = Sponsorship.new
-
+    @sponsorable = params[:sponsorable_type].constantize.find_by_id(params[:sponsorable_id]) 
+    @checked = {}
+    @checked['Organization'] = {} 
+    @checked['Organization'][1] = true
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @sponsorship }
@@ -43,6 +47,17 @@ class SponsorshipsController < ApplicationController
   # POST /sponsorships
   # POST /sponsorships.xml
   def create
+    sponsorables = []
+    params[:sponsorable].keys.each do |key|
+      params[:sponsorable][key].keys.each do |id|
+        sponsorables << key.constantize.find_by_id(id) 
+      end
+    end
+
+    sponsorables.each do |sponsorable|
+ 	@sponsor.sponsor(sponsorable)
+    end
+
     @sponsorship = Sponsorship.new(params[:sponsorship])
     @sponsorship.sponsor = @sponsor
     respond_to do |format|

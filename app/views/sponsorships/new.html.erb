@@ -3,6 +3,8 @@
 <%= error_messages_for :sponsorship %>
 
 <% form_for(@sponsorship) do |f| %>
+
+<%= render :partial => 'sponsorable_select', :locals => {:f => f, :sponsorable => @sponsorable } %>
   <ul>
     <%= render :partial => 'fields', :locals => {:f => f } -%>
     <%= f.submit "Create" %>
