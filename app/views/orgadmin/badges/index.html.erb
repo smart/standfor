@@ -6,13 +6,13 @@
 
 <% for badge in @badges %>
   <tr>
-    <td><%= link_to 'Show', badge %></td>
-    <td><%= link_to 'Edit', edit_badge_path(badge) %></td>
-    <td><%= link_to 'Destroy', badge, :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'Show', orgadmin_organization_badge_path(@organization, badge ) %></td>
+    <td><%= link_to 'Edit', edit_orgadmin_organization_badge_path(@organization, badge) %></td>
+    <td><%= link_to 'Destroy', orgadmin_organization_badge_path(@organization, badge), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New badge', new_badge_path %>
+<%= link_to 'New badge', new_orgadmin_organization_badge_path(@organization) %>

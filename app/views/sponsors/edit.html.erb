@@ -3,10 +3,12 @@
 <%= error_messages_for :sponsor %>
 
 <% form_for(@sponsor) do |f| %>
-  <p>
+ <ul>
+  <%= render :partial =>  'fields', :locals => {:f => f } -%>
+  <li>
     <%= f.submit "Update" %>
-  </p>
+  </li>
+ </ul>
 <% end %>
 
-<%= link_to 'Show', @sponsor %> |
-<%= link_to 'Back', sponsors_path %>
+<%= link_to 'Show', @sponsor %> | <%= link_to 'Back', sponsors_path %>

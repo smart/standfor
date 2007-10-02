@@ -17,6 +17,10 @@ class Badge < ActiveRecord::Base
     return false 
   end
 
+  def to_param
+   "#{id}"
+  end
+
   def access_codes
     a = [] 
     self.requirements.find_all_by_type('CodeRequirement').each do |req|

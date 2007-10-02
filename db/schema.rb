@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 31) do
+ActiveRecord::Schema.define(:version => 34) do
 
   create_table "access_codes", :force => true do |t|
     t.integer "scope_id",                                  :null => false
@@ -149,6 +149,17 @@ ActiveRecord::Schema.define(:version => 31) do
     t.integer "admin_id"
   end
 
+  create_table "organizationslogos", :force => true do |t|
+    t.string  "content_type"
+    t.string  "filename"
+    t.integer "size"
+    t.integer "parent_id"
+    t.string  "thumbnail"
+    t.integer "width"
+    t.integer "height"
+    t.integer "organization_id"
+  end
+
   create_table "requirements", :force => true do |t|
     t.integer "badge_id"
     t.string  "name"
@@ -199,6 +210,7 @@ ActiveRecord::Schema.define(:version => 31) do
     t.text     "statement"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "account_id"
   end
 
   create_table "sponsorship_clicks", :force => true do |t|
@@ -240,6 +252,17 @@ ActiveRecord::Schema.define(:version => 31) do
     t.string  "type"
     t.integer "sponsorable_id"
     t.string  "sponsorable_type"
+  end
+
+  create_table "sponsorslogos", :force => true do |t|
+    t.string  "content_type"
+    t.string  "filename"
+    t.integer "size"
+    t.integer "parent_id"
+    t.string  "thumbnail"
+    t.integer "width"
+    t.integer "height"
+    t.integer "sponsor_id"
   end
 
   create_table "style_infos", :force => true do |t|

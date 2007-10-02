@@ -1,5 +1,5 @@
 <ol>
-<% %w{ name address1 address2 address3 city state zip country phone fax email url statement description created_on updated_on keyword site_name }.each do |field| %>
+<% %w{ name address1 address2 address3 city state zip country phone fax email url statement description created_on updated_on keyword site_name tag_list }.each do |field| %>
 <li><%= field -%>: <%= @organization.send(field)-%></li>
 <% end  %>
 </ol>

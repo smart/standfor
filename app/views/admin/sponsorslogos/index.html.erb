@@ -1,0 +1,18 @@
+<h1>Listing sponsorslogos</h1>
+
+<table>
+  <tr>
+  </tr>
+
+<% for sponsorslogo in @sponsorslogos %>
+  <tr>
+    <td><%= link_to 'Show', admin_sponsor_sponsorslogo_path(@sponsor, sponsorslogo ) %></td>
+    <td><%= link_to 'Edit', edit_admin_sponsor_sponsorslogo_path(@sponsor, sponsorslogo) %></td>
+    <td><%= link_to 'Destroy',  admin_sponsor_sponsorslogo_path(@sponsor, sponsorslogo ),  :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New sponsorslogo', new_admin_sponsor_sponsorslogo_path(@sponsor) %>

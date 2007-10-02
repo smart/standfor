@@ -1,0 +1,17 @@
+  <li><lable for="badge_name" >Name:</label>
+   <%= f.text_field :name -%>
+  </li>
+  <li><lable for="badge_structure_id" >Structure ID:</label>
+   <%= f.text_field :structure_id-%>
+  </li>
+  <li><lable for="badge_description" >Description:</label>
+   <%= f.text_area :description -%>
+  </li>
+
+  <li> <lable for="badge_description" >Segment:</label>
+      <%= f.select( "segment_id",  @organization.segments.collect {|s| [ s.name, s.id ] }, 
+		{ :include_blank => false }) -%> </li>
+
+  <li><lable for="badge_tag_list" >Causes List:</label>
+   <%= f.text_field :tag_list -%>
+  </li>

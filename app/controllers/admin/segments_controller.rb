@@ -45,7 +45,6 @@ class Admin::SegmentsController < ApplicationController
   # POST /admin_segments.xml
   def create
     @segment = Segment.new(params[:segment])
-
     respond_to do |format|
       if @segment.save
         flash[:notice] = 'Segment was successfully created.'
@@ -62,11 +61,10 @@ class Admin::SegmentsController < ApplicationController
   # PUT /admin_segments/1.xml
   def update
     @segment = Segment.find(params[:id])
-
     respond_to do |format|
       if @segment.update_attributes(params[:segment])
         flash[:notice] = 'Segment was successfully updated.'
-        format.html { redirect_to(@segment) }
+        format.html { redirect_to admin_organization_segment_path(@organization, @segment) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

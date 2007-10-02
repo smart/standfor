@@ -8,7 +8,7 @@ class Account< ActiveRecord::Base
   attr_accessor :create_authenticator
   has_many :authenticators
   after_create :make_account_authenticator
-  has_and_belongs_to_many :sponsors
+  has_one :sponsor
  
    #validates_presence_of :first_name,:last_name,:phone,:email,:city,:state,:zip, :country 
    #validates_length_of :email, :within => 3..100

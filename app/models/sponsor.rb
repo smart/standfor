@@ -1,6 +1,8 @@
 class Sponsor < ActiveRecord::Base
   has_many :sponsorships
-  has_and_belongs_to_many :accounts
+  has_one :sponsorslogo
+  belongs_to :account
+  validates_presence_of :name, :site_name
 
   def sponsored 
      sponsorships.collect {|sponsorship| sponsorship.sponsorable }

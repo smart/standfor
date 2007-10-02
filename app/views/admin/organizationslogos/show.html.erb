@@ -1,0 +1,8 @@
+
+<%= image_tag @organizationslogo.public_filename, :size => @organizationslogo.image_size %>
+<%= link_to 'Change Logo', new_admin_organization_organizationslogo_path(@organization) %>
+<% if false %>
+<%= link_to 'Edit', edit_admin_organization_organizationslogo_path(@organization, @organizationslogo) %> |
+<% end  %>
+
+<%= link_to 'Back', admin_organization_organizationslogos_path(@organization) %>

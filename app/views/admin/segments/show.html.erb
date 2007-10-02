@@ -1,5 +1,5 @@
 <ol>
-<% %w{name keyword organization_id site_name description created_at updated_at}.each do |field| %>
+<% %w{name keyword organization_id site_name description tag_list created_at updated_at}.each do |field| %>
 <li><%= field -%>: <%= @segment.send(field)-%></li>
 
 <% end  %>

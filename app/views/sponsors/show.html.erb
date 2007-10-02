@@ -1,3 +1,10 @@
+<h1> Sponsor Show</h1>
 
-<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> |
-<%= link_to 'Back', sponsors_path %>
+<ol>
+<% %w{ name site_name logo address1 address2 address3 city state zip country phone fax email url statement }.each do |field| %>
+
+<li><%= field -%>: <%= @sponsor.send(field)-%></li>
+<% end  %>
+</ol>
+
+<%= link_to 'Edit', edit_sponsor_path(@sponsor) %> | <%= link_to 'Back', sponsors_path %>

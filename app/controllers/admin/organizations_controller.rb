@@ -45,9 +45,9 @@ class Admin::OrganizationsController < ApplicationController
   # POST /admin_organizations.xml
   def create
     @organization = Organization.new(params[:organization])
-
     respond_to do |format|
       if @organization.save
+       @organization.tag_list = params[:organization][:tag_list]  
        @style_info = StyleInfo.new
        @style_info.scope_type =  'Organization'
        @style_info.scope_id =  @organization.id
@@ -67,7 +67,7 @@ class Admin::OrganizationsController < ApplicationController
   # PUT /admin_organizations/1.xml
   def update
     @organization = Organization.find(params[:id])
-
+    @organization.tag_list = params[:organization][:tag_list]  
     respond_to do |format|
       if @organization.update_attributes(params[:organization])
         flash[:notice] = 'Organization was successfully updated.'

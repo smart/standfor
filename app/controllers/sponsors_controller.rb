@@ -1,9 +1,11 @@
 class SponsorsController < ApplicationController
+  layout 'default'
+  before_filter :login_required
+
   # GET /sponsors
   # GET /sponsors.xml
   def index
-    @sponsors = Sponsor.find(:all)
-
+    @sponsors = Sponsor.find(:all, :conditions => ["account_id = ? " , current_account.id ] )
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sponsors }
@@ -25,7 +27,6 @@ class SponsorsController < ApplicationController
   # GET /sponsors/new.xml
   def new
     @sponsor = Sponsor.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @sponsor }
@@ -41,11 +42,12 @@ class SponsorsController < ApplicationController
   # POST /sponsors.xml
   def create
     @sponsor = Sponsor.new(params[:sponsor])
-
+    #@logo = Logo.create! params[:logo][:uploaded_data]
     respond_to do |format|
       if @sponsor.save
+         current_account.sponsor = @sponsor
         flash[:notice] = 'Sponsor was successfully created.'
-        format.html { redirect_to(@sponsor) }
+        format.html { redirect_to sponsor_path(@sponsor) }
         format.xml  { render :xml => @sponsor, :status => :created, :location => @sponsor }
       else
         format.html { render :action => "new" }
@@ -58,11 +60,11 @@ class SponsorsController < ApplicationController
   # PUT /sponsors/1.xml
   def update
     @sponsor = Sponsor.find(params[:id])
-
+    #@logo = Logo.create! params[:logo][:uploaded_data]
     respond_to do |format|
       if @sponsor.update_attributes(params[:sponsor])
         flash[:notice] = 'Sponsor was successfully updated.'
-        format.html { redirect_to(@sponsor) }
+        format.html { redirect_to sponsor_path(@sponsor) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -82,4 +84,5 @@ class SponsorsController < ApplicationController
       format.xml  { head :ok }
     end
   end
+ 
 end

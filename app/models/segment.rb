@@ -5,6 +5,7 @@ class Segment < ActiveRecord::Base
    has_one :style_info, :as => :scope
    has_many :sponsorships, :as => :sponsorable 
    has_many :sponsors, :through => :sponsorships 
+   acts_as_taggable
 
    validates_presence_of :name, :keyword, :description, :site_name
   

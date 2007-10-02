@@ -1,12 +1,15 @@
-<h1>Editing badge</h1>
+<h1>Editing Badge</h1>
 
 <%= error_messages_for :badge %>
 
-<% form_for(@badge) do |f| %>
-  <p>
+<% form_for(@badge, :url => admin_organization_badge_path(@organization, @badge), :method => :put ) do |f| %>
+ <ul>
+  <%= render :partial => 'fields', :locals => {:f => f } -%>
+  </li>
     <%= f.submit "Update" %>
-  </p>
+  </li>
+ <ul>
 <% end %>
 
-<%= link_to 'Show', @badge %> |
-<%= link_to 'Back', badges_path %>
+<%= link_to 'Show', admin_organization_badge_path(@organization, @badge)  %> |
+<%= link_to 'Back', admin_organization_badges_path(@organization) %>

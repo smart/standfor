@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.view_badge "/standfor/:id.:ext", :controller => "adis", :action => "index"
   map.login   '/login',  :controller => 'sessions', :action => 'new'
   map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
@@ -8,7 +9,7 @@ ActionController::Routing::Routes.draw do |map|
   map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
   map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
 
-  map.resources :accounts, :my_badges, :campaigns, :sponsors, :badges, :oranizations, :segments, :requirements, :style_infos
+  map.resources :accounts, :my_badges, :campaigns, :sponsors, :badges, :oranizations, :segments, :requirements, :style_infos, :sponors
   map.resource :sessions
 
   map.resources :accounts do |user|
@@ -29,16 +30,21 @@ ActionController::Routing::Routes.draw do |map|
   end 
 
  map.namespace(:admin) do |admin|
-    admin.resources :sponsors
+    admin.resources :sponsors do |sponsors|
+      sponsors.resources :sponsorslogos  
+    end 
     admin.resources :organizations do |organizations|
        organizations.resources :segments 
+       organizations.resources :badges
        organizations.resources :campaigns
        organizations.resources :style_infos
+       organizations.resources :organizationslogos  
     end
  end
 
  map.namespace(:orgadmin) do |admin|
     admin.resources :organizations do |organizations|
+       organizations.resources :badges
        organizations.resources :segments 
        organizations.resources :campaigns
        organizations.resources :style_infos

@@ -45,8 +45,8 @@ class Admin::SponsorsController < ApplicationController
   # POST /admin_sponsors
   # POST /admin_sponsors.xml
   def create
-    @sponsor = Sponsor.new(params[:sponsor])
 
+    @sponsor = Sponsor.new(params[:sponsor])
     respond_to do |format|
       if @sponsor.save
         flash[:notice] = 'Sponsor was successfully created.'
@@ -63,7 +63,6 @@ class Admin::SponsorsController < ApplicationController
   # PUT /admin_sponsors/1.xml
   def update
     @sponsor = Sponsor.find(params[:id])
-
     respond_to do |format|
       if @sponsor.update_attributes(params[:sponsor])
         flash[:notice] = 'Sponsor was successfully updated.'
