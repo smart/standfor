@@ -72,6 +72,10 @@ img {
 	height:150px;
 	background:url(<%= style_image_path("header") || "/images/header/header_default.png" -%>) no-repeat top center;
 }
+#header-image h1 img {
+	margin-left:10px;
+	margin-top:87px;
+}
 #navigation {
 	height:42px;
 	background:url(<%= style_image_path("header_bar") || "/images/boxes/navigation-header.png" -%>) no-repeat top left;
@@ -108,9 +112,9 @@ img {
 }
 
 #sidebar {
-  width:222px;
+  width:217px;
   float:right;
-  margin:0px 5px 0px 0px;
+  margin:0px 10px 0px 0px;
   background:grey;
 }
 
@@ -119,7 +123,7 @@ img {
 }
 
 .oi-wrapper {
-  
+  padding-left:10px;
 }
 /* organization page specific styles */
 
@@ -128,7 +132,7 @@ img {
 	float:right;
 }
 #description {
-	width:440px;
+	width:430px;
 	float:left;
 }
 /* segment page specific styles */
@@ -289,7 +293,7 @@ img {
 }
 #about {
   float:right;
-  width:240px;
+  width:230px;
 }
 #donate .submitBtn img {
 	padding-right:25px;
