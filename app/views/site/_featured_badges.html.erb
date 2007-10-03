@@ -1,0 +1,10 @@
+<% content_box("featured badges", :class => "shadow", :id => "featured_badges" ) do -%>
+<ul>
+<% @badges.each do |badge|%>
+<li>
+<%= link_to badge.organization.name, organization_path(badge.organization)  %>
+<%= image_tag(badge.example_path)-%>
+</li>
+<% end  %>
+</ul>
+<% end %>

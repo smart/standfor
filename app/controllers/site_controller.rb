@@ -11,9 +11,10 @@ class SiteController < ApplicationController
 
     def index
       if params[:organization].nil?
-        redirect_to :controller => 'organizations', :action  => 'index'
+        get_featured_badges
+        render :template => '/site/index'
       else
-      redirect_to :controller =>'organizations', :action => 'show',:organization => params[:organization]
+      redirect_to :controller =>'organizations', :action => 'show', :organization => params[:organization]
       end
       false
     end
@@ -23,20 +24,24 @@ class SiteController < ApplicationController
      redirect_to session[:return_to]
    end
 
+  
    def clear
-     current_account.donations.each do |d| 
-       d.destroy
-     end
-
-     current_account.my_badges.each do |mb|
-       mb.destroy
-     end
-
-    self.current_account.forget_me if logged_in?
-    cookies.delete :auth_token
-    reset_session
-
+       current_account.donations.each do |d| 
+         d.destroy
+       end
+      current_account.my_badges.each do |mb|
+        mb.destroy
+      end
+      self.current_account.forget_me if logged_in?
+      cookies.delete :auth_token
+      reset_session
      redirect_to '/'
+   end
+  
+   private
+
+   def get_featured_badges
+     @badges = Badge.find(:all, :limit => 6 )
    end
 
 end

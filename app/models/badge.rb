@@ -52,4 +52,9 @@ class Badge < ActiveRecord::Base
      def belongs_to?(account)
 	return MyBadge.exists?(:account_id => account.id, :badge_id  => self.id )
      end 
+
+    def example_path
+      "/images/examples/#{self.id}.gif"
+    end
+
 end

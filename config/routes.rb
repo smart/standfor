@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :configurations
+
 
 
   map.view_badge "/standfor/:id.:ext", :controller => "adis", :action => "index"
@@ -32,6 +34,7 @@ ActionController::Routing::Routes.draw do |map|
   end 
 
  map.namespace(:admin) do |admin|
+    admin.resources :configurations
     admin.resources :sponsors do |sponsors|
       sponsors.resources :sponsorslogos  
     end 

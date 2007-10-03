@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
   include SegmentSystem
   include StyleSystem
   # Pick a unique cookie name to distinguish our session data from others'
-  #
+  
   session :session_key => '_standfor_session_id'
 
   before_filter :init
@@ -20,11 +20,12 @@ class ApplicationController < ActionController::Base
   end
   
   def init
-    if false  and params[:embedded]
+    @configuration = Configuration.find(:first)
+    if false 
        site_name = request.host.match(/standfor\.(\w+)\.org/)[1]    
        params[:organization] = site_name
-    end
-    @organization = Organization.find(params[:organization_id], :include => [:segments, :style_info]) if !params[:organization_id].nil?
+     end
+     @organization = Organization.find(params[:organization_id], :include => [:segments, :style_info]) if !params[:organization_id].nil?
     @segment = @organization.segments.find(params[:segment_id], :include => [:style_info]) if !params[:segment_id].nil?
   end
   

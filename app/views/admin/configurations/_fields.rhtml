@@ -1,0 +1,21 @@
+<li><label>Name</lable>
+  <%= f.text_field :name -%>
+</li>
+
+<li><label>Featured Organization </lable>
+  <%= f.select "organization_id" , Organization.find(:all).collect {|o| [ o.name, o.id ] }, { :include_blank => true} -%>
+
+</li>
+
+<li><label>Welcome Message</lable>
+  <%= f.text_area :welcome_message -%>
+</li>
+
+<li><label>News</lable>
+  <%= f.text_area :news -%>
+</li>
+
+
+
+
+
