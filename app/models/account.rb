@@ -65,8 +65,17 @@ class Account< ActiveRecord::Base
     save(false)
   end
 
-  def total_donations
-     Donation.sum(:amount, :conditions =>{ :account_id => self.id } )
+  def total_donations(organization = nil)
+     if organization.nil?
+      0 + Donation.sum(:amount, :conditions =>{ :account_id => self.id } ).to_i
+     else
+      0 + Donation.sum(:amount, :conditions =>{ :account_id => self.id, 
+						:organization_id => organization.id  } ).to_i
+     end
+  end
+
+  def awareness_points
+    100
   end
 
   def is_sponsor?

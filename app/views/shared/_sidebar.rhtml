@@ -1,41 +1,43 @@
 <div id="outer-wrapper">
-	<div id="inner-wrapper">
-		<div class="side-box" id="your-stats">
-			<h2>your stats</h2>
-				<ul class="stats">
-				    <li>contributions</li>
-				    <li>points</li>
-				</ul>
-			<h3>merits</h3>
-				<ul>
-				    <li>merit one</li>
-				    <li>merit two</li>
-				    <li>merit three</li>
-				</ul>
-		</div>
-		<span class="seperator"></span>
-		<div class="side-box" id="org-stats">
-			<h2>organization stats</h2>
-				<ul class="stats">
-				    <li>total raised</li>
-				    <li>top sponsor</li>
-				    <li>top referrer</li>
-				</ul>
-			<h3>top badge</h3>
-		</div>
-		<span class="seperator"></span>
-	</div>
-</div>
+ <div id="inner-wrapper">
+  <div class="side-box" id="your-stats">
 
-<ul>
 <% if current_account != :false %>
-<li> <%= link_to 'my account', :controller => 'my_account', :action => 'index' -%> </li>
-
-<% if RAILS_ENV  == 'development' %>
-<li><%= link_to 'reset', :controller => 'site' , :action => 'clear' %> </li>
+   <h2>your stats</h2>
+    <ul class="stats">
+        <li>number of badges: <%= current_account.my_badges.size -%></li>
+        <li>contributions: <%= current_account.total_donations(@organization) -%> </li>
+        <li>awareness points: <%= current_account.awareness_points -%> </li>
+    </ul>
+  </div>
 <% end %>
 
-<li> Total Donations: $<%= current_account.total_donations -%> </li>
+  <span class="seperator"></span>
+
+<% if !@organization.nil? %>
+  <div class="side-box" id="org-stats">
+   <h2>organization stats</h2>
+    <ul class="stats">
+        <li>total raised: <%= @organization.total_raised -%> </li>
+        <% if !@organization.top_sponsor.nil? %>
+        <li>top sponsor: <%= @organization.top_sponsor.nickname -%> </li>
+        <% end  %>
+    </ul>
+   <h3>top badge</h3>
+  </div>
+  <span class="seperator"></span>
+ </div>
+</div>
+<% end %>
+
+<ul>
+
+<% if  current_account != :false %>
+<li> <%= link_to 'my account', :controller => 'my_account', :action => 'index' -%> </li>
+
+<% if false and RAILS_ENV  == 'development' %>
+<li><%= link_to 'reset', :controller => 'site' , :action => 'clear' %> </li>
+<% end %>
 <% else  %>
 <li> <%= link_to 'login', :controller => 'sessions', :action => 'new' -%> </li>
 <% end %>

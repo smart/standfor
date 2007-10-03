@@ -18,5 +18,16 @@ class Organization < ActiveRecord::Base
   def to_param
   "#{site_name}"
   end
+ 
+  def total_raised
+    0 + Donation.sum(:amount,  :conditions => ["organization_id = ? " , self.id ] ).to_i
+  end
   
+  def top_sponsor
+    values = Donation.maximum(:amount,:group => :account_id,:conditions => ["organization_id = ?", self.id] )
+    return nil if values.size == 0  
+    id, value = values.first  
+    return Account.find(id)
+  end
+   
 end
