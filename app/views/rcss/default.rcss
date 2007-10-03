@@ -77,7 +77,7 @@ img {
 }
 #header-image h1 img {
 	margin-left:10px;
-	margin-top:87px;
+	margin-top:92px;
 }
 #navigation {
 	position:absolute;
@@ -187,22 +187,26 @@ img {
 }
 
 #org-image {
-	width:120px;
-	height:120px;
 	float:right;
 	background-color:gray;
-	margin-left:5px;
+	margin-left:10px;
+	border:1px solid black;
+	padding:5px;
 }
 
 /* organization page specific styles */
 
 #overview .basicborder {
-	width:250px;
+	width:290px;
 	float:right;
 }
 #description {
-	width:430px;
+	width:380px;
 	float:left;
+	text-align:justify;
+}
+#description p {
+	padding:0 10px 0 10px;
 }
 /* segment page specific styles */
 
@@ -671,6 +675,10 @@ img {
 .basicborder h1 {
   padding-bottom:0;
   padding-top:5px;
+  height:20px;
+}
+.basicborder h3 {
+	margin-top:10px;
 }
 .basic h1 {
 	padding-bottom:0;

@@ -1,6 +1,8 @@
 <% content_box(@organization.name + " stands for:", :id => 'overview') do %>
  <div id="description">
-<%= image_tag @organization.organizationslogo.public_filename(:medium) -%>
+ 	<div id="org-image">
+		<%= image_tag @organization.organizationslogo.public_filename(:medium) -%>
+	</div>
   <p>
    <%= @organization.description %>
   </p> 
@@ -27,3 +29,16 @@
 
 <% end %>
 
+<% content_box("featured badges", :class => "light", :id => "featured_badges" ) do -%>
+	<ul>
+	<% @organization.featured_badges.each do |badge|%>
+		<li>
+		<%= image_tag(badge.example_path, :width => 220 )-%><br />
+		<%= link_to badge.organization.name, organization_path(badge.organization)  %>
+		</li>
+		
+	<% end  %>
+	
+	</ul>
+	<span class="clear"></span>
+<% end %>
