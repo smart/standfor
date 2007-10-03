@@ -114,7 +114,7 @@ class TextController < ApplicationController
     x_offset = left || 0
     y_offset = top || 0
   
-    return back.composite(text_image, Magick::NorthWestGravity,  x_offset.to_i, y_offset.to_i, Magick::OverCompositeOp)
+    return back.composite(text_image, Magick::CenterGravity,  x_offset.to_i, y_offset.to_i, Magick::OverCompositeOp)
   end
   
   def reflection(image, x_offset = 0, y_offset = 0, wet_start = 0.2, wet_rate = 0.7 )
@@ -123,9 +123,9 @@ class TextController < ApplicationController
   end
   
   
-  def output
+  def output(trim = true)
     params[:ext] ||= 'png'
-    @output_image = @output_image.trim
+    @output_image = @output_image.trim unless trim == false
     @output_image.format = params[:ext] 
     send_data @output_image.to_blob, :filename => params[:action] + '.' + params[:ext], :type =>'image/' + params[:ext], :disposition => 'inline'
   end
