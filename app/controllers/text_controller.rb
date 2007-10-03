@@ -47,7 +47,22 @@ class TextController < ApplicationController
     top = params[:top] || 0
     trim = false
     @output_image =  create_text(text, color, background, font, gravity, pointsize, width, height, left, top)
-
+    output(trim)
+	end
+	
+	def side_button
+		text = params[:text] || ""
+    color = params[:color] || "black"
+    background = params[:background] || "transparent"
+    font = params[:font] || RAILS_ROOT + "/lib/fonts/VAGROBDT.PFB"
+    gravity = Magick::CenterGravity
+    pointsize = params[:pointsize] || 16
+    width = params[:width] || nil
+    height = params[:height] || 23
+    left = params[:left] || 0
+    top = params[:top] || 0
+    trim = false
+    @output_image =  create_text(text, color, background, font, gravity, pointsize, width, height, left, top)
     output(trim)
 	end
 

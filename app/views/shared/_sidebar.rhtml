@@ -1,21 +1,27 @@
+<% if current_account != :false %>
 <div class="outer-wrapper">
  <div class="inner-wrapper">
   <div class="side-box" id="your-stats">
-
-<% if current_account != :false %>
    <h2>i stand for</h2>
+		
      <h3>my stats</h3>
     <ul class="stats">
         <li>number of badges: <%= current_account.my_badges.size -%></li>
         <li>contributions: <%= current_account.total_donations(@organization) -%> </li>
         <li>awareness points: <%= current_account.awareness_points -%> </li>
     </ul>
-<% end %>
+		<%= link_to (image_tag("/text/side_button/logout.png", :alt => "login"), logout_path, :class => "sidebar-button") %>
  </div>
    <span class="seperator"></span>
  </div>
 </div>
-
+<% else %>
+	<% content_box("", :class => "basic", :id => "mini-login" ) do -%>
+		<%= link_to (image_tag("/text/side_button/login.png", :alt => "login"), login_path, :class => "sidebar-button") %>
+		or
+		<%= link_to(image_tag("/text/side_button/register.png", :alt => "register"), signup_path, :class => "sidebar-button") %>
+	<% end %>
+<% end %>
 <div class="outer-wrapper">
  <div class="inner-wrapper">
 

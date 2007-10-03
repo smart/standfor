@@ -157,6 +157,22 @@ img {
 	margin-left:1px;
 	background-color:white;
 }
+#sidebar #mini-login {
+	text-align:center;
+}
+#sidebar #mini-login h1 {
+	height:15px;
+	margin:0;
+	padding:0;
+}
+#sidebar a.sidebar-button {
+	height:24px;
+	display:block;
+	text-align:center;
+	background:url(/images/buttons/sidebar-button.png) no-repeat top center;
+	line-height:24px;
+}
+
 #footer {
   clear:both;
   background:gray;
