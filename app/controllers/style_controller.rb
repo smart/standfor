@@ -39,6 +39,28 @@ class StyleController < ApplicationController
     output
   end
   
+  def side_bar_outer
+    list = Magick::ImageList.new
+    
+    outer_image = Magick::Image.read(RAILS_ROOT + "/public/images/boxes/sidebar/outer_shadow.png").first
+    list << outer_image
+    fill_image = color_image(RAILS_ROOT + "/public/images/boxes/sidebar/outer_fill.png", style_info.color_primary)
+    list << fill_image
+    @output_image = list.flatten_images
+    output
+  end
+  
+  def side_bar_inner
+    list = Magick::ImageList.new
+  
+    outer_image = Magick::Image.read(RAILS_ROOT + "/public/images/boxes/sidebar/inner_shadow.png").first
+    list << outer_image
+      fill_image = color_image(RAILS_ROOT + "/public/images/boxes/sidebar/inner_fill.png", style_info.color_primary)
+    list << fill_image
+    @output_image = list.flatten_images
+    output
+  end
+  
   def solid_shadow_dark_head
     p params[:style_info]
     list = Magick::ImageList.new
