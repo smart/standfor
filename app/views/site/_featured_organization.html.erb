@@ -1,6 +1,6 @@
 <% content_box("featured organization", :class => "basic", :id => "featured_organizations" ) do -%>
 	<div id="org-image">
-          <%= image_tag @configuration.organization.organizationslogo.public_filename(:thumb) -%>
+          <%= image_tag @configuration.organization.organizationslogo.public_filename(:medium) -%>
 	</div>
 	<h2><%= @configuration.organization.name  %></h2>
 	<p>
