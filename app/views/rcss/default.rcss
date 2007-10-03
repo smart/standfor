@@ -170,7 +170,7 @@ img {
 
 /* home page specific styles */
 #welcome {
-	width:350px;
+	width:320px;
 	float:left;
 	display:inline;
 }
@@ -185,7 +185,15 @@ img {
 }
 #featured_organizations {
 	float:right;
-	width:340px;
+	width:370px;
+}
+
+#org-image {
+	width:120px;
+	height:120px;
+	float:right;
+	background-color:gray;
+	margin-left:5px;
 }
 
 /* organization page specific styles */
@@ -520,6 +528,7 @@ img {
   background:transparent url(<%= style_image_path("solid_shadow_dark_head") || "/images/boxes/solid-shadow-darkhead.png" -%>) no-repeat top right;
 }
 
+
 .basic .content,
 .basic .t,
 .basic .b,
@@ -625,12 +634,19 @@ img {
 .box h1 {
     height:34px;
     font-size:1em;
-    padding-bottom:15px;
+    padding-bottom:10px;
 }
 
 .shadow h1, .default h1 {
   color:#fff;
   text-transform:lowercase;
+}
+
+.shadow h1 img, .default h1 img {
+	padding-top:5px;	
+}
+.box h1 img {
+	padding-top:5px;
 }
 
 .box.shadow h1 a, .box.default h1 a, .box.shadow h1 a:visited, .box.default h1 a:visited {
@@ -657,6 +673,9 @@ img {
 .basicborder h1 {
   padding-bottom:0;
   padding-top:5px;
+}
+.basic h1 {
+	padding-bottom:0;
 }
 
 /* basic form styles */

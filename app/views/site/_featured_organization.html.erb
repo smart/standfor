@@ -1,5 +1,9 @@
 <% content_box("featured organization", :class => "basic", :id => "featured_organizations" ) do -%>
-
-<%= @configuration.organization.name  %>
-
+	<div id="org-image">
+		any logo
+	</div>
+	<h2><%= @configuration.organization.name  %></h2>
+	<p>
+		<%= @configuration.organization.description %>
+	</p>
 <% end %>
