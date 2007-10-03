@@ -63,8 +63,11 @@ img {
 	background:url(<%= style_image_path("header_corners") || "/images/header/header_corners_default.png" -%>) no-repeat top center;
 	margin-bottom:10px;
 }
+#header #test {
 
+}
 #container, #header-image {
+	position:relative;
 	width:980px;
   margin:0 auto;
 }
@@ -77,35 +80,30 @@ img {
 	margin-top:87px;
 }
 #navigation {
-	height:42px;
-	background:url(<%= style_image_path("header_bar") || "/images/boxes/navigation-header.png" -%>) no-repeat top left;
-	margin:0px 0px 0px 0px;
-	line-height:35px;
+	position:absolute;
+	right:0;
+	top:5px;
+	background:url(/images/navigation/ul_background.png) no-repeat top left;
+	padding-left:8px;
+	color:white;
 }
 #navigation ul {
-	margin-left:10px;
+	
 }
 #navigation li {
-	padding-left:30px;
-	background:url(<%= style_image_path("header_arrow") || "/images/icons/nav-breadcrumb.png" -%>) no-repeat top left;
 	float:left;
-	height:39px;
+	height:28px;
+	line-height:28px;
+	padding:0px 15px 0px 10px;
+	/*background:url(/images/navigation/li_background.png) no-repeat top right;*/
 }
-#navigation li.first {
-	background:url(<%= style_image_path("header_bullet") || "/images/icons/nav-start.png" -%>) no-repeat top left;
+#navigation li.last {
+	background-image:none;
 }
 #navigation a {
 	display:block;
 }
-#login-button {
-	height:42px;
-	width:245px;
-	background:url(<%= style_image_path("header_bar") || "/images/boxes/navigation-header.png" -%>) no-repeat top right;
-	float:right;
-}
-#login-button img {
-	margin:4px 0px 0px 10px;
-}
+
 #content {
   width:740px;
   float:left;

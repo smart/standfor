@@ -7,13 +7,7 @@
   <title>Standforus</title>
   <%= stylesheet_link_tag '/rcss/default' + (style_info ? "/#{style_info.id}" : "") %>
   <%= javascript_include_tag :defaults %>
-  <!--[if lt IE 7]>
-	<script type="text/javascript" charset="utf-8">
-	//<![CDATA[
-	  new HoverBehavior('span');
-	//]]>
-	</script>
-  <![endif]-->
+  
   <!--[if lt IE 7]>
 <script language="JavaScript">
 function correctPNG() // correctly handle PNG transparency in Win IE 5.5 & 6.
@@ -52,32 +46,22 @@ window.attachEvent("onload", correctPNG);
 </head>
 <body class="<%= @context || "uninitialized" -%>">
   <div id="header">
+  	
   	<div id="header-image">
+  		<div id="navigation">
+  			<ul>
+  			    <li><%= link_to(image_tag("/text/navigation_text/organizations.png", :alt => 'organizations'), "#" ) %></li>
+  			    <li><%= link_to(image_tag("/text/navigation_text/badges.png", :alt => 'badges'), "#" ) %></li>
+  			    <li><%= link_to(image_tag("/text/navigation_text/sponsors.png", :alt => 'sponsors'), "#" ) %></li>
+  			    <li><%= link_to(image_tag("/text/navigation_text/leaderboard.png", :alt => 'leaderboard'), "#" ) %></li>
+  			    <li class="last"><%= link_to(image_tag("/text/navigation_text/about : us.png", :alt => 'About Us'), "#" ) %></li>
+  			</ul>
+			</div>
 	    <h1><%= link_to(image_tag("/text/top_text/stand for : us.png", :alt => 'Stand For : Us'), "#" ) %></h1>
 		</div>
   </div>
 <div id="container">
-<!--
-<div id="navigation">
-  <ul>
-   <li class="first"><%= link_to(image_tag((style_image_path("header_standfor") || "labels/standfor.png"), :alt => 'standfor'), '/') -%></li>
-<%= render :partial => '/shared/breadcrumbs', 
-	   :locals =>{:organization => @organization,:segment => @segment } -%>
-</ul>
 
-<div id="login-button">
-
-<% if current_account != :false %>
-<%= link_to image_tag('buttons/logout.png', :alt => 'Logoutin'), logout_path %>
-<% else  %>
-<%= link_to image_tag('buttons/login.png', :alt => 'Login'), login_path %>
-<% end %>
-
-
-</div>
-
-</div>
--->
     <div id="content">
       <div class="oi-wrapper">
         <p style="color: green"><%= flash[:notice] %></p>
