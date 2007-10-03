@@ -1,5 +1,6 @@
 class TextController < ApplicationController
-
+  # MAKE SURE TO MAKE CACHE ENTRY WHEN YOU CREATE A NEW ACTION!
+  caches_page :bread_crumbs, :top_text, :header_text, :basicborder_header, :button_text, :index
 
 
   def bread_crumbs

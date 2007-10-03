@@ -1,5 +1,6 @@
 class StyleController < ApplicationController
-  caches_page :solid_shadow_dark_head, :gradient_shadow_light_head, :header_bar, :default
+  # MAKE SURE TO MAKE CACHE ENTRY WHEN YOU CREATE A NEW ACTION!
+  caches_page :header, :header_corners, :top_bar, :side_bar_outer, :side_bar_inner, :solid_shadow_dark_head, :gradient_shadow_light_head, :solid_smooth_dark_head, :header_bar, :button_large, :button_large_hover, :header_arrow, :header_bullet, :header_standfor
   
   def header
   
