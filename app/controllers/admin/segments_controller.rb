@@ -6,7 +6,7 @@ class Admin::SegmentsController < ApplicationController
   # GET /admin_segments
   # GET /admin_segments.xml
   def index
-    @segments = Segment.find(:all)
+    @segments = Segment.find(:all, :conditions => ["organization_id = ? " , @organization.id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -48,7 +48,7 @@ class Admin::SegmentsController < ApplicationController
     respond_to do |format|
       if @segment.save
         flash[:notice] = 'Segment was successfully created.'
-        format.html { redirect_to(@segment) }
+        format.html { redirect_to admin_organization_segment_path(@orgnaization, @segment) }
         format.xml  { render :xml => @segment, :status => :created, :location => @segment }
       else
         format.html { render :action => "new" }

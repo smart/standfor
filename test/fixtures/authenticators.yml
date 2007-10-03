@@ -1,4 +1,32 @@
 --- 
+authenticators_005: 
+  updated_at: 2007-10-02 17:26:43
+  account_id: "2"
+  id: "5"
+  auth_token: sympact
+  auth_type: LocalUser
+  created_at: 2007-10-02 17:26:43
+authenticators_006: 
+  updated_at: 2007-10-02 17:28:19
+  account_id: "3"
+  id: "6"
+  auth_token: userone
+  auth_type: LocalUser
+  created_at: 2007-10-02 17:28:19
+authenticators_007: 
+  updated_at: 2007-10-02 17:28:54
+  account_id: "4"
+  id: "7"
+  auth_token: usertwo
+  auth_type: LocalUser
+  created_at: 2007-10-02 17:28:54
+authenticators_008: 
+  updated_at: 2007-10-02 17:30:03
+  account_id: "5"
+  id: "8"
+  auth_token: userthree
+  auth_type: LocalUser
+  created_at: 2007-10-02 17:30:03
 authenticators_001: 
   updated_at: 2007-09-24 00:34:09
   account_id: "2"

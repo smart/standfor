@@ -17,3 +17,39 @@ segments_002:
   organization_id: "1"
   keyword: children
   created_at: 2007-09-24 00:31:37
+segments_003: 
+  name: Uganda Peace Project
+  updated_at: 2007-10-02 18:33:50
+  id: "3"
+  description: "Results from our new study reveal that despite positive steps made in the ongoing peace talks in Juba, many of Northern Uganda\xE2\x80\x99s communities fear that their interests are not taken into account. The communities are also doubtful that peace will prevail in their region where conflict and rampant insecurity could reignite in the absence of a signed agreement."
+  site_name: ugandapeace
+  organization_id: "2"
+  keyword: uganda
+  created_at: 2007-10-02 18:33:50
+segments_004: 
+  name: Women Entrepreneurs in Khartoum
+  updated_at: 2007-10-02 18:37:30
+  id: "4"
+  description: "Awadia Abbis has managed to help all five of her children attend university with her earnings. She is a member of the Tea and Food Sellers Cooperative operating in the sprawling, dusty Elshabe market in Khartoum. It\xE2\x80\x99s one of three women\xE2\x80\x99s cooperatives that Oxfam's partner, the Sudan Development Association or SDA, helped to launch."
+  site_name: khartoum
+  organization_id: "2"
+  keyword: "entrepreneurs "
+  created_at: 2007-10-02 18:37:30
+segments_005: 
+  name: "Poverty and Human rights "
+  updated_at: 2007-10-02 18:40:04
+  id: "5"
+  description: Everyone, everywhere has the right to live with dignity. That means that no-one should be denied their rights to adequate housing, food, water and sanitation, and to education and health care.
+  site_name: humanrights
+  organization_id: "3"
+  keyword: human rights
+  created_at: 2007-10-02 18:40:04
+segments_006: 
+  name: International Justice
+  updated_at: 2007-10-02 18:42:32
+  id: "6"
+  description: The twentieth century was perhaps the bloodiest in history. Millions of people were victims of genocide, crimes against humanity, war crimes, torture, extrajudicial executions and "disappearances." These crimes were committed throughout the world during international and civil wars and in conditions of "peace.".
+  site_name: intertnationaljustice
+  organization_id: "3"
+  keyword: justice
+  created_at: 2007-10-02 18:42:32

@@ -1,0 +1,43 @@
+--- 
+taggings_003: 
+  tag_id: "2"
+  id: "3"
+  taggable_type: Organization
+  taggable_id: "4"
+  created_at: 2007-10-02 18:24:48
+taggings_004: 
+  tag_id: "3"
+  id: "4"
+  taggable_type: Segment
+  taggable_id: "3"
+  created_at: 2007-10-02 18:33:50
+taggings_005: 
+  tag_id: "4"
+  id: "5"
+  taggable_type: Segment
+  taggable_id: "4"
+  created_at: 2007-10-02 18:37:30
+taggings_006: 
+  tag_id: "2"
+  id: "6"
+  taggable_type: Segment
+  taggable_id: "5"
+  created_at: 2007-10-02 18:40:04
+taggings_007: 
+  tag_id: "5"
+  id: "7"
+  taggable_type: Segment
+  taggable_id: "6"
+  created_at: 2007-10-02 18:42:32
+taggings_001: 
+  tag_id: "1"
+  id: "1"
+  taggable_type: Organization
+  taggable_id: "2"
+  created_at: 2007-10-02 18:19:40
+taggings_002: 
+  tag_id: "2"
+  id: "2"
+  taggable_type: Organization
+  taggable_id: "3"
+  created_at: 2007-10-02 18:24:35

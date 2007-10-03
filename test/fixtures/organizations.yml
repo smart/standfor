@@ -8,6 +8,7 @@ organizations_001:
   address2: Suite 25
   address3: 
   updated_on: "2007-09-24"
+  admin_id: "1"
   url: http://www.giftoflife.com
   country: USA
   id: "1"
@@ -19,3 +20,62 @@ organizations_001:
   keyword: children
   email: giftoflife@gol.org
   state: NY
+organizations_002: 
+  created_on: "2007-10-02"
+  city: Oxford
+  address1: 266 Banbury Road
+  name: Oxfam
+  zip: OX2 7DL
+  address2: Suite 20
+  address3: ""
+  updated_on: "2007-10-02"
+  admin_id: "3"
+  url: http://www.oxfam.org/en
+  country: United Kingdom
+  id: "2"
+  description: "Oxfam International is a confederation of 13 organizations working together with over 3,000 partners in more than 100 countries to find lasting solutions to poverty and injustice.\r\n\
+    With many of the causes of poverty global in nature, the 13 affiliate members of Oxfam International believe they can achieve greater impact through their collective efforts.\r\n\
+    \r\n\
+    With many of the causes of poverty global in nature, the 13 affiliate members of Oxfam International believe they can achieve greater impact through their collective efforts.\r\n\
+    \r\n\
+    Oxfam International seeks increased worldwide public understanding that economic and social justice are crucial to sustainable development. We strive to be a global campaigning force promoting the awareness and motivation that comes with global citizenship while seeking to shift public opinion in order to make equity the same priority as economic growth. "
+  site_name: oxfam
+  fax: +44 1865 339 101
+  phone: +44 1865 339 100
+  statement: United For A More Equitable World
+  keyword: hunger
+  email: info@oxfam.org
+  state: New York
+organizations_003: 
+  created_on: "2007-10-02"
+  city: New York
+  address1: "5 Penn Plaza "
+  name: Amenesty International
+  zip: "10001"
+  address2: 14th floor
+  address3: ""
+  updated_on: "2007-10-02"
+  admin_id: "4"
+  url: http://web.amnesty.org
+  country: United States
+  id: "3"
+  description: "Amnesty International (AI) is a worldwide movement of people who campaign for internationally recognized human rights.\r\n\
+    \r\n\
+    AI\xE2\x80\x99s vision is of a world in which every person enjoys all of the human rights enshrined in the Universal Declaration of Human Rights and other international human rights standards.\r\n\
+    \r\n\
+    In pursuit of this vision, AI\xE2\x80\x99s mission is to undertake research and action focused on preventing and ending grave abuses of the rights to physical and mental integrity, freedom of conscience and expression, and freedom from discrimination, within the context of its work to promote all human rights.\r\n\
+    \r\n\
+    AI is independent of any government, political ideology, economic interest or religion. It does not support or oppose any government or political system, nor does it support or oppose the views of the victims whose rights it seeks to protect. It is concerned solely with the impartial protection of human rights.\r\n\
+    \r\n\
+    AI has a varied network of members and supporters around the world. At the latest count, there were more than 2.2 million members, supporters and subscribers in over 150 countries and territories in every region of the world. Although they come from many different backgrounds and have widely different political and religious beliefs, they are united by a determination to work for a world where everyone enjoys human rights.\r\n\
+    \r\n\
+    AI is a democratic, self-governing movement. Major policy decisions are taken by an International Council made up of representatives from all national sections.\r\n\
+    \r\n\
+    AI's national sections, members and supporters are primarily responsible for funding the movement. No funds are sought or accepted from governments for AI\xE2\x80\x99s work investigating and campaigning against human rights violations."
+  site_name: amnesty
+  fax: 212 463 9193
+  phone: 212 807 8400
+  statement: Working to Protect Human Rights Worldwide
+  keyword: amnesty
+  email: info@amnesty.org
+  state: New York

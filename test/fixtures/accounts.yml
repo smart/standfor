@@ -16,3 +16,71 @@ accounts_001:
   phone: 
   created_at: "2007-09-24"
   state: 
+accounts_002: 
+  status: "1"
+  city: 
+  updated_at: "2007-10-02"
+  zip: 
+  primary_email: admin@sympact.net
+  nickname: sympact
+  remember_token_expires_at: 
+  fullname: Sympact Admin
+  country: 
+  id: "2"
+  address_1: 
+  remember_token: 
+  address_2: 
+  phone: 
+  created_at: "2007-10-02"
+  state: 
+accounts_003: 
+  status: "1"
+  city: 
+  updated_at: "2007-10-02"
+  zip: 
+  primary_email: userone@sympact.net
+  nickname: userone
+  remember_token_expires_at: 
+  fullname: User One
+  country: 
+  id: "3"
+  address_1: 
+  remember_token: 
+  address_2: 
+  phone: 
+  created_at: "2007-10-02"
+  state: 
+accounts_004: 
+  status: "1"
+  city: 
+  updated_at: "2007-10-02"
+  zip: 
+  primary_email: usertwo@sympact.net
+  nickname: usertwo
+  remember_token_expires_at: 
+  fullname: User Two
+  country: 
+  id: "4"
+  address_1: 
+  remember_token: 
+  address_2: 
+  phone: 
+  created_at: "2007-10-02"
+  state: 
+accounts_005: 
+  status: "1"
+  city: 
+  updated_at: "2007-10-02"
+  zip: 
+  primary_email: userthree@sympact.net
+  nickname: userthree
+  remember_token_expires_at: 
+  fullname: User Three
+  country: 
+  id: "5"
+  address_1: 
+  remember_token: 
+  address_2: 
+  phone: 
+  created_at: "2007-10-02"
+  state: 
