@@ -29,5 +29,9 @@ class Organization < ActiveRecord::Base
     id, value = values.first  
     return Account.find(id)
   end
+
+   def featured_badges
+      Badge.find(:all, :conditions => ["organization_id = ? ", self.id ],  :limit => 3 )
+   end
    
 end
