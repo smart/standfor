@@ -10,12 +10,27 @@ class StyleController < ApplicationController
   return_image.composite!(bar, Magick::SouthGravity, Magick::OverCompositeOp)
   image_list = Magick::ImageList.new
     image_list << header_image  
-    wet_image = header_image.wet_floor( 0.5, 2.75)
+    middle_image = Magick::Image.new(header_image.columns, 1) do
+      self.background_color = "#000000"
+    end
+    middle_image.opacity = 200
+    image_list << middle_image
+    wet_image = header_image.wet_floor( 0.7, 1.75)
     image_list << wet_image
     header_wet = image_list.append(true)
   return_image.composite!(header_wet,Magick::NorthGravity, Magick::OverCompositeOp)
   @output_image = return_image
   output
+  end
+  
+  def header_corners
+    list = Magick::ImageList.new
+    corners_background = Magick::Image.read( RAILS_ROOT + "/public/images/header/header_background.png").first
+    list << corners_background
+    corners_image = color_image(RAILS_ROOT + "/public/images/header/header_corners.png", style_info.color_primary)
+    list << corners_image
+    @output_image = list.flatten_images
+    output
   end
   
   def top_bar
