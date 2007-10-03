@@ -1,3 +1,30 @@
+<div id="outer-wrapper">
+	<div id="inner-wrapper">
+		<div id="your-stats">
+			<h2>your stats</h2>
+				<ul class="stats">
+				    <li>contributions</li>
+				    <li>points</li>
+				</ul>
+			<h3>merits</h3>
+				<ul>
+				    <li>merit one</li>
+				    <li>merit two</li>
+				    <li>merit three</li>
+				</ul>
+		</div>
+		<div id="org-stats">
+			<h2>organization stats</h2>
+				<ul class="stats">
+				    <li>total raised</li>
+				    <li>top sponsor</li>
+				    <li>top referrer</li>
+				</ul>
+			<h3>top badge</h3>
+		</div>
+	</div>
+</div>
+
 <ul>
 <% if current_account != :false %>
 <li> <%= link_to 'my account', :controller => 'my_account', :action => 'index' -%> </li>

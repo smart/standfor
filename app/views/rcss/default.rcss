@@ -115,11 +115,19 @@ img {
   width:217px;
   float:right;
   margin:0px 10px 0px 0px;
-  background:grey;
+}
+
+#sidebar #outer-wrapper {
+	background:url(/images/boxes/sidebar/outer_fill.png) no-repeat top center;
+}
+
+#sidebar #inner-wrapper {
+	background:url(/images/boxes/sidebar/inner_fill.png) no-repeat bottom center;
 }
 
 #footer {
   clear:both;
+  background:gray;
 }
 
 .oi-wrapper {
@@ -139,7 +147,7 @@ img {
 
 .badges {
   float:right;
-  width:445px;
+  width:435px;
 }
 
 .badges h2 {
@@ -360,7 +368,7 @@ img {
 }
 /* payment page specific styles */
 #payment {
-  width:460px;
+  width:450px;
   float:left;
   display:inline;
 }
@@ -385,7 +393,7 @@ img {
   width:390px;
 }
 #requirements {
-  width:285px;
+  width:275px;
   float:right;
 }
 
