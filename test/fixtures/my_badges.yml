@@ -1,2 +1,15 @@
---- {}
-
+--- 
+my_badges_001: 
+  updated_at: 2007-10-03 13:36:13
+  badge_id: "1"
+  account_id: "2"
+  id: "1"
+  adi_id: "1176"
+  created_at: 2007-10-03 13:36:13
+my_badges_002: 
+  updated_at: 2007-10-03 15:19:14
+  badge_id: "1"
+  account_id: "3"
+  id: "2"
+  adi_id: "1177"
+  created_at: 2007-10-03 15:19:14

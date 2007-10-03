@@ -19,7 +19,7 @@ accounts_001:
 accounts_002: 
   status: "1"
   city: 
-  updated_at: "2007-10-02"
+  updated_at: "2007-10-03"
   zip: 
   primary_email: admin@sympact.net
   nickname: sympact
@@ -35,21 +35,21 @@ accounts_002:
   state: 
 accounts_003: 
   status: "1"
-  city: 
-  updated_at: "2007-10-02"
-  zip: 
+  city: ""
+  updated_at: "2007-10-03"
+  zip: ""
   primary_email: userone@sympact.net
   nickname: userone
   remember_token_expires_at: 
   fullname: User One
-  country: 
+  country: United States
   id: "3"
-  address_1: 
+  address_1: ""
   remember_token: 
-  address_2: 
-  phone: 
+  address_2: ""
+  phone: ""
   created_at: "2007-10-02"
-  state: 
+  state: Kentucky
 accounts_004: 
   status: "1"
   city: 
