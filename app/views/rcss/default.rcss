@@ -115,6 +115,7 @@ img {
   width:217px;
   float:right;
   margin:0px 10px 0px 0px;
+  display:inline;
 }
 
 #sidebar #outer-wrapper {
@@ -123,8 +124,32 @@ img {
 
 #sidebar #inner-wrapper {
 	background:url(/images/boxes/sidebar/inner_fill.png) no-repeat bottom center;
+	padding-top:6px;
 }
-
+#sidebar .side-box {
+	background:url(/images/boxes/sidebar/sidebox.png) no-repeat top center;
+}
+#sidebar #inner-wrapper .seperator {
+	height:21px;
+	display:block;
+	background:url(/images/boxes/sidebar/seperator.png) no-repeat top center;
+}
+.side-box h2 {
+	height:29px;
+	background:url(/images/boxes/sidebar/sidebox_header.png) no-repeat top center;
+	text-align:center;
+	line-height:29px;
+	margin-bottom:5px;
+}
+#sidebar ul {
+	
+	width:186px;
+	margin:0 auto;
+}
+#sidebar ul li {
+	margin-left:1px;
+	background-color:white;
+}
 #footer {
   clear:both;
   background:gray;
