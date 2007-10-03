@@ -1,5 +1,5 @@
 class Customization < AdiserverResource
-    #self.site += "/adis/:adi_id"
+    self.site += "/adis/:adi_id"
     belongs_to :adi
   
     attr_accessor :value
