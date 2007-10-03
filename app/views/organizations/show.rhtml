@@ -1,6 +1,6 @@
 <% content_box(@organization.name + " stands for:", :id => 'overview') do %>
  <div id="description">
-<%= image_tag @organization.organizationslogo.public_filename(:thumb) -%>
+<%= image_tag @organization.organizationslogo.public_filename(:medium) -%>
   <p>
    <%= @organization.description %>
   </p> 

@@ -1,64 +1,94 @@
 --- 
 organizationslogos_004: 
+  content_type: image/jpeg
+  thumbnail: medium
+  size: "6231"
+  id: "4"
+  organization_id: 
+  height: "111"
+  filename: giftoflife_logo_medium.jpg
+  parent_id: "1"
+  width: "150"
+organizationslogos_005: 
   content_type: image/gif
   thumbnail: 
   size: "2889"
-  id: "4"
+  id: "5"
   organization_id: "2"
   height: "141"
   filename: oxfam_logo.gif
   parent_id: 
   width: "141"
-organizationslogos_005: 
+organizationslogos_006: 
   content_type: image/gif
   thumbnail: normal
   size: "2889"
-  id: "5"
+  id: "6"
   organization_id: 
   height: "141"
   filename: oxfam_logo_normal.gif
-  parent_id: "4"
+  parent_id: "5"
   width: "141"
-organizationslogos_006: 
+organizationslogos_007: 
   content_type: image/gif
   thumbnail: thumb
   size: "1802"
-  id: "6"
+  id: "7"
   organization_id: 
   height: "75"
   filename: oxfam_logo_thumb.gif
-  parent_id: "4"
+  parent_id: "5"
   width: "75"
-organizationslogos_007: 
+organizationslogos_008: 
+  content_type: image/gif
+  thumbnail: medium
+  size: "4320"
+  id: "8"
+  organization_id: 
+  height: "150"
+  filename: oxfam_logo_medium.gif
+  parent_id: "5"
+  width: "150"
+organizationslogos_010: 
+  content_type: image/gif
+  thumbnail: normal
+  size: "14068"
+  id: "10"
+  organization_id: 
+  height: "400"
+  filename: logo-amnestyinternational_normal.gif
+  parent_id: "9"
+  width: "249"
+organizationslogos_009: 
   content_type: image/gif
   thumbnail: 
   size: "14068"
-  id: "7"
+  id: "9"
   organization_id: "3"
   height: "400"
   filename: logo-amnestyinternational.gif
   parent_id: 
   width: "249"
-organizationslogos_008: 
-  content_type: image/gif
-  thumbnail: normal
-  size: "14068"
-  id: "8"
-  organization_id: 
-  height: "400"
-  filename: logo-amnestyinternational_normal.gif
-  parent_id: "7"
-  width: "249"
-organizationslogos_009: 
+organizationslogos_011: 
   content_type: image/gif
   thumbnail: thumb
   size: "3010"
-  id: "9"
+  id: "11"
   organization_id: 
   height: "120"
   filename: logo-amnestyinternational_thumb.gif
-  parent_id: "7"
+  parent_id: "9"
   width: "75"
+organizationslogos_012: 
+  content_type: image/gif
+  thumbnail: medium
+  size: "4181"
+  id: "12"
+  organization_id: 
+  height: "241"
+  filename: logo-amnestyinternational_medium.gif
+  parent_id: "9"
+  width: "150"
 organizationslogos_001: 
   content_type: image/jpeg
   thumbnail: 
