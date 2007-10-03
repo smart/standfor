@@ -1,18 +1,23 @@
-<div id="outer-wrapper">
- <div id="inner-wrapper">
+<div class="outer-wrapper">
+ <div class="inner-wrapper">
   <div class="side-box" id="your-stats">
 
 <% if current_account != :false %>
-   <h2>your stats</h2>
+   <h2>i stand for</h2>
+     <h3>my stats</h3>
     <ul class="stats">
         <li>number of badges: <%= current_account.my_badges.size -%></li>
         <li>contributions: <%= current_account.total_donations(@organization) -%> </li>
         <li>awareness points: <%= current_account.awareness_points -%> </li>
     </ul>
-  </div>
 <% end %>
+ </div>
+   <span class="seperator"></span>
+ </div>
+</div>
 
-  <span class="seperator"></span>
+<div class="outer-wrapper">
+ <div class="inner-wrapper">
 
 <% if !@organization.nil? %>
   <div class="side-box" id="org-stats">
@@ -24,6 +29,7 @@
         <% end  %>
     </ul>
    <h3>top badge</h3>
+   hi there
   </div>
   <span class="seperator"></span>
  </div>

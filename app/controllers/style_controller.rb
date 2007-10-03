@@ -1,6 +1,6 @@
 class StyleController < ApplicationController
   # MAKE SURE TO MAKE CACHE ENTRY WHEN YOU CREATE A NEW ACTION!
-  caches_page :header, :header_corners, :top_bar, :side_bar_outer, :side_bar_inner, :solid_shadow_dark_head, :gradient_shadow_light_head, :solid_smooth_dark_head, :header_bar, :button_large, :button_large_hover, :header_arrow, :header_bullet, :header_standfor
+  caches_page :header, :header_corners, :top_bar, :side_bar_outer, :side_bar_inner, :solid_shadow_dark_head, :gradient_shadow_light_head, :solid_smooth_dark_head, :header_bar, :button_large, :button_large_hover, :header_arrow, :header_bullet, :header_standfor, :top_nav_background
   
   def header
   
@@ -62,6 +62,21 @@ class StyleController < ApplicationController
     output
   end
   
+  def side_bar_box
+    @output_image = color_image(RAILS_ROOT + "/public/images/boxes/sidebar/sidebox.png", style_info.color_secondary)
+    output
+  end
+  
+  def side_bar_box_header
+    @output_image = color_image(RAILS_ROOT + "/public/images/boxes/sidebar/sidebox_header.png", style_info.color_secondary)
+    output
+  end
+  
+   def side_bar_box_seperator
+    @output_image = color_image(RAILS_ROOT + "/public/images/boxes/sidebar/seperator.png", style_info.color_secondary)
+    output
+  end
+  
   def solid_shadow_dark_head
     p params[:style_info]
     list = Magick::ImageList.new
@@ -100,18 +115,18 @@ class StyleController < ApplicationController
      list = Magick::ImageList.new
      shadow = Magick::Image.read(RAILS_ROOT + "/public/images/colortest/header/bar/dropshadow.png")
      list << shadow.first
-     list << color_image(RAILS_ROOT + "/public/images/colortest/header/bar/bar.png", style_info.color_secondary)
+     list << color_image(RAILS_ROOT + "/public/images/colortest/header/bar/bar.png", style_info.color_primary)
      @output_image = list.flatten_images
      output
    end 
    
    def button_large
-     @output_image = color_image(RAILS_ROOT + "/public/images/colortest/buttons/large.png", style_info.color_secondary)
+     @output_image = color_image(RAILS_ROOT + "/public/images/colortest/buttons/large.png", style_info.color_primary)
      output
    end
    
    def button_large_hover
-     @output_image = color_image(RAILS_ROOT + "/public/images/colortest/buttons/large-hover.png", style_info.color_primary)
+     @output_image = color_image(RAILS_ROOT + "/public/images/colortest/buttons/large-hover.png", style_info.color_secondary)
      output
    end
    
@@ -146,6 +161,11 @@ class StyleController < ApplicationController
      list <<  color_image( RAILS_ROOT + "/public/images/colortest/header/standfor_background.png", style_info.color_secondary)
      list << color_image(RAILS_ROOT + "/public/images/colortest/header/standfor.png", style_info.color_primary)
      @output_image = list.flatten_images
+     output
+   end
+   
+   def nav_background
+     @output_image = color_image(RAILS_ROOT + "/public/images/navigation/ul_background.png", style_info.color_primary)
      output
    end
   

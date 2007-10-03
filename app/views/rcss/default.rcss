@@ -83,7 +83,7 @@ img {
 	position:absolute;
 	right:0;
 	top:5px;
-	background:url(/images/navigation/ul_background.png) no-repeat top left;
+	background:url(<%= style_image_path("nav_background") || "/images/navigation/ul_background.png" -%>) no-repeat top left;
 	padding-left:8px;
 	color:white;
 }
@@ -116,28 +116,28 @@ img {
   display:inline;
 }
 
-#sidebar #outer-wrapper {
-	background:url(/images/boxes/sidebar/outer_fill.png) no-repeat top center;
+#sidebar .outer-wrapper {
+	background:url(<%= style_image_path("side_bar_outer") || "/images/boxes/sidebar/outer_fill.png" -%>) no-repeat top center;
 }
 
-#sidebar #inner-wrapper {
-	background:url(/images/boxes/sidebar/inner_fill.png) no-repeat bottom center;
+#sidebar .inner-wrapper {
+	background:url(<%= style_image_path("side_bar_inner") || "/images/boxes/sidebar/inner_fill.png" -%>) no-repeat bottom center;
 	padding-top:6px;
 }
 #sidebar .side-box {
-	background:url(/images/boxes/sidebar/sidebox.png) no-repeat top center;
+	background:url(<%= style_image_path("side_bar_box") || "/images/boxes/sidebar/sidebox.png" -%>) no-repeat top center;
 }
-#sidebar #inner-wrapper .seperator {
+#sidebar .inner-wrapper .seperator {
 	height:21px;
 	display:block;
-	background:url(/images/boxes/sidebar/seperator.png) no-repeat top center;
+	background:url(<%= style_image_path("side_bar_box_seperator") || "/images/boxes/sidebar/seperator.png" -%>) no-repeat top center;
 }
 .side-box h2, .side-box h3 {
 	text-align:center;
 	
 }
 .side-box h2 {
-	background:url(/images/boxes/sidebar/sidebox_header.png) no-repeat top center;
+	background:url(<%= style_image_path("side_bar_box_header") || "/images/boxes/sidebar/sidebox_header.png" -%>) no-repeat top center;
 	margin-bottom:5px;
 	height:29px;
 	line-height:29px;
