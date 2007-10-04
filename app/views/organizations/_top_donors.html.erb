@@ -1,0 +1,5 @@
+<ul>
+<% organization.top_donors(10).each do |account, amount |%>
+<li> <%= account.nickname -%> <%= amount  -%></li>
+<% end %>
+</ul>

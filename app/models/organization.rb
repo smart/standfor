@@ -24,14 +24,40 @@ class Organization < ActiveRecord::Base
   end
   
   def top_sponsor
-    values = Donation.maximum(:amount,:group => :account_id,:conditions => ["organization_id = ?", self.id] )
+    values = Donation.sum(:amount,
+			      :group => :account_id,
+			      :conditions => ["organization_id = ?", self.id], 
+		              :order => "sum(amount) DESC "  )
     return nil if values.size == 0  
     id, value = values.first  
     return Account.find(id)
   end
 
+  def top_donors(limit = 10)
+    values = Donation.sum(:amount,
+			  :group => :account_id, 
+			  :conditions => ["organization_id = ?", self.id], 
+		          :order => "sum(amount) DESC ",
+			  :limit => limit )
+    a = []
+    values.each do |val|
+    (id, amount)  = val
+     account = Account.find(id)
+     a << [account, amount ]
+    end
+    a 
+  end
+
    def featured_badges
       Badge.find(:all, :conditions => ["organization_id = ? ", self.id ],  :limit => 3 )
+   end
+   
+   def number_of_donors
+     Donation.count(:id, :conditions => ["organization_id = ?", self.id ] )  
+   end
+
+   def number_of_badges
+     Badge.count(:id, :conditions => ["organization_id = ?", self.id ] )  
    end
    
 end

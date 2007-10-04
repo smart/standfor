@@ -57,4 +57,20 @@ class Badge < ActiveRecord::Base
       "/images/examples/#{self.id}.gif"
     end
 
+    def total_hits
+      "not implemented"
+    end
+
+    def unique_hits
+      "not implemented"
+    end
+
+    def number_of_instances
+      MyBadge.count(:conditions => [ "badge_id = ? ",  self.id ] )
+    end
+
+     def users     
+       Account.find(:all, :conditions =>  ["id IN ( SELECT account_id FROM my_badges WHERE badge_id = ? ) ",  self.id ] )
+     end
+
 end

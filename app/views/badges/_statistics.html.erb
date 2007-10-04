@@ -1,0 +1,17 @@
+<table>
+<tr>
+ <td>Number of Badges in Circulation: </td> <td><%= badge.number_of_instances -%></td>
+</tr>
+
+<tr>
+ <td>Users</td> 
+   <td>
+       <ul>
+      <% badge.users.each do |account| %>
+       <li> <%= account.nickname -%> </li>
+      <% end %>
+      <ul>
+   </td>
+</tr>
+
+</table>

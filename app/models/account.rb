@@ -81,5 +81,6 @@ class Account< ActiveRecord::Base
   def is_sponsor?
     return Sponsor.exists?(:account_id => self.id )
   end
+
   
 end
