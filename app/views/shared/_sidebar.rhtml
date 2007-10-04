@@ -34,16 +34,34 @@
         <li>top sponsor: <%= @organization.top_sponsor.nickname -%> </li>
         <% end  %>
     </ul>
-   <h3>top badge</h3>
-   hi there
   </div>
   <span class="seperator"></span>
  </div>
 </div>
 <% end %>
 
-<ul>
+<%  if true  %>
 
+
+<div class="outer-wrapper">
+ <div class="inner-wrapper">
+  <div class="side-box" id="your-stats">
+   <h2>system stats </h2>
+    <ul class="stats">
+        <li>Total Donations: $<%= System.total_donations -%> </li>
+        <li>No. Donations: <%= System.total_number_of_donations -%> </li>
+        <li>No. Badges: <%= System.total_number_of_badges -%> </li>
+        <li>No. Users: <%= System.total_number_of_accounts -%> </li>
+        <li>No. User Badges: <%= System.total_number_of_user_badges -%> </li>
+    </ul>
+  </div>
+ </div>
+</div>
+
+<% end %>
+
+<div>
+<ul>
 <% if  current_account != :false %>
 <li> <%= link_to 'my account', :controller => 'my_account', :action => 'index' -%> </li>
 
@@ -54,3 +72,5 @@
 <li> <%= link_to 'login', :controller => 'sessions', :action => 'new' -%> </li>
 <% end %>
 </ul>
+</div>
+
