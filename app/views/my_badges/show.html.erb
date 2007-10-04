@@ -1,3 +1,39 @@
-<h1>My Badges  - Show </h1>
+<div>
+<% content_box( "your charity badge", :class => "shadow" ) do -%>
+    <div id="badge">
+      <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
+    </div>
+  <% end %>
+</div>
 
-<%= render :partial => 'current_view', :locals => {:my_badge => @my_badge } -%>
+<br clear="all" />
+
+<div>
+<% content_box( "options", :class => "shadow" ) do -%>
+  <ul>
+   <li><%= link_to 'customize', :controller => 'customize', :action => 'index', :id => @my_badge  -%> </li>
+  </ul>
+<% end %>
+</div>
+
+<div>
+<% content_box( "statistics", :class => "shadow" ) do -%>
+  <ul>
+  <% @statistics.each do |statistic| %>
+   <li>
+    <%= statistic.attributes['name'] -%>   |
+    <%= statistic.attributes['stat_summary'].total_hits -%>  |
+    <%= statistic.attributes['stat_summary'].total_uniques -%>  
+   </li>
+  <% end %>
+  </ul>
+<% end %>
+</div>
+
+<div>
+<% content_box( "shares", :class => "shadow" ) do -%>
+  <ul>
+   <li></li>
+  </ul>
+<% end %>
+</div>

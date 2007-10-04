@@ -1,7 +1,6 @@
 class MyBadgesController < ApplicationController
   layout 'default'
   before_filter :login_required
-
   before_filter :get_badge
   # GET /my_badges
   # GET /my_badges.xml
@@ -23,7 +22,8 @@ class MyBadgesController < ApplicationController
   # GET /my_badges/1.xml
   def show
     @my_badge = MyBadge.find(params[:id])
-
+    get_share_info
+    get_stat_info
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @my_badge }
@@ -109,6 +109,14 @@ class MyBadgesController < ApplicationController
 
    def get_badge
      @badge = Badge.find(params[:badge_id])
+   end
+
+   def get_share_info
+     @shares = Share.find(:all, :params => {:adi_id => @my_badge.adi_id} )
+   end
+
+   def get_stat_info
+     @statistics = Stat.sort(Stat.find(:all, :params  => {:adi_id => @my_badge.adi_id } ))  
    end
 
 end
