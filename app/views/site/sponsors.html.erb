@@ -2,7 +2,7 @@
   <% Sponsor.find(:all).each do |sponsor| %> 
    <% content_box( "#{sponsor.name}", :class => "shadow" ) do -%>
     <%= image_tag sponsor.sponsorslogo.public_filename(:medium) -%>
-    <%= sponsor.name -%>
+    <%= link_to sponsor.name,  sponsor_path(sponsor) -%>
    <% end %>
   <% end %>
 <% end %>
