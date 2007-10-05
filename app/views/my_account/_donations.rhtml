@@ -4,8 +4,9 @@ Total Donations: $<%= current_account.total_donations -%>
 <% current_account.donations.each do |donation| %>
 <ul>
 	<li><strong><%= donation.created_at.strftime("%B %d, %Y") -%></strong></li>
-	<li>Donated $<%= donation.amount -%> to <%= donation.organization.name -%></li>
-	<li>This donation was made to the <%= donation.segment.name -%> segment</li>
+	<li>Donated $<%= donation.amount -%> to <%= link_to donation.organization.name, organization_path(donation.organization) -%></li>
+	<li>This donation was made to the <%= link_to donation.segment.name, organization_segment_path(donation.organization, donation.segment )-%></li>
 </ul>
 <% end %>
+
 

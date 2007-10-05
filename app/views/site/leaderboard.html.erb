@@ -1,7 +1,9 @@
 <% content_box( "leaderboard", :class => "shadow" ) do -%>
+
 <ol>
   <% System.top_donors.each do |account, amount| %> 
-  <li><%= account.nickname -%> : <%= amount -%> </li>
+  <li><%= link_to account.nickname, :controller => 'site', :action => 'meet', :id => account   -%> : <%= amount -%> </li>
   <% end %>
-  </ol>
+</ol>
+
 <% end %>

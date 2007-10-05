@@ -1,41 +1,41 @@
 --- 
 sponsors_001: 
-  city: 
-  address1: 
-  name: 
-  updated_at: 2007-09-25 20:31:21
-  zip: 
-  address2: 
+  city: Cupertino
+  address1: One Infinite Loop
+  name: Apple
+  updated_at: 2007-10-05 14:31:31
+  zip: "94105"
+  address2: ""
   account_id: 
-  address3: 
-  url: 
-  country: 
+  address3: ""
+  url: www.apple.com
+  country: United States
   logo: 
   id: "1"
-  fax: 
-  phone: 
-  site_name: 
-  statement: 
-  created_at: 2007-09-25 20:31:21
-  email: 
-  state: 
+  fax: 408.996.1010
+  phone: 408.996.1010
+  site_name: apple
+  statement: We will own everything.
+  created_at: 2007-10-05 14:31:31
+  email: info@apple.com
+  state: California
 sponsors_002: 
-  city: 
-  address1: 
-  name: 
-  updated_at: 2007-09-25 20:31:21
-  zip: 
-  address2: 
+  city: Redmond
+  address1: One Microsoft Way
+  name: Microsoft
+  updated_at: 2007-10-05 14:37:06
+  zip: 98052-6399
+  address2: ""
   account_id: 
-  address3: 
-  url: 
-  country: 
+  address3: ""
+  url: www.microsoft.com
+  country: United States
   logo: 
   id: "2"
-  fax: 
-  phone: 
-  site_name: 
-  statement: 
-  created_at: 2007-09-25 20:31:21
-  email: 
-  state: 
+  fax: "8006427676"
+  phone: "8006427676"
+  site_name: microsoft
+  statement: We're going down.
+  created_at: 2007-10-05 14:37:06
+  email: info@microsoft.com
+  state: Washington

@@ -28,6 +28,9 @@ class SiteController < ApplicationController
     def sponsors
     end
 
+    def meet 
+      @account = Account.find(params[:id])
+    end
 
    # These actions are for development purposes, it can probably be deleted  
    def _login 

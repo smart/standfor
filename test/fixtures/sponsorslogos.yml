@@ -1,2 +1,81 @@
---- {}
-
+--- 
+sponsorslogos_001: 
+  sponsor_id: "1"
+  content_type: image/jpeg
+  thumbnail: 
+  size: "14090"
+  id: "1"
+  height: "480"
+  filename: apple_logo__640x480_.jpg
+  parent_id: 
+  width: "640"
+sponsorslogos_002: 
+  sponsor_id: 
+  content_type: image/jpeg
+  thumbnail: normal
+  size: "5482"
+  id: "2"
+  height: "225"
+  filename: apple_logo__640x480__normal.jpg
+  parent_id: "10"
+  width: "300"
+sponsorslogos_003: 
+  sponsor_id: 
+  content_type: image/jpeg
+  thumbnail: thumb
+  size: "1318"
+  id: "3"
+  height: "56"
+  filename: apple_logo__640x480__thumb.jpg
+  parent_id: "10"
+  width: "75"
+sponsorslogos_004: 
+  sponsor_id: 
+  content_type: image/jpeg
+  thumbnail: medium
+  size: "2602"
+  id: "4"
+  height: "113"
+  filename: apple_logo__640x480__medium.jpg
+  parent_id: "10"
+  width: "150"
+sponsorslogos_005: 
+  sponsor_id: "2"
+  content_type: image/jpeg
+  thumbnail: 
+  size: "7911"
+  id: "5"
+  height: "280"
+  filename: _1C614316-2E70-44E0-9E8F-A8769329908E__ms-microsoft-logo-iso.jpg
+  parent_id: 
+  width: "350"
+sponsorslogos_006: 
+  sponsor_id: 
+  content_type: image/jpeg
+  thumbnail: normal
+  size: "6759"
+  id: "6"
+  height: "240"
+  filename: _1C614316-2E70-44E0-9E8F-A8769329908E__ms-microsoft-logo-iso_normal.jpg
+  parent_id: "14"
+  width: "300"
+sponsorslogos_007: 
+  sponsor_id: 
+  content_type: image/jpeg
+  thumbnail: thumb
+  size: "1277"
+  id: "7"
+  height: "60"
+  filename: _1C614316-2E70-44E0-9E8F-A8769329908E__ms-microsoft-logo-iso_thumb.jpg
+  parent_id: "14"
+  width: "75"
+sponsorslogos_008: 
+  sponsor_id: 
+  content_type: image/jpeg
+  thumbnail: medium
+  size: "3007"
+  id: "8"
+  height: "120"
+  filename: _1C614316-2E70-44E0-9E8F-A8769329908E__ms-microsoft-logo-iso_medium.jpg
+  parent_id: "14"
+  width: "150"

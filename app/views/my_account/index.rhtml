@@ -1,14 +1,14 @@
 <% content_box("my account", :id => "account-details", :class => "shadow") do -%>
-	<% content_box("my donations", :id => "my-donations", :class => "basicborder") do -%>
-		<%= render :partial => 'donations'-%>
-	<% end -%>
-	<% content_box("my badges", :id => "my-badges", :class => "basicborder") do -%>
-		<%= render :partial => 'badges'-%>
-	<% end -%>
-	<% content_box("my information", :id => "my-info", :class => "basicborder") do -%>
-		<div id='my_account_info'>
-			<%= render :partial => 'information'-%>
-		</div>
-	<% end -%>
-	<span class="clear">&nbsp;</span>
+ <% content_box("my donations", :id => "my-donations", :class => "basicborder") do -%>
+  <%= render :partial => 'donations'-%>
+ <% end -%>
+ <% content_box("my badges", :id => "my-badges", :class => "basicborder") do -%>
+  <%= render :partial => 'badges'-%>
+ <% end -%>
+ <% content_box("my information", :id => "my-info", :class => "basicborder") do -%>
+  <div id='my_account_info'>
+   <%= render :partial => 'information'-%>
+  </div>
+ <% end -%>
+ <span class="clear">&nbsp;</span>
 <% end %>

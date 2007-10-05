@@ -1,9 +1,11 @@
 <div>
 <% content_box( "#{current_account.nickname}'s #{@badge.name} ", :class => "shadow" ) do -%>
 
+  <% content_box( "your badge ", :class => "shadow" ) do -%>
     <div id="badge">
       <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
     </div>
+  <% end %>
 
     <div>
     <% content_box( "actions", :class => "shadow" ) do -%>

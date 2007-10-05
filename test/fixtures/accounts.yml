@@ -36,7 +36,7 @@ accounts_002:
 accounts_003: 
   status: "1"
   city: ""
-  updated_at: "2007-10-03"
+  updated_at: "2007-10-05"
   zip: ""
   primary_email: userone@sympact.net
   nickname: userone
@@ -53,7 +53,7 @@ accounts_003:
 accounts_004: 
   status: "1"
   city: 
-  updated_at: "2007-10-02"
+  updated_at: "2007-10-04"
   zip: 
   primary_email: usertwo@sympact.net
   nickname: usertwo

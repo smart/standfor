@@ -8,7 +8,7 @@
    <td>
        <ul>
       <% badge.users.each do |account| %>
-       <li> <%= account.nickname -%> </li>
+       <li> <%= link_to account.nickname, :controller => 'site', :action => 'meet', :id =>  account -%> </li>
       <% end %>
       <ul>
    </td>

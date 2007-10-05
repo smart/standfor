@@ -1,5 +1,5 @@
 <ul>
 <% organization.top_donors(10).each do |account, amount |%>
-<li> <%= account.nickname -%> <%= amount  -%></li>
+<li> <%= link_to account.nickname, :controller => 'site', :action => 'meet', :id => account  -%> <%= amount  -%></li>
 <% end %>
 </ul>
