@@ -51,10 +51,10 @@ window.attachEvent("onload", correctPNG);
     <div id="navigation">
      <ul>
          <li><%= link_to(image_tag("/text/navigation_text/organizations.png", :alt => 'organizations'), organizations_path ) %></li>
-         <li><%= link_to(image_tag("/text/navigation_text/badges.png", :alt => 'badges'), "#" ) %></li>
-         <li><%= link_to(image_tag("/text/navigation_text/sponsors.png", :alt => 'sponsors'), "#" ) %></li>
-         <li><%= link_to(image_tag("/text/navigation_text/leaderboard.png", :alt => 'leaderboard'), "#" ) %></li>
-         <li class="last"><%= link_to(image_tag("/text/navigation_text/about : us.png", :alt => 'About Us'), "#" ) %></li>
+         <li><%= link_to(image_tag("/text/navigation_text/badges.png", :alt => 'badges') , :controller => 'site', :action => 'badges'  ) %></li>
+         <li><%= link_to(image_tag("/text/navigation_text/sponsors.png", :alt => 'sponsors'), :controller => 'site', :action => 'sponsors' ) %></li>
+         <li><%= link_to(image_tag("/text/navigation_text/leaderboard.png", :alt => 'leaderboard'),  :controller => 'site', :action => 'leaderboard') %></li>
+         <li class="last"><%= link_to(image_tag("/text/navigation_text/about : us.png", :alt => 'About Us'), :controller => 'site', :action => 'about_us' ) %></li>
      </ul>
    </div>
      <h1><%= link_to(image_tag("/text/top_text/stand for : us.png", :alt => 'Stand For : Us'), "#" ) %></h1>

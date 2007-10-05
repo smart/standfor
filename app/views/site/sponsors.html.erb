@@ -1,0 +1,7 @@
+<% content_box( "sponsors", :class => "shadow" ) do -%>
+  <% Sponsor.find(:all).each do |sponsor| %> 
+   <% content_box( "#{sponsor.name}", :class => "shadow" ) do -%>
+    <%= sponsor.name -%>
+   <% end %>
+  <% end %>
+<% end %>

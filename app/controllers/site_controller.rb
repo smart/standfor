@@ -19,13 +19,23 @@ class SiteController < ApplicationController
       false
     end
 
-   def login 
+    def leaderboard
+    end
+
+    def badges 
+    end
+
+    def sponsors
+    end
+
+
+   # These actions are for development purposes, it can probably be deleted  
+   def _login 
      session[:account] ||= Account.find(1)
      redirect_to session[:return_to]
    end
 
-  
-   def clear
+   def _clear
        current_account.donations.each do |d| 
          d.destroy
        end

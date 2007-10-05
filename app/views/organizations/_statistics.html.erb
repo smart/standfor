@@ -1,18 +1,8 @@
-<table>
-<tr>
-  <td>Total Raised Through Standfor Us:</td> <td><%= organization.total_raised -%></td>
-</tr>
-
-<tr>
-  <td>Number of Donors:</td> <td><%= organization.number_of_donors -%></td>
-</tr>
-
-<tr>
-  <td>Number of Badges:</td> <td><%= organization.number_of_badges -%></td>
-</tr>
-
-<tr>
-  <td>Top Donor:</td> <td><%= organization.top_sponsor.nickname -%> </td>
-</tr>
-
-</table>
+<ul>
+  <li>Total Raised Through Standfor Us:<%= organization.total_raised -%></li>
+  <li>Number of Donors: <%= organization.number_of_donors -%></li>
+  <li>Number of Badges: <%= organization.number_of_badges -%></li>
+  <% if !organization.top_sponsor.nil? %>
+  <li>Top Donor: <%= organization.top_sponsor.nickname -%> </li>
+  <% end %>
+</ul>

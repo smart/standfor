@@ -3,37 +3,31 @@
  <div class="inner-wrapper">
   <div class="side-box" id="your-stats">
    <h2>i stand for</h2>
-		
      <h3>my stats</h3>
     <ul class="stats">
-        <li>number of badges: <%= current_account.my_badges.size -%></li>
-        <li>contributions: <%= current_account.total_donations(@organization) -%> </li>
-        <li>awareness points: <%= current_account.awareness_points -%> </li>
-    </ul>
-		<%= link_to (image_tag("/text/side_button/logout.png", :alt => "login"), logout_path, :class => "sidebar-button") %>
+      <li>number of badges: <%= current_account.my_badges.size -%></li>
+      <li>contributions: <%= current_account.total_donations(@organization) -%> </li>
+      <li>awareness points: <%= current_account.awareness_points -%> </li>
+  </ul>
+<%= link_to (image_tag("/text/side_button/logout.png", :alt => "login"), logout_path, :class => "sidebar-button") %>
  </div>
    <span class="seperator"></span>
  </div>
 </div>
 <% else %>
-	<% content_box("", :class => "basic", :id => "mini-login" ) do -%>
-		<%= link_to (image_tag("/text/side_button/login.png", :alt => "login"), login_path, :class => "sidebar-button") %>
-		or
-		<%= link_to(image_tag("/text/side_button/register.png", :alt => "register"), signup_path, :class => "sidebar-button") %>
-	<% end %>
+  <% content_box("", :class => "basic", :id => "mini-login" ) do -%>
+     <%= link_to (image_tag("/text/side_button/login.png", :alt => "login"), login_path, :class => "sidebar-button") %>
+     or
+    <%= link_to(image_tag("/text/side_button/register.png", :alt => "register"), signup_path, :class => "sidebar-button") %>
+  <% end %>
 <% end %>
-<div class="outer-wrapper">
- <div class="inner-wrapper">
 
 <% if !@organization.nil? %>
+<div class="outer-wrapper">
+ <div class="inner-wrapper">
   <div class="side-box" id="org-stats">
    <h2>organization stats</h2>
-    <ul class="stats">
-        <li>total raised: <%= @organization.total_raised -%> </li>
-        <% if !@organization.top_sponsor.nil? %>
-        <li>top sponsor: <%= @organization.top_sponsor.nickname -%> </li>
-        <% end  %>
-    </ul>
+   <%= render :partial => '/organizations/statistics', :locals => {:organization => @organization } -%> 
   </div>
   <span class="seperator"></span>
  </div>
@@ -41,36 +35,29 @@
 <% end %>
 
 <%  if true  %>
-
-
 <div class="outer-wrapper">
  <div class="inner-wrapper">
   <div class="side-box" id="your-stats">
    <h2>system stats </h2>
-    <ul class="stats">
-        <li>Total Donations: $<%= System.total_donations -%> </li>
-        <li>No. Donations: <%= System.total_number_of_donations -%> </li>
-        <li>No. Badges: <%= System.total_number_of_badges -%> </li>
-        <li>No. Users: <%= System.total_number_of_accounts -%> </li>
-        <li>No. User Badges: <%= System.total_number_of_user_badges -%> </li>
-    </ul>
+      <%= render :partial => '/shared/system_statistics' -%>
   </div>
+  <span class="seperator"></span>
  </div>
 </div>
-
 <% end %>
 
-<div>
+<div class="outer-wrapper">
+ <div class="inner-wrapper">
+  <div class="side-box" id="your-stats">
 <ul>
 <% if  current_account != :false %>
 <li> <%= link_to 'my account', :controller => 'my_account', :action => 'index' -%> </li>
-
-<% if false and RAILS_ENV  == 'development' %>
-<li><%= link_to 'reset', :controller => 'site' , :action => 'clear' %> </li>
-<% end %>
 <% else  %>
 <li> <%= link_to 'login', :controller => 'sessions', :action => 'new' -%> </li>
 <% end %>
 </ul>
+  </div>
+  <span class="seperator"></span>
+ </div>
 </div>
 
