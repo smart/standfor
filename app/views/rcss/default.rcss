@@ -253,6 +253,7 @@ img {
 }
 #badge .min-height {
   height:160px;
+  margin-bottom:10px;
 }
 
 #howto {
@@ -263,7 +264,7 @@ img {
 }
 
 #howto, #options, #networks {
-  width:300px;
+  width:290px;
   float:right;
   margin-right:5px;
 }
@@ -283,36 +284,27 @@ img {
   background-repeat:no-repeat;
   margin-bottom:5px;
 }
-
-
-
 #options li a {
   padding-left:35px;
 }
-
 #options li.edges {
   background-image:url(/images/icons/edges.png);
 }
-
 #options li.fonts {
   background-image:url(/images/icons/font.png);
 }
 #options li.images {
   background-image:url(/images/icons/picture.png);
 }
-
 #options, #network a {
   display:block;
 }
-
 #toolbar {
   clear:both;
 }
-
 #tool-options .min-height {
   height:225px;
 }
-
 .palette {
 
 }
@@ -334,6 +326,21 @@ img {
   
 }
 
+#my-badge {
+	
+}
+#badge-stats {
+	clear:both;
+}
+#badge-stats #information {
+	float:left;
+	display:inline;
+	width:250px;
+}
+#badge-stats #overall {
+	float:right;
+	width:400px;
+}
 /* share page specific styles */
 
 
@@ -470,8 +477,8 @@ img {
 }
 
 /* requirements page specific styles */
-.my-badges #preview {
-  width:390px;
+.my-badges #badge {
+  float:left;
 }
 #requirements {
   width:275px;
@@ -508,6 +515,7 @@ img {
 #my-info form {
 	width:350px;
 }
+
 
 /* account settings specific styles */
 #settings-form {

@@ -1,43 +1,39 @@
-<div>
-<% content_box( "#{current_account.nickname}'s #{@badge.name} ", :class => "shadow" ) do -%>
+<div id="preview">
+<% content_box( "your badge", :class => "shadow" ) do -%>
 
-  <% content_box( "your badge ", :class => "shadow" ) do -%>
     <div id="badge">
+    	<%= @badge.name -%>
       <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
     </div>
-  <% end %>
 
     <div>
-    <% content_box( "actions", :class => "shadow" ) do -%>
-      <ul>
-       <li><%= link_to 'customize', :controller => 'customize', :action => 'index', :id => @my_badge  -%></li>
-       <li><%= link_to 'share', :controller => 'share', :action => 'index', :id => @my_badge  -%></li>
-      </ul>
-    <% end %>
+       <%= link_to 'customize', :controller => 'customize', :action => 'index', :id => @my_badge  -%>
+       <%= link_to 'share', :controller => 'share', :action => 'index', :id => @my_badge -%>
     </div>
 
-<% content_box( "statistics", :class => "shadow" ) do -%>
+<% end %>
+</div
+<div id="howto">
+<% content_box( "statistics", :class => "basic") do -%>
   <table>
    <tr>
      <th>Name</th>
      <th>Hits</th>
      <th>Unique Hits</th>
    </tr>
-  <% @statistics.each do |statistic| %>
+  <% @statistics.each do |statistic| -%>
    <tr>
     <td><%= statistic.attributes['name'] -%></td>
     <td><%= statistic.attributes['stat_summary'].total_hits -%></td> 
     <td><%= statistic.attributes['stat_summary'].total_uniques -%></td> 
    </tr>
-  <% end %>
+  <% end -%>
  </table>
-<% end %>
-<% end %>
-
+<% end -%>
 </div>
 
-<div>
-<% content_box( "#{@my_badge.badge.organization.name}", :class => "shadow" ) do -%>
+<!--
+<% content_box( "#{@my_badge.badge.organization.name}", :class => "shadow", :id => 'org-stats' ) do -%>
 
 <% content_box( "information", :class => "shadow" ) do -%>
 <%= render :partial =>  'organizations/information',
@@ -55,18 +51,18 @@
 <% end %>
 
 <% end %>
-</div>
 
+-->
 
 <div>
-<% content_box( "#{@my_badge.badge.name}", :class => "shadow" ) do -%>
-  <% content_box( "information", :class => "shadow" ) do -%>
+<% content_box( "#{@my_badge.badge.name}", :class => "shadow", :id => 'badge-stats' ) do -%>
+  <% content_box( "information", :class => "basicborder", :id => "information" ) do -%>
     <%= render :partial =>  'badges/information', :locals => { :badge => @my_badge.badge} %>
   <% end %>
 
-  <% content_box( "statistics", :class => "shadow" ) do -%>
+  <% content_box( "statistics", :class => "basicborder", :id => "overall" ) do -%>
     <%= render :partial =>  'badges/statistics', :locals => { :badge => @my_badge.badge} %>
   <% end %>
-
+	<span class="clear"></span>
 <% end %>
 </div>

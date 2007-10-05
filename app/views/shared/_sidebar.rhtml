@@ -9,6 +9,7 @@
       <li>contributions: <%= current_account.total_donations(@organization) -%> </li>
       <li>awareness points: <%= current_account.awareness_points -%> </li>
   </ul>
+  <%= link_to 'my account', :controller => 'my_account', :action => 'index' -%>
 <%= link_to (image_tag("/text/side_button/logout.png", :alt => "login"), logout_path, :class => "sidebar-button") %>
  </div>
    <span class="seperator"></span>
@@ -46,18 +47,5 @@
 </div>
 <% end %>
 
-<div class="outer-wrapper">
- <div class="inner-wrapper">
-  <div class="side-box" id="your-stats">
-<ul>
-<% if  current_account != :false %>
-<li> <%= link_to 'my account', :controller => 'my_account', :action => 'index' -%> </li>
-<% else  %>
-<li> <%= link_to 'login', :controller => 'sessions', :action => 'new' -%> </li>
-<% end %>
-</ul>
-  </div>
-  <span class="seperator"></span>
- </div>
 </div>
 

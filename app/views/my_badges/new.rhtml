@@ -1,6 +1,6 @@
 <% content_box("get this badge", :id => "get-badge", :class => "shadow" ) do %>
 <%= error_messages_for :my_badge %>
-<div id="preview">
+<div id="badge">
 <p><%= @badge.name  -%> </p>
 <p><%= image_tag("/images/examples/#{@badge.id}.gif")  -%> </p>
 <p><%= @badge.description -%></p>
