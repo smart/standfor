@@ -1,4 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
+
+   map.namespace(:worldreach) do |worldreach|
+     worldreach.resources :segments
+    end
+
   map.view_badge "/standfor/:id.:ext", :controller => "adis", :action => "index"
   map.login   '/login',  :controller => 'sessions', :action => 'new'
   map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
@@ -47,9 +52,6 @@ ActionController::Routing::Routes.draw do |map|
     end
  end
 
- map.namespace(:worldreach) do |worldreach|
-    worldreach.resources :segments
- end
 
   # end youser routes
 =begin

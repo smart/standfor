@@ -1,3 +1,5 @@
 <h1>Index</h1>
 
 <%= @organization.name -%>
+
+<%= render :partial => 'segments', :locals => {:organization => @organization} -%>
