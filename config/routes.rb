@@ -1,5 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-
   map.view_badge "/standfor/:id.:ext", :controller => "adis", :action => "index"
   map.login   '/login',  :controller => 'sessions', :action => 'new'
   map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
@@ -8,20 +7,15 @@ ActionController::Routing::Routes.draw do |map|
   map.open_id_complete_on_accounts 'accounts',    :controller => "accounts",    :action => "create", :requirements => { :method => :get }
   map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
   map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
-
-  map.resources :accounts, :my_badges, :campaigns, :sponsors, :badges, :oranizations, :segments, :requirements, :style_infos, :sponsorships
-
   map.resource :sessions
-
   map.resources :accounts do |user|
     user.resources :acconts_openids
   end
-
   map.resources :organizations do |organizations|
      organizations.resources :segments , :name_prefix => 'organization_'  do |segments|
-         segments.resources :donations, :collection => { :details=>:any, :confirm => :any, :payment => :any }
-         segments.resources :campaigns
-         segments.resources :badges
+      segments.resources :donations, :collection => { :details=>:any, :confirm => :any, :payment => :any }
+      segments.resources :campaigns
+      segments.resources :badges
      end
   end
 
@@ -51,6 +45,10 @@ ActionController::Routing::Routes.draw do |map|
        organizations.resources :campaigns
        organizations.resources :style_infos
     end
+ end
+
+ map.namespace(:worldreach) do |worldreach|
+    worldreach.resources :segments
  end
 
   # end youser routes
