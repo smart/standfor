@@ -1,4 +1,13 @@
 --- 
+segments_012: 
+  name: Education
+  updated_at: 2007-10-22 14:36:12
+  id: "12"
+  description: Support education efforts around the world.
+  site_name: education
+  organization_id: "4"
+  keyword: education
+  created_at: 2007-10-22 14:36:12
 segments_001: 
   name: Children's Fund
   updated_at: 2007-09-24 00:31:37
@@ -8,6 +17,15 @@ segments_001:
   organization_id: "1"
   keyword: childrens
   created_at: 2007-09-24 00:31:37
+segments_013: 
+  name: Global Impact
+  updated_at: 2007-10-22 14:37:15
+  id: "13"
+  description: Support efforts to lessen human impact on the globe.
+  site_name: global
+  organization_id: "4"
+  keyword: global
+  created_at: 2007-10-22 14:37:15
 segments_002: 
   name: Freeman's Legions
   updated_at: 2007-09-24 00:31:37
@@ -53,3 +71,48 @@ segments_006:
   organization_id: "3"
   keyword: justice
   created_at: 2007-10-02 18:42:32
+segments_007: 
+  name: Children's Charities
+  updated_at: 2007-10-22 14:23:59
+  id: "7"
+  description: helping children around the world
+  site_name: childrens
+  organization_id: "4"
+  keyword: children
+  created_at: 2007-10-22 14:23:59
+segments_008: 
+  name: Health & Wellness
+  updated_at: 2007-10-22 14:25:14
+  id: "8"
+  description: supporting health and wellness
+  site_name: health
+  organization_id: "4"
+  keyword: health
+  created_at: 2007-10-22 14:25:14
+segments_009: 
+  name: Environment
+  updated_at: 2007-10-22 14:32:56
+  id: "9"
+  description: support the environmental causes
+  site_name: environment
+  organization_id: "4"
+  keyword: environment
+  created_at: 2007-10-22 14:32:56
+segments_010: 
+  name: Disaster Relief
+  updated_at: 2007-10-22 14:34:16
+  id: "10"
+  description: aid disaster recovery
+  site_name: disaster
+  organization_id: "4"
+  keyword: disaster
+  created_at: 2007-10-22 14:34:16
+segments_011: 
+  name: Animal Protection
+  updated_at: 2007-10-22 14:35:22
+  id: "11"
+  description: support animal welfare
+  site_name: animals
+  organization_id: "4"
+  keyword: animals
+  created_at: 2007-10-22 14:35:22

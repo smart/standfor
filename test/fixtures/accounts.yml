@@ -19,7 +19,7 @@ accounts_001:
 accounts_002: 
   status: "1"
   city: 
-  updated_at: "2007-10-03"
+  updated_at: "2007-10-05"
   zip: 
   primary_email: admin@sympact.net
   nickname: sympact

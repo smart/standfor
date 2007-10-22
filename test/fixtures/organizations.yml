@@ -50,7 +50,7 @@ organizations_003:
   created_on: "2007-10-02"
   city: New York
   address1: "5 Penn Plaza "
-  name: Amnesty International
+  name: Amenesty International
   zip: "10001"
   address2: 14th floor
   address3: ""
@@ -79,3 +79,24 @@ organizations_003:
   keyword: amnesty
   email: info@amnesty.org
   state: New York
+organizations_004: 
+  created_on: "2007-10-22"
+  city: Washington
+  address1: 200 Utah Avenue
+  name: World Reach
+  zip: "21221"
+  address2: ""
+  address3: ""
+  updated_on: "2007-10-22"
+  admin_id: 
+  url: http://www.standforus.net/worldreach
+  country: United States
+  id: "4"
+  description: really great
+  site_name: worldreach
+  fax: ""
+  phone: 201 323 44444
+  statement: we're great
+  keyword: hunger
+  email: ""
+  state: District of Columbia

@@ -1,40 +1,82 @@
 --- 
+taggings_014: 
+  tag_id: "12"
+  id: "15"
+  taggable_type: Segment
+  taggable_id: "13"
+  created_at: 2007-10-22 14:37:15
 taggings_003: 
-  tag_id: "2"
-  id: "3"
-  taggable_type: Organization
-  taggable_id: "4"
-  created_at: 2007-10-02 18:24:48
-taggings_004: 
   tag_id: "3"
   id: "4"
   taggable_type: Segment
   taggable_id: "3"
   created_at: 2007-10-02 18:33:50
-taggings_005: 
+taggings_004: 
   tag_id: "4"
   id: "5"
   taggable_type: Segment
   taggable_id: "4"
   created_at: 2007-10-02 18:37:30
-taggings_006: 
+taggings_005: 
   tag_id: "2"
   id: "6"
   taggable_type: Segment
   taggable_id: "5"
   created_at: 2007-10-02 18:40:04
-taggings_007: 
+taggings_006: 
   tag_id: "5"
   id: "7"
   taggable_type: Segment
   taggable_id: "6"
   created_at: 2007-10-02 18:42:32
+taggings_007: 
+  tag_id: "1"
+  id: "8"
+  taggable_type: Organization
+  taggable_id: "4"
+  created_at: 2007-10-22 13:55:39
+taggings_008: 
+  tag_id: "6"
+  id: "9"
+  taggable_type: Segment
+  taggable_id: "7"
+  created_at: 2007-10-22 14:23:59
+taggings_009: 
+  tag_id: "7"
+  id: "10"
+  taggable_type: Segment
+  taggable_id: "8"
+  created_at: 2007-10-22 14:25:14
+taggings_010: 
+  tag_id: "8"
+  id: "11"
+  taggable_type: Segment
+  taggable_id: "9"
+  created_at: 2007-10-22 14:32:56
+taggings_011: 
+  tag_id: "9"
+  id: "12"
+  taggable_type: Segment
+  taggable_id: "10"
+  created_at: 2007-10-22 14:34:16
+taggings_012: 
+  tag_id: "10"
+  id: "13"
+  taggable_type: Segment
+  taggable_id: "11"
+  created_at: 2007-10-22 14:35:22
 taggings_001: 
   tag_id: "1"
   id: "1"
   taggable_type: Organization
   taggable_id: "2"
   created_at: 2007-10-02 18:19:40
+taggings_013: 
+  tag_id: "11"
+  id: "14"
+  taggable_type: Segment
+  taggable_id: "12"
+  created_at: 2007-10-22 14:36:12
 taggings_002: 
   tag_id: "2"
   id: "2"
