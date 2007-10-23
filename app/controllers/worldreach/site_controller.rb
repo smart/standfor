@@ -3,6 +3,7 @@ class Worldreach::SiteController < ApplicationController
    before_filter :get_organization
 
    def index
+		@context = 'home'
    end
 
    private

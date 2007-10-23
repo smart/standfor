@@ -1,4 +1,27 @@
-<%= @organization.name -%>
+
+<div id="mission">
+	<p><span class="lead">World Reach is a unique advisory service to help you</span> make a real  difference with your charitable donation. Like a mutual fund, we apply your gift to organizations where it makes the greatest impact. Make a wise choice every time you give to the issues you care about most.</p>
+</div>
+
+<%= image_tag('worldreach/get_involved.png', :alt => 'Get Involved', :id => 'get-involved', :width => 539, :height => 128 ) %>
+
+<% content_for :sidebar do -%>
+<div id="instructions" class="box">
+	<h3>Our Process is Simple.</h3>
+		<ul>
+	    <li>Learn about and select from our causes.</li>
+	    <li>Enter donation amounts for each cause.</li>
+	    <li>Enter your required personal information.</li>
+		</ul>
+</div>
+<div id="donations">
+	<p><strong>$107,536,092</strong> has been donated by you.</p>
+</div>
+<% end -%>
+
+<% content_for :extra do -%>
+	<%= image_tag('worldreach/splash_placeholder.jpg', :alt => 'Our Causes') %>
+<% end %>
 
 <ul>
 
@@ -24,3 +47,4 @@
 <p>
  <%= link_to 'donate', new_worldreach_donation_path -%>
 </p>
+
