@@ -1,3 +1,22 @@
 <%= @organization.name -%>
 
-<%= render :partial => 'segments', :locals => {:organization => @organization} -%>
+<ul>
+
+<li>
+<%= link_to 'learn and select causes', worldreach_segments_path -%>
+</li>
+
+<li>
+<%= link_to 'donation tracker', worldreach_donation_tracker_path -%>
+</li>
+
+<li>
+<%= link_to 'about us', worldreach_about_us_path -%>
+</li>
+
+<li>
+<%= link_to 'contact us', worldreach_contact_us_path -%>
+</li>
+
+
+</ul>

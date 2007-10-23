@@ -3,7 +3,14 @@ ActionController::Routing::Routes.draw do |map|
   map.connect '/worldreach' , :controller => '/worldreach/site', :action => 'index'
   map.worldreach_segments '/worldreach/segments' , :controller => '/worldreach/segments', :action => 'index'
   map.worldreach_segment '/worldreach/segments/:id' , :controller => '/worldreach/segments', :action => 'show'
-
+  map.worldreach_privacy_policy  '/worldreach/privacy/policy' , :controller => '/worldreach/site', :action => 'privacy_policy'
+  map.worldreach_site_map '/worldreach/site/map' , :controller => '/worldreach/site', :action => 'site_map'
+  map.worldreach_home '/worldreach' , :controller => '/worldreach/site', :action => 'index'
+  map.worldreach_donation_tracker '/worldreach/donations/tracker' , :controller => '/worldreach/site', :action => 'donation_tracker'
+  map.worldreach_about_us '/worldreach/about/us' , :controller => '/worldreach/site', :action => 'about_us'
+  map.worldreach_contact_us '/worldreach/contact/us' , :controller => '/worldreach/site', :action => 'contact_us'
+  map.worldreach_accountability '/worldreach/accountability' , :controller => '/worldreach/site', :action => 'accountability'
+  map.worldreach_faq '/worldreach/frequently/asked/questions' , :controller => '/worldreach/site', :action => 'faq'
 
   map.view_badge "/standfor/:id.:ext", :controller => "adis", :action => "index"
   map.login   '/login',  :controller => 'sessions', :action => 'new'
