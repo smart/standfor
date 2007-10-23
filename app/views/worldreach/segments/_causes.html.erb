@@ -1,0 +1,5 @@
+<ul>
+	<% @segments.each do |segment| %>
+	<li><%= link_to  segment.name, worldreach_segment_path(segment) %></li>
+	<% end %>
+</ul>

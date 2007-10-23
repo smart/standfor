@@ -3,6 +3,11 @@ class Worldreach::SegmentsController < ApplicationController
   # GET /worldreach_segments.xml
   layout 'worldreach/default'
   before_filter :get_organization
+  
+  def initialize
+  	@context = 'causes'	
+	end
+	
   def index
     @segments = @organization.segments
     respond_to do |format|
