@@ -57,6 +57,7 @@ h1 {
 #sidebar {
 	width:290px;
 	float:right;
+	font-size:80%;
 }
 
 .home #content, .home #sidebar {
@@ -128,10 +129,11 @@ h1 {
 .home #sidebar {
 	margin-top:15px;
 }
-#instructions {
+#instructions, #causes_panel {
 	background:#2d4a54;
 	margin-left:16px;
 	padding-bottom:10px;
+
 }
 #instructions ul {
 	padding-top:30px;
@@ -140,7 +142,6 @@ h1 {
 #instructions li {
 	margin-left:10px;
 	padding:0 20px 0 75px;
-	font-size:80%;
 	height:35px;
 	margin-bottom:5px;
 }
@@ -149,7 +150,6 @@ h1 {
 	background:url(/images/worldreach/icons/check_on.png) no-repeat top left;
 	_background:url(/images/worldreach/icons/check_on_ie.png) no-repeat top left;
 }
-
 .check-off {
 	background:url(/images/worldreach/icons/check_off.png) no-repeat top left;
 	_background:url(/images/worldreach/icons/check_off_ie.png) no-repeat top left;
@@ -170,15 +170,29 @@ h1 {
 	background:url(/images/worldreach/icons/person_on.png) no-repeat top left;
 	_background:url(/images/worldreach/icons/person_on_ie.png) no-repeat top left;
 }
-
-.causes .check, .causes .dollar, .causes .person {
+.icon {
 	width:62px;
 	height:35px;
 	display:block;
+	background-position:50% 50%;
 }
-
+#position {
+	width:246px;
+	margin:0 auto;
+}
 #position li {
 	float:left;
+	padding:0px 10px 0px 10px;
+}
+
+#causes_panel .selected {
+	background:url(/images/worldreach/box_header.png) no-repeat top left;
+	margin-left:-16px;
+	padding-left:16px;
+}
+#causes_panel li {
+	height:40px;
+	margin-bottom:-10px;
 }
 .box h3 {
 	background:url(/images/worldreach/box_header.png) no-repeat top left;

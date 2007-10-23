@@ -1,4 +1,4 @@
-<h1> Worldreach Causes</h1>
+<h1>Our Causes</h1>
 <ul>
 <li><%= @segment.name -%></li>
 <li><%= @segment.keyword -%></li>
@@ -6,5 +6,20 @@
 </ul>
 
 <p>
-<%= link_to 'return to all causes', worldreach_segments_path -%>
+
 </p>
+
+
+<% content_for :sidebar do %>
+	<ul id="position">
+    <li class="check icon">&nbsp;</li>
+    <li class="dollar-off icon">&nbsp;</li>
+    <li class="person-off icon">&nbsp;</li>
+	</ul>
+	<span>Select Your Causes or Click One to Learn More</span>
+	<div id='causes_panel'>
+		<%= link_to 'Back to Our Causes Overview', worldreach_segments_path -%>
+		<%= render :partial => 'causes', :locals => { :segment => @segments, :id => @segment.id } %>
+	</div>
+	<%= image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts') %>
+<% end %>
