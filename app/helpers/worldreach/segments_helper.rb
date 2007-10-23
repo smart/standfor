@@ -1,0 +1,2 @@
+module Worldreach::SegmentsHelper
+end

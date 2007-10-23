@@ -1,0 +1,11 @@
+<h1> Worldreach Segments</h1>
+
+<h1><%= @organization.name -%></h1>
+
+<ul>
+<li><%= @segment.name -%></li>
+<li><%= @segment.keyword -%></li>
+<li><%= @segment.description -%></li>
+</ul>
+<br />
+<%= link_to 'all segments', worldreach_segments_path -%>

@@ -1,0 +1,9 @@
+<h1> Worldreach Segments</h1>
+
+<ul>
+<% for segment in @segments %>
+  <li>
+    <%= link_to  segment.name, worldreach_segment_path(segment) %>
+  </li>
+<% end %>
+</ul>

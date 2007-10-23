@@ -1,8 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
 
-   map.namespace(:worldreach) do |worldreach|
-     worldreach.resources :segments
-    end
+  map.connect '/worldreach' , :controller => '/worldreach/site', :action => 'index'
+  map.worldreach_segments '/worldreach/segments' , :controller => '/worldreach/segments', :action => 'index'
+  map.worldreach_segment '/worldreach/segments/:id' , :controller => '/worldreach/segments', :action => 'show'
+
 
   map.view_badge "/standfor/:id.:ext", :controller => "adis", :action => "index"
   map.login   '/login',  :controller => 'sessions', :action => 'new'
