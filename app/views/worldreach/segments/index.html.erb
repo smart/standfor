@@ -2,14 +2,20 @@
 
 <h3>What we do</h3>
 
-<p>For our children and the hope for a better tomorrow.</p>
+<span class="lead">For our children and the hope for a better tomorrow.</span>
 
 <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 </p>
 
 <% content_for :sidebar do %>
+	<ul id="position">
+    <li class="check">&nbsp;</li>
+    <li class="dollar">&nbsp;</li>
+    <li class="person">&nbsp;</li>
+	</ul>
 	<span>Select Your Causes or Click One to Learn More</span>
-<div id='causes_panel'>
-	<%= render :partial => 'causes', :locals => { :segment => @segments} %>
-</div>
+	<div id='causes_panel'>
+		<%= render :partial => 'causes', :locals => { :segment => @segments} %>
+	</div>
+	<%= image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts') %>
 <% end %>

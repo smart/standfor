@@ -24,7 +24,15 @@ ul, li {
 a img {
 	border:0px;
 }
-
+h1 {
+	background:url(/images/worldreach/h1_background.png) no-repeat top left;
+	margin-top:10px;
+	padding-left:15px;
+	font-size:160%;
+	font-weight:normal;
+	height:43px;
+	line-height:43px;
+}
 #container {
 	width:960px;
 	margin:0 auto;
@@ -141,15 +149,37 @@ a img {
 	background:url(/images/worldreach/icons/check_on.png) no-repeat top left;
 	_background:url(/images/worldreach/icons/check_on_ie.png) no-repeat top left;
 }
+
+.check-off {
+	background:url(/images/worldreach/icons/check_off.png) no-repeat top left;
+	_background:url(/images/worldreach/icons/check_off_ie.png) no-repeat top left;
+}
 .dollar {
 	background:url(/images/worldreach/icons/dollar_on.png) no-repeat top left;
 	_background:url(/images/worldreach/icons/dollar_on_ie.png) no-repeat top left;
+}
+.dollar-off {
+	background:url(/images/worldreach/icons/dollar_off.png) no-repeat top left;
+	_background:url(/images/worldreach/icons/dollar_off_ie.png) no-repeat top left;
+}
+.person-off {
+	background:url(/images/worldreach/icons/person_off.png) no-repeat top left;
+	_background:url(/images/worldreach/icons/person_off_ie.png) no-repeat top left;
 }
 .person {
 	background:url(/images/worldreach/icons/person_on.png) no-repeat top left;
 	_background:url(/images/worldreach/icons/person_on_ie.png) no-repeat top left;
 }
 
+.causes .check, .causes .dollar, .causes .person {
+	width:62px;
+	height:35px;
+	display:block;
+}
+
+#position li {
+	float:left;
+}
 .box h3 {
 	background:url(/images/worldreach/box_header.png) no-repeat top left;
 	height:40px;
