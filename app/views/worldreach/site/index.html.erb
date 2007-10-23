@@ -3,7 +3,7 @@
 	<p><span class="lead">World Reach is a unique advisory service to help you</span> make a real  difference with your charitable donation. Like a mutual fund, we apply your gift to organizations where it makes the greatest impact. Make a wise choice every time you give to the issues you care about most.</p>
 </div>
 
-<%= link_to image_tag('worldreach/get_involved_ie.png', :alt => 'Get Involved', :id => 'get-involved' ), new_worldreach_donation_path -%>
+<%= link_to image_tag('worldreach/get_involved_ie.png', :alt => 'Get Involved', :id => 'get-involved' ), new_worldreach_order_path -%>
 
 <% content_for :sidebar do -%>
 <div id="instructions" class="box">
@@ -33,8 +33,3 @@
 <%= link_to 'donation tracker', worldreach_donation_tracker_path -%>
 </li>
 </ul>
-<p>
- <%= link_to 'donate', new_worldreach_order_path -%>
- 
-</p>
-

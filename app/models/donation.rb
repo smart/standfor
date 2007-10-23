@@ -3,6 +3,7 @@ class Donation < ActiveRecord::Base
    belongs_to :organization
    belongs_to :segment
    belongs_to :badge
+   belongs_to :order
    attr_accessor :creditcard
    attr_accessor :confirmed
    attr_accessor :authorization
