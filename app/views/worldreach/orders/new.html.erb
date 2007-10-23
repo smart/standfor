@@ -1,4 +1,4 @@
-<h1>New order</h1>
+<h1>Donations</h1>
 
 <%= error_messages_for :order %>
 
@@ -14,3 +14,17 @@
 <% end %>
 
 <%= link_to 'Back to Causes', worldreach_segments_path %>
+
+<% content_for :sidebar do %>
+	<ul id="position">
+    <li class="check icon">&nbsp;</li>
+    <li class="dollar icon">&nbsp;</li>
+    <li class="person-off icon">&nbsp;</li>
+	</ul>
+	<span>Enter donation amount and divide among causes</span>
+	<div id='causes_panel'>
+		<%= link_to 'Back to Our Causes Overview', worldreach_segments_path -%>
+		<%= render :partial => 'worldreach/shared/causes', :locals => { :segment => @segments } %>
+	</div>
+	<%= image_tag('worldreach/personal_information.png', :alt => 'Enter Personal Information') %>
+<% end %>

@@ -20,7 +20,10 @@ p {
 ul, li {
 	list-style:none;
 }
-
+a {
+	color:#efad13;
+	text-decoration:none;
+}
 a img {
 	border:0px;
 }
@@ -184,15 +187,24 @@ h1 {
 	float:left;
 	padding:0px 10px 0px 10px;
 }
-
+#causes_panel {
+	margin-top:10px;
+}
 #causes_panel .selected {
 	background:url(/images/worldreach/box_header.png) no-repeat top left;
 	margin-left:-16px;
-	padding-left:16px;
+	padding-left:36px;
+	line-height:27px;
+	margin-top:5px;
+}
+#causes_panel .selected a {
+	color:#151918;
 }
 #causes_panel li {
 	height:40px;
 	margin-bottom:-10px;
+	padding-left:20px;
+	line-height:30px;
 }
 .box h3 {
 	background:url(/images/worldreach/box_header.png) no-repeat top left;

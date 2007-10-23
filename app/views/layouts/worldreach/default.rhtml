@@ -10,7 +10,7 @@
 <body>
 <div id="container" class="<%= @context || "default" -%>">
 	<div id="heading">
-		<%= image_tag('worldreach/branding.png', :alt => 'World Reach - The smart way busy people give.', :width => 427, :height => 150) %>
+		<%= link_to image_tag('worldreach/branding.png', :alt => 'World Reach - The smart way busy people give.', :width => 427, :height => 150), worldreach_home_path %>
 		<div id="navigation">
 			<ul>
 			    <li><%= link_to 'Our Causes', worldreach_segments_path -%></li>

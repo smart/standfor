@@ -26,7 +26,7 @@ class Worldreach::OrdersController < ApplicationController
   # GET /worldreach_orders/new.xml
   def new
     get_order
-
+		@segments = @organization.segments
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @order }
