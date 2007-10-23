@@ -1,5 +1,7 @@
 <ul>
 	<% @segments.each do |segment| %>
-	<li><%= link_to  segment.name, worldreach_segment_path(segment) %></li>
+	<li><%= link_to  segment.name, worldreach_segment_path(segment) %>
+   <%= link_to_remote (session[:causes][segment.site_name].nil?) ? 'select': 'unselect' , :url => {:controller => 'worldreach/site', :action => 'toggle_cause', :id => segment} -%>
+   </li>
 	<% end %>
 </ul>

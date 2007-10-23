@@ -9,5 +9,7 @@
 
 <% content_for :sidebar do %>
 	<span>Select Your Causes or Click One to Learn More</span>
+<div id='causes_panel'>
 	<%= render :partial => 'causes', :locals => { :segment => @segments} %>
+</div>
 <% end %>

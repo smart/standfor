@@ -20,6 +20,7 @@ class ApplicationController < ActionController::Base
   end
   
   def init
+    session[:causes] ||= {}
     @configuration = Configuration.find(:first)
     if false 
        site_name = request.host.match(/standfor\.(\w+)\.org/)[1]    
