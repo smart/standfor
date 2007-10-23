@@ -2,6 +2,8 @@
 
 <%= error_messages_for :order %>
 
+<%= render :partial => 'total',  :locals => {:order => @order } -%>
+
 <% form_for(@order) do |f| %>
 
   <%= render :partial => 'fields', :locals => { :f => f , :organization => @organization } -%>
@@ -11,4 +13,4 @@
   </p>
 <% end %>
 
-<%= link_to 'Back', orders_path %>
+<%= link_to 'Back to Causes', worldreach_segments_path %>
