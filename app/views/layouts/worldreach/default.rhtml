@@ -13,9 +13,9 @@
 		<%= image_tag('worldreach/branding.png', :alt => 'World Reach - The smart way busy people give.', :width => 427, :height => 150) %>
 		<div id="navigation">
 			<ul>
-			    <li>Our Causes</li>
-			    <li>About Us</li>
-			    <li>Contact Us</li>
+			    <li><%= link_to 'Our Causes', worldreach_segments_path -%></li>
+			    <li><%= link_to 'About Us', worldreach_about_us_path -%></li>
+			    <li><%= link_to 'Contact Us', worldreach_contact_us_path -%></li>
 			</ul>
 		</div>
 	</div>

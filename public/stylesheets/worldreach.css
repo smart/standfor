@@ -21,6 +21,10 @@ ul, li {
 	list-style:none;
 }
 
+a img {
+	border:0px;
+}
+
 #container {
 	width:960px;
 	margin:0 auto;
@@ -38,16 +42,16 @@ ul, li {
 }
 
 #content {
-	width:680px;
+	width:670px;
 	float:left;
 }
 
 #sidebar {
-	width:280px;
+	width:290px;
 	float:right;
 }
 
-#content, #sidebar {
+.home #content, .home #sidebar {
 	padding-top:285px;
 }
 
@@ -98,6 +102,7 @@ ul, li {
 	clear:both;
 	line-height:150%;
 	color:#efad13;
+	margin-left:16px;
 }
 #donations strong {
 	display:block;
@@ -107,13 +112,42 @@ ul, li {
 #donations p {
 	padding-top:5px;
 }
+#donations a {
+	float:left;
+	margin-left:-91px;
+	margin-top:-68px;
+	}
+.home #sidebar {
+	margin-top:15px;
+}
 #instructions {
 	background:#2d4a54;
-	margin-top:10px;
+	margin-left:16px;
+	padding-bottom:10px;
 }
 #instructions ul {
-	background:#2d4a54;
-	clear:both;
+	padding-top:30px;
+}
+
+#instructions li {
+	margin-left:10px;
+	padding:0 20px 0 75px;
+	font-size:80%;
+	height:35px;
+	margin-bottom:5px;
+}
+
+.check {
+	background:url(/images/worldreach/icons/check_on.png) no-repeat top left;
+	_background:url(/images/worldreach/icons/check_on_ie.png) no-repeat top left;
+}
+.dollar {
+	background:url(/images/worldreach/icons/dollar_on.png) no-repeat top left;
+	_background:url(/images/worldreach/icons/dollar_on_ie.png) no-repeat top left;
+}
+.person {
+	background:url(/images/worldreach/icons/person_on.png) no-repeat top left;
+	_background:url(/images/worldreach/icons/person_on_ie.png) no-repeat top left;
 }
 
 .box h3 {
@@ -121,7 +155,8 @@ ul, li {
 	height:40px;
 	margin-left:-16px;
 	margin-top:-10px;
-	float:left;
+	float:right;
+	width:290px;
 }
 
 span.lead {
