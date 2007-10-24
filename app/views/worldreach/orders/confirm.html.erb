@@ -1,0 +1,24 @@
+<h1> Confirm </h1>
+
+<h2> Order Total </h2>
+<p><%= number_to_currency(@order.total / 100) -%> </p>
+
+<ol>
+
+<%= form_tag({:controller => '/worldreach/orders', :action => 'create'} )   %>
+
+<% @order.donations.each do |donation| %>
+<input type="hidden" name="segment[<%=donation.segment.site_name-%>]" value="<%= donation.amount / 100 -%>" > 
+
+<li> <%= donation.segment.name -%> <%= number_to_currency(donation.amount / 100) -%> </li>
+<% end %>
+</li>
+
+<p>I allow my credit card to be charged <%= number_to_currency(@order.total / 100)  -%> </p>
+
+
+  <%= hidden_field_tag  'confirmed', 'yes' %>
+
+<%= submit_tag 'Authorize'-%>
+
+</form>

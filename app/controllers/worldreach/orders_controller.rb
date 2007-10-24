@@ -2,8 +2,11 @@ class Worldreach::OrdersController < ApplicationController
   # GET /worldreach_orders
   # GET /worldreach_orders.xml
   layout 'worldreach/default'
-  before_filter :get_organization
   before_filter :login_required
+  before_filter :get_organization
+  before_filter :get_order, :only => [:new, :create, :confirm ] 
+  before_filter :get_donations_from_params, :only => [:create]
+  before_filter :confirmation_required, :only => [:create]
 
   def index
     @orders = Order.find(:all)
@@ -27,7 +30,6 @@ class Worldreach::OrdersController < ApplicationController
   # GET /worldreach_orders/new
   # GET /worldreach_orders/new.xml
   def new
-    get_order
 		@segments = @organization.segments
     respond_to do |format|
       format.html # new.html.erb
@@ -43,20 +45,6 @@ class Worldreach::OrdersController < ApplicationController
   # POST /worldreach_orders
   # POST /worldreach_orders.xml
   def create
-    session[:order] = @order = Order.new(params[:order])
-    @order.donations = []  
-    @organization.segments.each do |segment|
-       next if session[:causes][segment.site_name].nil? or params[:segment][segment.site_name].to_i < 1
-       donation = Donation.new
-       donation.segment = segment
-       donation.account = current_account 
-       donation.amount = params[:segment][segment.site_name].to_i * 100
-       donation.organization = @organization
-       @order.donations << donation
-    end
-    @order.account = current_account
-    @order.amount = @order.total 
-
     respond_to do |format|
       if @order.save
         session[:order] = nil
@@ -99,14 +87,38 @@ class Worldreach::OrdersController < ApplicationController
     end
   end
 
+  def confirm
+  end
+
   private
+
+  def get_donations_from_params
+    @order.donations = []  
+    @organization.segments.each do |segment|
+       next if session[:causes][segment.site_name].nil? or params[:segment][segment.site_name].to_i < 1
+       donation = Donation.new
+       donation.segment = segment
+       donation.account = current_account 
+       donation.amount = params[:segment][segment.site_name].to_i * 100
+       donation.organization = @organization
+       @order.donations << donation
+    end
+    @order.account = current_account
+    @order.amount = @order.total 
+  end
+
+  def confirmation_required
+     return true if !params[:confirmed].nil? and params[:confirmed] == 'yes'
+     redirect_to worldreach_confirm_order_path and return false
+  end
 
   def get_organization
     @organization = Organization.find_by_site_name('worldreach')  
   end
 
   def get_order
-    @order = session[:order] || Order.new
+    @order = session[:order] ||= Order.new
+    session[:order_confirmed] ||= 'no'
   end
 
 end

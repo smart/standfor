@@ -16,6 +16,7 @@ ActionController::Routing::Routes.draw do |map|
   map.worldreach_accountability '/worldreach/accountability' , :controller => '/worldreach/site', :action => 'accountability'
   map.worldreach_faq '/worldreach/frequently/asked/questions' , :controller => '/worldreach/site', :action => 'faq'
   map.new_worldreach_order '/worldreach/donate' , :controller => '/worldreach/orders', :action => 'new'
+  map.worldreach_confirm_order '/worldreach/confirm/order' , :controller => '/worldreach/orders', :action => 'confirm'
 
   map.view_badge "/standfor/:id.:ext", :controller => "adis", :action => "index"
   map.login   '/login',  :controller => 'sessions', :action => 'new'
