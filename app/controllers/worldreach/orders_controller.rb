@@ -3,6 +3,8 @@ class Worldreach::OrdersController < ApplicationController
   # GET /worldreach_orders.xml
   layout 'worldreach/default'
   before_filter :get_organization
+  before_filter :login_required
+
   def index
     @orders = Order.find(:all)
     respond_to do |format|
@@ -41,12 +43,22 @@ class Worldreach::OrdersController < ApplicationController
   # POST /worldreach_orders
   # POST /worldreach_orders.xml
   def create
-    @order = Order.new(params[:order])
+    session[:order] = @order = Order.new(params[:order])
+    @order.donations = []  #clear out donations first
+    @organization.segments.each do |segment|
+       donation = Donation.new
+       donation.segment = segment
+       donation.account = current_account 
+       donation.amount = params[:segment][segment.site_name].to_i
+       donation.organization = @organization
+       @order.donations << donation
+    end
 
     respond_to do |format|
       if @order.save
+        session[:order] = nil
         flash[:notice] = 'Order was successfully created.'
-        format.html { redirect_to(@order) }
+        format.html { redirect_to  :controller => '/worldreach/site', :action => 'index'  }
         format.xml  { render :xml => @order, :status => :created, :location => @order }
       else
         format.html { render :action => "new" }
