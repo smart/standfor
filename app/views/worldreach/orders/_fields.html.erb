@@ -1,5 +1,6 @@
 <ul>
  <% organization.segments.each do |segment| %> 
-  <li> <%= segment.name -%> : <input type="text"  size="5" name="segment[<%=segment.site_name-%>]" > </li>
+  <li><%= segment.name -%> : <input type="text"  size="5" name="segment[<%=segment.site_name-%>]" value="<%=session[:donations][segment.site_name] || 0  -%>" > 
+</li>
  <% end %>
 </ul>

@@ -20,7 +20,7 @@ class Worldreach::SegmentsController < ApplicationController
   # GET /worldreach_segments/1.xml
   def show
   	@segments = @organization.segments
-    @segment = Segment.find(params[:id])
+    session[:current_segment] = @segment = Segment.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb

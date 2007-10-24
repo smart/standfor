@@ -5,9 +5,7 @@
 <%= render :partial => 'total',  :locals => {:order => @order } -%>
 
 <% form_for(@order) do |f| %>
-
   <%= render :partial => 'fields', :locals => { :f => f , :organization => @organization } -%>
-
   <p>
     <%= f.submit "Create" %>
   </p>

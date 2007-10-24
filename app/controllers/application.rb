@@ -21,6 +21,8 @@ class ApplicationController < ActionController::Base
   
   def init
     session[:causes] ||= {}
+    session[:donations] ||= {}
+    session[:current_segment]  ||= ''
     @configuration = Configuration.find(:first)
     if false 
        site_name = request.host.match(/standfor\.(\w+)\.org/)[1]    

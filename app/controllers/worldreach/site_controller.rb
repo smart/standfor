@@ -11,7 +11,7 @@ class Worldreach::SiteController < ApplicationController
      @segments = @organization.segments
      session[:causes][segment.site_name] = (session[:causes][segment.site_name].nil?) ? 'selected' : nil  
      render :update do |page|
-       page.replace_html 'causes_panel', :partial => '/worldreach/segments/causes'
+       page.replace_html 'causes_panel', :partial => '/worldreach/shared/causes'
      end
    end
 
