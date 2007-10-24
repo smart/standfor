@@ -51,18 +51,15 @@ module ApplicationHelper
   def form_button(img, alt, opts = {})
   	image = image_tag(img, :alt => alt)
   	type = opts[:type] ? opts[:type] : 'submit'
-	html = content_tag(:button, :type => type, :class => 'replace-button') do
+		html = content_tag(:button, :type => type, :class => 'replace-button') do
 			content_tag(:span, link_to(image, ""), :class => 'large-button' )
 		end
 	
   end
   
   def segment_select?(segment, current)
-		if current == segment
-			html = ' class="selected"'
-		else
-			html = ''
-		end
+		html = ''
+		html = ' class="selected"' if current == segment
 		return html
 	end
 

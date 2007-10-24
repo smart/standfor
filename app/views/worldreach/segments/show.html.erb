@@ -18,8 +18,7 @@
 	</ul>
 	<span>Select Your Causes or Click One to Learn More</span>
 	<div id='causes_panel'>
-		<%= link_to 'Back to Our Causes Overview', worldreach_segments_path -%>
-		<%= render :partial => 'causes', :locals => { :segment => @segments, :id => @segment.id } %>
+		<%= render :partial => 'worldreach/shared/causes', :locals => { :segment => @segments, :id => @segment.id } %>
 	</div>
 	<%= link_to image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts'), new_worldreach_order_path %>
 <% end %>

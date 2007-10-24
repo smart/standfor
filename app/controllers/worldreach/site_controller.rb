@@ -6,14 +6,25 @@ class Worldreach::SiteController < ApplicationController
 		@context = 'home'
    end
 
-   def toggle_cause
-     segment = Segment.find_by_site_name(params[:id])
-     @segments = @organization.segments
-     session[:causes][segment.site_name] = (session[:causes][segment.site_name].nil?) ? 'selected' : nil  
-     render :update do |page|
-       page.replace_html 'causes_panel', :partial => '/worldreach/shared/causes'
-     end
-   end
+	def toggle_cause
+		segment = Segment.find_by_site_name(params[:id])
+		@segments = @organization.segments
+		session[:causes][segment.site_name] = (session[:causes][segment.site_name].nil?) ? 'selected' : nil
+		if session[:causes][segment.site_name] == 'selected'
+			selector = '#' + params[:id] + ' span.checked'
+			replace = content_tag(:span, '')
+		else
+			selector = '#' + params[:id] + ' span'
+			replace = content_tag(:span, '', :class => 'checked')
+		end
+		put selector
+		put replace
+		render :update do |page|
+			page.select(selector) do |item|
+	 			page.replace item, replace
+ 			end
+		end
+	end
 
    private
 

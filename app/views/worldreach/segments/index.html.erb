@@ -15,7 +15,7 @@
 	</ul>
 	<span>Select Your Causes or Click One to Learn More</span>
 	<div id='causes_panel'>
-		<%= render :partial => 'causes', :locals => { :segment => @segments} %>
+		<%= render :partial => 'worldreach/shared/causes', :locals => { :segment => @segments} %>
 	</div>
 	<%= image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts') %>
 <% end %>

@@ -115,6 +115,7 @@ h1 {
 	line-height:150%;
 	color:#efad13;
 	margin-left:16px;
+	font-size:1em;
 }
 #donations strong {
 	display:block;
@@ -127,7 +128,7 @@ h1 {
 #donations a {
 	float:left;
 	margin-left:-91px;
-	margin-top:-68px;
+	margin-top:-51px;
 	}
 .home #sidebar {
 	margin-top:15px;
@@ -213,6 +214,18 @@ h1 {
 	margin-top:-10px;
 	float:right;
 	width:290px;
+}
+
+#segment-list span {
+	width:20px;
+	height:40px;
+	display:block;
+	background:url(/images/worldreach/icons/select_off.png) no-repeat top left;
+	float:right;
+}
+
+#segment-list span.checked {
+	background:url(/images/worldreach/icons/select_on.png) no-repeat top left;
 }
 
 span.lead {
