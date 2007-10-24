@@ -44,16 +44,18 @@ class Worldreach::OrdersController < ApplicationController
   # POST /worldreach_orders.xml
   def create
     session[:order] = @order = Order.new(params[:order])
-    @order.donations = []  #clear out donations first
+    @order.donations = []  
     @organization.segments.each do |segment|
-       next if session[:causes][segment.site_name].nil?
+       next if session[:causes][segment.site_name].nil? or params[:segment][segment.site_name].to_i < 1
        donation = Donation.new
        donation.segment = segment
        donation.account = current_account 
-       donation.amount = params[:segment][segment.site_name].to_i
+       donation.amount = params[:segment][segment.site_name].to_i * 100
        donation.organization = @organization
        @order.donations << donation
     end
+    @order.account = current_account
+    @order.amount = @order.total 
 
     respond_to do |format|
       if @order.save
