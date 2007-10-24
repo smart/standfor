@@ -1,10 +1,9 @@
 <%= (link_to 'Back to Our Causes Overview', worldreach_segments_path) if params[:id] -%>
 <ul id="segment-list">
 	<% @segments.each do |segment| %>
-	<li id="<%= segment.id %>"<%= segment_select?(segment.id, id) %>>
+	<li id="segment_<%= segment.id %>" class="<%= (session[:causes][segment.site_name].nil? ) ? 'segment_unselected' : 'segment_selected'  -%>" >
 		<%= link_to segment.name, worldreach_segment_path(segment) %>
-		<%= link_to_remote (session[:causes][segment.site_name].nil?) ? content_tag(:span, '') : content_tag(:span, '', :class => 'checked') , :url => {:controller => 'worldreach/site', :action => 'toggle_cause', :id => segment} -%>
-   	
+		<%= link_to_remote ( (session[:causes][segment.site_name].nil?) ? 'select' : 'deselect' )  , :url => {:controller => 'worldreach/site', :action => 'toggle_cause', :id => segment} -%>
    </li>
 	<% end %>
 </ul>

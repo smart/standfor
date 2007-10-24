@@ -228,6 +228,14 @@ h1 {
 	background:url(/images/worldreach/icons/select_on.png) no-repeat top left;
 }
 
+.segment_selected {
+	background:url(/images/worldreach/icons/select_off.png) no-repeat top right;
+}
+
+.segment_unselected {
+	background:url(/images/worldreach/icons/select_on.png) no-repeat top right;
+}
+
 span.lead {
 	font-size:130%;
 	color:#efad13;

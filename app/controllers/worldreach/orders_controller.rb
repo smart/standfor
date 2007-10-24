@@ -46,6 +46,7 @@ class Worldreach::OrdersController < ApplicationController
     session[:order] = @order = Order.new(params[:order])
     @order.donations = []  #clear out donations first
     @organization.segments.each do |segment|
+       next if session[:causes][segment.site_name].nil?
        donation = Donation.new
        donation.segment = segment
        donation.account = current_account 

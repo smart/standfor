@@ -10,19 +10,15 @@ class Worldreach::SiteController < ApplicationController
 		segment = Segment.find_by_site_name(params[:id])
 		@segments = @organization.segments
 		session[:causes][segment.site_name] = (session[:causes][segment.site_name].nil?) ? 'selected' : nil
-		if session[:causes][segment.site_name] == 'selected'
-			selector = '#' + params[:id] + ' span.checked'
-			replace = content_tag(:span, '')
-		else
-			selector = '#' + params[:id] + ' span'
-			replace = content_tag(:span, '', :class => 'checked')
-		end
-		put selector
-		put replace
+    li = "segment_#{segment.id}"  
 		render :update do |page|
-			page.select(selector) do |item|
-	 			page.replace item, replace
- 			end
+       if (session[:causes][segment.site_name].nil?)  
+         page[li].remove_class_name('segment_selected')
+         page[li].add_class_name('segment_unselected')
+       else
+         page[li].add_class_name('segment_selected')
+         page[li].remove_class_name('segment_unselected')
+       end
 		end
 	end
 
