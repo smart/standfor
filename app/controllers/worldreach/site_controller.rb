@@ -6,22 +6,6 @@ class Worldreach::SiteController < ApplicationController
 		@context = 'home'
    end
 
-	#def toggle_cause
-	#	segment = Segment.find_by_site_name(params[:id])
-	#	@segments = @organization.segments
-	#	session[:causes][segment.site_name] = (session[:causes][segment.site_name].nil?) ? 'selected' : nil
-  #  li = "segment_#{segment.id}"  
-	#	render :update do |page|
-  #     if (session[:causes][segment.site_name].nil?)  
-  #       page[li].remove_class_name('segment_selected')
-  #       page[li].add_class_name('segment_unselected')
-  #     else
-  #       page[li].add_class_name('segment_selected')
-  #       page[li].remove_class_name('segment_unselected')
-  #     end
-	#	end
-	#end
-	
 	def toggle_cause
 		segment = Segment.find_by_site_name(params[:id])
 		@segments = @organization.segments
@@ -33,6 +17,12 @@ class Worldreach::SiteController < ApplicationController
        else
          page[img].replace( image_tag('worldreach/icons/select_on.png', :alt => "#{segment.name} selected", :id => "segment_#{segment.id}") )
        end
+
+    # TODO, we will have to determine how to toggle this behavior
+    if  true 
+       page.replace_html 'segment-form', :partial =>  '/worldreach/orders/segment_form', :locals => {:organization => @organization, :order => session[:order] } 
+    end
+
 		end
 	end
 

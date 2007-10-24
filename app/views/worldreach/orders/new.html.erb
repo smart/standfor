@@ -4,12 +4,9 @@
 
 <%= render :partial => 'total',  :locals => {:order => @order } -%>
 
-<% form_for(@order, :url => worldreach_orders_path ) do |f| %>
-  <%= render :partial => 'fields', :locals => { :f => f , :organization => @organization } -%>
-  <p>
-    <%= f.submit "Create" %>
-  </p>
-<% end %>
+<div id="segment-form">
+  <%= render :partial => 'segment_form', :locals => {:organization => @organization, :order => @order  } -%>
+</div>
 
 <%= link_to 'Back to Causes', worldreach_segments_path %>
 

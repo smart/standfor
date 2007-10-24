@@ -23,6 +23,7 @@ class ApplicationController < ActionController::Base
     session[:causes] ||= {}
     session[:donations] ||= {}
     session[:current_segment]  ||= ''
+    session[:on_donation_page] = (params[:controller] == '/worldreach/orders' )  ? 1 : nil 
     @configuration = Configuration.find(:first)
     if false 
        site_name = request.host.match(/standfor\.(\w+)\.org/)[1]    
