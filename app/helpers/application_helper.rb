@@ -57,9 +57,9 @@ module ApplicationHelper
 	
   end
   
-  def segment_select?(segment, current)
+  def current_segment?(segment, current)
 		html = ''
-		html = ' class="selected"' if current == segment
+		html = 'current' if current == segment
 		return html
 	end
 

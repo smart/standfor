@@ -52,6 +52,17 @@ h1 {
 	right:0;
 }
 
+#navigation a {
+	background:#3c555e;
+	color:#ffffff;
+	padding:5px 15px 5px 15px;
+	font-size:90%;
+}
+
+#navigation a:hover {
+	background:#59737b;
+}
+
 #content {
 	width:670px;
 	float:left;
@@ -190,15 +201,16 @@ h1 {
 }
 #causes_panel {
 	margin-top:10px;
+	position:relative;
 }
-#causes_panel .selected {
+#causes_panel .current {
 	background:url(/images/worldreach/box_header.png) no-repeat top left;
 	margin-left:-16px;
 	padding-left:36px;
 	line-height:27px;
 	margin-top:5px;
 }
-#causes_panel .selected a {
+#causes_panel .current a {
 	color:#151918;
 }
 #causes_panel li {
@@ -206,6 +218,13 @@ h1 {
 	margin-bottom:-10px;
 	padding-left:20px;
 	line-height:30px;
+	clear:both;
+}
+
+#causes_panel li img {
+	float:right;
+	margin-top:-35px;
+	margin-right:20px;
 }
 .box h3 {
 	background:url(/images/worldreach/box_header.png) no-repeat top left;
