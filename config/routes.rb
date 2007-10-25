@@ -17,6 +17,8 @@ ActionController::Routing::Routes.draw do |map|
   map.worldreach_faq '/worldreach/frequently/asked/questions' , :controller => '/worldreach/site', :action => 'faq'
   map.new_worldreach_order '/worldreach/donate' , :controller => '/worldreach/orders', :action => 'new'
   map.worldreach_confirm_order '/worldreach/confirm/order' , :controller => '/worldreach/orders', :action => 'confirm'
+  map.new_worldreach_creditcard '/worldreach/enter/creditcard' , :controller => '/worldreach/orders', :action => 'new_creditcard'
+  map.worldreach_save_creditcard '/worldreach/save/creditcard' , :controller => '/worldreach/orders', :action => 'save_creditcard'
 
   map.view_badge "/standfor/:id.:ext", :controller => "adis", :action => "index"
   map.login   '/login',  :controller => 'sessions', :action => 'new'

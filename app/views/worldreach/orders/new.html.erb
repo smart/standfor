@@ -1,5 +1,11 @@
 <h1>Donations</h1>
 
+<% if flash[:notice] %>
+<div id="notice">
+  <%= flash[:notice] -%>
+</div>
+<% end %>
+
 <%= error_messages_for :order %>
 
 <%= render :partial => 'total',  :locals => {:order => @order } -%>
@@ -19,7 +25,7 @@
 	<span>Enter donation amount and divide among causes</span>
 	<div id='causes_panel'>
 		<%= link_to 'Back to Our Causes Overview', worldreach_segments_path -%>
-		<%= render :partial => 'worldreach/shared/causes', :locals => { :segment => @segments } %>
+		<%= render :partial => 'worldreach/shared/causes', :locals => { :segment => @organization.segments, :current_segment => '' } %>
 	</div>
 	<%= image_tag('worldreach/personal_information.png', :alt => 'Enter Personal Information') %>
 <% end %>

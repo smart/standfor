@@ -124,7 +124,6 @@ class DonationsController < ApplicationController
           creditcard.number = 1.to_s
           current_donation.last_four = params[:authorization][:number].strip.slice(-4,4)
           current_donation.creditcard = creditcard
-          p current_donation
           redirect_to_donation_url
           return false
        else

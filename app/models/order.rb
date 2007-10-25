@@ -3,6 +3,7 @@ class Order < ActiveRecord::Base
   has_many :donations
 
   attr_accessor :confirmed
+  attr_accessor :creditcard
 
   def total
     total = 0
