@@ -42,6 +42,7 @@ class Worldreach::OrdersController < ApplicationController
       :last_name  => @creditcard.last_name )
      if creditcard.valid?
        @order.creditcard = creditcard
+       @order.last_four_digits = @creditcard.number.strip.slice(-4,4)
        flash[:notice] = "Your creditcard has been saved."
        redirect_to worldreach_confirm_order_path and return false 
      else
