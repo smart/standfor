@@ -2,7 +2,9 @@
  <% organization.segments.each do |segment| %> 
   <% if !session[:causes][segment.site_name].nil? %>
    <li>
-     <%= segment.name -%> : <input type="text"  size="5" name="segment[<%=segment.site_name-%>]" value="<%=session[:donations][segment.site_name] || 0  -%>" > 
+     <%= segment.name -%> : 
+     <input type="text"  size="5" name="segment[<%=segment.site_name-%>]" 
+      value="<%= current_donation_value(@order, segment) -%>" > 
     </li>
    <% end %>
  <% end %>

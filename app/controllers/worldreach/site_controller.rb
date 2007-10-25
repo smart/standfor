@@ -1,6 +1,7 @@
 class Worldreach::SiteController < ApplicationController
    layout 'worldreach/default'
    before_filter :get_organization
+   before_filter :get_order
 
    def index
 		@context = 'home'
@@ -30,6 +31,10 @@ class Worldreach::SiteController < ApplicationController
 
    def get_organization
      @organization = Organization.find_by_site_name('worldreach')
+   end
+
+   def get_order
+     @order = session[:order] || nil 
    end
 
 end

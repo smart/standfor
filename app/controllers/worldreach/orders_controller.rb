@@ -43,7 +43,7 @@ class Worldreach::OrdersController < ApplicationController
      if creditcard.valid?
        @order.creditcard = creditcard
        flash[:notice] = "Your creditcard has been saved."
-       redirect_to new_worldreach_order_path and return false 
+       redirect_to worldreach_confirm_order_path and return false 
      else
        flash[:notice] = creditcard.errors
        render :action => :new_creditcard  and return false
@@ -84,7 +84,7 @@ class Worldreach::OrdersController < ApplicationController
     @order.amount = @order.total 
 
     if @order.amount.to_i < 1
-       flash[:notice] = "A minimum donations is amount required"
+       flash[:notice] = "A minimum donation is amount required"
        redirect_to new_worldreach_order_path and return false
     end
     return true
