@@ -1,7 +1,8 @@
 class Worldreach::OrdersController < ApplicationController
   layout 'worldreach/default'
   before_filter :get_organization
-  before_filter :login_required
+  before_filter :worldreach_login_required
+  #before_filter :login_required
   before_filter :get_order 
   before_filter :amount_required, :except => [:new] 
   before_filter :creditcard_required, :only => [:create, :confirm]
@@ -52,6 +53,12 @@ class Worldreach::OrdersController < ApplicationController
   end
 
   protected
+
+   def worldreach_login_required 
+       return true if current_account != :false      
+       redirect_to worldreach_login_path and return false
+   end
+
    def creditcard_required 
      !@order.creditcard.nil?  ? true : (redirect_to new_worldreach_creditcard_path and return false)
    end
