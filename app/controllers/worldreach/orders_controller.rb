@@ -29,6 +29,7 @@ class Worldreach::OrdersController < ApplicationController
 
   def new_creditcard
     @creditcard = Creditcard.new
+    @segments = @organization.segments
   end
 
   def save_creditcard

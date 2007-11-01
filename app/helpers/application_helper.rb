@@ -70,6 +70,10 @@ module ApplicationHelper
       end
       return 0
    end 
+   
+	def format_price(price)
+  	price.zero? ? "free!" : number_to_currency((price.to_f / 100), :precision => 2 )
+	end
 
 
   def select_state_for_account

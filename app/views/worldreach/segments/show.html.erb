@@ -1,9 +1,9 @@
 <h1>Our Causes</h1>
-<ul>
-<li><%= @segment.name -%></li>
-<li><%= @segment.keyword -%></li>
-<li><%= @segment.description -%></li>
-</ul>
+
+<h2><%= image_tag( "/text/worldreach_header/#{@segment.name.upcase}.png" )-%></h2>
+
+<p><%= @segment.description -%></p>
+
 
 <p>
 

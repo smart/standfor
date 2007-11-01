@@ -1,16 +1,16 @@
-<h1>Login</h1>
+<h1>Login/Register</h1>
 
 <% form_tag worldreach_sessions_path do -%>
-
-<p><label for="login">Login</label><br/>
-<%= text_field_tag 'login' %></p>
-
-<p><label for="password">Password</label><br/>
-<%= password_field_tag 'password' %></p>
-
-<p><label for="remember_me">Remember me:</label>
-<%= check_box_tag 'remember_me' %></p>
-
-<p><%= submit_tag 'Log in' %></p>
-
+<div id="login">
+	<dl>
+		<dt><label for="login">Username:</label></dt>
+			<dd><%= text_field_tag 'login' %></dd>
+		<dt><label for="password">Password:</label></dt>
+			<dd><%= password_field_tag 'password' %></dd>
+		<dt><label for="remember_me">Remember me:</label></dt>
+			<dd><%= check_box_tag 'remember_me' %></dd>
+			<dd><%= submit_tag 'Log in' %></dd>
+	</dl>
+</div>
 <% end -%>
+

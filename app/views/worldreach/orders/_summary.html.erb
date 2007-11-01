@@ -1,0 +1,5 @@
+<ul>
+<% order.donations.each do |donation| %>
+<li><%= donation.segment.name -%> <%= format_price(donation.amount) -%> </li>
+<% end %>
+</ul>

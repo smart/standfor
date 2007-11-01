@@ -16,6 +16,7 @@ body {
 p {
 	font-size:90%;
 	line-height:200%;
+	margin-bottom:15px;
 }
 ul, li {
 	list-style:none;
@@ -35,6 +36,7 @@ h1 {
 	font-weight:normal;
 	height:43px;
 	line-height:43px;
+	margin-bottom:15px;
 }
 #container {
 	width:960px;
@@ -144,13 +146,14 @@ h1 {
 .home #sidebar {
 	margin-top:15px;
 }
-#instructions, #causes_panel {
+#instructions, #causes_panel, #summary {
 	background:#2d4a54;
 	margin-left:16px;
 	padding-bottom:10px;
-
 }
-#instructions ul {
+
+
+#instructions ul, #summary ul {
 	padding-top:30px;
 }
 
@@ -202,6 +205,7 @@ h1 {
 #causes_panel {
 	margin-top:10px;
 	position:relative;
+	padding:10px 0 0 20px;
 }
 #causes_panel .current {
 	background:url(/images/worldreach/box_header.png) no-repeat top left;
@@ -212,6 +216,10 @@ h1 {
 }
 #causes_panel .current a {
 	color:#151918;
+}
+
+#causes_panel ul {
+	margin:15px 0 10px -20px;
 }
 #causes_panel li {
 	height:40px;
@@ -233,6 +241,17 @@ h1 {
 	margin-top:-10px;
 	float:right;
 	width:290px;
+	color:#2d4a54;
+}
+
+#summary {
+	margin-top:20px;
+}
+#summary ul {
+	margin-left:20px;
+}
+#instructions h3 img, #summary h3 img {
+	padding:6px 0 0 22px;
 }
 
 #segment-list span {
@@ -268,4 +287,92 @@ span.lead {
   border:5px solid #fff;
   padding:30px;
   color:#fff; 
+}
+
+/* basic form styles */
+
+form{
+    margin:0px auto;
+    padding:0px;
+}
+
+form input,
+form select,
+form textarea{
+    
+}
+
+form textarea{
+    height:100px;
+}
+
+form fieldset{
+    border:1px solid #CCCCCC;
+    margin:0px 0px 10px 0px;
+    padding:10px 10px 0px 10px;
+    display:block;
+    
+}
+
+form legend{
+    color:#666666;
+    margin:0px;
+    padding:0px;
+    font-family:arial;
+    font-size:130%;
+    padding:0px 0px 0px 0px;
+    *margin:0px 0px 0px -6px;
+}
+
+form label {
+	padding-right:5px;
+}
+
+/* basic form list items */
+
+form dl{
+    margin:0px 0px 0px 0px;
+    padding:0px;
+    width:auto;
+    clear:both;
+}
+
+form dt{
+    float:left;
+    width:20%;
+    margin:0px 0px 0px 0px;
+    color:#ffffff;
+    text-align:right;
+    padding-right:10px;
+}
+
+form dd{
+    margin:0px 0px 0px 22%;
+    padding-bottom:10px;
+    color:#666666;
+    _text-indent:-3px !important;
+}
+
+form dd label{
+    vertical-align:top;
+    *vertical-align:baseline;
+    margin:0px 8px 0px 0px;
+    line-height:1.6em;
+}
+
+form .input input {
+	width:100%;
+	border:1px solid grey;
+}
+form .input dt {
+	padding:2px 0px 0px 0px;
+}
+form .triplet input {
+	width:30%;
+}
+form .checkbox dt {
+	width:50%;
+}
+form .checkbox dd {
+	margin-left:50%;
 }

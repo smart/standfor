@@ -112,6 +112,36 @@ class TextController < ApplicationController
     output(trim)
   end
   
+  def worldreach_charity
+    text = params[:text] || ""
+    color = params[:color] || "#efad13"
+    background = params[:background] || "transparent"
+    font = params[:font] || RAILS_ROOT + "/lib/fonts/TempoStd-HeavyCondensed.otf"
+    gravity = Magick::CenterGravity
+    pointsize = params[:pointsize] || 40
+    width = params[:width] || nil
+    height = params[:height] || nil
+    left = params[:left] || 0
+    top = params[:top] || 0
+    @output_image =  create_text(text, color, background, font, gravity, pointsize, width, height, left, top)
+    output
+  end
+  
+  def worldreach_box_title
+    text = params[:text] || ""
+    color = params[:color] || "#efad13"
+    background = params[:background] || "white"
+    font = params[:font] || RAILS_ROOT + "/lib/fonts/TempoStd-HeavyCondensed.otf"
+    gravity = Magick::CenterGravity
+    pointsize = params[:pointsize] || 20
+    width = params[:width] || nil
+    height = params[:height] || nil
+    left = params[:left] || 0
+    top = params[:top] || 0
+    @output_image =  create_text(text, color, background, font, gravity, pointsize, width, height, left, top)
+    output
+  end
+  
   def index
     text = params[:text] || ""
     font = params[:font] || RAILS_ROOT + "/lib/fonts/VAGROBDT.PFB"

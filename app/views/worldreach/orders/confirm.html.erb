@@ -1,7 +1,6 @@
-<h1> Confirm </h1>
+<h1>Order Total</h1>
 
-<h2> Order Total </h2>
-<p><%= number_to_currency(@order.total / 100) -%> </p>
+<p><%= format_price(@order.total) -%> </p>
 
 <ol>
 
@@ -10,11 +9,11 @@
 <% @order.donations.each do |donation| %>
 <input type="hidden" name="segment[<%=donation.segment.site_name-%>]" value="<%= donation.amount / 100 -%>" > 
 
-<li> <%= donation.segment.name -%> <%= number_to_currency(donation.amount / 100) -%> </li>
+<li> <%= donation.segment.name -%> <%= format_price(donation.amount) -%> </li>
 <% end %>
-</li>
+</ol>
 
-<p>I allow my credit card to be charged <%= number_to_currency(@order.total / 100)  -%> </p>
+<p>I allow my credit card to be charged <%= format_price(@order.total)  -%> </p>
 
 
   <%= hidden_field_tag  'confirmed', 'yes' %>
@@ -22,3 +21,18 @@
 <%= submit_tag 'Authorize'-%>
 
 </form>
+
+
+<% content_for :sidebar do -%>
+	<ul id="position">
+    <li class="check icon">&nbsp;</li>
+    <li class="dollar icon">&nbsp;</li>
+    <li class="person icon">&nbsp;</li>
+	</ul>
+	<span>Confirm & authorize your donation.</span>
+	<div id='summary' class="box">
+		<h3><%= image_tag("/text/worldreach_box_title/DONATION SUMMARY.png", :alt => 'Donation Summary') %></h3>
+		<%= render :partial => 'summary', :locals => { :order => @order } %>
+	</div>
+	<%= link_to image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts'), new_worldreach_order_path %>
+<% end %>
