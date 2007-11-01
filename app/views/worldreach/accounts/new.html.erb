@@ -1,0 +1,30 @@
+	<%= error_messages_for :account -%>
+
+	<% form_for :account, :url => worldreach_accounts_path, :html => { :id => "register-form" } do |f| -%>
+	<fieldset class="input">
+		<dl>
+			<dt><label for="account_login">Username:</label></dt>
+				<dd><%= f.text_field :login %></dd>
+		</dl>
+		<dl>
+			<dt><label for="account_email">Email:</label></dt>
+				<dd><%= f.text_field :email %></dd>
+		</dl>
+		<dl>
+			<dt><label for="account_password">Password:</label></dt>
+				<dd><%= f.password_field :password %></dd>
+		</dl>
+		<dl>
+			<dt><label for="account_password_confirmation">Confirm Password:</label></dt>
+				<dd><%= f.password_field :password_confirmation %></dd>
+		</dl>
+
+		<dl>
+			<dt><label for="account_password_confirmation">Confirm Password:</label></dt>
+				<dd><%= f.submit %></dd>
+		</dl>
+
+	</fieldset>
+
+	<span class="clear"></span>
+	<% end -%>
