@@ -27,3 +27,4 @@ ADISERVER = "http://localhost:3001"
 ADISERVER_USER = "quentin"
 ADISERVER_PASS = "test"
 
+STANDFOR_ROOT = "http://0.0.0.0:3000" 

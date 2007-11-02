@@ -2,10 +2,10 @@ class Worldreach::OrdersController < ApplicationController
   require 'gruff'
   layout 'worldreach/default'
   before_filter :get_organization
-  # before_filter :worldreach_login_required
   before_filter :login_required
   before_filter :get_order 
-  before_filter :amount_required, :except => [:new] 
+  before_filter :set_donation_amounts_from_params , :only => [:create]
+  before_filter :amount_required, :except => [:new, :receipt] 
   before_filter :creditcard_required, :only => [:create, :confirm]
   before_filter :confirmation_required, :only => [:create]
   before_filter :authorization_required, :only => [:create]
@@ -14,11 +14,12 @@ class Worldreach::OrdersController < ApplicationController
   end
 
   def create
+    set_donation_amounts_from_params
     respond_to do |format|
       if @order.save
         session[:order] = nil
         flash[:notice] = 'Order was successfully created.'
-        format.html { redirect_to  :controller => '/worldreach/site', :action => 'index'  }
+        format.html { redirect_to  :controller => 'orders', :action => 'receipt', :id => @order }
       else
         format.html { render :action => "new" }
       end
@@ -54,6 +55,10 @@ class Worldreach::OrdersController < ApplicationController
      end
   end
 
+   def receipt
+     @order = current_account.orders.find( params[:id] )
+   end
+
   protected
 
    def worldreach_login_required 
@@ -74,35 +79,29 @@ class Worldreach::OrdersController < ApplicationController
      @order.payment_authorization.nil? ? authorize_card : (redirect_to new_worldreach_creditcard_path and return false)
    end
 
-  def amount_required
-    return true if @order.total.to_i > 0
-    if params[:segment].nil?
-       flash[:notice] = "Please select at least one segment."
-      redirect_to new_worldreach_order_path and return false 
-    end
-    @order.donations = []  
-    @organization.segments.each do |segment|
-       next if session[:causes][segment.site_name].nil? or params[:segment][segment.site_name].to_i < 1
+   def set_donation_amounts_from_params
+     @order.donations = []
+     @organization.segments.each do |segment|  
+        next if session[:causes][segment.site_name].nil?
        donation = Donation.new
        donation.segment = segment
        donation.account = current_account 
-       donation.amount = params[:segment][segment.site_name].to_i * 100
+       donation.amount = params[:segment][segment.site_name].to_i 
        donation.organization = @organization
        @order.donations << donation
-    end
-    @order.account = current_account
-    @order.amount = @order.total 
+     end
+     @order.account = current_account
+     @order.amount = @order.total 
+   end
 
-    if @order.amount.to_i < 1
-       flash[:notice] = "A minimum donation is amount required"
-       redirect_to new_worldreach_order_path and return false
-    end
-    return true
+  def amount_required
+    return true if @order.amount.to_i > 0
+    flash[:notice] = "A minimum donation is amount required"
+    redirect_to new_worldreach_order_path and return false
   end
 
   def update_donations
   end
-
 
   private
 
@@ -136,6 +135,7 @@ class Worldreach::OrdersController < ApplicationController
         flash[:notice]  = "Authorization of your credit card failed, please check your info and try again"
         redirect_to new_worldreach_creditcard_path and return false
       end
-  end 
+ end 
 
-end
+ end 
+

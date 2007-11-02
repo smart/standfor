@@ -21,6 +21,7 @@ ActionController::Routing::Routes.draw do |map|
   map.worldreach_confirm_order '/worldreach/confirm/order' , :controller => '/worldreach/orders', :action => 'confirm'
   map.new_worldreach_creditcard '/worldreach/enter/creditcard' , :controller => '/worldreach/orders', :action => 'new_creditcard'
   map.worldreach_save_creditcard '/worldreach/save/creditcard' , :controller => '/worldreach/orders', :action => 'save_creditcard'
+  map.worldreach_receipt '/worldreach/receipt/:id' , :controller => '/worldreach/orders', :action => 'receipt'
   map.worldreach_login '/worldreach/login' , :controller => '/worldreach/sessions', :action => 'new'
   map.worldreach_logout '/worldreach/logout' , :controller => '/worldreach/sessions', :action => 'destroy'
 

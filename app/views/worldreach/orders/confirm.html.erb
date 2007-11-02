@@ -1,5 +1,7 @@
 <h1>Order Total</h1>
 
+<%= render :partial => 'pie' -%>
+
 <p><%= format_price(@order.total) -%> </p>
 
 <ol>
@@ -7,7 +9,7 @@
 <%= form_tag({:controller => '/worldreach/orders', :action => 'create'} )   %>
 
 <% @order.donations.each do |donation| %>
-<input type="hidden" name="segment[<%=donation.segment.site_name-%>]" value="<%= donation.amount / 100 -%>" > 
+<input type="hidden" name="segment[<%=donation.segment.site_name-%>]" value="<%= donation.amount -%>" > 
 
 <li> <%= donation.segment.name -%> <%= format_price(donation.amount) -%> </li>
 <% end %>

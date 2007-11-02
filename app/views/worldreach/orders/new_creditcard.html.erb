@@ -7,6 +7,10 @@
   </div>
 <% end %>
 
+<div id="pie" >
+<%= render :partial => 'pie' %>
+</div>
+
 <% form_for :creditcard, :url => worldreach_save_creditcard_path, :method => :post  do |f| %>
 	<dl>
 		<dt><label for="creditcard_first_name">First Name:</label></dt>

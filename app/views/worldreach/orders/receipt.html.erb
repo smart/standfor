@@ -1,0 +1,18 @@
+<h1>Your Receipt </h1>
+
+<ol>
+
+<li> Date: <%= @order.created_at.strftime("%B %d, %Y") -%> </li> 
+
+<% @order.donations.each do |donation| %>
+<li>
+<%= donation.segment.name -%> : <%= number_to_currency(donation.amount * 0.01 )  -%>
+</li>
+<% end %>
+<li> Total: <%= number_to_currency(@order.amount * 0.01 ) -%> </li> 
+
+</ol>
+
+<p>
+<%= link_to 'home', worldreach_home_path -%>
+</p>
