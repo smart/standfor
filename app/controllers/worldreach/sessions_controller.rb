@@ -20,6 +20,6 @@ class Worldreach::SessionsController < ApplicationController
     cookies.delete :auth_token
     reset_session
     flash[:notice] = "You have been logged out."
-    redirect_to worldreach_home
+    redirect_to worldreach_home_path
   end
 end
