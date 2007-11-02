@@ -29,5 +29,8 @@
 		<h3><%= image_tag("/text/worldreach_box_title/DONATION SUMMARY.png", :alt => 'Donation Summary') %></h3>
 		<%= render :partial => 'summary', :locals => { :order => @order } %>
 	</div>
-	<%= button(:image => 'worldreach/authorize_payment.png', :alt => 'Authorize Credit Card', :form_id => 'authorize-card', :type => 'submit') %>
+	<div class="navi-button">
+		<%= button(:image => 'worldreach/authorize_payment.png', :alt => 'Authorize Credit Card', :form_id => 'authorize-card', :type => 'submit') %>
+	</div>
+	
 <% end %>

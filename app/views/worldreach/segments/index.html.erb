@@ -20,5 +20,7 @@
 	<div id='causes_panel'>
 		<%= render :partial => 'worldreach/shared/causes', :locals => { :segment => @segments, :current_segment => '' } %>
 	</div>
-	<%= link_to image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts', :class => 'navi-button'), new_worldreach_order_path %>
+	<div class="navi-button">
+		<%= link_to image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts', :class => 'navi-button'), new_worldreach_order_path %>	
+	</div>
 <% end %>

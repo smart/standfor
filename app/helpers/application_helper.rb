@@ -72,7 +72,7 @@ module ApplicationHelper
    end 
    
 	def format_price(price)
-  	price.zero? ? "free!" : number_to_currency((price.to_f / 100), :precision => 2 )
+  	price.zero? ? "No donation" : number_to_currency((price.to_f / 100), :precision => 2 )
 	end
 
 

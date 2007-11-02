@@ -1,10 +1,9 @@
-<ul>
+<ul class="donation-summary">
  <% organization.segments.each do |segment| %> 
   <% if !session[:causes][segment.site_name].nil? %>
    <li>
      <%= segment.name -%> : 
-     <input type="text"  size="5" name="segment[<%=segment.site_name-%>]" 
-      value="<%= current_donation_value(@order, segment) -%>" /> 
+     <span>$ <input type="text"  size="5" name="segment[<%=segment.site_name-%>]" value="<%= current_donation_value(@order, segment) -%>" /></span>
     </li>
    <% end %>
  <% end %>

@@ -257,6 +257,10 @@ h2, h3 {
 	right:0;
 	padding-right:15px;
 }
+.donation-summary li input {
+	padding:2px;
+	border:1px solid black;
+}
 #content .donation-summary li {
 	background:transparent url(/images/worldreach/h1_background.png) no-repeat scroll left top;
 	padding:10px;
