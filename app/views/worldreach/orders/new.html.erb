@@ -1,21 +1,22 @@
-<h1>Donations</h1>
+<h1>Donation</h1>
 
-<% if flash[:notice] %>
-<div id="notice">
-  <%= flash[:notice] -%>
+<div id="padding">
+	<% if flash[:notice] %>
+	<div id="notice">
+	  <%= flash[:notice] -%>
+	</div>
+	<% end %>
+	
+	<%= error_messages_for :order %>
+	
+	<%= render :partial => 'total',  :locals => {:order => @order } -%>
+	
+	<div id="segment-form">
+	  <%= render :partial => 'segment_form', :locals => {:organization => @organization, :order => @order  } -%>
+	</div>
+	
+	<%= link_to 'Back to Causes', worldreach_segments_path %>	
 </div>
-<% end %>
-
-<%= error_messages_for :order %>
-
-<%= render :partial => 'total',  :locals => {:order => @order } -%>
-
-<div id="segment-form">
-  <%= render :partial => 'segment_form', :locals => {:organization => @organization, :order => @order  } -%>
-</div>
-
-
-<%= link_to 'Back to Causes', worldreach_segments_path %>
 
 <% content_for :sidebar do %>
 	<ul id="position">
@@ -28,5 +29,7 @@
 		<%= link_to 'Back to Our Causes Overview', worldreach_segments_path -%>
 		<%= render :partial => 'worldreach/shared/causes', :locals => { :segment => @organization.segments, :current_segment => '' } %>
 	</div>
-	<%= image_tag('worldreach/personal_information.png', :alt => 'Enter Personal Information') %>
+	<div class="navi-button">
+		<%= button(:image => 'worldreach/personal_information.png', :alt => 'Submit Donation', :form_id => 'donation-form', :type => 'submit') %>
+	</div>
 <% end %>

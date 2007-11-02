@@ -13,16 +13,16 @@
 		<%= link_to image_tag('worldreach/branding.png', :alt => 'World Reach - The smart way busy people give.', :width => 427, :height => 150), worldreach_home_path %>
 		<div id="navigation">
 			<ul>
-			    <li><%= link_to 'Our Causes', worldreach_segments_path -%></li>
-			    <li><%= link_to 'About Us', worldreach_about_us_path -%></li>
-			    <li><%= link_to 'Contact Us', worldreach_contact_us_path -%></li>
-			    <li><%= link_to 'Log In', worldreach_login_path -%></li>
+		    <li><%= link_to 'Our Causes', worldreach_segments_path -%></li>
+		    <li><%= link_to 'About Us', worldreach_about_us_path -%></li>
+		    <li><%= link_to 'Contact Us', worldreach_contact_us_path -%></li>
+		    <li><%= link_to 'Log In', worldreach_login_path -%></li>
 			</ul>
 		</div>
 	</div>
 	<div id="wrapper">
 		<div id="content">
-			<%= yield  %>		
+			<%= yield  %>
 		</div>
 		<div id="sidebar">
 			<%= yield :sidebar -%>

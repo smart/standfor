@@ -1,29 +1,22 @@
-<h1>Order Total</h1>
-
-<%= render :partial => 'pie' -%>
-
-<p><%= format_price(@order.total) -%> </p>
-
-<ol>
-
-<%= form_tag({:controller => '/worldreach/orders', :action => 'create'} )   %>
-
-<% @order.donations.each do |donation| %>
-<input type="hidden" name="segment[<%=donation.segment.site_name-%>]" value="<%= donation.amount -%>" > 
-
-<li> <%= donation.segment.name -%> <%= format_price(donation.amount) -%> </li>
-<% end %>
-</ol>
-
-<p>I allow my credit card to be charged <%= format_price(@order.total)  -%> </p>
-
-
+<h1>Order Total: <%= format_price(@order.total) -%></h1>
+<div id="padding">
+	<%= render :partial => 'pie' -%>
+	<%= form_tag({:controller => '/worldreach/orders', :action => 'create'}, {:id => 'authorize-card'} )   %>
+	
+	<ul class="donation-summary">
+	<% @order.donations.each do |donation| %>
+		<li><input type="hidden" name="segment[<%=donation.segment.site_name-%>]" value="<%= donation.amount -%>" /><%= donation.segment.name -%> <span><%= format_price(donation.amount) -%></span></li>
+	<% end %>
+	</ul>
+	
+	<p>I allow my credit card to be charged <%= format_price(@order.total)  -%> </p>
+	
   <%= hidden_field_tag  'confirmed', 'yes' %>
-
-<%= submit_tag 'Authorize'-%>
-
-</form>
-
+	
+	<%= submit_tag 'Authorize'-%>
+	
+	</form>	
+</div>
 
 <% content_for :sidebar do -%>
 	<ul id="position">
@@ -36,5 +29,5 @@
 		<h3><%= image_tag("/text/worldreach_box_title/DONATION SUMMARY.png", :alt => 'Donation Summary') %></h3>
 		<%= render :partial => 'summary', :locals => { :order => @order } %>
 	</div>
-	<%= link_to image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts'), new_worldreach_order_path %>
+	<%= button(:image => 'worldreach/authorize_payment.png', :alt => 'Authorize Credit Card', :form_id => 'authorize-card', :type => 'submit') %>
 <% end %>

@@ -1,6 +1,6 @@
 <h1>Credit Card Details</h1>
 
-
+<div id="padding">
 <% if flash[:notice] %>
   <div id="notice">
     <%= flash[:notice] -%>
@@ -11,8 +11,8 @@
 <%= render :partial => 'pie' %>
 </div>
 
-<% form_for :creditcard, :url => worldreach_save_creditcard_path, :method => :post  do |f| %>
-	<dl>
+<% form_for :creditcard, :url => worldreach_save_creditcard_path, :method => :post, :html => {:id => 'credit-card-details'}  do |f| %>
+	<dl class="input">
 		<dt><label for="creditcard_first_name">First Name:</label></dt>
 			<dd><%= f.text_field :first_name , :size => 20 -%></dd>
 	
@@ -21,24 +21,26 @@
 	
 		<dt><label for="creditcard_type">Card Type:</label></dt>
 			<dd><%= f.select :card_type, ["Visa", "Master Card", "Discover"] %></dd>
-	
 		<dt><label for="creditcard_number">Card Number:</label></dt>
 			<dd><%= f.text_field :number -%></dd>
 	</dl>
+	
 	<dl class="expiration">
 		<dt><label for="creditcard_expiration_month_year">Expiration:</label></dt>
-		<dd><%= select_month(Date.today)%><%= select_year(Date.today)%></dd>
+			<dd><%= select_month(Date.today)%><%= select_year(Date.today, :class => 'year')%></dd>
 	</dl>
 	
-	<dl class="verification">
-  <dt><label for="creditcard_verification_value">Verification:</label></dt>
-  	<dd><%= f.text_field :verification_value, :size => 6 -%></dd>
+	<dl class="input verification">
+  	<dt><label for="creditcard_verification_value">Verification:</label></dt>
+  		<dd><%= f.text_field :verification_value, :size => 6 -%></dd>
 	</dl>
 
 	<dl class="submit">
-	  <dd><%= f.submit 'enter card' -%></dd>
+	  <dd><%= f.submit 'Enter Card' -%></dd>
 	</dl>
-<% end %>
+<% end %>	
+</div>
+
 
 <% content_for :sidebar do -%>
 	<ul id="position">
@@ -51,5 +53,7 @@
 		<h3><%= image_tag("/text/worldreach_box_title/DONATION SUMMARY.png", :alt => 'Donation Summary') %></h3>
 		<%= render :partial => 'summary', :locals => { :order => @order } %>
 	</div>
-	<%= link_to image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts'), new_worldreach_order_path %>
+	<div class="navi-button">
+		<%= button(:image => 'worldreach/confirm_payment.png', :alt => 'Submit Credit Card Details', :form_id => 'credit-card-details', :type => 'submit') %>	
+	</div>
 <% end %>

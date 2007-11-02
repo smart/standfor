@@ -1,4 +1,4 @@
-<% form_for(order, :url => worldreach_orders_path ) do |f| %>
+<% form_for(order, :url => worldreach_orders_path, :html => { :id => 'donation-form' } ) do |f| %>
   <%= render :partial => '/worldreach/orders/fields', :locals => { :f => f , :organization => organization } -%>
   <p>
     <%= f.submit "Create" %>

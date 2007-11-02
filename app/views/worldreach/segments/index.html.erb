@@ -1,11 +1,14 @@
 <h1>Our Causes</h1>
 
-<h3>What we do</h3>
-
-<span class="lead">For our children and the hope for a better tomorrow.</span>
-
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-</p>
+<div id="padding">
+	<h2><%= image_tag( "/text/worldreach_h2/WHAT WE DO.png" )-%></h2>
+	
+	<span class="lead">For our children and the hope for a better tomorrow.</span>
+	
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+	</p>
+</div>
 
 <% content_for :sidebar do %>
 	<ul id="position">
@@ -17,5 +20,5 @@
 	<div id='causes_panel'>
 		<%= render :partial => 'worldreach/shared/causes', :locals => { :segment => @segments, :current_segment => '' } %>
 	</div>
-	<%= link_to image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts'), new_worldreach_order_path %>
+	<%= link_to image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts', :class => 'navi-button'), new_worldreach_order_path %>
 <% end %>

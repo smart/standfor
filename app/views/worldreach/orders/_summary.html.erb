@@ -1,5 +1,8 @@
-<ul>
+<ul class="donation-summary">
+<% total_amt = 0 %>
 <% order.donations.each do |donation| %>
-<li><%= donation.segment.name -%> <%= format_price(donation.amount) -%> </li>
+	<% total_amt += donation.amount %>
+	<li><%= donation.segment.name -%>: <span><%= format_price(donation.amount) -%></span> </li>
 <% end %>
+	<li class="total">Total Donation: <span><%= format_price(total_amt) -%></span></li>
 </ul>

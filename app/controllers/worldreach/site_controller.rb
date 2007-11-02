@@ -11,7 +11,7 @@ class Worldreach::SiteController < ApplicationController
 		segment = Segment.find_by_site_name(params[:id])
 		@segments = @organization.segments
 		session[:causes][segment.site_name] = (session[:causes][segment.site_name].nil?) ? 'selected' : nil
-    img = "segment_#{segment.id}"  
+    img = "segment_#{segment.id}"
 		render :update do |page|
        if (session[:causes][segment.site_name].nil?)  
          page[img].replace( image_tag('worldreach/icons/select_off.png', :alt => "#{segment.name} not selected", :id => "segment_#{segment.id}") )
@@ -20,7 +20,7 @@ class Worldreach::SiteController < ApplicationController
        end
 
     # TODO, we will have to determine how to toggle this behavior
-    if  true 
+    if true
        page.replace_html 'segment-form', :partial =>  '/worldreach/orders/segment_form', :locals => {:organization => @organization, :order => session[:order] } 
     end
 

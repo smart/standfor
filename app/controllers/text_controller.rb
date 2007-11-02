@@ -112,7 +112,7 @@ class TextController < ApplicationController
     output(trim)
   end
   
-  def worldreach_charity
+  def worldreach_h2
     text = params[:text] || ""
     color = params[:color] || "#efad13"
     background = params[:background] || "transparent"
@@ -134,6 +134,21 @@ class TextController < ApplicationController
     font = params[:font] || RAILS_ROOT + "/lib/fonts/TempoStd-HeavyCondensed.otf"
     gravity = Magick::CenterGravity
     pointsize = params[:pointsize] || 20
+    width = params[:width] || nil
+    height = params[:height] || nil
+    left = params[:left] || 0
+    top = params[:top] || 0
+    @output_image =  create_text(text, color, background, font, gravity, pointsize, width, height, left, top)
+    output
+  end
+  
+  def worldreach_h3
+    text = params[:text] || ""
+    color = params[:color] || "#efad13"
+    background = params[:background] || "transparent"
+    font = params[:font] || RAILS_ROOT + "/lib/fonts/TempoStd-HeavyCondensed.otf"
+    gravity = Magick::CenterGravity
+    pointsize = params[:pointsize] || 30
     width = params[:width] || nil
     height = params[:height] || nil
     left = params[:left] || 0

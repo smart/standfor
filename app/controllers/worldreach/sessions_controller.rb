@@ -7,7 +7,13 @@ class Worldreach::SessionsController < ApplicationController
   before_filter :login_from_cookie
   
   # render new.rhtml
+  
+  def initialize
+  	@context = 'account'
+  end
+  
   def new
+  	
   end
   
   #this is the create function for session

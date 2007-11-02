@@ -10,6 +10,10 @@ class Worldreach::OrdersController < ApplicationController
   before_filter :confirmation_required, :only => [:create]
   before_filter :authorization_required, :only => [:create]
 
+	def initialize
+		@context = 'orders'
+	end
+	
   def new
   end
 

@@ -1,14 +1,10 @@
 <h1>Our Causes</h1>
 
-<h2><%= image_tag( "/text/worldreach_header/#{@segment.name.upcase}.png" )-%></h2>
+<div id="padding">
+<h2><%= image_tag( "/text/worldreach_h2/#{@segment.name.upcase}.png" )-%></h2>
 
-<p><%= @segment.description -%></p>
-
-
-<p>
-
-</p>
-
+	<p><%= @segment.description -%></p>
+</div>
 
 <% content_for :sidebar do %>
 	<ul id="position">
@@ -20,5 +16,5 @@
 	<div id='causes_panel'>
 		<%= render :partial => 'worldreach/shared/causes', :locals => { :segment => @segments, :current_segment => @segment.id } %>
 	</div>
-	<%= link_to image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts'), new_worldreach_order_path %>
+	<%= link_to image_tag('worldreach/select_amounts.png', :alt => 'Select Donation Amounts', :class => 'navi-button' ), new_worldreach_order_path %>
 <% end %>

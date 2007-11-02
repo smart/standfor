@@ -7,6 +7,9 @@ class Worldreach::AccountsController < ApplicationController
   include YouserSystem
 
   # render new.rhtml
+  def initialize
+  	@context = 'account'
+  end
   def new
   end
   

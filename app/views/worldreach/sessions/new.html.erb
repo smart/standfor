@@ -1,18 +1,28 @@
 <h1>Login/Register</h1>
-
-<% form_tag worldreach_sessions_path do -%>
-<div id="login">
-	<dl>
-		<dt><label for="login">Username:</label></dt>
-			<dd><%= text_field_tag 'login' %></dd>
-		<dt><label for="password">Password:</label></dt>
-			<dd><%= password_field_tag 'password' %></dd>
-		<dt><label for="remember_me">Remember me:</label></dt>
-			<dd><%= check_box_tag 'remember_me' %></dd>
-			<dd><%= submit_tag 'Log in' %></dd>
-	</dl>
+<div id="padding">
+	<div id="new-session">
+	<h3><%= image_tag( "/text/worldreach_h3/LOGIN.png" ) -%></h3>
+	<% form_tag worldreach_sessions_path do -%>
+		<dl class="input">
+			<dt><label for="login">Username:</label></dt>
+				<dd><%= text_field_tag 'login' %></dd>
+			<dt><label for="password">Password:</label></dt>
+				<dd><%= password_field_tag 'password' %></dd>
+		</dl>
+		<dl class="checkbox">
+			<dt><label for="remember_me">Remember me:</label></dt>
+				<dd><%= check_box_tag 'remember_me' %></dd>
+		</dl>
+		<dl>
+				<dd><%= submit_tag 'Log in' %></dd>
+		</dl>
+	<% end -%>
+	</div>
+	
+	<div id="new-account">
+	<h3><%= image_tag( "/text/worldreach_h3/REGISTER.png" ) -%></h3>
+		<%= render :partial => '/worldreach/accounts/new' -%>
+	</div>	
 </div>
-<% end -%>
 
-<h1>Sign Up </h1>
-<%= render :partial => '/worldreach/accounts/new' -%>
+
