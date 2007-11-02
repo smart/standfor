@@ -25,12 +25,10 @@ class Worldreach::AccountsController < ApplicationController
 
   def create
     @local_user = LocalUser.new(params[:account])
-    begin
-     @local_user.save!
+    if @local_user.save
       successful_local_user_login(@local_user)
       return false
-     rescue
-      #render :action => "new"
+    else
       render :template => "/worldreach/sessions/new"
     end
 
