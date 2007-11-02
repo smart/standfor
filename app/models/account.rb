@@ -10,13 +10,15 @@ class Account< ActiveRecord::Base
   has_many :authenticators
   after_create :make_account_authenticator
   has_one :sponsor
+
  
    #validates_presence_of :first_name,:last_name,:phone,:email,:city,:state,:zip, :country 
    #validates_length_of :email, :within => 3..100
    #validates_uniqueness_of  :email, :case_sensitive => false 
    #validates_format_of :email, :with => %r{^(?:[_a-z0-9-]+)(\.[_a-z0-9-]+)*@([a-z0-9-]+)(\.[a-zA-Z0-9\-\.]+)*(\.[a-z]{2,4})$}i
   # you can extend this
-  REQUIRED_FIELDS = ['nickname', 'fullname', 'primary_email']
+  #REQUIRED_FIELDS = ['nickname', 'fullname', 'primary_email']
+  REQUIRED_FIELDS = ['nickname' , 'primary_email']
 
   def validate_on_update
     REQUIRED_FIELDS.each do |field|

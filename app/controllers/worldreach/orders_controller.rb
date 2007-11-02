@@ -1,8 +1,9 @@
 class Worldreach::OrdersController < ApplicationController
+  require 'gruff'
   layout 'worldreach/default'
   before_filter :get_organization
-  before_filter :worldreach_login_required
-  #before_filter :login_required
+  # before_filter :worldreach_login_required
+  before_filter :login_required
   before_filter :get_order 
   before_filter :amount_required, :except => [:new] 
   before_filter :creditcard_required, :only => [:create, :confirm]
@@ -98,6 +99,10 @@ class Worldreach::OrdersController < ApplicationController
     end
     return true
   end
+
+  def update_donations
+  end
+
 
   private
 
