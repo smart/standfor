@@ -23,7 +23,7 @@
 	:sponsorable_type => 'Organization' , 
 	:sponsorable_id => @organization.id   -%> 
   <% else %>
-   <%= link_to 'Become A Sponsor',  new_sponsor_path -%>
+   <%= link_to 'Become A Sponsor',  new_organization_sponsor_path(@organization) -%>
    <% end %>
 <% end %>
 

@@ -38,6 +38,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :acconts_openids
   end
   map.resources :organizations do |organizations|
+     organizations.resources :sponsors
      organizations.resources :segments , :name_prefix => 'organization_'  do |segments|
       segments.resources :donations, :collection => { :details=>:any, :confirm => :any, :payment => :any }
       segments.resources :campaigns
