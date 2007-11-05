@@ -2,7 +2,7 @@ class Worldreach::OrdersController < ApplicationController
   require 'gruff'
   layout 'worldreach/default'
   before_filter :get_organization
-  before_filter :login_required
+  before_filter :login_required, :except => [:new] 
   before_filter :get_order 
   before_filter :set_donation_amounts_from_params , :only => [:create]
   before_filter :amount_required, :except => [:new, :receipt] 

@@ -5,6 +5,10 @@ class Order < ActiveRecord::Base
   attr_accessor :confirmed
   attr_accessor :creditcard
 
+  def to_param 
+    "#{id}"
+  end
+
   def total
     total = 0
     self.donations.each do |donation| 

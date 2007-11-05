@@ -2,7 +2,7 @@ class Worldreach::ChartsController < ApplicationController
   require 'gruff'
 
   def pie 
-      g = Gruff::Pie.new("600x350")
+      g = Gruff::Pie.new("300x175")
       g.title = "My Donations" 
       session[:order].donations.each do |donation| 
       p donation.segment.name 

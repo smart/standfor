@@ -5,28 +5,20 @@
   .alreadyHas {border:2px solid red;		}
   .badgeAvailable {border:2px solid green;	}
 </style>
-
-  <% content_box ("test", :class => "interior", :id => "details" ) do -%>
-    <p>
-     <%= @segment.description -%>
-    </p>
-<%= button(:image => "/text/button_text/donate!.png", :alt => "Donate!", 
-	:link => new_organization_segment_donation_path(@organization, @segment) ,
-	:class => "large-button" ) -%>
+<% content_box ("test", :class => "interior", :id => "details" ) do -%>
+   <p>
+    <%= @segment.description -%>
+   </p>
+<%= button( :image => "/text/button_text/donate!.png", :alt => "Donate!", 
+	          :link => new_organization_segment_order_path(@organization, @segment ) ,
+	          :class => "large-button" ) -%>
 <% end %>
 <div class="badges">
 <h2>You can show your support with these badges. Click a badge to customize.</h2>
-
 <% @segment.badges.each do |badge| %> 
 <% @class = badge.account_access(current_account)  %>
 <%= link_to( image_tag("/images/examples/#{badge.id}.gif" ),  new_badge_my_badge_path(badge), :class => @class ) %>
-
-
-
-    
-  <% end %>
-  
+<% end %>
 </div>
 <span class="clear"></span>
-
 <% end %>
