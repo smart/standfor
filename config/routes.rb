@@ -79,7 +79,7 @@ ActionController::Routing::Routes.draw do |map|
        organizations.resources :style_infos
     end
  end
-
+  
 
   # end youser routes
 =begin

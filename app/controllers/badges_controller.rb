@@ -1,14 +1,15 @@
 class BadgesController < ApplicationController
   layout 'default'
-  before_filter :get_organization_and_segment
+  helper  'badges'
+  #before_filter :get_organization_and_segment
   #access_control [:new, :create, :update, :edit, :delete, :index]  => "admin" 
 
   # GET /badges
   # GET /badges.xml
   def index
     check_authorization
-    @badges = Badge.find(:all, 
-		:conditions => ["organization_id = ? and segment_id = ?", @organization.id, @segment.id ] )
+    #@badges = Badge.find(:all, :conditions => ["organization_id = ? and segment_id = ?", @organization.id, @segment.id ] )
+    @badges = Badge.find(:all)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @badges }
@@ -19,7 +20,6 @@ class BadgesController < ApplicationController
   # GET /badges/1.xml
   def show
     @badge = Badge.find(params[:id])
-
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @badge }

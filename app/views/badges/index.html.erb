@@ -1,28 +1,14 @@
 <h1>Badge Catalog</h1>
 
-<% if false %>
 <ul>
+
 <% @badges.each do |badge| %>
-<li><%= link_to badge.name, organization_badge_path(@organization, badge ) %></li>
+
+<li> 
+<%= badge_link(badge) -%> 
+<%= badge.name  -%>
+</li>
+
 <% end %>
+
 </ul>
-<%= link_to 'New badge', new_organization_badge_path %>
-<% else  %>
-
-<table>
-  <tr>
-  </tr>
-
-<% for badge in @badges %>
-  <tr>
-    <td><%= link_to 'Show', organization_segment_badge_path( @organization, @segment, badge ) %></td>
-    <td><%= link_to  badge.name , organization_segment_badge_path(@organization, @segment, badge) %></td>
-    <td><%= link_to 'Edit', edit_organization_segment_badge_path(@organization, @segment, badge ) %></td>
-    <td><%= link_to 'Destroy', organization_segment_badge_path(@organization, @segment, badge ), :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<%= link_to 'New badge', new_organization_segment_badge_path(@organization, @segment) %>
-
-<% end %>
