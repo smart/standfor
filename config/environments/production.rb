@@ -20,3 +20,5 @@ config.action_controller.perform_caching             = true
 ADISERVER = "http://adiserver.eval.sympact.net"
 ADISERVER_USER = "quentin"
 ADISERVER_PASS = "test"
+
+STANDFOR_ROOT = "http://www.standfor.us" 
