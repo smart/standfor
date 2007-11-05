@@ -1,0 +1,12 @@
+<%= error_messages_for :order %>
+
+<% form_for(@order, :url => "/organizations/#{@organization.site_name}/segments/#{@segment.site_name}/orders", :method => :post ) do |f| %>
+ <ul>
+   <%= render :partial => 'fields' , :locals => {:f => f , :segment => @segment } -%>
+  <li>
+    <%= f.submit "#{(@order.creditcard.nil?) ? 'donate!' : 'Authorize'}" %>
+  </li>
+ </ul>
+
+<% end %>
+

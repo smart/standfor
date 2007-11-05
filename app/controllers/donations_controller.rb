@@ -39,7 +39,7 @@ class DonationsController < ApplicationController
   
   def confirm
     respond_to do |format|
-      format.html { }
+      format.html { render :template => 'confirm' }
       format.xml  { render :xml => @donation }
     end
   end

@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   layout 'default'
-  before_filter :login_required
+  before_filter :login_required, :except => [:new]
   before_filter :get_organization_and_segment
   before_filter :get_order 
   before_filter :set_donation_amounts_from_params , :only => [:create]
@@ -8,22 +8,10 @@ class OrdersController < ApplicationController
   before_filter :creditcard_required, :only => [:create, :confirm]
   before_filter :authorization_required, :only => [:create]
 
-  # GET /orders
-  # GET /orders.xml
-  def index
-    @orders = Order.find(:all)
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @orders }
-    end
-  end
-
   # GET /orders/1
   # GET /orders/1.xml
   def show
-    @order = Order.find(params[:id])
-
+    @order = current_account.orders.find(params[:id])
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @order }
@@ -39,17 +27,14 @@ class OrdersController < ApplicationController
     end
   end
 
-  # GET /orders/1/edit
-  def edit
-    @order = Order.find(params[:id])
-  end
 
   # POST /orders
   # POST /orders.xml
   def create
     respond_to do |format|
       if @order.save
-        flash[:notice] = 'Order was successfully created.'
+        session[:order] = nil
+        flash[:notice] = "Thank you for your donation to #{@segment.name} "
         format.html { redirect_to organization_segment_order_path(@organization, @segment, @order ) }
         format.xml  { render :xml => @order, :status => :created, :location => @order }
       else
@@ -58,35 +43,8 @@ class OrdersController < ApplicationController
       end
     end
   end
-
-  # PUT /orders/1
-  # PUT /orders/1.xml
-  def update
-    @order = Order.find(params[:id])
-
-    respond_to do |format|
-      if @order.update_attributes(params[:order])
-        flash[:notice] = 'Order was successfully updated.'
-        format.html { redirect_to(@order) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @order.errors, :status => :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /orders/1
-  # DELETE /orders/1.xml
-  def destroy
-    @order = Order.find(params[:id])
-    @order.destroy
-
-    respond_to do |format|
-      format.html { redirect_to(orders_url) }
-      format.xml  { head :ok }
-    end
-  end
+ 
+  protected
 
   def amount_required
     return true if @order.amount.to_i > 0
@@ -95,7 +53,10 @@ class OrdersController < ApplicationController
   end
 
   def creditcard_required 
-    return true if !@order.creditcard.nil?
+    if !@order.creditcard.nil?
+      @order.last_four_digits = @order.creditcard.number.strip.slice(-4,4)
+      return true 
+    end
     session[:creditcard_redirect] = new_organization_segment_order_path(@organization,@segment)
     redirect_to new_creditcard_path and return false
   end
@@ -116,15 +77,6 @@ class OrdersController < ApplicationController
     @order =  session[:order]
     session[:order_confirmed] ||= 'no'
   end
-
- def read_creditcard_params
-  @creditcard.first_name = params[:creditcard][:first_name] || '' 
-  @creditcard.last_name = params[:creditcard][:last_name] || '' 
-  @creditcard.number = params[:creditcard][:number] || '' 
-  @creditcard.verification_value = params[:creditcard][:verification_value] || '' 
-  @creditcard.card_type = params[:creditcard][:card_type] || '' 
-  #TODO figure out how to persist date
- end 
 
   def authorize_card
     #TODO  Replace this with real informaiton when we go into production

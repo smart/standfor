@@ -1,0 +1,12 @@
+<h1>Editing creditcard</h1>
+
+<%= error_messages_for :creditcard %>
+
+<% form_for(@creditcard) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @creditcard %> |
+<%= link_to 'Back', creditcards_path %>

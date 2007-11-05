@@ -1,0 +1,21 @@
+<h1>Your Reciept </h1>
+
+<p>
+Donation to: <%= @organization.name -%>
+<p/>
+
+<p>
+<ol>
+<% @order.donations.each do |donation| %>
+<li> 
+<%= donation.segment.name -%>  : <%= number_to_currency(donation.amount) -%>
+ </li>
+<% end %>
+<li> Total: <%= number_to_currency(@order.amount) -%> </li>
+
+</ol>
+</p>
+
+<p>
+<%= link_to  "return to  #{@organization.name} page" , organization_segment_path(@organization, @segment) %>
+</p>

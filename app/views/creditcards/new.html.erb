@@ -1,0 +1,34 @@
+<h1>New Creditcard</h1>
+
+<% form_for :creditcard, :url => save_creditcard_path, :method => :post  do |f| %>
+
+  <dl>
+    <dt><label for="creditcard_first_name">First Name:</label></dt>
+      <dd><%= f.text_field :first_name , :size => 20 -%></dd>
+ 
+    <dt><label for="creditcard_last_name">Last Name:</label></dt>
+      <dd><%= f.text_field :last_name, :size => 20 -%></dd>
+ 
+    <dt><label for="creditcard_type">Card Type:</label></dt>
+      <dd><%= f.select :card_type, ["Visa", "Master Card", "Discover"] %></dd>
+ 
+    <dt><label for="creditcard_number">Card Number:</label></dt>
+      <dd><%= f.text_field :number -%></dd>
+  </dl>
+
+  <dl class="expiration">
+    <dt><label for="creditcard_expiration_month_year">Expiration:</label></dt>
+    <dd><%= select_month(Date.today)%><%= select_year(Date.today)%></dd>
+  </dl>
+ 
+  <dl class="verification">
+  <dt><label for="creditcard_verification_value">Verification:</label></dt>
+    <dd><%= f.text_field :verification_value, :size => 6 -%></dd>
+  </dl>
+
+  <dl class="submit">
+    <dd><%= f.submit 'enter card' -%></dd>
+  </dl>
+
+<% end %>
+
