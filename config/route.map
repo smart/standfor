@@ -1,6 +1,6 @@
 0.0 -> site/index
 0.1 -> sessions/new
-0.2 -> users/new
+0.2 -> acconts/new
 
 1.0 -> badges/index
 1.1 -> badges/show
