@@ -4,6 +4,7 @@ ActionController::Routing::Routes.draw do |map|
     worldreach.resources :sessions
     worldreach.resources :accounts
   end
+
   map.connect '/worldreach' , :controller => '/worldreach/site', :action => 'index'
   map.worldreach_segments '/worldreach/segments' , :controller => '/worldreach/segments', :action => 'index'
   map.worldreach_segment '/worldreach/segments/:id' , :controller => '/worldreach/segments', :action => 'show'
@@ -34,15 +35,24 @@ ActionController::Routing::Routes.draw do |map|
   map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
   map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
 
+  map.connect '/user/sessions/new', :controller => 'sessions', :action => 'new'
+
   map.resource :sessions
   map.resources :accounts do |user|
     user.resources :acconts_openids
   end
 
-  map.resources :creditcards
-  map.resources :badges do |badges|
-     badges.resources :my_badges, :name_prefix => 'badge_' 
-  end
+ map.resources :creditcards, :badges
+ map.resources :organizations do |organizations|
+   organizations.resources :segments
+ end
+
+ map.namespace(:user) do |user|
+    user.resources :orders
+    user.resources :my_badges
+    user.resources :organizations
+    user.resource :account
+ end
 
   map.resources :organizations do |organizations|
      organizations.resources :sponsors

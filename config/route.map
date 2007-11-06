@@ -28,19 +28,13 @@
 4.0 -> badge/landing
 4.1 -> user/account/show
 
-  map.resources :badges do |badges|
-    badges.resources :my_badges
-  end
-
-  map.resources :organizations do |organizations|
-    organizations.resources :segments
-  end
+ map.resources :organizations do |organizations|
+   organizations.resources :segments
+ end
 
  map.namespace(:user) do |user|
     user.resources :orders
     user.resources :my_badges
     user.resources :organizations
-    user.resources :segments
     user.resource :account
  end
-

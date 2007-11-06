@@ -1,0 +1,14 @@
+<h1>Edit My Account</h1>
+
+<%= error_messages_for :account %>
+
+<% form_for(@account, :url => user_account_path, :method => :put ) do |f| %>
+  <ul>
+    <%= render :partial => 'fields', :locals => {:f => f } -%>
+    <%= f.submit "Update" %>
+  </ul>
+<% end %>
+
+<p>
+<%= link_to 'cancel', user_account_path %> 
+</p>

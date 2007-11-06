@@ -1,6 +1,6 @@
 class MyBadgesController < ApplicationController
   layout 'default'
-  before_filter :login_required
+
   before_filter :get_badge
   # GET /my_badges
   # GET /my_badges.xml

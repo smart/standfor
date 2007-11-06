@@ -1,0 +1,31 @@
+<fieldset class="input">
+ <legend>Edit your Info</legend>
+  <dl>
+   <dt><label for="account_fullname" >Full Name:</label></dt>
+    <dd><%= f.text_field :fullname -%></dd>
+   <dt><label for="account_nickname" >Nick Name:</label></dt>
+    <dd><%= f.text_field :nickname -%></dd>
+   <dt><label for="account_phone" >Phone:</label></dt>
+    <dd><%= f.text_field :phone -%></dd>
+
+<% if false %>
+   <dt><label for="account_email" >Primary Email:</label></dt>
+    <dd><%= f.text_field :primary_email -%></dd>
+<% end  %>
+
+   <dt><label for="account_address_1" >Address 1:</label></dt>
+    <dd><%= f.text_field :address_1 -%></dd>
+   <dt><label for="account_address_2" >Address 2:</label></dt>
+    <dd><%= f.text_field :address_2 -%></dd>
+   <dt><label for="account_city" >City:</label></dt>
+    <dd><%= f.text_field :city -%></dd>
+   <dt><label for="account_state" >State:</label></dt>
+    <dd><%= f.select 'state', select_state_for_account -%></dd>
+   <dt><label for="account_zip" >Zip:</label></dt>
+    <dd><%= f.text_field :zip-%></dd>
+   <dt><label for="account_country" >Country:</label></dt>
+    <dd><%= f.country_select :country, ['United States', 'Canada' ], :size => 30 -%></dd>
+  </dl>
+
+</fieldset>
+ <span class="clear"></span>

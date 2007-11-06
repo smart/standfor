@@ -1,5 +1,5 @@
 class Account< ActiveRecord::Base
-  has_many :organizations
+  #has_many :organizations
   has_many :my_badges
   has_many :donations
   has_many :orders
@@ -85,5 +85,23 @@ class Account< ActiveRecord::Base
     return Sponsor.exists?(:account_id => self.id )
   end
 
+  def organizations
+    seen = []
+    self.my_badges.each do |mb|
+       seen << mb.badge.organization.id unless seen.include?(mb.badge.organization.id)
+    end
+    self.donations.each do |donation|
+       seen << donation.organization.id unless seen.include?(donation.organization.id)
+    end
+    organizations = Organization.find(:all, :conditions => "id IN (#{seen.join(',')} )" ) 
+  end
+
+   def segments
+    seen = []
+    self.my_badges.each do |mb|
+       seen << mb.badge.segment.id unless seen.include?(mb.badge.segment.id)
+    end
+    segments  = Segment.find(:all, :conditions => "id IN (#{seen.join(',')} )" ) 
+   end
   
 end

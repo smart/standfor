@@ -1,0 +1,12 @@
+<h1>Editing my_badge</h1>
+
+<%= error_messages_for :my_badge %>
+
+<% form_for(@my_badge) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @my_badge %> |
+<%= link_to 'Back', my_badges_path %>
