@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
     worldreach.resources :sessions
     worldreach.resources :accounts
   end
-
+map.connect 'customize/:action/:id', :controller => "pre_save_customize"
   map.connect '/worldreach' , :controller => '/worldreach/site', :action => 'index'
   map.worldreach_segments '/worldreach/segments' , :controller => '/worldreach/segments', :action => 'index'
   map.worldreach_segment '/worldreach/segments/:id' , :controller => '/worldreach/segments', :action => 'show'
@@ -42,7 +42,11 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :acconts_openids
   end
 
- map.resources :creditcards, :badges
+ map.resources :creditcards
+ 
+ map.resources :badges
+ 
+ 
  map.resources :organizations do |organizations|
    organizations.resources :segments
  end
