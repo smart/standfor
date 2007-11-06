@@ -1,4 +1,6 @@
 class User::OrdersController < ApplicationController
+  layout 'default' 
+  before_filter :login_required
   # GET /user_orders
   # GET /user_orders.xml
   def index

@@ -3,17 +3,18 @@
 <%= link_to 'Edit', edit_user_account_path %> 
 </p>
 
-<h2>My Organizations</h2>
+<h2>Organizations</h2>
 <p>
- <%= render :partial => 'organizations' -%> 
+ <%= link_to  'my organizations ' , user_organizations_path -%> 
 </p>
 
-<h2>Segments</h2>
+<h2>Orders</h2>
 <p>
- <%= render :partial => 'segments' -%> 
+ <%= link_to  'my orders' , user_orders_path -%> 
 </p>
+
 
 <h2>My Badges</h2>
 <p>
- <%= render :partial => 'my_badges' -%> 
+ <%= link_to  'my badges' , user_my_badges_path -%> 
 </p>

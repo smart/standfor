@@ -1,18 +1,7 @@
-<h1>Listing orders</h1>
+<h1>My Orders</h1>
 
-<table>
-  <tr>
-  </tr>
-
-<% for order in @orders %>
-  <tr>
-    <td><%= link_to 'Show', order %></td>
-    <td><%= link_to 'Edit', edit_order_path(order) %></td>
-    <td><%= link_to 'Destroy', order, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<ul>
+<% current_account.orders.each do |order| %>
+ <li><%= order.id -%> <%= order.created_at.strftime("%B %d, %Y") -%><li>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New order', new_order_path %>
+</ul>

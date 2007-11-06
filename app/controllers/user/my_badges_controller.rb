@@ -1,9 +1,10 @@
 class User::MyBadgesController < ApplicationController
+  layout 'default' 
+  before_filter :login_required
   # GET /user_my_badges
   # GET /user_my_badges.xml
   def index
-    @user_my_badges = User::MyBadge.find(:all)
-
+    @my_badges = current_account.my_badges 
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @user_my_badges }

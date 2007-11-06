@@ -1,8 +1,10 @@
 class User::OrganizationsController < ApplicationController
+  layout 'default' 
+  before_filter :login_required
   # GET /user_organizations
   # GET /user_organizations.xml
   def index
-    @user_organizations = User::Organization.find(:all)
+    @organizations = current_account.organizations
 
     respond_to do |format|
       format.html # index.html.erb

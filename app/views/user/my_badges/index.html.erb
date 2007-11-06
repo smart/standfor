@@ -1,18 +1,7 @@
-<h1>Listing my_badges</h1>
+<h1>My Badges</h1>
 
-<table>
-  <tr>
-  </tr>
-
-<% for my_badge in @my_badges %>
-  <tr>
-    <td><%= link_to 'Show', my_badge %></td>
-    <td><%= link_to 'Edit', edit_my_badge_path(my_badge) %></td>
-    <td><%= link_to 'Destroy', my_badge, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<ul>
+<% current_account.my_badges.each do |my_badge| %>
+ <li><%= my_badge.badge.name -%><li>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New my_badge', new_my_badge_path %>
+</ul>
