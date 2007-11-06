@@ -1,11 +1,9 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :creditcards
   map.namespace(:worldreach) do |worldreach|
     worldreach.resources :orders
     worldreach.resources :sessions
     worldreach.resources :accounts
   end
-
   map.connect '/worldreach' , :controller => '/worldreach/site', :action => 'index'
   map.worldreach_segments '/worldreach/segments' , :controller => '/worldreach/segments', :action => 'index'
   map.worldreach_segment '/worldreach/segments/:id' , :controller => '/worldreach/segments', :action => 'show'
@@ -29,17 +27,21 @@ ActionController::Routing::Routes.draw do |map|
   map.login   '/login',  :controller => 'sessions', :action => 'new'
   map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
   map.signup  '/signup', :controller => 'accounts',   :action => 'new'
-
   map.save_creditcard '/save/creditcard' , :controller => 'creditcards', :action => 'create'
   map.save_order  '/save/orders' , :controller => 'orders', :action => 'create'
-
   map.open_id_complete 'sessions', :controller => "sessions", :action => "create", :requirements => { :method => :get }
   map.open_id_complete_on_accounts 'accounts',    :controller => "accounts",    :action => "create", :requirements => { :method => :get }
   map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
   map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
+
   map.resource :sessions
   map.resources :accounts do |user|
     user.resources :acconts_openids
+  end
+
+  map.resources :creditcards
+  map.resources :badges do |badges|
+     badges.resources :my_badges, :name_prefix => 'badge_' 
   end
 
   map.resources :organizations do |organizations|
@@ -47,15 +49,9 @@ ActionController::Routing::Routes.draw do |map|
      organizations.resources :segments , :name_prefix => 'organization_'  do |segments|
       segments.resources :orders, :collection => { :details => :any, :confirm => :any, :payment => :any }
       segments.resources :donations, :collection => { :details=>:any, :confirm => :any, :payment => :any }
-      segments.resources :campaigns
       segments.resources :badges
      end
   end
-
-  map.resources :badges do |badges|
-     badges.resources :requirements , :name_prefix => 'badge_' 
-     badges.resources :my_badges, :name_prefix => 'badge_' 
-  end 
 
  map.namespace(:admin) do |admin|
     admin.resources :configurations
