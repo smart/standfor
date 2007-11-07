@@ -1,7 +1,7 @@
 class CustomizeController < ApplicationController
   require 'RMagick'
   layout 'default'
-   before_filter :login_required
+   #before_filter :login_required
    before_filter :get_my_badge
 
    def index 

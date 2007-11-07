@@ -1,7 +1,7 @@
 class ShareController < ApplicationController
   layout 'default'
-
-   before_filter :get_my_badge
+  before_filter :login_required
+  before_filter :get_my_badge
 
    def index 
      @customizations = Customization.find(:all, :params => { :adi_id => @my_badge.adi_id } )
@@ -27,7 +27,17 @@ class ShareController < ApplicationController
    private 
 
    def get_my_badge
-     @my_badge = MyBadge.find_by_id_and_account_id(params[:id], current_account.id ) 
+     if !session[:unsaved_badge].nil?
+       # This is the transition from the unlogged in state to the logged in state
+       # The before_filter :login_requirdd will ensure that current_account is set.
+       @my_badge = session[:unsaved_badge]
+       session[:unsaved_badge] = nil
+       @my_badge.account = current_account
+       @my_badge.save 
+       session[:my_badge] = @my_badge
+       return
+     end
+     @my_badge = session[:my_badge] 
    end
 
 end

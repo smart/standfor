@@ -5,7 +5,8 @@ ActionController::Routing::Routes.draw do |map|
     worldreach.resources :accounts
   end
 
-  map.presave_customize 'customize', :controller => "customize", :action => 'index'
+ map.presave_customize 'customize', :controller => "customize", :action => 'index'
+ map.share  'share', :controller => "share", :action => 'index'
 
   map.connect '/worldreach' , :controller => '/worldreach/site', :action => 'index'
   map.worldreach_segments '/worldreach/segments' , :controller => '/worldreach/segments', :action => 'index'
