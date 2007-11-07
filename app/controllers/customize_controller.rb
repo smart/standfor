@@ -33,7 +33,16 @@ class CustomizeController < ApplicationController
    private 
 
    def get_my_badge
-     @my_badge = MyBadge.find_by_id_and_account_id(params[:id], current_account.id ) 
+      @my_badge = session[:my_badge]
+      return true if !@my_badge.nil?
+      @my_badge = session[:unsaved_badge]
+      return true if !@my_badge.nil?
+      if params[:badge_id]
+        @my_badge  =  Badge.find(params[:badge_id]).my_badges.new
+         session[:unsaved_badge]  = @my_badge
+        return true
+      end
+       @my_badge = MyBadge.find_by_id_and_account_id(params[:id], current_account.id ) 
    end
 
 end

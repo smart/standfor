@@ -4,7 +4,9 @@ ActionController::Routing::Routes.draw do |map|
     worldreach.resources :sessions
     worldreach.resources :accounts
   end
-map.connect 'customize/:action/:id', :controller => "pre_save_customize"
+
+  map.presave_customize 'customize', :controller => "customize", :action => 'index'
+
   map.connect '/worldreach' , :controller => '/worldreach/site', :action => 'index'
   map.worldreach_segments '/worldreach/segments' , :controller => '/worldreach/segments', :action => 'index'
   map.worldreach_segment '/worldreach/segments/:id' , :controller => '/worldreach/segments', :action => 'show'
