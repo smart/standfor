@@ -27,7 +27,6 @@ class OrdersController < ApplicationController
     end
   end
 
-
   # POST /orders
   # POST /orders.xml
   def create
@@ -93,11 +92,13 @@ class OrdersController < ApplicationController
  end 
 
  def set_donation_amounts_from_params
+    return if !@order.creditcard.nil?
     @order.donations = []
     donation = Donation.new
     donation.segment = @segment
     donation.account = current_account 
-    donation.amount = params[:segment][@segment.site_name].to_i 
+    #donation.amount = params[:segment][@segment.site_name].to_i  if !params[:segment].nil?
+    donation.amount = params[:order][:amount].to_i  if !params[:order].nil?
     donation.organization = @organization
     @order.donations << donation
     @order.account = current_account

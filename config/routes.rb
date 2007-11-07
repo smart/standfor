@@ -7,6 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
  map.presave_customize 'customize', :controller => "customize", :action => 'index'
  map.share  'share', :controller => "share", :action => 'index'
+ map.my_badge_create '/create/my/badge', :controller => 'my_badges', :action => 'create'
 
   map.connect '/worldreach' , :controller => '/worldreach/site', :action => 'index'
   map.worldreach_segments '/worldreach/segments' , :controller => '/worldreach/segments', :action => 'index'
@@ -37,7 +38,6 @@ ActionController::Routing::Routes.draw do |map|
   map.open_id_complete_on_accounts 'accounts',    :controller => "accounts",    :action => "create", :requirements => { :method => :get }
   map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
   map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
-
   map.connect '/user/sessions/new', :controller => 'sessions', :action => 'new'
 
   map.resource :sessions
@@ -45,11 +45,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :acconts_openids
   end
 
- map.resources :creditcards
- 
- map.resources :badges
- 
- 
+ map.resources :creditcards, :badges
  map.resources :organizations do |organizations|
    organizations.resources :segments
  end
@@ -64,7 +60,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :organizations do |organizations|
      organizations.resources :sponsors
      organizations.resources :segments , :name_prefix => 'organization_'  do |segments|
-      segments.resources :orders, :collection => { :details => :any, :confirm => :any, :payment => :any }
+      segments.resources :orders, :collection => { :create => :any}
       segments.resources :donations, :collection => { :details=>:any, :confirm => :any, :payment => :any }
       segments.resources :badges
      end

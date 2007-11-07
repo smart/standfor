@@ -1,7 +1,7 @@
 class MyBadgesController < ApplicationController
   layout 'default'
-
-  before_filter :get_badge
+  before_filter :login_required, :only => [:new, :create]
+  #before_filter :get_badge
   # GET /my_badges
   # GET /my_badges.xml
   
@@ -33,8 +33,10 @@ class MyBadgesController < ApplicationController
   # GET /my_badges/new
   # GET /my_badges/new.xml
   def new
-    @my_badge = MyBadge.new
-    session[:badge] = @badge
+    get_my_badge
+    @order = Order.new
+    #@my_badge = MyBadge.new
+    #session[:badge] = @badge
     session[:my_badge_return_to] = request.request_uri 
     respond_to do |format|
       format.html # new.html.erb
@@ -109,6 +111,26 @@ class MyBadgesController < ApplicationController
 
    def get_badge
      @badge = Badge.find(params[:badge_id])
+   end
+
+   def get_my_badge
+     if !session[:unsaved_badge].nil?
+       # This is the transition from the unlogged in state to the logged in state
+       # The before_filter :login_requirdd will ensure that current_account is set.
+       @my_badge = session[:unsaved_badge]
+       session[:unsaved_badge] = nil
+       @my_badge.account = current_account
+       session[:my_badge] = @my_badge
+       return
+     end
+     @my_badge = session[:my_badge] 
+     return if !@my_badge.nil?
+
+     if params[:badge_id].nil?
+       @my_badge = Badge.find(params[:badge_id]).my_badges.new
+     end
+     return if !@my_badge.nil?
+     @my_badge = current_account.my_badges.find(params[:my_badge_id])
    end
 
    def get_share_info

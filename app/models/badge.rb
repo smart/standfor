@@ -12,7 +12,7 @@ class Badge < ActiveRecord::Base
 
   def authorized?(account)
     self.requirements.each do |req| 
-	return true if req.met?(account)
+	     return true if req.met?(account)
     end
     return false 
   end

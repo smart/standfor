@@ -1,8 +1,19 @@
+<% if @order.creditcard.nil? %>
+<h1>New</h1>
+<% else %>
+<h1>Authroize Payment</h1>
+<% end %>
+
 <%= error_messages_for :order %>
 
 <% form_for(@order, :url => "/organizations/#{@organization.site_name}/segments/#{@segment.site_name}/orders", :method => :post ) do |f| %>
  <ul>
+   <% if @order.creditcard.nil? %> 
    <%= render :partial => 'fields' , :locals => {:f => f , :segment => @segment } -%>
+   <% else  %> 
+     <p>Clicking 'Authorize' below will authorize Standforus to charge your creditcard ending in '<%=@order.creditcard.number.strip.slice(-4,4) -%> to be charged' <%= number_to_currency(@order.amount) -%>. </p>
+   <% end %> 
+
   <li>
     <%= f.submit "#{(@order.creditcard.nil?) ? 'donate!' : 'Authorize'}" %>
   </li>
