@@ -1,0 +1,12 @@
+<h1>Editing sponsorship</h1>
+
+<%= error_messages_for :sponsorship %>
+
+<% form_for(@sponsorship) do |f| %>
+  <p>
+    <%= f.submit "Update" %>
+  </p>
+<% end %>
+
+<%= link_to 'Show', @sponsorship %> |
+<%= link_to 'Back', sponsorships_path %>

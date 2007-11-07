@@ -54,6 +54,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :orders
     user.resources :my_badges
     user.resources :organizations
+    user.resources :sponsorships
     user.resource :account
  end
 

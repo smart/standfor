@@ -16,6 +16,10 @@ Donation to: <%= @organization.name -%>
 </ol>
 </p>
 
+<% @my_badge = session[:my_badge] %>
+
+<% if !@my_badge.nil? %>
 <p>
-<%= link_to  "return to  #{@organization.name} page" , organization_segment_path(@organization, @segment) %>
+<%= link_to  "learn how your badge can be sponsored " ,  user_sponsorships_path %>
 </p>
+<% end %>
