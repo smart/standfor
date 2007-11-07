@@ -52,16 +52,15 @@ class MyBadgesController < ApplicationController
   # POST /my_badges
   # POST /my_badges.xml
   def create
-    @my_badge = MyBadge.new(params[:my_badge])
+    #@my_badge = MyBadge.new(params[:my_badge])
+    #@my_badge.badge = @badge 
+    get_my_badge
     @my_badge.account = current_account 
-    @my_badge.badge = @badge 
-
     if !params[:my_badge].nil? and !params[:my_badge][:access_code].nil?
       	 @badge.access_codes.each do |c|
-	    current_account.access_codes << c if c.value == params[:my_badge][:access_code]
+	          current_account.access_codes << c if c.value == params[:my_badge][:access_code]
          end
     end
-
     respond_to do |format|
       if @my_badge.save
         flash[:notice] = 'MyBadge was successfully created.'

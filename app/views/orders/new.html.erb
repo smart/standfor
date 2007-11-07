@@ -1,7 +1,7 @@
 <% if @order.creditcard.nil? %>
 <h1>New</h1>
 <% else %>
-<h1>Authroize Payment</h1>
+<h1>Authorize Payment</h1>
 <% end %>
 
 <%= error_messages_for :order %>
@@ -11,7 +11,8 @@
    <% if @order.creditcard.nil? %> 
    <%= render :partial => 'fields' , :locals => {:f => f , :segment => @segment } -%>
    <% else  %> 
-     <p>Clicking 'Authorize' below will authorize Standforus to charge your creditcard ending in '<%=@order.creditcard.number.strip.slice(-4,4) -%> to be charged' <%= number_to_currency(@order.amount) -%>. </p>
+      <%= f.hidden_field  :amount -%>
+     <p>Clicking 'Authorize' below will authorize Standforus to charge your creditcard ending in '<%=@order.creditcard.number.strip.slice(-4,4) -%>' to be charged <%= number_to_currency(@order.amount) -%>. </p>
    <% end %> 
 
   <li>
