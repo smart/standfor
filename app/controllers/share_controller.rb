@@ -38,6 +38,8 @@ class ShareController < ApplicationController
        return
      end
      @my_badge = session[:my_badge] 
+     return if !@my_badge.nil?
+     @my_badge = current_account.my_badges.find(params[:my_badge_id])
    end
 
 end
