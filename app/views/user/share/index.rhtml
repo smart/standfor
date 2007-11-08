@@ -2,9 +2,8 @@
   <div id="preview">
     <% content_box( "your charity badge", :class => "shadow" ) do -%>
       <div id="badge">
-        <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
+        <%= render :partial => "user/customize/current_view", :locals => {:my_badge => @my_badge } -%>
       </div>
-        <%= link_to 'home', :controller => 'site', :action => 'index' -%>
     <% end %>
   </div>
   <div id="howto">
@@ -22,4 +21,8 @@
       </div>
     <% end %>
   </div>
+</div>
+
+<div>
+ <%= render :partial => '/user/my_badges/navigation' , :locals => {:my_badge => @my_badge} -%>
 </div>
