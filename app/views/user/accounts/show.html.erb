@@ -25,8 +25,8 @@
 			<%= image_tag("/images/placeholders/imageselections.jpg") %>
 		<% end %>
 	<% else %>
-		<% @my_badges.each do |badge| %>
-			<%= badge_link(badge) -%>
+		<% @my_badges.each do |my_badge| %>
+			<%= badge_link(my_badge.badge) -%>
 		<% end %>	
 	<% end %>
 <% end %>
