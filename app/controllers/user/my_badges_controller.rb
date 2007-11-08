@@ -1,7 +1,12 @@
 class User::MyBadgesController < ApplicationController
   layout 'default' 
-  before_filter :login_required
+  helper 'user::my_badges'
   helper 'badges'
+  before_filter :login_required
+  before_filter :get_my_badge, :only => [:update, :sponsorship_options, :merit_options, :show]
+  before_filter :sponsorship_option_required, :only => [:show]
+  before_filter :merit_option_required, :only => [:show]
+
   # GET /user_my_badges
   # GET /user_my_badges.xml
   def index
@@ -15,7 +20,6 @@ class User::MyBadgesController < ApplicationController
   # GET /user_my_badges/1
   # GET /user_my_badges/1.xml
   def show
-    @my_badge = User::MyBadge.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -59,12 +63,11 @@ class User::MyBadgesController < ApplicationController
   # PUT /user_my_badges/1
   # PUT /user_my_badges/1.xml
   def update
-    @my_badge = User::MyBadge.find(params[:id])
-
+    get_my_badge
     respond_to do |format|
       if @my_badge.update_attributes(params[:my_badge])
-        flash[:notice] = 'User::MyBadge was successfully updated.'
-        format.html { redirect_to(@my_badge) }
+        flash[:notice] = 'MyBadge was successfully updated.'
+        format.html { redirect_to user_my_badge_url(@my_badge) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -84,4 +87,28 @@ class User::MyBadgesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+
+  def sponsorship_options
+  end
+
+  def merit_options
+  end
+
+   protected
+
+   def get_my_badge
+     @my_badge = current_account.my_badges.find(params[:id])
+   end
+ 
+   def sponsorship_option_required   
+    return true if !@my_badge.sponsorship_option.nil? and !@my_badge.sponsorship_option.blank?
+    render :action =>  :sponsorship_options and return false 
+   end
+
+   def merit_option_required   
+    return true if !@my_badge.merit_option.nil? and !@my_badge.merit_option.blank?
+    render :action =>  :merit_options  and return false 
+   end
+  
+
 end

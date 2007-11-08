@@ -20,6 +20,6 @@ Donation to: <%= @organization.name -%>
 
 <% if !@my_badge.nil? %>
 <p>
-<%= link_to  "learn how your badge can be sponsored " ,  user_sponsorships_path %>
+<%= link_to  "learn how your badge can be sponsored " ,  user_my_badge_path(@my_badge) %>
 </p>
 <% end %>
