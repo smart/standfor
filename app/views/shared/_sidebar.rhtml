@@ -1,10 +1,9 @@
 <% if current_account != :false %>
 <% content_box("", :class => "basic", :id => "mini-login" ) do -%>
 <%= link_to (image_tag("/text/side_button/my account.png", :alt => "my account"), user_account_path, :class => "sidebar-button") %>
-  <%= link_to (image_tag("/text/side_button/logout.png", :alt => "login"), logout_path, :class => "sidebar-button") %>
+  <%= link_to (image_tag("/text/side_button/logout.png", :alt => "logout"), logout_path, :class => "sidebar-button") %>
 <% end %>
-<div class="outer-wrapper">
- <div class="inner-wrapper">
+<% radial_box(:id => "stats") do %>
   <div class="side-box" id="your-stats">
     <h2><%= image_tag("/text/side_button/my stats.png", :alt => "my stats") %></h2>
     <ul class="stats">
@@ -27,7 +26,7 @@
 
 	<%  if true  %>
 
-	  <div class="side-box" id="your-stats">
+	  <div class="side-box" id="system-stats">
 	   <h2><%= image_tag("/text/side_button/system stats.png", :alt => "system stats") %></h2>
 	      <%= render :partial => '/shared/system_statistics' -%>
 	  </div>
@@ -35,7 +34,7 @@
 
 	<% end %>
 	</div>
-</div>
+<% end %>
 <% else %>
   <% content_box("", :class => "basic", :id => "mini-login" ) do -%>
      <%= link_to(image_tag("/text/side_button/login.png", :alt => "login"), login_path, :class => "sidebar-button") %>

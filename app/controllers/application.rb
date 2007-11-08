@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   include SegmentSystem
   include StyleSystem
   # Pick a unique cookie name to distinguish our session data from others'
+  helper 'badges'
   
   session :session_key => '_standfor_session_id'
 

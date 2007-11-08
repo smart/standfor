@@ -82,6 +82,14 @@ img {
 	margin-left:10px;
 	margin-top:92px;
 }
+#header-image h1 {
+
+}
+#header-image h1 span {
+	position:absolute;
+	bottom:8px;
+	right:15px;
+}
 #navigation {
 	position:absolute;
 	right:0;
@@ -111,7 +119,9 @@ img {
   width:740px;
   float:left;
 }
-
+.home #content {
+	width:auto;
+}
 #sidebar {
   width:217px;
   float:right;
@@ -119,26 +129,32 @@ img {
   display:inline;
 }
 
-#sidebar .outer-wrapper {
-	background:url(<%= style_image_path("side_bar_outer") || "/images/boxes/sidebar/outer_fill.png" -%>) no-repeat top center;
+.home #sidebar {
+	display:none;
 }
 
-#sidebar .inner-wrapper {
-	background:url(<%= style_image_path("side_bar_inner") || "/images/boxes/sidebar/inner_fill.png" -%>) no-repeat bottom center;
-	padding-top:6px;
+.radial {
+	background:url(<%= style_image_path("side_bar_outer") || "/images/boxes/sidebar/outer_wrapper.png" -%>) no-repeat top center;
+	width:217px;
+
+}
+
+.radial .inner-wrapper {
+	background:url(<%= style_image_path("side_bar_inner") || "/images/boxes/sidebar/inner_wrapper.png" -%>) no-repeat bottom center;
+	padding:10px;
+		min-height:125px;
+	_height:125px;
 }
 #sidebar .side-box {
 	/*background:url(<%= style_image_path("side_bar_box") || "/images/boxes/sidebar/sidebox.png" -%>) no-repeat top center;*/
 }
-#sidebar .inner-wrapper .seperator {
+.radial .inner-wrapper .seperator {
 	height:21px;
 	display:block;
 	/*background:url(<%= style_image_path("side_bar_box_seperator") || "/images/boxes/sidebar/seperator.png" -%>) no-repeat top center;*/
 }
-.side-box h2, .side-box h3 {
-	text-align:left;
-	margin:5px 16px 5px 16px;
-	
+.radial h2, .radial h3 {
+	text-align:center;
 }
 .side-box h2 {
 	/*background:url(<%= style_image_path("side_bar_box_header") || "/images/boxes/sidebar/sidebox_header.png" -%>) no-repeat top center;*/
@@ -185,14 +201,20 @@ img {
 
 /* home page specific styles */
 .home #leaderboard, #mission-statement, #featured-badges {
-	width:220px;
 	float:left;
 	clear:none;
 	margin-right:15px;
+	margin-top:15px;
+}
+.home #leaderboard, .home #mission-statement {
+	width:285px;
+}
+.home #featured-badges {
+	width:315px;
 }
 #get-badge, #customize-badge, #share-badge, #make-difference {
 	margin-right:15px;
-	width:150px;
+	margin-left:10px;
 	float:left;
 }
 #welcome {
@@ -742,7 +764,7 @@ img {
 	min-height:300px;
 	_height:300px;
 	margin-left:15px;
-	padding-top:5px;
+	padding-top:10px;
 	clear:both;
 }
 .grey-fade .end-cap {

@@ -34,6 +34,22 @@ class TextController < ApplicationController
     output
   end
   
+  def top_text_small
+    text = params[:text] || ""
+    color = params[:color] || "white"
+    background = params[:background] || "transparent"
+    font = params[:font] || RAILS_ROOT + "/lib/fonts/VAGROBDT.PFB"
+    gravity = Magick::CenterGravity
+    pointsize = params[:pointsize] || 24
+    width = params[:width] || nil
+    height = params[:height] || nil
+    left = params[:left] || 0
+    top = params[:top] || 0
+    @output_image =  create_text(text, color, background, font, gravity, pointsize, width, height, left, top)
+    @output_image = reflection(@output_image)
+    output  	
+  end
+  
   def navigation_text
 		text = params[:text] || ""
     color = params[:color] || "white"

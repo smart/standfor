@@ -1,41 +1,47 @@
-<% content_box("Get a Badge", :class => 'basicborder', :id => 'get-badge') do %>
+<% radial_box(:id => 'get-badge') do %>
+	<h2><%= image_tag("/text/basicborder_header/get a badge.png", :alt => 'Get a Badge') %></h2>
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
 	</p>
 <% end %>
 
-<% content_box("Customize It", :class => 'basicborder', :id => 'customize-badge') do %>
+<% radial_box(:id => 'customize-badge') do %>
+	<h2><%= image_tag("/text/basicborder_header/customize it.png", :alt => 'Customize It') %></h2>
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 	</p>
 <% end %>
 
-<% content_box("Share It", :class => 'basicborder', :id => 'share-badge') do %>
+<% radial_box(:id => 'share-badge') do %>
+	<h2><%= image_tag("/text/basicborder_header/share it.png", :alt => 'Share It') %></h2>
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 	</p>
 <% end %>
 
-<% content_box("Make a Difference", :class => 'basicborder', :id => 'make-difference') do %>
+<% radial_box(:id => 'make-difference') do %>
+	<h2><%= image_tag("/text/basicborder_header/make a difference.png", :alt => 'Make a Difference') %></h2>
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
 	</p>
 <% end %>
 
 <div id="mission-statement">
+	<h2><%= image_tag("/text/basicborder_header/welcome to standfor%2eus.png", :alt => 'Welcome to Standfor.Us') %></h2>
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	</p>
 </div>
 
 <% grey_fade(:id => "featured-badges" ) do -%>
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-		
-	</p>
+	<h2><%= image_tag("/text/basicborder_header/featured badges.png", :alt => 'Featured Badges') %></h2>
+	<% 3.times do %>
+		<%= image_tag('placeholders/mediumbadge.jpg', :alt => 'Badge Preview') %>
+	<% end %>
 <% end %>
 
 <div id="leaderboard">
+	<h2><%= image_tag("/text/basicborder_header/leaderboard.png", :alt => 'Leaderboard') %></h2>
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
 	</p>
