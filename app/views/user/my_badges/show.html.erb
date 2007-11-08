@@ -1,3 +1,16 @@
+<h1>MyBadge Show </h1>
 
-<%= link_to 'Edit', edit_my_badge_path(@my_badge) %> |
-<%= link_to 'Back', my_badges_path %>
+<% content_box( "your  badge", :class => "shadow" ) do -%>
+    <div id="badge">
+      <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
+    </div>
+<% end %>
+
+
+<p>
+ <%= link_to 'sponsorship options', :controller => 'user/my_badges', :action => 'sponsorship_options', :id => @my_badge -%>
+</p>
+
+<p>
+ <%= link_to 'merit options', :controller => 'user/my_badges', :action => 'merit_options', :id => @my_badge -%>
+</p>

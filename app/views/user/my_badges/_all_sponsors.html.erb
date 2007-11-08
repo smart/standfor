@@ -1,0 +1,5 @@
+<ul>
+<% Sponsor.find(:all).each do |sponsor| %>
+<li><%= sponsor.name -%> </li>
+<% end %>
+</ul>
