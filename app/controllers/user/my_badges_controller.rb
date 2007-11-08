@@ -3,7 +3,7 @@ class User::MyBadgesController < ApplicationController
   helper 'user::my_badges'
   helper 'badges'
   before_filter :login_required
-  before_filter :get_my_badge, :only => [:update, :sponsorship_options, :merit_options, :show]
+  before_filter :get_my_badge, :only => [:update, :sponsorship_options, :merit_options, :show, :share, :customize]
   before_filter :sponsorship_option_required, :only => [:show]
   before_filter :merit_option_required, :only => [:show]
 
@@ -93,6 +93,13 @@ class User::MyBadgesController < ApplicationController
 
   def merit_options
   end
+
+  def share 
+  end
+
+  def customize 
+  end
+
 
    protected
 
