@@ -4,6 +4,11 @@
 <% end %>
 
 <% content_box("filter badges", :class => 'basicborder', :id => 'instructions') do %>
+<%= form_remote_tag :url => { :controller => 'badges', :action => 'search' } %>
+ <%=  text_field  'search' , 'term', :size => 20 -%>
+ <%= submit_tag 'search' %>
+</form >
+
 	<p>
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
 	</p>
@@ -11,7 +16,9 @@
 
 <% grey_fade(:id => "badges" ) do -%>
 	<h1><%= image_tag("/text/basicborder_header/most recent badges.png", :alt => "My Badges") %></h1>
+   <div id="badge-list">
 		<% @badges.each do |badge| %>
 			<%= badge_link(badge) -%>
 		<% end %>
+  </div>
 <% end %>

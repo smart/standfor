@@ -87,6 +87,14 @@ class BadgesController < ApplicationController
     end
   end
 
+  def search
+    @terms = params[:search][:term]
+    @results = Badge.find(:all, :conditions => "name LIKE '%#{@terms}%' OR organization_id IN (SELECT id FROM organizations where name LIKE '%#{@terms}%') OR segment_id IN (SELECT id FROM segments WHERE name LIKE  '%#{@terms}%') " )
+    render :update do |page|
+      page.replace_html 'badge-list' , :partial => 'search_results' ,  :locals => { :results => @results } 
+    end
+  end
+
   def requirements 
     @badge = Badge.find(params[:id])
   end
