@@ -1,0 +1,10 @@
+<%= form_remote_tag :url => {:controller => "/share", :action  => "do",
+			     :id => my_badge,  :share => u(share.name) } -%>
+<% share.share_params.each do |share_param| %>
+<p>
+<label><%= share_param.name -%>:</label>
+<input type="<%= share_param.name == 'password' ? 'password' : 'text' -%>" name='share_it[<%= share_param.name -%>]' value="">
+ </p>
+ <% end %>
+ <%= submit_tag "Share it!" -%>
+ </form>

@@ -1,0 +1,1 @@
+page.replace_html 'share-options', :partial => 'choose', :locals => { :my_badge => @my_badge, :share => @share }

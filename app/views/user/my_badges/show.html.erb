@@ -6,11 +6,6 @@
     </div>
 <% end %>
 
-
-<p>
- <%= link_to 'sponsorship options', :controller => 'user/my_badges', :action => 'sponsorship_options', :id => @my_badge -%>
-</p>
-
-<p>
- <%= link_to 'merit options', :controller => 'user/my_badges', :action => 'merit_options', :id => @my_badge -%>
-</p>
+<div>
+ <%= render :partial => 'navigation' , :locals => {:my_badge => @my_badge} -%>
+</div>

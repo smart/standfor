@@ -1,0 +1,6 @@
+<ul>
+<% customizables.each do |customizable| %>
+  <%= option_link(customizable.icon_class, customizable.name, my_badge) -%>
+<% end %>
+</ul>
+<img src="/images/indicator.gif" id="indicator" style="display:none;" >
