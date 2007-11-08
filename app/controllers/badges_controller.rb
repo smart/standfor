@@ -88,8 +88,14 @@ class BadgesController < ApplicationController
   end
 
   def search
+    @segment = params[:search][:segment] 
+    @organization = params[:search][:organization] 
     @terms = params[:search][:term]
-    @results = Badge.find(:all, :conditions => "name LIKE '%#{@terms}%' OR organization_id IN (SELECT id FROM organizations where name LIKE '%#{@terms}%') OR segment_id IN (SELECT id FROM segments WHERE name LIKE  '%#{@terms}%') " )
+    where = "1=1 "
+    where << "AND name LIKE '%#{@terms}%' OR organization_id IN (SELECT id FROM organizations where name LIKE '%#{@terms}%') OR segment_id IN (SELECT id FROM segments WHERE name LIKE  '%#{@terms}%') "  if !@terms.blank?
+    where << " AND organization_id  = #{@organization} " if !@organization.nil? and !@organization.blank?
+    where << " AND segment_id  = #{@segment} " if !@segment.nil? and !@segment.blank?
+    @results = Badge.find(:all, :conditions => where )
     render :update do |page|
       page.replace_html 'badge-list' , :partial => 'search_results' ,  :locals => { :results => @results } 
     end
