@@ -9,6 +9,7 @@ class SessionsController < ApplicationController
 
   # render new.rhtml
   def new
+  	@context = 'login'
   end
   
   #this is the create function for session

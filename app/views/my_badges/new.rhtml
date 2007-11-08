@@ -12,12 +12,19 @@
 		<% form_for :my_badge, :url => my_badge_create_path , :method => :post, :html => {:id => 'tocustomize-form' }  do |f| %>
 	<p>You have met all the requirements for this badge!</p>
 
-	<% if false %>
-		<%= button(:image => "/text/button_text/customize!.png", :alt => "Customize!", :class => "large-button", :form_id => "tocustomize-form", :type => 'submit' ) -%>
-	<% end %>
+		<% if false %>
+			<%= button(:image => "/text/button_text/customize!.png", :alt => "Customize!", :class => "large-button", :form_id => "tocustomize-form", :type => 'submit' ) -%>
+		<% end %>
+	
    <%= f.submit 'save this to my account' -%>
-	<% end %>
- 	<% end %>
+   <% end %>
+   <% end %>
+ 	<% else %>
+ 		<% content_box("Get This Badge", :id => "instructions", :class => "basicborder") do %>
+
+		<p>You have not met all the requirements for this badge! You need [requirements] to get this badge. Please complete below.</p>
+
+	 	<% end %>
 	<span class="clear"></span>
 <% end %>
 

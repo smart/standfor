@@ -1,55 +1,44 @@
-<% content_box( "three ways to login!", :id => "login" ) do -%>
-
-
-
-    <% content_box( "already a member?", :class => "basicborder", :id => "member-login" ) do -%>
+<% content_box("standfor us account", :class => 'shadow', :id => 'member-login') do %>
 	<% form_tag sessions_path, :id => 'login-form' do -%>
-	    <dl class="input">
-	    	<dt><label for="login">Username:</label></dt>
-	    		<dd><%= text_field_tag 'login', nil, :size => 20 -%></dd>
+    <dl class="input">
+    	<dt><label for="login">Username:</label></dt>
+    		<dd><%= text_field_tag 'login', nil, :size => 20 -%></dd>
 		</dl>
 		<dl class="input">
-	    	<dt><label for="password">Password:</label></dt>
-	    		<dd><%= password_field_tag 'password', nil, :size => 20 -%></dd>
+    	<dt><label for="password">Password:</label></dt>
+    		<dd><%= password_field_tag 'password', nil, :size => 20 -%></dd>
 		</dl>
 		<dl class="checkbox">
-	    	<dt><label for="remember_me">Remember Me:</label></dt>
-	    		<dd><%= check_box_tag 'remember_me' -%></dd>
-	    </dl>
-    	
+    	<dt><label for="remember_me">Remember Me:</label></dt>
+    		<dd><%= check_box_tag 'remember_me' -%></dd>
+    </dl>
+    <span class="clear"></span>
 		<%= button(:image => "/text/button_text/login.png", :alt => "Login",  :type => "submit", :class => "large-button", :form_id => 'login-form' ) -%>
-			
-		<%= (image_tag "labels/notmember.png", :alt => "Not a Member?", :class => "img-pos" )%>
-
-		<%= button(:image => '/text/button_text/signup.png', :alt => 'Sign Up', :link => signup_url, :class => 'large-button' ) %>
 	<% end %>
-    <% end %>
 
-    <%= image_tag("labels/or.png", :alt => "or", :class => "or") %>
-	    
-	    <% content_box( "login with openID", :class => "basicborder", :id => "open-login" ) do -%>
-	    <% form_tag sessions_path, :id => 'login-form' do -%>
-		    <dl id="open-id" class="input">
-		    	<dt><label for="openid_url">OpenID:</label></dt>
-		    		<dd><%= text_field_tag "openid_url" %></dd>
-	        </dl>
-	        
-	        <span class="clear">&nbsp</span>
-        <% end %>
-	    <% end %>
-    	<%= image_tag("labels/also.png", :alt => "also", :class => "also" ) %>
-		    <% content_box( "login through facebook", :class => "basicborder", :id => "facebook-login" ) do -%>
-		    <% form_tag sessions_path, :id => 'login-form' do -%>
-		      <p>
-		        <label for="facebook">Facebook Login?</label><%= check_box_tag 'facebook' %>
-		      </p>
-		      <%= hidden_field_tag( 'facebook', :value => true ) %>
-		      <%= button(:image => "/text/button_text/facebook.png", :alt => "facebook",  :type => "submit", :class => "large-button", :form_id => 'login-form' ) -%>
-		      <span class="clear"></span>
-	      	<% end %>
-		    <% end %>
+<% end %>
 
-  <span class="clear"></span>
+<% content_box("more ways to login", :class => 'basicborder', :id => 'instructions') do %>
+	<div>
+		<% form_tag sessions_path, :id => 'openid-login' do -%>
+	    <dl class="input">
+	    	<dt><label for="openid_url"><%= image_tag("/text/basicborder_header/open id.png", :alt => "open-id") %></label></dt>
+	    		<dd><%= text_field_tag "openid_url" %></dd>
+	    </dl>	
+	  <% end %>
+	</div>
+	
+	<div>
+		<% form_tag sessions_path, :id => 'facebook-login' do -%>
+	    <%= hidden_field_tag( 'facebook', :value => true ) %>
+	    <%= button(:image => "/text/button_text/facebook.png", :alt => "facebook",  :type => "submit", :class => "large-button", :form_id => 'login-form' ) -%>
+		<% end %>
+	</div>
+
+<% end %>
+
+<% grey_fade(:id => "badge-extras" ) do -%>
+	<h1><%= image_tag("/text/basicborder_header/register.png", :alt => "Register") %></h1>
 <% end %>
 
 

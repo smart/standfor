@@ -11,11 +11,9 @@
 
 <% grey_fade(:id => "badges" ) do -%>
 	<h1><%= image_tag("/text/basicborder_header/my badges.png", :alt => "My Badges") %></h1>
-	<ul>
-		<% current_account.my_badges.each do |my_badge| %>
-	 	<li><%= my_badge.badge.name -%><li>
-		<% end %>
-	</ul>
+	<% current_account.my_badges.each do |my_badge| %>
+ 		<%= badge_link(my_badge.badge) -%>
+	<% end %>
 <% end %>
 
 <% else %>

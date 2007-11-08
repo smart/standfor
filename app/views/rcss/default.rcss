@@ -247,6 +247,17 @@ img {
 
 .badge-link {
 	float:left;
+	position:relative;
+}
+.badge-link .badge-meta {
+	position:absolute;
+	top:0;
+	left:0;
+	padding-top:83px;
+	z-index:10;
+	border:1px solid black;
+	min-width:228px;
+	background:transparent;
 }
 .badge-link span {
 	display:none;
@@ -284,9 +295,10 @@ img {
 
 /* customize & share page specific styles */
 
-#preview {
+#preview, #member-login {
   width:420px;
   float:left;
+  display:inline;
 }
 #badge {
   width:390px;
@@ -441,15 +453,15 @@ img {
 #login {
 
 }
-#member-login {
+/*#member-login {
   width:250px;
   float:left;
   display:inline;
 }
-/*
+
 #member-login h1 img {
   padding-left:22px;
-}*/
+}
 #member-login .img-pos {
   padding-left:24px;
 }
@@ -478,7 +490,25 @@ img {
 }
 #open-id dt {
 	width:20%;
+}*/
+.login dl {
+	clear:none;
 }
+#login-form dl {
+	width:50%;
+}
+#login-form dl.input {
+	float:left;
+	clear:left;
+}
+#login-form dl.checkbox {
+	float:right;
+}
+
+#login-form dt, #login-from dd {
+	margin:0;
+}
+
 #member-login .input dd {
 	margin-left:40%;
 }
@@ -890,7 +920,7 @@ form .checkbox dd {
   text-align:center;
   vertical-align:middle;
   margin-right:15px;
-  clear:both;
+  /*clear:both;*/
 }
 .large-button:hover {
   background:transparent url(<%= style_image_path("button_large_hover") || "/images/buttons/large-hover.png" -%>) no-repeat top left;
@@ -900,7 +930,6 @@ form .checkbox dd {
   display:block;
   height:48px;
   background:transparent url(<%= style_image_path("button_large") || "/images/buttons/large.png" -%>) no-repeat top right;
-
   position:relative;
   top:0px;
   left:15px;
