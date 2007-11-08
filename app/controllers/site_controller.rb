@@ -10,6 +10,7 @@ class SiteController < ApplicationController
     end
 
     def index
+    	@context = "home"
       if params[:organization].nil?
         get_featured_badges
         render :template => '/site/index'

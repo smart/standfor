@@ -1,6 +1,7 @@
 class User::MyBadgesController < ApplicationController
   layout 'default' 
   before_filter :login_required
+  helper 'badges'
   # GET /user_my_badges
   # GET /user_my_badges.xml
   def index

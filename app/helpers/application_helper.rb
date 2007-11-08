@@ -32,6 +32,19 @@ module ApplicationHelper
     concat("</div>", block.binding)
   end
   
+  def grey_fade(opts = {}, &block)
+  	box_class = opts[:class] ? "grey-fade #{opts[:class]}" : "grey-fade"
+  	box_id = opts[:id] || nil
+  	#header_text = opts[:header] || nil
+  	
+  	html = '<div class="end-cap"></div>'
+  	#html << content_tag(:h2, header_text) if header_text
+  	html << capture(&block)
+  	html = content_tag(:div, html, :class => box_class, :id => box_id)
+  	
+  	concat(html, block.binding)
+  end
+  
   def button(opts = {})
     image = image_tag(opts[:image], :alt => opts[:alt])
     link = opts[:link] ? opts[:link] : "document.getElementById('#{opts[:form_id]}').submit()"

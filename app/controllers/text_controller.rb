@@ -72,11 +72,12 @@ class TextController < ApplicationController
     background = params[:background] || "transparent"
     font = params[:font] || RAILS_ROOT + "/lib/fonts/VAGROBDT.PFB"
     gravity = Magick::CenterGravity
-    pointsize = params[:pointsize] || 28
+    pointsize = params[:pointsize] || 22
     width = params[:width] || nil
     height = params[:height] || nil
     left = params[:left] || 0
     top = params[:top] || 0
+    trim = true
     @output_image =  create_text(text, color, background, font, gravity, pointsize, width, height, left, top)
     output
   end
@@ -87,7 +88,7 @@ class TextController < ApplicationController
     background = params[:background] || "transparent"
     font = params[:font] || RAILS_ROOT + "/lib/fonts/VAGROBDT.PFB"
     gravity = Magick::CenterGravity
-    pointsize = params[:pointsize] || 20
+    pointsize = params[:pointsize] || 18
     width = params[:width] || nil
     height = params[:height] || nil
     left = params[:left] || 0
@@ -113,7 +114,7 @@ class TextController < ApplicationController
   end
   
   def worldreach_h2
-    text = params[:text] || ""
+    text = CGI.escape(params[:text]) || ""
     color = params[:color] || "#efad13"
     background = params[:background] || "transparent"
     font = params[:font] || RAILS_ROOT + "/lib/fonts/TempoStd-HeavyCondensed.otf"
@@ -128,7 +129,7 @@ class TextController < ApplicationController
   end
   
   def worldreach_box_title
-    text = params[:text] || ""
+    text = CGI.escape(params[:text]) || ""
     color = params[:color] || "#efad13"
     background = params[:background] || "white"
     font = params[:font] || RAILS_ROOT + "/lib/fonts/TempoStd-HeavyCondensed.otf"
@@ -143,7 +144,7 @@ class TextController < ApplicationController
   end
   
   def worldreach_h3
-    text = params[:text] || ""
+    text = CGI.escape(params[:text]) || ""
     color = params[:color] || "#efad13"
     background = params[:background] || "transparent"
     font = params[:font] || RAILS_ROOT + "/lib/fonts/TempoStd-HeavyCondensed.otf"

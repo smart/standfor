@@ -1,7 +1,44 @@
-<h1>My Badges</h1>
-
-<ul>
-<% current_account.my_badges.each do |my_badge| %>
- <li><%= my_badge.badge.name -%><li>
+<% unless @my_badges.empty? %>
+<% content_box("badge spotlight", :class => 'shadow', :id => 'preview') do %>
+	<%= image_tag("/images/placeholders/largebadge.jpg", :alt => "Badge Preview") %>
 <% end %>
-</ul>
+
+<% content_box("filter badges", :class => 'basicborder', :id => 'instructions') do %>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+	</p>
+<% end %>
+
+<% grey_fade(:id => "badges" ) do -%>
+	<h1><%= image_tag("/text/basicborder_header/my badges.png", :alt => "My Badges") %></h1>
+	<ul>
+		<% current_account.my_badges.each do |my_badge| %>
+	 	<li><%= my_badge.badge.name -%><li>
+		<% end %>
+	</ul>
+<% end %>
+
+<% else %>
+<p>
+	You have not created any badges yet. <%= link_to "Browse Badges.", badges_path %>
+</p>
+
+<!-- The following is for mockup purposes only -->
+<% content_box("badge spotlight", :class => 'shadow', :id => 'preview') do %>
+	<%= image_tag("/images/placeholders/largebadge.jpg", :alt => "Badge Preview") %>
+<% end %>
+
+<% content_box("filter badges", :class => 'basicborder', :id => 'instructions') do %>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+	</p>
+<% end %>
+<% grey_fade(:id => "badges" ) do -%>
+	<h1><%= image_tag("/text/basicborder_header/my badges.png", :alt => "My Badges") %></h1>
+	<% 6.times do %>
+		<%= image_tag("/images/placeholders/imageselections.jpg") %>
+	<% end %>
+<% end %>
+<!-- end of mockup -->
+
+<% end %>

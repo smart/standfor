@@ -1,14 +1,17 @@
-<h1>Badge Catalog</h1>
 
-<ul>
-
-<% @badges.each do |badge| %>
-
-<li> 
-<%= badge_link(badge) -%> 
-<%= badge.name  -%>
-</li>
-
+<% content_box("featured badge", :class => 'shadow', :id => 'preview') do %>
+	<%= image_tag("examples/1.gif", :alt => "Badge Preview") %>
 <% end %>
 
-</ul>
+<% content_box("filter badges", :class => 'basicborder', :id => 'instructions') do %>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+	</p>
+<% end %>
+
+<% grey_fade(:id => "badges" ) do -%>
+	<h1><%= image_tag("/text/basicborder_header/most recent badges.png", :alt => "My Badges") %></h1>
+		<% @badges.each do |badge| %>
+			<%= badge_link(badge) -%>
+		<% end %>
+<% end %>

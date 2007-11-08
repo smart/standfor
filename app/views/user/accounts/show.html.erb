@@ -1,20 +1,26 @@
-<h1>My Account </h1>
-<p>
-<%= link_to 'Edit', edit_user_account_path %> 
-</p>
+<% content_box("welcome #{@account.nickname}", :class => "shadow", :id => "welcome" ) do -%>
+  <%= link_to 'Edit', edit_user_account_path %>
+  <p>
+ 		<%= link_to  'my organizations ' , user_organizations_path -%> 
+	</p>
+	<p>
+ 		<%= link_to  'my donations' , user_orders_path -%> 
+	</p>
+<% end %>
 
-<h2>Organizations</h2>
-<p>
- <%= link_to  'my organizations ' , user_organizations_path -%> 
-</p>
-
-<h2>Orders</h2>
-<p>
- <%= link_to  'my orders' , user_orders_path -%> 
-</p>
+<% content_box("ranking", :class => "basicborder", :id => "ranking" ) do -%>
+  <p>Ranking Stats</p>
+<% end %>
 
 
-<h2>My Badges</h2>
-<p>
- <%= link_to  'my badges' , user_my_badges_path -%> 
-</p>
+<% content_box("merits", :class => "basicborder", :id => "merits" ) do -%>
+  <p>merit bar</p>
+<% end %>
+
+<% grey_fade(:id => "badges" ) do -%>
+	<h1><%= image_tag("/text/basicborder_header/my badges.png", :alt => "My Badges") %> <%= link_to  'view all' , user_my_badges_path -%></h1>
+	<% 6.times do %>
+		<%= image_tag("/images/placeholders/imageselections.jpg") %>
+	<% end %>
+<% end %>
+

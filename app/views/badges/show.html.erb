@@ -1,21 +1,28 @@
-<h1>Badges Show </h1>
 
-<p>
- <%= @badge.organization.name -%> 
-</p>
+<% content_box(@badge.name, :class => 'shadow', :id => 'preview') do %>
+	<%= image_tag("examples/1.gif", :alt => "Badge Preview") %>
+	<%= link_to 'give me this badge' , :controller => 'customize', :action => 'index', :badge_id => @badge -%> | 
+	<%= link_to 'see all badges', badges_path %>
+<% end %>
 
-<p>
- <%= @badge.segment.name -%> 
-</p>
+<% content_box("badge details", :class => 'basicborder', :id => 'instructions') do %>
+	<ul>
+    <li>Organization: <%= @badge.organization.name -%></li>
+    <li>Segment: <%= @badge.segment.name -%></li>
+	</ul>
+<% end %>
 
-<p>
- <%= image_tag(@badge.example_path)-%>
-</p>
+<% content_box("about the #{@badge.name}", :class => 'basicborder', :id => 'description') do %>
+	<p>
+		<%= @badge.description %>
+	</p>
+<% end %>
 
-<p>
-<%= link_to 'give me this badge' , :controller => 'customize', :action => 'index', :badge_id => @badge -%>
-</p>
-
-<p>
-<%= link_to 'see all badges', badges_path %>
-</p>
+<% grey_fade(:id => "badge-extras" ) do -%>
+	<div id="leaderboard">
+		<h1><%= image_tag("/text/basicborder_header/leaderboard.png", :alt => "Leaderboard") %></h1>
+	</div>
+	<div id="sponsors">
+		<h1><%= image_tag("/text/basicborder_header/sponsors.png", :alt => "Sponsors") %></h1>
+	</div>
+<% end %>
