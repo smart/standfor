@@ -1,14 +1,13 @@
+<h1>My Badge Customize (3.1.1.4) </h1>
 <div id="preview">
   <% content_box( "your charity badge", :class => "shadow" ) do -%>
     <div id="badge">
-      <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
+      <%= render :partial => "/user/customize/current_view", :locals => {:my_badge => @my_badge } -%>
     </div>
-
     <%= button(:image => '/text/button_text/save.png', :alt => 'Save This Badge ', 
-               :link => url_for(:controller => 'my_badges', 
-                                :action => 'new', 
-                                :badge_id => @my_badge.badge ), :class => 'large-button' ) %>
-
+               :link => url_for(:controller => 'user/customize', 
+                                :action => 'save', :id => @my_badge ), 
+              :class => 'large-button' ) %>
 
   <% end %>
 </div>
@@ -25,7 +24,7 @@
 
 <div id="options">
  <%= render :partial => 'customizables', 
-      :locals => {:my_badge => @my_badge, :customizables => @customizables   }  -%>
+            :locals => {:my_badge => @my_badge, :customizables => @customizables   }  -%>
 </div>
 <div id="toolbar">
   <% content_box( "tool type", :class => "light" ) do -%>
@@ -35,3 +34,6 @@
   <% end %>
 </div>
 
+<div>
+ <%= render :partial => '/user/my_badges/navigation' , :locals => {:my_badge => @my_badge} -%>
+</div>

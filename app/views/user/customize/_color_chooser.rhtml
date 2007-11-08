@@ -5,7 +5,7 @@
 <li>
   <span style="background-color:<%=val-%>;">
   <%= link_to_remote("",
-              :url => {:controller => "/customize",
+              :url => {:controller => "user/customize",
                        :action => 'update',
                        :id  => my_badge ,
                        :option_value => val,

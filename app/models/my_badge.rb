@@ -31,7 +31,7 @@ class MyBadge < ActiveRecord::Base
 
    protected
    def after_initialize
-     self.adi_id = Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false ).id if self.badge_id
+     self.adi_id = Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false).id if self.adi_id.nil?
    end
    
 
