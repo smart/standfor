@@ -59,12 +59,20 @@ window.attachEvent("onload", correctPNG);
    </div>
      <h1>
      	<%= link_to(image_tag("/text/top_text/stand for : us.png", :alt => 'Stand For : Us'), home_path ) %>
-     		<span>
-     			<%= link_to(image_tag("/text/top_text_small/login.png", :alt => "login"), login_path) %>
- 		     	<%= image_tag('/text/top_text_small/or.png', :alt => 'or') %>
- 		     	<%= link_to(image_tag("/text/top_text_small/register.png", :alt => "register"), signup_path) %>
-	     	</span>
    	</h1>
+   	<% if current_account != :false %>
+     		<div id="user-functions">
+     			<%= link_to (image_tag("/text/top_text_small/my account.png", :alt => "my account"), user_account_path) -%>
+     			&nbsp;&nbsp;&nbsp;
+     			<%= link_to(image_tag("/text/top_text_small/logout.png", :alt => "logout"), logout_path) -%>
+	     	</div>
+     	<% else %>
+     		<div id="user-functions">
+     			<%= link_to(image_tag("/text/top_text_small/login.png", :alt => "login"), login_path) %>
+ 		     	&nbsp;&nbsp;&nbsp;
+ 		     	<%= link_to(image_tag("/text/top_text_small/register.png", :alt => "register"), signup_path) %>
+	     	</div>
+     	<% end %>
   </div>
   </div>
 <div id="container">

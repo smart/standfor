@@ -15,6 +15,7 @@ class User::AccountsController < ApplicationController
   # GET /user_accounts/1.xml
   def show
     @account = current_account
+    @my_badges = current_account.my_badges
     respond_to do |format|
       format.html # show.html.erb
       format.xml  { render :xml => @account }

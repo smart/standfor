@@ -19,8 +19,15 @@
 
 <% grey_fade(:id => "badges" ) do -%>
 	<h1><%= image_tag("/text/basicborder_header/my badges.png", :alt => "My Badges") %> <%= link_to  'view all' , user_my_badges_path -%></h1>
-	<% 6.times do %>
-		<%= image_tag("/images/placeholders/imageselections.jpg") %>
+	<% if @my_badges.empty? %>
+		<p>You haven't created any badges yet. Please <%= link_to 'create a badge', badges_path %> first.</p>
+		<% 6.times do %>
+			<%= image_tag("/images/placeholders/imageselections.jpg") %>
+		<% end %>
+	<% else %>
+		<% @my_badges.each do |badge| %>
+			<%= badge_link(badge) -%>
+		<% end %>	
 	<% end %>
 <% end %>
 

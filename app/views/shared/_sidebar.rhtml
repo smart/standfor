@@ -1,46 +1,32 @@
-<% if current_account != :false %>
-<% content_box("", :class => "basic", :id => "mini-login" ) do -%>
-<%= link_to (image_tag("/text/side_button/my account.png", :alt => "my account"), user_account_path, :class => "sidebar-button") %>
-  <%= link_to (image_tag("/text/side_button/logout.png", :alt => "logout"), logout_path, :class => "sidebar-button") %>
-<% end %>
 <% radial_box(:id => "stats") do %>
-  <div class="side-box" id="your-stats">
-    <h2><%= image_tag("/text/side_button/my stats.png", :alt => "my stats") %></h2>
-    <ul class="stats">
-      <li>number of badges: <%= current_account.my_badges.size -%></li>
-      <li>contributions: <%= current_account.total_donations(@organization) -%> </li>
-      <li>awareness points: <%= current_account.awareness_points -%> </li>
-  </ul>
-	
- </div>
-   <span class="seperator"></span>
-   
+	<% if current_account != :false %>
+	<div id="your-stats">
+		<h2><%= image_tag("/text/side_button/my stats.png", :alt => "my stats") %></h2>
+	  <ul class="stats">
+	    <li>number of badges: <%= current_account.my_badges.size -%></li>
+	    <li>contributions: <%= current_account.total_donations(@organization) -%> </li>
+	    <li>awareness points: <%= current_account.awareness_points -%> </li>
+		</ul>
+	</div>
+ 	<span class="seperator"></span>
+	<% end %>
 	<% if !@organization.nil? %>
-	  <div class="side-box" id="org-stats">
+	  <div id="org-stats">
 	   <h2><%= image_tag("/text/side_button/#{organization.name} stats.png", :alt => "my stats") %></h2>
 	   <%= render :partial => '/organizations/statistics', :locals => {:organization => @organization } -%> 
 	  </div>
 	  <span class="seperator"></span>
-
 	<% end %>
 
 	<%  if true  %>
-
-	  <div class="side-box" id="system-stats">
+	  <divid="system-stats">
 	   <h2><%= image_tag("/text/side_button/system stats.png", :alt => "system stats") %></h2>
 	      <%= render :partial => '/shared/system_statistics' -%>
 	  </div>
 	  <span class="seperator"></span>
-
 	<% end %>
 	</div>
 <% end %>
 <% else %>
-  <% content_box("", :class => "basic", :id => "mini-login" ) do -%>
-     <%= link_to(image_tag("/text/side_button/login.png", :alt => "login"), login_path, :class => "sidebar-button") %>
-     or
-    <%= link_to(image_tag("/text/side_button/register.png", :alt => "register"), signup_path, :class => "sidebar-button") %>
-  <% end %>
-<% end %>
 
 

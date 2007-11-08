@@ -1,3 +1,4 @@
+<h2><%= image_tag("/text/basicborder_header/choose a background image.png", :alt => "Background Images") %></h2>
 <ul>
 <% ['inthelight.jpg','kids.jpg', 'loungelizard.jpg'].each do |imagename|  %>
 <li><%= link_to_remote(image_tag( "customization/#{imagename}", :height => 100, :width => 130 ) , 

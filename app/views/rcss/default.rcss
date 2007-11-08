@@ -85,9 +85,9 @@ img {
 #header-image h1 {
 
 }
-#header-image h1 span {
+#header-image #user-functions {
 	position:absolute;
-	bottom:8px;
+	bottom:14px;
 	right:15px;
 }
 #navigation {
@@ -165,7 +165,6 @@ img {
 	/*background:url(/images/boxes/sidebar/h3_background.png) repeat-x top left;*/
 }
 #sidebar ul {
-	
 	width:186px;
 	margin:0 auto;
 }
@@ -175,6 +174,7 @@ img {
 }
 #sidebar #mini-login {
 	text-align:center;
+
 }
 #sidebar #mini-login h1 {
 	height:15px;
@@ -777,7 +777,9 @@ img {
   _height:1600px; /* arbitrary long height, IE 6 */
   background-position:top left;
 }
-
+.grey-fade h2 img {
+	padding-bottom:10px;
+}
 /* basic form styles */
 
 form{
