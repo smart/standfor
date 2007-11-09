@@ -23,6 +23,7 @@ class MyBadgesController < ApplicationController
   end
 
   def create
+    @order = Order.new
     session[:my_badge_return_to] = request.request_uri 
     @my_badge.account = current_account 
     if !params[:my_badge].nil? and !params[:my_badge][:access_code].nil?

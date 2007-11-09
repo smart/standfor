@@ -19,6 +19,10 @@ class MyBadge < ActiveRecord::Base
       end
    end
 
+  def available?(account)
+    return false
+  end
+
    def all_sponsorships
    #refactor this into one SQL
      my_sponsors = []
