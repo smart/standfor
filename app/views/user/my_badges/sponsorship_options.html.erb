@@ -1,52 +1,43 @@
-<h1>Sponsorship Options  (3.1.1.1) </h1>
+<h1>Sponsorship Options  (3.1.1.1)</h1>
 
-<% content_box( "your  badge", :class => "shadow" ) do -%>
-    <div id="badge">
-      <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
-    </div>
+<% content_box( "your badge", :class => "shadow", :id => "preview" ) do -%>
+  <div id="badge">
+    <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
+  </div>
+  <%= render :partial => 'navigation' , :locals => {:my_badge => @my_badge} -%>
 <% end %>
 
-<div>
- <%= render :partial => 'navigation' , :locals => {:my_badge => @my_badge} -%>
-</div>
-
-<div>
-
-<h2>About Sponsorships</h2>
-<p> At vero eos ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.  </p>
-</div>
-
-<div>
-<h2>Choose Sponsorship Options</h2>
-<ul>
-
-<li>
-<h3>Plan A</h3>
-<p> At vero eos similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem. </p>
- </li>
-
-<li>
-<h3>Plan B</h3>
-<p> At vero eos non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem. </p>
- </li>
-
-<li>
-<h3>Plan C</h3>
-<p> At vero eos xcepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem. </p>
- </li>
-
-<ul>
-</div>
-
-<div>
-<h2>Sponsors List</h2>
-<%= render :partial => 'all_sponsors'-%>
-</div>
-
-<div>
-<h1>Choose A Sponsorship Plan </h1>
-<% form_for(@my_badge, :url =>  user_my_badge_path(@my_badge), :method => :put  ) do |f| %>
- <%= f.select 'sponsorship_option',  my_badge_sponsorship_option_select -%>
- <%= f.submit 'choose plan' -%>
+<% content_box( "about sponsorships", :class => "basicborder", :id => "instructions" ) do -%>
+	<p> 
+		At vero eos ut aut reiciendis voluptatibus maiores alias consequatur aut perferendis doloribus asperiores repellat.
+	</p>
 <% end %>
-</div>
+
+<% grey_fade(:id => 'sponsorship-options') do -%>
+	<h2>Choose Sponsorship Options</h2>
+	<div id="plans" class="left">
+		<h3>Plan A</h3>
+			<p>
+				At vero eos similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem.
+			</p>
+			
+		<h3>Plan B</h3>
+		<p>
+			At vero eos non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem.
+		</p>
+
+	<h3>Plan C</h3>
+		<p>
+			At vero eos xcepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem.
+		</p>
+	</div>
+	<div id="sponsors" class="right">
+		<h2>Choose A Sponsorship Plan</h2>
+		<% form_for( @my_badge, :url => user_my_badge_path(@my_badge), :method => :put ) do |f| %>
+			<%= f.select 'sponsorship_option', my_badge_sponsorship_option_select -%>
+			<%= f.submit 'choose plan' -%>
+		<% end %>
+		<h2>Sponsors List</h2>
+			<%= render :partial => 'all_sponsors' -%>
+	</div>
+<% end -%>

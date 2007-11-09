@@ -29,6 +29,7 @@ h1 {
 
 h2 {
   font-size:120%;
+  margin-bottom:10px;
 }
 
 h3 {
@@ -60,6 +61,12 @@ img {
   border:0px;
 }
 
+.left {
+	float:left;
+}
+.right {
+	float:right;
+}
 /* layout specific styles */
 #header {
 	height:150px;
@@ -243,6 +250,19 @@ img {
 	border:1px solid black;
 	padding:5px;
 }
+/* badge index specific styles */
+#filter {
+	clear:both;
+}
+/* badge show specific styles */
+
+#badge-extras .left {
+	width:50%;
+}
+#badge-extras .right {
+	width:50%;
+}
+
 /* badge display specific styles */
 
 .badge-link {
@@ -253,7 +273,6 @@ img {
 	position:absolute;
 	top:0;
 	left:0;
-	padding-top:83px;
 	z-index:10;
 	border:1px solid black;
 	min-width:228px;
@@ -305,7 +324,6 @@ img {
 }
 #badge .min-height {
   height:160px;
-  margin-bottom:10px;
 }
 
 #howto {
@@ -393,8 +411,13 @@ img {
 	float:right;
 	width:400px;
 }
-/* share page specific styles */
-
+/* sponsor options page specific styles */
+#sponsorship-options .left {
+	width:50%;
+}
+#sponsorship-options .right {
+	width:50%;
+}
 
 /* donation page specific styles */
 #donation {
@@ -807,7 +830,7 @@ img {
   _height:1600px; /* arbitrary long height, IE 6 */
   background-position:top left;
 }
-.grey-fade h2 img {
+
 	padding-bottom:10px;
 }
 /* basic form styles */
