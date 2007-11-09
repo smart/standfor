@@ -7,7 +7,7 @@ class MyBadge < ActiveRecord::Base
   has_many :sponsorship_clicks
 
   def validate_on_create
-     unless self.badge.authorized?(self.account)
+     unless self.available?(self.account)
          errors.add(:badge_id, 'You have not met the authorization reqirements.' )
      else 
         adi = Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false )
