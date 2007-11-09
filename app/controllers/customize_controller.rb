@@ -1,8 +1,7 @@
 class CustomizeController < ApplicationController
   require 'RMagick'
   layout 'default'
-   #before_filter :login_required
-   before_filter :get_my_badge
+  before_filter :get_my_badge
 
    def index 
      @customizables =  Customization.find(:all, :params => {:adi_id => @my_badge.adi_id } )
@@ -42,7 +41,7 @@ class CustomizeController < ApplicationController
          session[:unsaved_badge]  = @my_badge
         return true
       end
-       @my_badge = MyBadge.find_by_id_and_account_id(params[:id], current_account.id ) 
+     @my_badge = current_account.my_badges.find(params[:id])
    end
 
 end

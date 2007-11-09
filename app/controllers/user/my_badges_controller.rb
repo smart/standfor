@@ -7,6 +7,9 @@ class User::MyBadgesController < ApplicationController
   before_filter :sponsorship_option_required, :only => [:show]
   before_filter :merit_option_required, :only => [:show]
 
+ #  get_share_info
+ #  get_stat_info
+
   # GET /user_my_badges
   # GET /user_my_badges.xml
   def index
@@ -117,5 +120,12 @@ class User::MyBadgesController < ApplicationController
     render :action =>  :merit_options  and return false 
    end
   
+   def get_share_info
+     @shares = Share.find(:all, :params => {:adi_id => @my_badge.adi_id} )
+   end
+
+   def get_stat_info
+     @statistics = Stat.sort(Stat.find(:all, :params  => {:adi_id => @my_badge.adi_id } ))  
+   end
 
 end

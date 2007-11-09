@@ -1,6 +1,7 @@
 class BadgesController < ApplicationController
   layout 'default'
   helper  'badges'
+  before_filter :clear_session_badge, :only => [:index] 
   #before_filter :get_organization_and_segment
   #access_control [:new, :create, :update, :edit, :delete, :index]  => "admin" 
 
@@ -121,6 +122,11 @@ class BadgesController < ApplicationController
   def get_organization_and_segment
    @organization = Organization.find(params[:organization_id])
    @segment = Segment.find(params[:segment_id])
+  end
+
+  def clear_session_badge
+    session[:my_badge] = nil
+    session[:unsaved_badge] = nil
   end
 
 end
