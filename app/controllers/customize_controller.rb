@@ -32,16 +32,14 @@ class CustomizeController < ApplicationController
    private 
 
    def get_my_badge
-      @my_badge = session[:my_badge]
-      return true if !@my_badge.nil?
+     @my_badge = session[:unsaved_badge] || (params[:badge_id] ? Badge.find(params[:badge_id]).my_badges.new : nil)
+     
+     if params[:badge_id]
+      session[:unsaved_badge] =  Badge.find(params[:badge_id]).my_badges.new if @my_badge.badge_id != params[:badge_id]
       @my_badge = session[:unsaved_badge]
-      return true if !@my_badge.nil?
-      if params[:badge_id]
-        @my_badge  =  Badge.find(params[:badge_id]).my_badges.new
-         session[:unsaved_badge]  = @my_badge
-        return true
-      end
-     @my_badge = current_account.my_badges.find(params[:id])
-   end
+     end
+     
+     redirect_to("/") if @my_badge.nil?
+  end
 
 end
