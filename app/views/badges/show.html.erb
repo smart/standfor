@@ -1,6 +1,6 @@
 <% content_box(@badge.name, :class => 'shadow', :id => 'preview') do %>
 	<%= image_tag("examples/1.gif", :alt => "Badge Preview") %>
-	<%= link_to 'custmoize  me this badge' , :controller => 'customize', :action => 'index', :badge_id => @badge %> 
+	<%= link_to 'customize this badge' , :controller => 'customize', :action => 'index', :badge_id => @badge %> 
 <% end %>
 
 <% content_box("badge details", :class => 'basicborder', :id => 'instructions') do %>
