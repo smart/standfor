@@ -20,16 +20,7 @@ class MyBadge < ActiveRecord::Base
    end
 
   def available?(account)
-     self.badge.requirements.each do |req| 
-        if req.class.to_s == 'DonationRequirement'
-           return true if account.total_donations(self.badge.organization) >=  req.value.to_i
-        else
-           account.access_codes.each do |ac|
-           return true if ac.value =  req.value 
-          end
-        end
-     end
-    return false
+     return self.badge.authorized?(account)
  end
 
    def all_sponsorships

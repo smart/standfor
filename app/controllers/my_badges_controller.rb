@@ -1,6 +1,6 @@
 class MyBadgesController < ApplicationController
   layout 'default'
-  before_filter :login_required, :only => [:new, :create]
+  before_filter :login_required, :only => [:create]
   before_filter :get_my_badge, :only => [:new, :create, :customize]
   
   def initialize
@@ -47,12 +47,17 @@ class MyBadgesController < ApplicationController
 
    def collect_access_code
     return false if params[:my_badge].nil? or params[:my_badge][:access_code].nil?
-    code  = params[:my_badge][:access_code]
-    begin 
-      access_code=AccessCode.find(:first, :conditions => ["value = ? and scope_id = ? ",code , @my_badge.badge.id] ) 
-      account.access_codes << access_code
-    rescue
-    end
+    code = params[:my_badge][:access_code]
+    code_requirement = @my_badge.badge.requirements.find_by_type('CodeRequirement')
+    if !code_requirement.nil?
+       access_code=AccessCode.find(:first, :conditions => ["value = ? and scope_id = ? ",code,code_requirement.id]) 
+       if !access_code.nil?
+         current_account.access_codes << access_code
+       else
+         flash[:notice] = "invalid access code"
+         return false
+       end 
+     end
    end
 
    def get_badge
@@ -62,20 +67,12 @@ class MyBadgesController < ApplicationController
    def get_my_badge
      if !session[:unsaved_badge].nil?
        @my_badge = session[:unsaved_badge]
-       session[:unsaved_badge] = nil
-       @my_badge.account = current_account
-       session[:my_badge] = @my_badge
-       return
      end
-     @my_badge = session[:my_badge] 
-     return if !@my_badge.nil?
-     if !params[:badge_id].nil?
+     return true if !@my_badge.nil?
+     if params[:badge_id]
        @my_badge = Badge.find(params[:badge_id]).my_badges.new
-       @my_badge.account = current_account
-       session[:my_badge] = @my_badge
+       session[:unsaved_badge]  = @my_badge
      end
-     return if !@my_badge.nil?
-     @my_badge = current_account.my_badges.find(params[:my_badge_id])
    end
 
 end
