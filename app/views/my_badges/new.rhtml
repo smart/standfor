@@ -4,7 +4,8 @@
 		<p><%= @my_badge.badge.name  -%> </p>
     <p><img src="<%=ADISERVER-%>/adis/<%= @my_badge.adi_id -%>.gif?&draft=true&rand=<%=rand(100).to_s-%>" ></p>
 		<p><%= @my_badge.badge.description -%></p>
-    <p><%= link_to 'customize', :controller => 'customize', :action => 'index' , :badge_id => @bagde -%></p>
+	  <p><%= button(:image => "/text/button_text/customize.png", :alt => "Donate!", :link => '/customize' , :class => "large-button" ) -%></p>
+
 	</div>
 	<span class="clear"></span>
 <% end %>
