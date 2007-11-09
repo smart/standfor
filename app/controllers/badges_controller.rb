@@ -1,6 +1,6 @@
 class BadgesController < ApplicationController
   layout 'default'
-  helper  'badges'
+  helper 'badges'
   before_filter :clear_session_badge, :only => [:index] 
   #before_filter :get_organization_and_segment
   #access_control [:new, :create, :update, :edit, :delete, :index]  => "admin" 

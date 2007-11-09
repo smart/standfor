@@ -31,9 +31,9 @@
    available
 <% else %>
 <% grey_fade(:id => "complete-requirements") do %>
-	   <% content_box("badge requirements", :id => "requirements", :class => "basicborder") do %>
+
        <% form_for :my_badge, :url => my_badge_create_path , :method => :post  do |f| %>
-    	    <label>If you have an access code you can enter it below:</label><br />
+    	    <label for>If you have an access code you can enter it below:</label><br />
 	    	  <%= f.text_field :access_code, :size => 6 %>
     		  <%= submit_tag "Enter Code" %>
 <%if false %>
@@ -53,7 +53,6 @@
 
 		  <% end %>
 
-		<% end %>
 <% end  %>
 <span class="clear"></span>
 <% end  %>

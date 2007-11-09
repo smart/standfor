@@ -271,12 +271,12 @@ img {
 }
 .badge-link .badge-meta {
 	position:absolute;
-	top:0;
-	left:0;
+	bottom:20px;
+	left:20px;
 	z-index:10;
 	border:1px solid black;
 	min-width:228px;
-	background:transparent;
+	background:#b7b9bb;
 }
 .badge-link span {
 	display:none;
