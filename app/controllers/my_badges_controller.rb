@@ -15,6 +15,7 @@ class MyBadgesController < ApplicationController
   end
 
   def new
+    session[:my_badge_return_to] = request.request_uri 
     @order = Order.new
     respond_to do |format|
       format.html 
@@ -58,8 +59,10 @@ class MyBadgesController < ApplicationController
      end
      @my_badge = session[:my_badge] 
      return if !@my_badge.nil?
-     if params[:badge_id].nil?
+     if !params[:badge_id].nil?
        @my_badge = Badge.find(params[:badge_id]).my_badges.new
+       @my_badge.account = current_account
+       session[:my_badge] = @my_badge
      end
      return if !@my_badge.nil?
      @my_badge = current_account.my_badges.find(params[:my_badge_id])
