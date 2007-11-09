@@ -24,17 +24,16 @@ class MyBadgesController < ApplicationController
 
   def create
     @order = Order.new
+    collect_access_code
     session[:my_badge_return_to] = request.request_uri 
     @my_badge.account = current_account 
-    if !params[:my_badge].nil? and !params[:my_badge][:access_code].nil?
-      	 @badge.access_codes.each do |c|
-	          current_account.access_codes << c if c.value == params[:my_badge][:access_code]
-         end
-    end
+
     respond_to do |format|
       if @my_badge.save
+        session[:unsaved_badge] = nil
+        session[:my_badge] = nil
         flash[:notice] = 'MyBadge was successfully created.'
-        format.html { redirect_to :controller =>'customize', :action =>'index', :id => @my_badge  and return false }
+        format.html { redirect_to user_my_badge_path(@my_badge) and return false }
       else
         format.html { render :action => "new" }
       end
@@ -45,6 +44,16 @@ class MyBadgesController < ApplicationController
    end
 
    private
+
+   def collect_access_code
+    return false if params[:my_badge].nil? or params[:my_badge][:access_code].nil?
+    code  = params[:my_badge][:access_code]
+    begin 
+      access_code=AccessCode.find(:first, :conditions => ["value = ? and scope_id = ? ",code , @my_badge.badge.id] ) 
+      account.access_codes << access_code
+    rescue
+    end
+   end
 
    def get_badge
      @badge = Badge.find(params[:badge_id])
