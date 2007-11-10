@@ -12,7 +12,7 @@
 	<% end %>
 	<% if !@organization.nil? %>
 	  <div id="org-stats">
-	   <h2><%= image_tag("/text/side_button/#{organization.name} stats.png", :alt => "my stats") %></h2>
+	   <h2><%= image_tag("/text/side_button/#{@organization.name} stats.png", :alt => "my stats") %></h2>
 	   <%= render :partial => '/organizations/statistics', :locals => {:organization => @organization } -%> 
 	  </div>
 	  <span class="seperator"></span>
