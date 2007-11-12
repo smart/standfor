@@ -39,7 +39,9 @@ class MyBadge < ActiveRecord::Base
      p  'called......'
      p '======================================'
      p '======================================'
-    self.adi_id = Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false).id if self.adi_id.nil?
+      if self.adi_id.nil?
+        self.adi_id = Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false ).id if badge_id
+      end
    end
    
 
