@@ -6,6 +6,12 @@ class MyBadge < ActiveRecord::Base
   has_many :sponsorship_hits
   has_many :sponsorship_clicks
 
+ def validate_on_create
+    unless self.available?(self.account) 
+      errors.add(:badge_id, 'You have not met the authorization reqirements.' ) 
+    end  
+  end
+
   def available?(account)
      return self.badge.authorized?(account)
  end
