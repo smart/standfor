@@ -26,20 +26,9 @@ class MyBadgesController < ApplicationController
     @order = Order.new
     collect_access_code
     @my_badge.account = current_account 
-        p '---------------------------'
-        p '-----------BEFORE----------'
-        p '---------------------------'
-        p @my_badge 
-        p '---------------------------'
-        p '---------------------------'
     respond_to do |format|
       if @my_badge.save
-        p '---------------------------'
-        p '----------AFTER------------'
-        p '---------------------------'
         p @my_badge 
-        p '---------------------------'
-        p '---------------------------'
         session[:unsaved_badge] = nil
         session[:my_badge] = nil
         flash[:notice] = 'MyBadge was successfully created.'
