@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   end  
 
   def get_my_badge
- #   p session[:usaved_badge]
+    session[:my_badge_return_to] = request.request_uri
     if !session[:unsaved_badge].nil?
       @my_badge = session[:unsaved_badge]
     end

@@ -7,8 +7,7 @@ ActionController::Routing::Routes.draw do |map|
 
  map.presave_customize 'customize', :controller => "customize", :action => 'index'
  map.share  'share', :controller => "share", :action => 'index'
- map.my_badge_create '/create/my/badge', :controller => 'my_badges', :action => 'create'
-
+ map.my_badge_create '/create/my/badge',:controller =>'my_badges',:action =>'create',:requirements=>{:method=>:any}
   map.connect '/worldreach' , :controller => '/worldreach/site', :action => 'index'
   map.worldreach_segments '/worldreach/segments' , :controller => '/worldreach/segments', :action => 'index'
   map.worldreach_segment '/worldreach/segments/:id' , :controller => '/worldreach/segments', :action => 'show'

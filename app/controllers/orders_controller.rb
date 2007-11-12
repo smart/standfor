@@ -33,8 +33,8 @@ class OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         session[:order] = nil
-        flash[:notice] = "Thank you for your donation to #{@segment.name} "
-        format.html { redirect_to organization_segment_order_path(@organization, @segment, @order ) }
+        flash[:notice] = "Thank you for your donation to #{@segment.name}."
+        format.html { redirect_to session[:my_badge_return_to]  and session[:my_badge_return_to]  = nil }
         format.xml  { render :xml => @order, :status => :created, :location => @order }
       else
         format.html { render :action => "new" }

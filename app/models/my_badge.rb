@@ -6,19 +6,6 @@ class MyBadge < ActiveRecord::Base
   has_many :sponsorship_hits
   has_many :sponsorship_clicks
 
-  def validate_on_create
-     unless self.available?(self.account)
-         errors.add(:badge_id, 'You have not met the authorization reqirements.' )
-     else 
-        adi = Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false )
-       if adi.id.nil?
-          errors.add(:adi_id, "Your badge was not able to be created please check the form.")
-        else
-          self.adi_id  = adi.id
-        end
-      end
-   end
-
   def available?(account)
      return self.badge.authorized?(account)
  end
@@ -34,15 +21,9 @@ class MyBadge < ActiveRecord::Base
 
    protected
    def after_initialize
-     p '======================================'
-     p '======================================'
-     p  'called......'
-     p '======================================'
-     p '======================================'
       if self.adi_id.nil?
         self.adi_id = Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false ).id if badge_id
       end
    end
-   
 
 end

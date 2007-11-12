@@ -25,11 +25,21 @@ class MyBadgesController < ApplicationController
   def create
     @order = Order.new
     collect_access_code
-    session[:my_badge_return_to] = request.request_uri 
     @my_badge.account = current_account 
-
+        p '---------------------------'
+        p '-----------BEFORE----------'
+        p '---------------------------'
+        p @my_badge 
+        p '---------------------------'
+        p '---------------------------'
     respond_to do |format|
       if @my_badge.save
+        p '---------------------------'
+        p '----------AFTER------------'
+        p '---------------------------'
+        p @my_badge 
+        p '---------------------------'
+        p '---------------------------'
         session[:unsaved_badge] = nil
         session[:my_badge] = nil
         flash[:notice] = 'MyBadge was successfully created.'
@@ -39,9 +49,6 @@ class MyBadgesController < ApplicationController
       end
     end
   end
-
-   def customize 
-   end
 
    private
 
