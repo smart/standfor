@@ -31,16 +31,4 @@ class CustomizeController < ApplicationController
 
    private 
 
-   def _get_my_badge
-     @my_badge = session[:unsaved_badge]  
-     return if !@my_bage.nil?
-     @my_badge = (params[:badge_id] ? Badge.find(params[:badge_id]).my_badges.new : nil)
-     return if !@my_bage.nil?
-     if params[:badge_id]
-      session[:unsaved_badge] = Badge.find(params[:badge_id]).my_badges.new if @my_badge.badge_id != params[:badge_id]
-      @my_badge = session[:unsaved_badge]
-     end
-     redirect_to("/") if @my_badge.nil?
-  end
-
 end
