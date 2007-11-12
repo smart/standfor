@@ -64,7 +64,7 @@ class MyBadgesController < ApplicationController
      @badge = Badge.find(params[:badge_id])
    end
 
-   def get_my_badge
+   def _get_my_badge
      if !session[:unsaved_badge].nil?
        @my_badge = session[:unsaved_badge]
      end

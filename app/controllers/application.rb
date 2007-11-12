@@ -39,4 +39,15 @@ class ApplicationController < ActionController::Base
     render :template => '/shared/permission_denied'
   end  
 
+  def get_my_badge
+    if !session[:unsaved_badge].nil?
+      @my_badge = session[:unsaved_badge]
+    end
+    return true if !@my_badge.nil?
+    if params[:badge_id]
+      @my_badge = Badge.find(params[:badge_id]).my_badges.new
+      session[:unsaved_badge]  = @my_badge
+    end
+  end
+
 end

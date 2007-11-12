@@ -32,10 +32,14 @@ class MyBadge < ActiveRecord::Base
      my_sponsors.flatten
    end
 
-
    protected
    def after_initialize
-     self.adi_id = Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false).id if self.adi_id.nil?
+     p '======================================'
+     p '======================================'
+     p  'called......'
+     p '======================================'
+     p '======================================'
+    self.adi_id = Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false).id if self.adi_id.nil?
    end
    
 
