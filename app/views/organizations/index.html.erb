@@ -3,7 +3,6 @@
 <ul>
 <% @organizations.each do |organization|%>
 <li>
-<%= image_tag organization.organizationslogo.public_filename(:medium) -%>
 <%= link_to organization.name, organization_path(organization)  %>
 </li>
 

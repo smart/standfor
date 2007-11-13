@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+  
   map.namespace(:worldreach) do |worldreach|
     worldreach.resources :orders
     worldreach.resources :sessions
@@ -45,7 +46,7 @@ ActionController::Routing::Routes.draw do |map|
     user.resources :acconts_openids
   end
 
- map.resources :creditcards, :badges
+ map.resources :creditcards, :badges, :sponsors
  map.resources :organizations do |organizations|
    organizations.resources :segments
  end
