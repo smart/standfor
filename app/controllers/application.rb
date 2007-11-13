@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   
    def print_info
     if !fbsession.nil?
-      p fbsession.session_key.to_s
+      #p fbsession.session_key.to_s
     end
   end
   
@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
   end  
 
   def get_my_badge
-    session[:my_badge_return_to] = request.request_uri
+    #session[:my_badge_return_to] = request.request_uri
     if !session[:unsaved_badge].nil?
       @my_badge = session[:unsaved_badge]
     end
@@ -49,6 +49,11 @@ class ApplicationController < ActionController::Base
       @my_badge = Badge.find(params[:badge_id]).my_badges.new
       session[:unsaved_badge]  = @my_badge
     end
-  end
+    return true if @my_badge
 
+    if params[:id]
+      @my_badge = MyBadge.find(params[:id])
+    end
+
+  end
 end

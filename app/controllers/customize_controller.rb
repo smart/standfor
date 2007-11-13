@@ -29,6 +29,4 @@ class CustomizeController < ApplicationController
      render :action => 'update.rjs'
    end
 
-   private 
-
 end

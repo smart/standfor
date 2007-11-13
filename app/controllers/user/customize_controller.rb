@@ -32,10 +32,7 @@ class User::CustomizeController < ApplicationController
    end
 
    def save
-     @customizations = Customization.find(:all, :params => { :adi_id => @my_badge.adi_id } )
-      @customizations.each do |customization|
-      customization.commit
-    end
+    Customization.commit(@my_badge.adi_id)
     flash[:notice] = 'Your changes have been saved.'
     redirect_to user_my_badge_path(@my_badge)
    end
