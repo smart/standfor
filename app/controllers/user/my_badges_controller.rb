@@ -3,7 +3,7 @@ class User::MyBadgesController < ApplicationController
   helper 'user::my_badges'
   helper 'badges'
   before_filter :login_required
-  before_filter :get_my_badge, :only => [:update, :sponsorship_options, :merit_options, :show, :share, :customize]
+  before_filter :get_my_badge, :only => [:new, :create, :update, :sponsorship_options, :merit_options, :show, :share, :customize]
   before_filter :sponsorship_option_required, :only => [:show]
   before_filter :merit_option_required, :only => [:show]
 
@@ -33,11 +33,9 @@ class User::MyBadgesController < ApplicationController
   # GET /user_my_badges/new
   # GET /user_my_badges/new.xml
   def new
-    @my_badge = User::MyBadge.new
-
+    @order = Order.new
     respond_to do |format|
-      format.html # new.html.erb
-      format.xml  { render :xml => @my_badge }
+      format.html 
     end
   end
 
@@ -49,12 +47,14 @@ class User::MyBadgesController < ApplicationController
   # POST /user_my_badges
   # POST /user_my_badges.xml
   def create
-    @my_badge = User::MyBadge.new(params[:my_badge])
+    @order = Order.new
+    collect_access_code
+    @my_badge.account = current_account 
 
     respond_to do |format|
       if @my_badge.save
         flash[:notice] = 'User::MyBadge was successfully created.'
-        format.html { redirect_to(@my_badge) }
+        format.html { redirect_to user_my_badge_url(@my_badge) }
         format.xml  { render :xml => @my_badge, :status => :created, :location => @my_badge }
       else
         format.html { render :action => "new" }
@@ -106,10 +106,21 @@ class User::MyBadgesController < ApplicationController
 
    protected
 
-   def get_my_badge
-     @my_badge = current_account.my_badges.find(params[:id])
+   def collect_access_code
+    return false if params[:my_badge].nil? or params[:my_badge][:access_code].nil?
+    code = params[:my_badge][:access_code]
+    code_requirement = @my_badge.badge.requirements.find_by_type('CodeRequirement')
+    if !code_requirement.nil?
+       access_code=AccessCode.find(:first, :conditions => ["value = ? and scope_id = ? ",code,code_requirement.id]) 
+       if !access_code.nil?
+         current_account.access_codes << access_code
+       else
+         flash[:notice] = "invalid access code"
+         return false
+       end 
+     end
    end
- 
+
    def sponsorship_option_required   
     return true if !@my_badge.sponsorship_option.nil? and !@my_badge.sponsorship_option.blank?
     render :action =>  :sponsorship_options and return false 
@@ -126,6 +137,10 @@ class User::MyBadgesController < ApplicationController
 
    def get_stat_info
      @statistics = Stat.sort(Stat.find(:all, :params  => {:adi_id => @my_badge.adi_id } ))  
+   end
+
+   def get_badge
+     @badge = Badge.find(params[:badge_id])
    end
 
 end

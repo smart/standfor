@@ -15,7 +15,6 @@ class MyBadgesController < ApplicationController
   end
 
   def new
-    session[:my_badge_return_to] = request.request_uri 
     @order = Order.new
     respond_to do |format|
       format.html 
