@@ -27,8 +27,9 @@
             :locals => {:my_badge => @my_badge, :customizables => @customizables   }  -%>
 </div>
 <div id="toolbar">
-  <% content_box( "tool type", :class => "light" ) do -%>
+  <% grey_fade do -%>
     <div id="tool-options">
+    	<h2><%= image_tag("/text/basicborder_header/tool options.png", :alt => "Tool Options") %></h2>
       <span class="min-height"></span>
     </div>
   <% end %>

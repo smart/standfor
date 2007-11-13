@@ -32,7 +32,7 @@ function correctPNG() // correctly handle PNG transparency in Win IE 5.5 & 6.
             var strNewHTML = "<span " + imgID + imgClass + imgTitle
             + " style=\"" + "width:" + img.width + "px; height:" + img.height + "px;" + imgStyle + ";"
             + "filter:progid:DXImageTransform.Microsoft.AlphaImageLoader"
-            + "(src=\'" + img.src + "\', sizingMethod='scale');\"></span>" 
+            + "(src=\'" + img.src + "\', sizingMethod='image');\"></span>" 
             img.outerHTML = strNewHTML
             i = i-1
          }
@@ -79,7 +79,6 @@ window.attachEvent("onload", correctPNG);
 
     <div id="content">
       <div class="oi-wrapper">
-        <p style="color: green"><%= flash[:notice] %></p>
         <%= yield  %>
       </div>
     </div>
@@ -89,8 +88,14 @@ window.attachEvent("onload", correctPNG);
     </div>
 
   <span class="clear"></span>
-
-  </div>
+	<div id="footer">
+		<% content_box("", :class => 'basic') do -%>
+		<p>Developed by <%= link_to 'Sympact Technologies', 'http://www.sympact.net' %>.</p>
+		<p>Funds Collected & Distributed by Registered  501c <%= link_to 'WorldReach', 'http://www.worldreachcharity.org' %>.</p>
+		<p>Copyright 2007 Standfor.us & Sympact Technologies</p>
+		<% end -%>
+	</div>
+</div>
 
 </body>
 </html>

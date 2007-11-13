@@ -143,7 +143,7 @@ img {
 .radial {
 	background:url(<%= style_image_path("side_bar_outer") || "/images/boxes/sidebar/outer_wrapper.png" -%>) no-repeat top center;
 	width:217px;
-
+	_display:inline;
 }
 
 .radial .inner-wrapper {
@@ -199,8 +199,18 @@ img {
 
 #footer {
   clear:both;
-  background:gray;
+  margin:40px 20px 20px 20px;
 }
+#footer p {
+	text-align:center;
+}
+#footer .basic h1 {
+	height:10px;
+}
+#footer .box {
+	max-width:1000px;
+}
+
 
 .oi-wrapper {
   padding-left:10px;
@@ -254,13 +264,41 @@ img {
 #filter {
 	clear:both;
 }
+#filter form {
+	margin-top:10px;
+}
+#filter dl {
+	float:left;
+	clear:none;
+	margin-right:20px;
+}
+#filter dt {
+	width:auto;
+}
+#filter dd {
+	margin:0;
+}
+#filter dl input, #filter dl select {
+	width:125px;
+}
+#filter select option {
+	padding-right:5px;
+}
 /* badge show specific styles */
 
-#badge-extras .left {
+#badge-extras .left, #complete-requirements .left {
 	width:50%;
 }
-#badge-extras .right {
+#badge-extras .right, #complete-requirements .right {
 	width:50%;
+}
+
+#complete-requirements dt {
+	width:50%;
+	text-align:left;
+}
+#complete-requirements dd {
+	margin-left:50%;
 }
 
 /* badge display specific styles */
@@ -685,6 +723,13 @@ img {
   background:transparent url(/images/boxes/basic-round-border.png) no-repeat top right;
 }
 
+.red .content,
+.red .t,
+.red .b,
+.red .b div {
+  background:transparent url(/images/boxes/basic-round-red-border.png) no-repeat top right;
+}
+
 .basicborder .content {
 	padding-top:10px;
 }
@@ -843,9 +888,7 @@ form{
 form input,
 form select,
 form textarea{
-    font-size:110%;
-    font-family:arial;
-    
+	
 }
 
 form textarea{
@@ -888,7 +931,6 @@ form dt{
     width:33%;
     margin:0px 0px 0px 0px;
     color:#000000;
-    font-size:110%;
     text-align:right;
 }
 

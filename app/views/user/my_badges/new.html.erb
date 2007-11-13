@@ -1,25 +1,32 @@
-<% content_box("get this badge", :id => "preview", :class => "shadow" ) do %>
-<%= error_messages_for :my_badge %>
+<% content_box(@my_badge.badge.name, :id => "preview", :class => "shadow" ) do %>
+
 	<div id="badge">
-		<p><%= @my_badge.badge.name  -%> </p>
-    <p><img src="<%=ADISERVER-%>/adis/<%= @my_badge.adi_id -%>.gif?&draft=true&rand=<%=rand(100).to_s-%>" ></p>
-		<p><%= @my_badge.badge.description -%></p>
+    <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
 	  <p><%= button(:image => "/text/button_text/customize.png", :alt => "Donate!", :link => '/customize' , :class => "large-button" ) -%></p>
 	</div>
 	<span class="clear"></span>
 <% end %>
 
+<% if !flash.empty? -%>
+	<% content_box("There was a problem", :class => 'basicborder red', :id => 'instructions') do -%>
+	<ul>
+	<% [:error, :warning, :notice, :message].each do |key| -%>
+  	<%= content_tag :li, flash[key], :class => key if flash[key] %>
+	<% end -%>
+	</ul>
+	<% end -%>
+<% end -%>
 <% if @my_badge.available?(current_account)  %>
 	<% content_box("Get This Badge", :id => "instructions", :class => "basicborder") do %>
-	<p>You have met all the requirements for this badge!</p>
-  <p><% form_for :my_badge, :url => my_badge_create_path , :method => :post, :html => {:id => 'tocustomize-form' }  do |f| %>
-  <%= f.submit 'save this to my account' -%>
+		<p>You have met all the requirements for this badge!</p>
+	  	<% form_for :my_badge, :url => my_badge_create_path , :method => :post, :html => {:id => 'tocustomize-form' }  do |f| %>
+	  		<%= f.submit 'save this to my account' -%>
+   		<% end %>
    <% end %>
-   <% end %>
-  </p>
 <% else  %>
- 		<% content_box("Get This Badge", :id => "instructions", :class => "basicborder") do %>
-		<p>You have not met all the requirements for this badge!  You need to complete one of the following requiremetns to get this badge: <br />
+		
+ 		<% content_box("badge requirements", :id => "instructions", :class => "basicborder") do %>
+		<p>You have not met all the requirements for this badge!  You need to complete one of the following requirements to get this badge: <br />
        <%= render :partial => 'requirements', :locals => {:my_badge => @my_badge } -%>
     </p>
     <p>Please complete below.</p>
@@ -31,28 +38,40 @@
    available
 <% else %>
 <% grey_fade(:id => "complete-requirements") do %>
+	<div id="access-code" class="left">
+		<h2>Enter an Access Code</h2>
+		<% form_for :my_badge, :url => my_badge_create_path , :method => :post  do |f| %>
+		<dl>
+			<dt><label for "access_code">Enter an access code:</label></dt>
+				<dd><%= f.text_field :access_code, :size => 6 %></dd>
+				<dd><%= submit_tag "Enter Code" %></dd>
+		</dl>
+    
+	    	  
+			<%if false %>
+				<%= button(:image => "/text/button_text/enter code!.png", :alt => "Enter Access Code!", :link => my_badge_create_path , :class => "large-button" ) -%>
+			<% end %>
+		
+		<% end %>
+  	<span class="clear"></span>
+	</div>
 
-       <% form_for :my_badge, :url => my_badge_create_path , :method => :post  do |f| %>
-    	    <label for>If you have an access code you can enter it below:</label><br />
-	    	  <%= f.text_field :access_code, :size => 6 %>
-    		  <%= submit_tag "Enter Code" %>
-<%if false %>
-					<%= button(:image => "/text/button_text/enter code!.png", :alt => "Enter Access Code!", :link => my_badge_create_path , :class => "large-button" ) -%>
-<% end %>
-		     <% end %>
-	    	<span class="clear"></span>
-			<%= image_tag ( "labels/or.png", :alt => "or", :class => "or" ) %><br />
+	<div id="enter-donation" class="right">
+		<h2>Make a Donation</h2>
+		<% form_for :order, :url => organization_segment_order_path(@my_badge.badge.organization, @my_badge.badge.segment , @order), :method => :post  do |f| %>
+		<dl>
+			<dt><label for="donation">Enter donation amount:</label></dt>
+				<dd><%= f.text_field :amount, :size => 6 -%></dd>
+				<dd><%= f.submit  'Donate'  -%></dd>
+		</dl>
+	     
+	             
+			<%if false %>
+				<%= button(:image => "/text/button_text/donate!.png", :alt => "Donate!", :link => organization_segment_order_path(@my_badge.badge.organization, @my_badge.badge.segment , @order  ), :class => "large-button" ) -%>
+			<% end %>
 
-			<% form_for :order, :url => organization_segment_order_path(@my_badge.badge.organization, @my_badge.badge.segment , @order), :method => :post  do |f| %>
-	      <label>Enter donation amount:</label> 
-	      <%= f.text_field :amount, :size => 6 -%> 
-	      <%= f.submit  'donate!'  -%> 
-<%if false %>
-					<%= button(:image => "/text/button_text/donate!.png", :alt => "Donate!", :link => organization_segment_order_path(@my_badge.badge.organization, @my_badge.badge.segment , @order  ), :class => "large-button" ) -%>
-<% end %>
-
-		  <% end %>
-
+  	<% end %>
+	</div>
 <% end  %>
 <span class="clear"></span>
 <% end  %>
