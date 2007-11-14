@@ -32,7 +32,7 @@
 		<% end %>
 	<% else %>
 		<% @my_badges.each do |my_badge| %>
-			<%= badge_link(my_badge.badge, user_my_badge_path(my_badge)) -%>
+			<%= badge_link(my_badge, user_my_badge_path(my_badge) ) -%>
 		<% end %>	
 	<% end %>
   </div>

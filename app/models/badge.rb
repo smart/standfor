@@ -53,6 +53,10 @@ class Badge < ActiveRecord::Base
 	return MyBadge.exists?(:account_id => account.id, :badge_id  => self.id )
      end 
 
+    def source_path
+      "/images/examples/#{self.id}.gif"
+    end
+
     def example_path
       "/images/examples/#{self.id}.gif"
     end

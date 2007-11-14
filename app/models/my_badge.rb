@@ -25,6 +25,22 @@ class MyBadge < ActiveRecord::Base
      my_sponsors.flatten
    end
 
+  def name
+    self.badge.name
+  end
+
+  def organization 
+    self.badge.organization
+  end
+
+  def segment 
+    self.badge.segment
+  end
+
+   def source_path
+     "#{ADISERVER}/adis/#{self.adi_id}.png?&draft=true&rand=#{rand(100).to_s}" 
+   end
+
    protected
    def after_initialize
       if self.adi_id.nil?
