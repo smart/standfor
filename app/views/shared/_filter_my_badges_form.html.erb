@@ -1,0 +1,17 @@
+<% content_box("filter badges", :class => 'basic', :id => 'filter') do -%>
+	<%= form_remote_tag :url => { :controller => '/user/my_badges', :action => 'search' } %>
+	<dl>
+		<dt><label for="search_term">keyword</label></dt>
+			<dd><%=  text_field  'search' , 'term', :size => 20 -%></dd>
+	</dl>
+	<dl>
+		<dt><label for="search_organization">organization</label></dt>
+			<dd><%= select 'search', 'organization', Organization.find(:all, :order => 'name').collect {|o| [o.name, o.id] },{:include_blank => true }  %></dd>
+	</dl>
+	<dl>
+		<dt><label for="search_segment">cause</label></dt>
+			<dd id="cause-select"><%= select 'search', 'segment', Segment.find(:all, :order => 'name').collect {|s| [s.name, s.id] }, {:include_blank => true}  %></dd>
+	</dl>
+	<%= submit_tag 'search' %>
+	</form >
+<% end -%>

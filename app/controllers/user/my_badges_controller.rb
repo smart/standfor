@@ -91,6 +91,34 @@ class User::MyBadgesController < ApplicationController
     end
   end
 
+  def search
+    @segment = params[:search][:segment] 
+    @organization = params[:search][:organization] 
+    if !@organization.blank? 
+      @org = Organization.find_by_id(@organization)
+    end
+    @terms = params[:search][:term]
+    where = "account_id =  #{current_account.id} "
+
+    if !@organization.blank?
+      where << " AND badge_id in ( SELECT id FROM badges WHERE organization_id  = #{@organization} ) "
+    end
+    results = MyBadge.find(:all, :conditions => where )
+    if !@segment.blank?
+       results.each_with_index do |r,i|
+         results[i] = nil if r.badge.segment.id.to_s != @segment.to_s
+         results.compact!
+       end
+    end
+
+    render :update do |page|
+      page.replace_html 'my-badge-list' , :partial => 'search_results' ,  :locals => { :results => results } 
+      if !@org.nil?
+        page.replace_html 'cause-select' , :partial => '/shared/cause_select' ,:locals => { :organization => @org } 
+     end
+    end
+  end
+
   def sponsorship_options
   end
 

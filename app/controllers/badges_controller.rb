@@ -103,7 +103,7 @@ class BadgesController < ApplicationController
     render :update do |page|
       page.replace_html 'badge-list' , :partial => 'search_results' ,  :locals => { :results => @results } 
       if !@org.nil?
-        page.replace_html 'cause-select' , :partial => 'cause_select' ,:locals => { :organization => @org } 
+        page.replace_html 'cause-select' , :partial => '/shared/cause_select' ,:locals => { :organization => @org } 
      end
     end
   end
