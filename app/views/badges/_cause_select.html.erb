@@ -1,0 +1,1 @@
+<%= select 'search', 'segment', Segment.find( :all, :conditions => "organization_id = #{organization.id}",  :order=>'name').collect {|s| [s.name, s.id] }, {:include_blank => true } -%>

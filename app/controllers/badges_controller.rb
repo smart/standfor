@@ -91,6 +91,9 @@ class BadgesController < ApplicationController
   def search
     @segment = params[:search][:segment] 
     @organization = params[:search][:organization] 
+    if !@organization.blank? 
+      @org = Organization.find_by_id(@organization)
+    end
     @terms = params[:search][:term]
     where = "1=1 "
     where << "AND name LIKE '%#{@terms}%' OR organization_id IN (SELECT id FROM organizations where name LIKE '%#{@terms}%') OR segment_id IN (SELECT id FROM segments WHERE name LIKE  '%#{@terms}%') "  if !@terms.blank?
@@ -99,6 +102,9 @@ class BadgesController < ApplicationController
     @results = Badge.find(:all, :conditions => where )
     render :update do |page|
       page.replace_html 'badge-list' , :partial => 'search_results' ,  :locals => { :results => @results } 
+      if !@org.nil?
+        page.replace_html 'cause-select' , :partial => 'cause_select' ,:locals => { :organization => @org } 
+     end
     end
   end
 
