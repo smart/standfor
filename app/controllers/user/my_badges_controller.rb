@@ -53,7 +53,7 @@ class User::MyBadgesController < ApplicationController
 
     respond_to do |format|
       if @my_badge.save
-        flash[:notice] = 'User::MyBadge was successfully created.'
+        flash[:notice] = 'Your badge was successfully created.'
         format.html { redirect_to user_my_badge_url(@my_badge) }
         format.xml  { render :xml => @my_badge, :status => :created, :location => @my_badge }
       else
@@ -69,7 +69,7 @@ class User::MyBadgesController < ApplicationController
     get_my_badge
     respond_to do |format|
       if @my_badge.update_attributes(params[:my_badge])
-        flash[:notice] = 'MyBadge was successfully updated.'
+        flash[:notice] = 'Your badge was successfully updated.'
         format.html { redirect_to user_my_badge_url(@my_badge) }
         format.xml  { head :ok }
       else
@@ -143,7 +143,7 @@ class User::MyBadgesController < ApplicationController
        if !access_code.nil?
          current_account.access_codes << access_code
        else
-         flash[:notice] = "invalid access code"
+         flash[:error] = "Invalid access code"
          return false
        end 
      end
@@ -151,11 +151,13 @@ class User::MyBadgesController < ApplicationController
 
    def sponsorship_option_required   
     return true if !@my_badge.sponsorship_option.nil? and !@my_badge.sponsorship_option.blank?
+    flash[:warning] = 'You must specify sponsorship options'
     render :action =>  :sponsorship_options and return false 
    end
 
    def merit_option_required   
     return true if !@my_badge.merit_option.nil? and !@my_badge.merit_option.blank?
+    flash[:warning] = 'You must specify merit options'
     render :action =>  :merit_options  and return false 
    end
   

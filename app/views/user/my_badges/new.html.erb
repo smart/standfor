@@ -7,15 +7,8 @@
 	<span class="clear"></span>
 <% end %>
 
-<% if !flash.empty? -%>
-	<% content_box("There was a problem", :class => 'basicborder red', :id => 'instructions') do -%>
-	<ul>
-	<% [:error, :warning, :notice, :message].each do |key| -%>
-  	<%= content_tag :li, flash[key], :class => key if flash[key] %>
-	<% end -%>
-	</ul>
-	<% end -%>
-<% end -%>
+<%= render :partial => 'shared/flash', :locals => { :flash => flash } %>
+
 <% if @my_badge.available?(current_account)  %>
 	<% content_box("Get This Badge", :id => "instructions", :class => "basicborder") do %>
 		<p>You have met all the requirements for this badge!</p>
@@ -25,13 +18,14 @@
    <% end %>
 <% else  %>
 		
- 		<% content_box("badge requirements", :id => "instructions", :class => "basicborder") do %>
-		<p>You have not met all the requirements for this badge!  You need to complete one of the following requirements to get this badge: <br />
-       <%= render :partial => 'requirements', :locals => {:my_badge => @my_badge } -%>
+	<% content_box("badge requirements", :id => "instructions", :class => "basicborder") do %>
+		<p>
+			You have not met all the requirements for this badge! You need to complete one of the following requirements to get this badge: <br />
+     	<%= render :partial => 'requirements', :locals => {:my_badge => @my_badge } -%>
     </p>
     <p>Please complete below.</p>
 	 	<% end %>
-<% end %> <!-- end  else -->
+	<% end %> <!-- end else -->
 <span class="clear"></span>
 
 <% if @my_badge.available?(current_account)  %>

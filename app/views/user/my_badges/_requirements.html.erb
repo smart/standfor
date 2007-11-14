@@ -1,11 +1,5 @@
 <ul>
-<% my_badge.badge.requirements.each_with_index do |req, i| %>
-	<li><%= ( req.type == DonationRequirement ) ? "Make a donation to #{my_badge.badge.organization.name}." : "Enter an access code from #{my_badge.badge.organization.name}" -%> </li>
-
-<% if i  <  (my_badge.badge.requirements.size - 1) %>
-<li> - or - </li>
+<% my_badge.badge.requirements.each do |req| %>
+	<%= show_requirements(my_badge.badge, req.type) %>
 <% end %>
-
-<% end %>
-
 </ul>

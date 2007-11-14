@@ -1,0 +1,11 @@
+<% if !flash.empty? -%>
+	<% [:notice, :message, :error, :warning].each do |key| -%>
+		<% if flash[key] %>
+			<% content_box( flash_header(key.to_s), :class => "basicborder #{key}", :id => 'flash') do -%>
+				<ul>
+			  	<%= content_tag :li, flash[key], :class => key if flash[key] %>
+				</ul>
+			<% end -%>
+		<% end -%>
+	<% end -%>
+<% end -%>

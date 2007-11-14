@@ -1,11 +1,11 @@
-<h1>Merit Options (3.1.1.2) </h1>
-
-<% content_box( "your badge", :class => "shadow", :id => "preview" ) do -%>
+<% content_box( "Merit Options", :class => "shadow", :id => "preview" ) do -%>
   <div id="badge">
     <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
   </div>
   <%= render :partial => 'navigation' , :locals => {:my_badge => @my_badge} -%>
 <% end %>
+
+<%= render :partial => 'shared/flash', :locals => { :flash => flash } %>
 
 <% content_box( "about merits", :class => "basicborder", :id => "instructions" ) do -%>
 	<p> 

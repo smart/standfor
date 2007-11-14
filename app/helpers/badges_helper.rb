@@ -17,4 +17,15 @@ module BadgesHelper
   def show_badge_meta(badge)
   	
 	end
+	
+	def show_requirements(my_badge, requirement)
+		case
+		when requirement == DonationRequirement
+			return content_tag(:li, "Make a donation to #{my_badge.organization.name}.", :class => 'donate')
+		when requirement == CodeRequirement
+			return content_tag(:li, "Enter an access code from #{my_badge.organization.name}", :class => 'access')
+		else
+			return content_tag(:li, "You have met all the requirements for this badge", :class => 'met')
+		end
+	end
 end

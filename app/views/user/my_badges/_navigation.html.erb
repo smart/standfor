@@ -1,5 +1,10 @@
-<%= link_to 'my badge show', user_my_badge_path(my_badge) -%> | 
-<%= link_to 'share your badge',  :controller =>  'user/share' , :action => 'index' , :id => my_badge -%> | 
-<%= link_to 'customize your badge' ,  :controller =>  'user/customize' , :action => 'index' , :id => my_badge -%> | 
-<%= link_to 'sponsorship options',  :controller =>  'user/my_badges' , :action => 'sponsorship_options', :id => my_badge -%> | 
-<%= link_to 'merit options',  :controller =>  'user/my_badges' , :action => 'merit_options', :id => my_badge -%>
+<div id="badge-functions">
+	<ul>
+	  <li class="back"><span><%= link_to 'back to badge', user_my_badge_path(my_badge) -%></span></li>
+	  <li class="back"><span><%= link_to 'back to my badges', user_my_badges_path %></span></li>
+	  <li class="share"><span><%= link_to 'share your badge',  :controller =>  'user/share' , :action => 'index' , :id => my_badge -%></span></li>
+	  <li class="customize"><span><%= link_to 'customize your badge' ,  :controller =>  'user/customize' , :action => 'index' , :id => my_badge -%></span></li>
+	  <li class="sponsors"><span><%= link_to 'sponsorship options',  :controller =>  'user/my_badges' , :action => 'sponsorship_options', :id => my_badge -%></span></li>
+	  <li class="merits"><span><%= link_to 'merit options',  :controller =>  'user/my_badges' , :action => 'merit_options', :id => my_badge -%></span></li>
+	</ul>
+</div>

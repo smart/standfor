@@ -118,8 +118,22 @@ module ApplicationHelper
         ["TN","Tennessee"], ["TX","Texas"], ["UT","Utah"], ["VT","Vermont"],
         ["VA","Virginia"], ["WA","Washington"], ["WV","West Virginia"],
         ["WI","Wisconsin"], ["WY","Wyoming"]]
-   end
-  
+	end
+	
+  def flash_header(key)
+  	case
+		when key == "error"
+			return 'something went wrong'
+		when key == "notice"
+			return 'take note'
+		when key == "warning"
+			return 'warning'
+		when key == "message"
+			return 'a message for you'
+		else
+			return 'no heading defined'
+		end
+  end
   
 end
 

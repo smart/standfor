@@ -284,6 +284,37 @@ img {
 #filter select option {
 	padding-right:5px;
 }
+#badge-functions ul li {
+	display:block;
+	height:28px;
+	line-height:28px;
+	background-position:top left;
+	background-repeat:no-repeat;
+	min-width:32px;
+	_width:32px;
+}
+#badge-functions ul li a {
+	display:block;
+	padding-left:32px;
+}
+#badge-functions ul li.back {
+	background-image:url(/images/icons/navigation/back.png);
+}
+#badge-functions ul li.share {
+	background-image:url(/images/icons/navigation/share.png);
+}
+#badge-functions ul li.customize {
+	background-image:url(/images/icons/navigation/heart.png);
+}
+#badge-functions ul li.sponsors {
+	background-image:url(/images/icons/navigation/sponsors.png);
+}
+#badge-functions ul li.merits {
+	background-image:url(/images/icons/navigation/merits.png);
+}
+#badge-functions ul li span {
+
+}
 /* badge show specific styles */
 
 #badge-extras .left, #complete-requirements .left {
@@ -664,7 +695,7 @@ img {
 	width:275px;
 }
 
-#instructions {
+#instructions, #flash {
 	margin-left:465px;
 }
 
@@ -723,11 +754,17 @@ img {
   background:transparent url(/images/boxes/basic-round-border.png) no-repeat top right;
 }
 
-.red .content,
-.red .t,
-.red .b,
-.red .b div {
+.error .content, .warning .content,
+.error .t, .warning .t,
+.error .b, .warning .b,
+.error .b div, .warning .b div {
   background:transparent url(/images/boxes/basic-round-red-border.png) no-repeat top right;
+}
+.notice .content, .message .content,
+.notice .t, .message .t,
+.notice .b, .message .b,
+.notice .b div, .message .b div {
+  background:transparent url(/images/boxes/basic-round-green-border.png) no-repeat top right;
 }
 
 .basicborder .content {

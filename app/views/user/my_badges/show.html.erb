@@ -1,11 +1,11 @@
-<h1>MyBadge Show (3.1.1)</h1>
-
 <% content_box( "your  badge", :class => "shadow", :id => "preview" ) do -%>
   <div id="badge">
     <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
   </div>
   <%= render :partial => 'navigation' , :locals => {:my_badge => @my_badge} -%>
 <% end %>
+
+<%= render :partial => 'shared/flash', :locals => { :flash => flash } %>
 
 <% content_box("badge details", :class => 'basicborder', :id => 'instructions') do %>
 	<ul>

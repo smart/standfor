@@ -54,6 +54,6 @@ class ApplicationController < ActionController::Base
     if params[:id]
       @my_badge = MyBadge.find(params[:id])
     end
-
   end
+  
 end
