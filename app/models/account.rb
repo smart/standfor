@@ -10,6 +10,7 @@ class Account< ActiveRecord::Base
   has_many :authenticators
   after_create :make_account_authenticator
   has_one :sponsor
+  has_one :avatar
 
  
    #validates_presence_of :first_name,:last_name,:phone,:email,:city,:state,:zip, :country 

@@ -1,0 +1,14 @@
+<%= error_messages_for :avatar %>
+
+<% form_for(:avatar, :url => user_avatars_path,
+                     :html => { :multipart => true}, :method => :post ) do |f| -%>
+  <p>
+    <label for="avatar">Upload A Avatar:</label>
+    <%= f.file_field :uploaded_data %>
+  </p>
+  <p>
+    <%= submit_tag 'Create' %>
+  </p>
+<% end -%>
+
+<%= link_to 'my account', user_account_path -%>
