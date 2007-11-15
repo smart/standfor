@@ -28,4 +28,19 @@ module BadgesHelper
 			return content_tag(:li, "You have met all the requirements for this badge", :class => 'met')
 		end
 	end
+	
+	def my_badge_options(text, option, url)
+		link = link_to(text, url)
+		link = content_tag(:span, link)
+		
+		button = content_tag(:li, link, :class => option, :onmouseover => toggle_option_text(option, 'show'), :onmouseout => toggle_option_text(option, 'hide'))
+	end
+	
+	def toggle_option_text(option, state)
+		update_page do |page|
+			page.select("li.#{option} span").each do |item|
+				(state == 'show') ? item.add_class_name('show') : item.remove_class_name('show')
+			end
+		end
+	end
 end

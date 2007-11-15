@@ -284,6 +284,15 @@ img {
 #filter select option {
 	padding-right:5px;
 }
+#badge-functions {
+	margin-top:5px;
+}
+#badge-functions ul.navigation {
+	float:left;
+}
+#badge-functions ul.actions {
+	float:right;
+}
 #badge-functions ul li {
 	display:block;
 	height:28px;
@@ -292,6 +301,13 @@ img {
 	background-repeat:no-repeat;
 	min-width:32px;
 	_width:32px;
+	float:left;
+}
+#badge-functions .actions span {
+	display:none;
+}
+#badge-functions .actions span.show {
+	display:inline;
 }
 #badge-functions ul li a {
 	display:block;
