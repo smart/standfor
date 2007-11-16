@@ -369,9 +369,8 @@ img {
 
 /* organization page specific styles */
 
-#overview .basicborder {
-	width:290px;
-	float:right;
+#overview {
+	clear:both;
 }
 #description {
 	clear:both;

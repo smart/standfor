@@ -1,15 +1,34 @@
-<% content_box(@organization.name + " stands for:", :id => 'overview') do %>
+<% content_box(@organization.name, :class => 'shadow', :id => 'welcome') do -%>
+	<%= image_tag(@organization.organizationslogo.public_filename(:medium), :alt => @organization.name) -%>
+	<div id="contact-info">
+		<p>
+			<ul>
+	    	<li><%= @organization.address1 -%></li>
+	    	<li><%= @organization.address2 -%></li>
+	    	<li><%= @organization.city -%>, <%= @organization.state -%> <%= @organization.zip %></li>
+	    	<li><%= @organization.country -%></li>
+	    	<li><%= @organization.phone -%></li>
+			</ul>
+		</p>
+	</div>
+<% end %>
+
+<% content_box("our causes", :class => 'basicborder', :id => 'ranking') do %>
+  <% @organization.segments.each do |segment| %>
+	<h3><%= link_to(segment.name, organization_segment_path(@organization, segment))%></h3>
+  	<p><%= segment.description -%></p>
+	<% end %>
+<% end %>
+   
+   
+   
+<% content_box(@organization.name + " stands for:", :class => 'basic', :id => 'overview') do %>
  <div id="description">
   <p>
    <%= @organization.description %>
   </p> 
  </div>
- <% content_box("Our Causes", :class => 'basicborder') do %>
-  <% @organization.segments.each do |segment| %>
-   <h3><%= link_to(segment.name, organization_segment_path(@organization, segment))%></h3>
-        <p><%= segment.description-%></p>
-     <% end %>
-   <% end %>
+ 
   <span class="clear">&nbsp</span>
 
 <% if current_account != :false %>
