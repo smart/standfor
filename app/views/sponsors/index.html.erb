@@ -1,11 +1,10 @@
 <h1>Standforus Sponsors</h1>
 
-<table>
-  <tr>
-  </tr>
+<ul>
 <% for sponsor in @sponsors %>
-  <tr>
-    <td><%= link_to 'Show', sponsor_path(sponsor) %></td>
-  </tr>
+  <li>
+    <p><%= link_to sponsor.name, sponsor_path(sponsor) %></p> 
+    <p><%= image_tag(sponsor.sponsorslogo.public_filename(:thumb)) -%> </p>
+ </li>
 <% end %>
-</table>
+</ul>

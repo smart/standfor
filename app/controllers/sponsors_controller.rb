@@ -1,11 +1,11 @@
 class SponsorsController < ApplicationController
   layout 'default'
-  before_filter :login_required
+  #before_filter :login_required
 
   # GET /sponsors
   # GET /sponsors.xml
   def index
-    @sponsors = Sponsor.find(:all, :conditions => ["account_id = ? " , current_account.id ] )
+    @sponsors = Sponsor.find(:all)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @sponsors }
