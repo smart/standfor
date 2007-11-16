@@ -15,7 +15,7 @@
 	<h1><%= image_tag("/text/basicborder_header/most recent badges.png", :alt => "My Badges") %></h1>
    <div id="badge-list">
 		<% @badges.each do |badge| %>
-			<%= badge_link(badge, badge_path(badge)) -%>
+			<%= badge_link(badge, badge_path(badge), {:width => 260, :height => 120, :style=> "margin:5px;" } ) -%>
 		<% end %>
   </div>
 <% end %>

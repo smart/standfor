@@ -35,9 +35,7 @@
 
 <% grey_fade(:id => "featured-badges" ) do -%>
 	<h2><%= image_tag("/text/basicborder_header/featured badges.png", :alt => 'Featured Badges') %></h2>
-	<% 3.times do %>
-		<%= image_tag('placeholders/mediumbadge.jpg', :alt => 'Badge Preview') %>
-	<% end %>
+    <%= render :partial => 'featured' -%>
 <% end %>
 
 <div id="leaderboard">

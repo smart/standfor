@@ -1,6 +1,6 @@
 module BadgesHelper
-  def badge_link(badge, path)
-  	link = link_to(image_tag(badge.source_path, :width => 145, :height => 90) , path) #TODO do proper thumbnails
+  def badge_link(badge, path, opts = {} )
+  	link = link_to(image_tag(badge.source_path, :width => opts[:width] || 145 , :height => opts[:height] || 90, :style => opts[:style] || '' ) , path) #TODO do proper thumbnails
   	mouseover = "Element.show('#{dom_id(badge)}')"
   	mouseout = "Element.hide('#{dom_id(badge)}')"
   	meta = content_tag(:li, badge.name)
