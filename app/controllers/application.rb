@@ -8,9 +8,7 @@ class ApplicationController < ActionController::Base
   include StyleSystem
   # Pick a unique cookie name to distinguish our session data from others'
   helper 'badges'
-  
   session :session_key => '_standfor_session_id'
-
   before_filter :init
   before_filter :print_info
   
@@ -24,7 +22,11 @@ class ApplicationController < ActionController::Base
     session[:causes] ||= {}
     session[:donations] ||= {}
     session[:current_segment]  ||= ''
-    session[:on_donation_page] = (params[:controller] == '/worldreach/orders' )  ? 1 : nil 
+
+    if !request.xhr?
+      session[:on_donation_page] = (params[:controller] == '/worldreach/orders' ) 
+    end
+
     @configuration = Configuration.find(:first)
     if false 
        site_name = request.host.match(/standfor\.(\w+)\.org/)[1]    

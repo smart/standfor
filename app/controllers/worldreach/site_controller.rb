@@ -19,15 +19,17 @@ class Worldreach::SiteController < ApplicationController
          page[img].replace( image_tag('worldreach/icons/select_on.png', :alt => "#{segment.name} selected", :id => "segment_#{segment.id}") )
        end
 
-    # TODO, we will have to determine how to toggle this behavior
-    if true
-       page.replace_html 'segment-form', :partial =>  '/worldreach/orders/segment_form', :locals => {:organization => @organization, :order => session[:order] } 
-    end
+      # TODO, we will have to determine how to toggle this behavior
+      if session[:on_donation_page] 
+         page.replace_html 'segment-form', :partial =>  '/worldreach/orders/segment_form', 
+                                         :locals => {:organization => @organization, :order => session[:order] } 
+      end
 
 		end
 	end
 
    private
+
 
    def get_organization
      @organization = Organization.find_by_site_name('worldreach')

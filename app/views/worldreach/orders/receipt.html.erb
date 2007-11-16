@@ -6,10 +6,10 @@
 	
 	<% @order.donations.each do |donation| %>
 	<li>
-	<%= donation.segment.name -%> : <%= number_to_currency(donation.amount * 0.01 )  -%>
+	<%= donation.segment.name -%> : <%= number_to_currency(donation.amount )  -%>
 	</li>
 	<% end %>
-	<li> Total: <%= number_to_currency(@order.amount * 0.01 ) -%> </li> 
+	<li> Total: <%= number_to_currency(@order.amount) -%> </li> 
 	
 	</ul>
 	
