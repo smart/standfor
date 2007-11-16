@@ -1,8 +1,22 @@
-<% content_box( "sponsors", :class => "shadow" ) do -%>
-  <% Sponsor.find(:all).each do |sponsor| %> 
-   <% content_box( "#{sponsor.name}", :class => "shadow" ) do -%>
-    <%= image_tag sponsor.sponsorslogo.public_filename(:medium) -%>
-    <%= link_to sponsor.name,  sponsor_path(sponsor) -%>
-   <% end %>
-  <% end %>
+<% content_box("featured sponsor", :class => "shadow", :id => "welcome" ) do -%>
+	<%= image_tag @sponsors.first.sponsorslogo.public_filename(:medium) -%>
+	<ul>
+    <li><%= link_to @sponsors.first.name,  sponsor_path(@sponsors.first) -%></li>
+    <li><%= @sponsors.first.statement -%></li>
+	</ul>
 <% end %>
+
+<% content_box("about sponsors", :class => "basicborder", :id => "ranking" ) do -%>
+  <p>
+  	Standfor.us is pioneering a revolutionary new model of cause marketing. By injecting your badges with sponsor branding you can help raise awarness just by displaying your badge anywhere you are active on the net. In return the sponsors will donate to your choosen cause based on the number of times your badge is viewed.
+  </p>
+<% end %>
+
+<% grey_fade(:id => "sponsors" ) do -%>
+	<h2>some of our sponsors</h2>
+	<% @sponsors.each do |sponsor| -%>
+		<div class="small-logo">
+			<%= image_tag( sponsor.sponsorslogo.public_filename(:thumb), :alt => sponsor.name) -%>
+		</div>
+	<% end -%>
+<% end -%>

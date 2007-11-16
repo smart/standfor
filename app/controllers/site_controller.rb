@@ -27,6 +27,7 @@ class SiteController < ApplicationController
     end
 
     def sponsors
+  		@sponsors = Sponsor.find(:all)
     end
 
     def meet 

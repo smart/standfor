@@ -1,13 +1,23 @@
-<% content_box("participating organizations", :class => "shadow", :id => "organizations" ) do -%>
-
-<ul>
-<% @organizations.each do |organization|%>
-<li>
-<%= link_to organization.name, organization_path(organization)  %>
-</li>
-
-<% end  %>
-
-</ul>
+<% content_box("featured organization", :class => "shadow", :id => "welcome" ) do -%>
+	<%= image_tag @organizations.first.organizationslogo.public_filename(:medium) -%>
+	<ul>
+    <li><%= link_to @organizations.first.name,  organization_path(@organizations.first) -%></li>
+    <li><%= @organizations.first.statement -%></li>
+	</ul>
 <% end %>
+
+<% content_box("about organizations", :class => "basicborder", :id => "ranking" ) do -%>
+  <p>
+  	Standfor.us has partnered with a wide range of organizations. Whatever your cause is, there is an organization that can help you show support.
+  </p>
+<% end %>
+
+<% grey_fade(:id => "organizations" ) do -%>
+	<h2>we standfor:</h2>
+	<% @organizations.each do |organization| -%>
+		<div class="small-logo">
+			<%= link_to( image_tag(organization.organizationslogo.public_filename(:thumb), :alt => organization.name), organization_path(@organizations.first) ) unless organization.organizationslogo.nil? -%>
+		</div>
+	<% end -%>
+<% end -%>
 

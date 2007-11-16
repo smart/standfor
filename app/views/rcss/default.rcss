@@ -397,6 +397,19 @@ img {
   display:inline;
 }
 
+/* sponsors page specific styles */
+
+div.small-logo {
+	border:1px solid black;
+	float:left;
+	margin-right:5px;
+	background-color:grey;
+}
+
+div.small-logo img {
+	padding:4px;
+}
+
 /* customize & share page specific styles */
 
 #preview, #member-login {
