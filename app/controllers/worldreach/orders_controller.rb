@@ -22,6 +22,7 @@ class Worldreach::OrdersController < ApplicationController
     respond_to do |format|
       if @order.save
         session[:order] = nil
+        session[:causes] = {}  #clear selected segments
         flash[:notice] = 'Order was successfully created.'
         format.html { redirect_to  :controller => 'orders', :action => 'receipt', :id => @order }
       else
