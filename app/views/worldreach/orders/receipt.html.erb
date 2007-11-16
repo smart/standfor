@@ -12,6 +12,10 @@
 	<li> Total: <%= number_to_currency(@order.amount) -%> </li> 
 	
 	</ul>
+
+  <p>
+     <img src="<%=STANDFOR_ROOT-%>/worldreach/charts/pie/<%= @order.id -%>" >
+  </p>
 	
 	<p>
 	<%= link_to 'home', worldreach_home_path -%>
