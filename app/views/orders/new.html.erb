@@ -1,24 +1,25 @@
-<% if @order.creditcard.nil? %>
-<h1>New</h1>
-<% else %>
-<h1>Authorize Payment</h1>
+<% content_box("authorize payment", :class => 'shadow', :id => 'preview') do %>
+	<% form_for(@order, :url => "/organizations/#{@organization.site_name}/segments/#{@segment.site_name}/orders", :method => :post ) do |f| %>
+	 <ul>
+	   <% if @order.creditcard.nil? %> 
+	   <%= render :partial => 'fields' , :locals => {:f => f , :segment => @segment } -%>
+	   <% else  %> 
+	      <%= f.hidden_field  :amount -%>
+	     <p>Clicking 'Authorize' below will authorize Standforus to charge your creditcard ending in '<%=@order.creditcard.number.strip.slice(-4,4) -%>' to be charged <%= number_to_currency(@order.amount) -%>. </p>
+	   <% end %> 
+	
+	  <li>
+	    <%= f.submit "#{(@order.creditcard.nil?) ? 'donate!' : 'Authorize'}" %>
+	  </li>
+	 </ul>
+	
+	<% end %>
+	
 <% end %>
 
-<%= error_messages_for :order %>
-
-<% form_for(@order, :url => "/organizations/#{@organization.site_name}/segments/#{@segment.site_name}/orders", :method => :post ) do |f| %>
- <ul>
-   <% if @order.creditcard.nil? %> 
-   <%= render :partial => 'fields' , :locals => {:f => f , :segment => @segment } -%>
-   <% else  %> 
-      <%= f.hidden_field  :amount -%>
-     <p>Clicking 'Authorize' below will authorize Standforus to charge your creditcard ending in '<%=@order.creditcard.number.strip.slice(-4,4) -%>' to be charged <%= number_to_currency(@order.amount) -%>. </p>
-   <% end %> 
-
-  <li>
-    <%= f.submit "#{(@order.creditcard.nil?) ? 'donate!' : 'Authorize'}" %>
-  </li>
- </ul>
-
+<% content_box("about your donation", :class => 'basicborder', :id => 'instructions') do %>
+	<%= error_messages_for :order %>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+	</p>
 <% end %>
-

@@ -434,7 +434,6 @@ img {
   width:50%;
   float:left;
   height:35px;
-  font-size:65%;
   background-position:top left;
   background-repeat:no-repeat;
   margin-bottom:5px;
@@ -929,8 +928,6 @@ img {
   background-position:top left;
 }
 
-	padding-bottom:10px;
-}
 /* basic form styles */
 
 form{

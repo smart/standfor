@@ -1,34 +1,39 @@
-<h1>New Creditcard</h1>
+<% content_box( "credit card details", :class => "shadow" :id => 'preview') do -%>
+	<% form_for :creditcard, :url => save_creditcard_path, :method => :post  do |f| %>
 
-<% form_for :creditcard, :url => save_creditcard_path, :method => :post  do |f| %>
+	  <dl>
+	    <dt><label for="creditcard_first_name">First Name:</label></dt>
+	      <dd><%= f.text_field :first_name , :size => 20 -%></dd>
+	 
+	    <dt><label for="creditcard_last_name">Last Name:</label></dt>
+	      <dd><%= f.text_field :last_name, :size => 20 -%></dd>
+	 
+	    <dt><label for="creditcard_type">Card Type:</label></dt>
+	      <dd><%= f.select :card_type, ["Visa", "Master Card", "Discover"] %></dd>
+	 
+	    <dt><label for="creditcard_number">Card Number:</label></dt>
+	      <dd><%= f.text_field :number -%></dd>
+	  </dl>
+	
+	  <dl class="expiration">
+	    <dt><label for="creditcard_expiration_month_year">Expiration:</label></dt>
+	    <dd><%= select_month(Date.today)%><%= select_year(Date.today)%></dd>
+	  </dl>
+	 
+	  <dl class="verification">
+	  <dt><label for="creditcard_verification_value">Verification:</label></dt>
+	    <dd><%= f.text_field :verification_value, :size => 6 -%></dd>
+	  </dl>
+	
+	  <dl class="submit">
+	    <dd><%= f.submit 'enter card' -%></dd>
+	  </dl>
+	<% end -%>
+<% end -%>
 
-  <dl>
-    <dt><label for="creditcard_first_name">First Name:</label></dt>
-      <dd><%= f.text_field :first_name , :size => 20 -%></dd>
- 
-    <dt><label for="creditcard_last_name">Last Name:</label></dt>
-      <dd><%= f.text_field :last_name, :size => 20 -%></dd>
- 
-    <dt><label for="creditcard_type">Card Type:</label></dt>
-      <dd><%= f.select :card_type, ["Visa", "Master Card", "Discover"] %></dd>
- 
-    <dt><label for="creditcard_number">Card Number:</label></dt>
-      <dd><%= f.text_field :number -%></dd>
-  </dl>
-
-  <dl class="expiration">
-    <dt><label for="creditcard_expiration_month_year">Expiration:</label></dt>
-    <dd><%= select_month(Date.today)%><%= select_year(Date.today)%></dd>
-  </dl>
- 
-  <dl class="verification">
-  <dt><label for="creditcard_verification_value">Verification:</label></dt>
-    <dd><%= f.text_field :verification_value, :size => 6 -%></dd>
-  </dl>
-
-  <dl class="submit">
-    <dd><%= f.submit 'enter card' -%></dd>
-  </dl>
-
+<% content_box("about your donation", :class => 'basicborder', :id => 'instructions') do %>
+	<p>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+	</p>
 <% end %>
 
