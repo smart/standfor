@@ -1,16 +1,23 @@
 <% content_box(@organization.name, :class => 'shadow', :id => 'welcome') do -%>
 	<%= image_tag(@organization.organizationslogo.public_filename(:medium), :alt => @organization.name) -%>
-	<div id="contact-info">
-		<p>
-			<ul>
-	    	<li><%= @organization.address1 -%></li>
-	    	<li><%= @organization.address2 -%></li>
-	    	<li><%= @organization.city -%>, <%= @organization.state -%> <%= @organization.zip %></li>
-	    	<li><%= @organization.country -%></li>
-	    	<li><%= @organization.phone -%></li>
-			</ul>
-		</p>
+	<div class="adr">
+		<dl>
+			<dt>Address:</dt>
+				<dd class="street-address"><%= @organization.address1 -%></dd>
+				<dd class="extended-address"><%= @organization.address2 -%></dd>
+				<dd class="locality"><%= @organization.city -%>,</dd>
+				<dd class="region"><%= @organization.state -%></dd>
+				<dd class="postal-code"><%= @organization.zip %></dd>
+				<dd class="country-name"><%= @organization.country -%></dd>
+		</dl>
 	</div>
+		<% if current_account != :false %>
+			<% if current_account.is_sponsor? %>
+				<p><%= link_to 'Sponsor', :controller=> 'sponsorships', :action => 'new', :sponsorable_type => 'Organization', :sponsorable_id => @organization.id -%> </p>
+		  <% else %>
+				<p><%= link_to 'Become A Sponsor',  new_organization_sponsor_path(@organization) -%></p>
+			<% end %>
+		<% end %>
 <% end %>
 
 <% content_box("our causes", :class => 'basicborder', :id => 'ranking') do %>
@@ -19,42 +26,21 @@
   	<p><%= segment.description -%></p>
 	<% end %>
 <% end %>
-   
-   
-   
+
 <% content_box(@organization.name + " stands for:", :class => 'basic', :id => 'overview') do %>
  <div id="description">
   <p>
    <%= @organization.description %>
   </p> 
  </div>
- 
-  <span class="clear">&nbsp</span>
-
-<% if current_account != :false %>
-  <% if current_account.is_sponsor? %>
-   <%= link_to 'Sponsor',  
-	:controller=> 'sponsorships', 
-	:action => 'new', 
-	:sponsorable_type => 'Organization' , 
-	:sponsorable_id => @organization.id   -%> 
-  <% else %>
-   <%= link_to 'Become A Sponsor',  new_organization_sponsor_path(@organization) -%>
-   <% end %>
 <% end %>
 
-<% end %>
-
-<% content_box("featured badges", :class => "light", :id => "featured_badges" ) do -%>
-	<ul>
-	<% @organization.featured_badges.each do |badge|%>
-		<li>
-		<%= link_to  image_tag(badge.example_path, :width => 220 ) , organization_segment_path(badge.organization, badge.segment)  %> <br />
-		<%= link_to "#{badge.organization.name} / #{badge.segment.name}" , organization_segment_path(badge.organization, badge.segment)  %>
-		</li>
-		
-	<% end  %>
-	
-	</ul>
+<% grey_fade(:id => "organization-badges" ) do -%>
+	<h2><%= @organization.name -%> Badges</h2>
+	<div id="badge-list">
+		<% @organization.featured_badges.each do |badge| %>
+			<%= badge_link(badge, badge_path(badge), {:width => 260, :height => 120, :style=> "margin:5px;" } ) -%>
+		<% end %>
+  </div>
 	<span class="clear"></span>
 <% end %>
