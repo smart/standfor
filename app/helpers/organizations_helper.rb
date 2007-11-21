@@ -18,4 +18,9 @@ module OrganizationsHelper
         ["VA","Virginia"], ["WA","Washington"], ["WV","West Virginia"], 
 	["WI","Wisconsin"], ["WY","Wyoming"]]
    end
+
+  def featured_select_options
+    [ ['Yes', 1 ], ['No', 0] ]
+  end
+  
 end

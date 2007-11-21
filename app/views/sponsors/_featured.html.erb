@@ -1,0 +1,3 @@
+<% Sponsor.find(:all, :conditions => 'featured = 1', :limit => 1).each do |sponsor| %>
+  <%= sponsor.name -%>
+<% end %>

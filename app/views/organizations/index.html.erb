@@ -1,10 +1,4 @@
-<% content_box("featured organization", :class => "shadow", :id => "welcome" ) do -%>
-	<%= image_tag @organizations.first.organizationslogo.public_filename(:medium) -%>
-	<ul>
-    <li><%= link_to @organizations.first.name,  organization_path(@organizations.first) -%></li>
-    <li><%= @organizations.first.statement -%></li>
-	</ul>
-<% end %>
+<%= render :partial => 'featured' -%>
 
 <% content_box("about organizations", :class => "basicborder", :id => "ranking" ) do -%>
   <p>
