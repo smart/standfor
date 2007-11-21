@@ -43,4 +43,9 @@ module BadgesHelper
 			end
 		end
 	end
+
+  def featured_options
+    [ ['Yes', 1] , ['No', 0] ]
+  end
+
 end
