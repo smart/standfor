@@ -6,6 +6,7 @@ class User::MyBadgesController < ApplicationController
   before_filter :get_my_badge, :only => [:new, :create, :update, :sponsorship_options, :merit_options, :show, :share, :customize]
   before_filter :sponsorship_option_required, :only => [:show]
   before_filter :merit_option_required, :only => [:show]
+  before_filter :get_receipt, :only => [:create]
 
  #  get_share_info
  #  get_stat_info
@@ -50,11 +51,10 @@ class User::MyBadgesController < ApplicationController
     @order = Order.new
     collect_access_code
     @my_badge.account = current_account 
-
     respond_to do |format|
       if @my_badge.save
         session[:unsaved_badge] = nil
-        flash[:notice] = 'Your badge was successfully created.'
+        flash[:notice] = "Your badge was successfully created. #{@receipt}"
         format.html { redirect_to user_my_badge_url(@my_badge) }
         format.xml  { render :xml => @my_badge, :status => :created, :location => @my_badge }
       else
@@ -172,6 +172,12 @@ class User::MyBadgesController < ApplicationController
 
    def get_badge
      @badge = Badge.find(params[:badge_id])
+   end
+
+   def get_receipt
+     @receipt = ''
+     @receipt  = session[:receipt] if !session[:receipt].nil? 
+     session[:receipt]  = nil
    end
 
 end
