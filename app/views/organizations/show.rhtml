@@ -1,16 +1,5 @@
 <% content_box(@organization.name, :class => 'shadow', :id => 'welcome') do -%>
-	<%= image_tag(@organization.organizationslogo.public_filename(:medium), :alt => @organization.name) -%>
-	<div class="adr">
-		<dl>
-			<dt>Address:</dt>
-				<dd class="street-address"><%= @organization.address1 -%></dd>
-				<dd class="extended-address"><%= @organization.address2 -%></dd>
-				<dd class="locality"><%= @organization.city -%>,</dd>
-				<dd class="region"><%= @organization.state -%></dd>
-				<dd class="postal-code"><%= @organization.zip %></dd>
-				<dd class="country-name"><%= @organization.country -%></dd>
-		</dl>
-	</div>
+	<%= render :partial => 'details', :locals => { :organization => @organization } %>
 		<% if current_account != :false %>
 			<% if current_account.is_sponsor? %>
 				<p><%= link_to 'Sponsor', :controller=> 'sponsorships', :action => 'new', :sponsorable_type => 'Organization', :sponsorable_id => @organization.id -%> </p>

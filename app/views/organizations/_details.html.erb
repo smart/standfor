@@ -1,0 +1,12 @@
+<%= image_tag(organization.organizationslogo.public_filename(:medium), :alt => organization.name) -%>
+<div class="adr">
+	<dl>
+		<dt>Address:</dt>
+			<dd class="street-address"><%= organization.address1 -%></dd>
+			<dd class="extended-address"><%= organization.address2 -%></dd>
+			<dd class="locality"><%= organization.city -%>,</dd>
+			<dd class="region"><%= organization.state -%></dd>
+			<dd class="postal-code"><%= organization.zip %></dd>
+			<dd class="country-name"><%= organization.country -%></dd>
+	</dl>
+</div>

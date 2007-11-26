@@ -1,23 +1,31 @@
-<% content_box(@segment.name, :class => 'segment shadow') do -%>
-<style>
-  .requiresLogin {border:2px solid blue;	}
-  .needsDonation {border:2px solid yellow;	}
-  .alreadyHas {border:2px solid red;		}
-  .badgeAvailable {border:2px solid green;	}
-</style>
-<% content_box ("test", :class => "interior", :id => "details" ) do -%>
-   <p>
-    <%= @segment.description -%>
-   </p>
-<%= button( :image => "/text/button_text/donate!.png", :alt => "Donate!", 
-	          :link => new_organization_segment_order_path(@organization, @segment ) ,
-	          :class => "large-button" ) -%>
+
+<% content_box(@organization.name, :class => 'shadow', :id => 'welcome') do -%>
+	<%= render :partial => 'organizations/details', :locals => { :organization => @organization } %>
+		<% if current_account != :false %>
+			<% if current_account.is_sponsor? %>
+				<p><%= link_to 'Sponsor', :controller=> 'sponsorships', :action => 'new', :sponsorable_type => 'Organization', :sponsorable_id => @organization.id -%> </p>
+		  <% else %>
+				<p><%= link_to 'Become A Sponsor',  new_organization_sponsor_path(@organization) -%></p>
+			<% end %>
+		<% end %>
 <% end %>
-<div class="badges">
-<h2>You can show your support with these badges. Click a badge to customize.</h2>
-<% @segment.badges.each do |badge| %> 
-	<%= badge_link(badge, badge_path(badge), :size => 'medium' ) -%>
+
+<% content_box("our causes", :class => 'basicborder', :id => 'ranking') do %>
+  <% @organization.segments.each do |segment| %>
+	<h3><%= link_to(segment.name, organization_segment_path(@organization, segment))%></h3>
+	<% end %>
 <% end %>
-</div>
-<span class="clear"></span>
+
+<% content_box("description", :class => "basicborder", :id => "description" ) do -%>
+  <p><%= @segment.description -%></p>
+<% end %>
+
+<% grey_fade(:id => "segment-badges" ) do -%>
+	<h2><%= @organization.name -%> Badges</h2>
+	<div id="badge-list">
+		<% @segment.badges.each do |badge| %> 
+			<%= badge_link(badge, badge_path(badge), :size => 'medium' ) -%>
+		<% end %>
+  </div>
+	<span class="clear"></span>
 <% end %>

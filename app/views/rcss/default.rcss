@@ -356,12 +356,19 @@ img {
 }
 .badge-link .badge-meta {
 	position:absolute;
-	bottom:20px;
+	top:20px;
 	left:20px;
 	z-index:10;
 	border:1px solid black;
 	min-width:228px;
 	background:#b7b9bb;
+}
+
+.badge-link .badge-meta ul {
+	margin:5px;
+}
+.badge-link .badge-meta img {
+
 }
 .badge-link span {
 	display:none;

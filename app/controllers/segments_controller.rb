@@ -18,6 +18,7 @@ class SegmentsController < ApplicationController
   # GET /segments/1.xml
   def show
     @segment = Segment.find(params[:id])
+    @organization = Organization.find(@segment.organization_id)
     session[:segment_return_to] = request.request_uri 
     respond_to do |format|
       format.html # show.html.erb

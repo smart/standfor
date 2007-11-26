@@ -4,9 +4,9 @@ module BadgesHelper
   	link = link_to(image_tag( badge.source_path(opts))  , path ) 
   	mouseover = "Element.show('#{dom_id(badge)}')"
   	mouseout = "Element.hide('#{dom_id(badge)}')"
-  	meta = content_tag(:li, badge.name)
-  	meta << content_tag(:li, "Organization: " + badge.organization.name)
-  	meta << content_tag(:li, "Cause: " + badge.segment.name)
+  	meta = content_tag(:li, "<h4>#{badge.name}</h4>")
+  	meta << content_tag(:li, "<strong>Organization:</strong> " + badge.organization.name)
+  	meta << content_tag(:li, "<strong>Cause:</strong> " + badge.segment.name)
   	meta << content_tag(:li, link_to("View this Badge", path))
   	meta = content_tag(:ul, meta)
   	meta = link_to(image_tag( badge.source_path('full')) , path) + meta
