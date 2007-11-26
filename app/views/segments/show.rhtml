@@ -16,8 +16,7 @@
 <div class="badges">
 <h2>You can show your support with these badges. Click a badge to customize.</h2>
 <% @segment.badges.each do |badge| %> 
-<% @class = badge.account_access(current_account)  %>
-<%= link_to( image_tag("/images/examples/#{badge.id}.gif" ),  new_badge_my_badge_path(badge), :class => @class ) %>
+	<%= badge_link(badge, badge_path(badge), :size => 'medium' ) -%>
 <% end %>
 </div>
 <span class="clear"></span>
