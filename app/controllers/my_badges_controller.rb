@@ -27,7 +27,6 @@ class MyBadgesController < ApplicationController
     @my_badge.account = current_account 
     respond_to do |format|
       if @my_badge.save
-        p @my_badge 
         session[:unsaved_badge] = nil
         session[:my_badge] = nil
         flash[:notice] = 'MyBadge was successfully created.'

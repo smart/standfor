@@ -70,3 +70,4 @@ Mime::Type.register "application/x-shockwave-flash", :swf
 #
 
 require 'RMagick'
+require 'open-uri'

@@ -33,6 +33,7 @@ class User::CustomizeController < ApplicationController
 
    def save
     Customization.commit(@my_badge.adi_id)
+    @my_badge.save_thumbnails
     flash[:notice] = 'Your changes have been saved.'
     redirect_to user_my_badge_path(@my_badge)
    end

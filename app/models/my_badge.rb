@@ -14,16 +14,20 @@ class MyBadge < ActiveRecord::Base
 
   def available?(account)
      return self.badge.authorized?(account)
- end
+  end
+ 
+  def after_create
+    self.save_thumbnails
+  end
 
-   def all_sponsorships
+  def all_sponsorships
    #refactor this into one SQL
      my_sponsors = []
      my_sponsors << self.badge.sponsorships
      my_sponsors << self.badge.segment.sponsorships
      my_sponsors << self.badge.segment.organization.sponsorships
      my_sponsors.flatten
-   end
+  end
 
   def name
     self.badge.name
@@ -37,8 +41,33 @@ class MyBadge < ActiveRecord::Base
     self.badge.segment
   end
 
-   def source_path
-     "#{ADISERVER}/adis/#{self.adi_id}.png?&draft=true&rand=#{rand(100).to_s}" 
+   def source_path(opts = {})
+      size = opts[:size] || 'full'
+     "/images/cache/my_badges/#{self.id}/#{size}.jpg"
+   end
+
+   def save_thumbnails
+      remote_path = "#{ADISERVER}/adis/#{self.adi_id}.jpg" 
+      @file_data = open(remote_path) 
+      image =  Magick::Image::read( @file_data.path  ).first
+      full_path = File.join(File.join(self.cache_path , 'full.jpg' ) ) 
+      image.write(full_path)
+      thumb = image.resize_to_fit(200, 135)
+      thumb_path = File.join(File.join(self.cache_path , 'medium.jpg' ) ) 
+      thumb.write(thumb_path)
+      small = image.resize_to_fit(100, 67)
+      small_path = File.join(File.join(self.cache_path , 'small.jpg' ) ) 
+      small.write(small_path)
+    end
+
+   def cache_path
+     dir = File.join(RAILS_ROOT, 'public', 'images', 'cache', 'my_badges' , self.id.to_s )
+     FileUtils.mkdir(dir) unless File.exists?(dir)
+     dir
+   end
+
+   def thumbnail_cache_path
+     "/images/thumbnails/#{self.id}/" 
    end
 
    protected

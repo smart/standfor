@@ -53,6 +53,7 @@ class User::MyBadgesController < ApplicationController
 
     respond_to do |format|
       if @my_badge.save
+        session[:unsaved_badge] = nil
         flash[:notice] = 'Your badge was successfully created.'
         format.html { redirect_to user_my_badge_url(@my_badge) }
         format.xml  { render :xml => @my_badge, :status => :created, :location => @my_badge }
