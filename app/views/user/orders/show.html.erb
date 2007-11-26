@@ -1,3 +1,13 @@
+<h1>Receipt for Order #<%= @order.id -%></h1>
+<ol>
+<li> <%= @order.created_at.strftime("%B %m, %Y") -%></li>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+<% @order.donations.each do |donation| %>
+<ol>
+<li> Donaton to <%= donation.segment.name  -%>: <%= number_to_currency(donation.amount) -%></li>
+</ol>
+<% end %>
+
+<li> Total donation: <%= number_to_currency(@order.amount)  -%></li>
+
+</ol>

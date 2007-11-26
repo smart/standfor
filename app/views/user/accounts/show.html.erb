@@ -15,6 +15,10 @@
   <p>Ranking Stats</p>
 <% end %>
 
+<% content_box("my donations", :class => "basicborder", :id => "ranking" ) do -%>
+  <%= render :partial => 'my_donations' -%>
+<% end %>
+
 
 <% content_box("merits", :class => "basicborder", :id => "merits" ) do -%>
   <p>merit bar</p>

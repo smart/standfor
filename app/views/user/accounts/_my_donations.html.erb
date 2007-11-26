@@ -1,0 +1,15 @@
+<% if current_account.orders.empty? %>
+<p>No orders yet.</p>
+<% else %>
+<p>
+<ol>
+<% current_account.orders.each do |order|%>
+  <li>
+   <%= order.created_at.strftime("%B %d, %Y") -%>  - 
+   order #<%= link_to order.id, user_order_path(order) -%> -
+   <%= number_to_currency(order.amount) -%>
+  </li>
+<% end %>
+</ol>
+</p>
+<% end %>
