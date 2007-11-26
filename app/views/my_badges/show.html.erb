@@ -1,0 +1,12 @@
+<h1>My Badge Landing</h1>
+
+<pre>
+Need a few requirements. What do we think about writing requirements inside of templates?
+</pre>
+
+<p>
+ <%= image_tag(@my_badge.source_path) -%> 
+</p>
+
+<p> This badge belongs to: <%= link_to @my_badge.account.nickname, about_user_path(@my_badge.account) -%>
+</p>
