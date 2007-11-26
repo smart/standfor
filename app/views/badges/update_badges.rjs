@@ -1,0 +1,1 @@
+page.replace_html 'badge-list',  :partial => 'search_results' ,  :locals => { :results => @results }

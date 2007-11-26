@@ -108,6 +108,18 @@ class BadgesController < ApplicationController
     end
   end
 
+  def update_causes
+    @organization = Organization.find_by_id(params[:search_organization])
+    @results = @organization.badges
+    render :action => 'update_causes.rjs'
+  end
+
+  def update_badges
+    @segment = Segment.find_by_id(params[:search_segment])
+    @results = @segment.badges
+    render :action => 'update_badges.rjs'
+  end
+
   def requirements 
     @badge = Badge.find(params[:id])
   end
