@@ -1,3 +1,4 @@
+
 <%= render :partial => 'featured' -%>
 
 <% content_box("about organizations", :class => "basicborder", :id => "ranking" ) do -%>
@@ -10,7 +11,7 @@
 	<h2>we standfor:</h2>
 	<% @organizations.each do |organization| -%>
 		<div class="small-logo">
-			<%= link_to( image_tag(organization.organizationslogo.public_filename(:thumb), :alt => organization.name), organization_path(@organizations.first) ) unless organization.organizationslogo.nil? -%>
+			<%= link_to( image_tag(organization.organizationslogo.public_filename(:thumb), :alt => organization.name), organization_path(organization) ) unless organization.organizationslogo.nil? -%>
 		</div>
 	<% end -%>
 <% end -%>

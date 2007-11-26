@@ -1,15 +1,19 @@
-<h1>Standforus Sponsors</h1>
-
-<h2>Featured Sponsor<h2>
-<div id="featured-sponsor">
-<%=  render :partial => 'featured' -%>
-</div>
-
-<ul>
-<% for sponsor in @sponsors %>
-  <li>
-    <p><%= link_to sponsor.name, sponsor_path(sponsor) %></p> 
-    <p><%= image_tag(sponsor.sponsorslogo.public_filename(:thumb)) -%> </p>
- </li>
+<% content_box("featured sponsor", :class => "shadow", :id => "welcome" ) do -%>
+	<%=  render :partial => 'featured' -%>
 <% end %>
-</ul>
+
+<% content_box("about sponsors", :class => "basicborder", :id => "ranking" ) do -%>
+  <p>
+  	Standfor.us has created a revolutionary new model of cause marketing. By allowing our corporate sponsors to inject their branding into your awareness badges you can help raise money just by raising awareness for your chosen cause. For every impression and click through our corporate sponsors will give a certain percentage for that cause.
+  </p>
+<% end %>
+
+<% grey_fade(:id => "sponsors" ) do -%>
+	<h2>our sponsors</h2>
+	<% for sponsor in @sponsors %>
+		<div class="small-logo">
+		  <p><%= link_to sponsor.name, sponsor_path(sponsor) %></p> 
+		  <p><%= link_to image_tag(sponsor.sponsorslogo.public_filename(:thumb)), sponsor_path(sponsor) -%> </p>
+		</div>
+	<% end %>
+<% end %>

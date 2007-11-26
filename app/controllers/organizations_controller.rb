@@ -4,6 +4,7 @@ class OrganizationsController < ApplicationController
   # GET /organizations.xml
   def index
     @organizations = Organization.find(:all)
+		@featured = Organization.find(:all)
 
     respond_to do |format|
       format.html # index.html.erb
