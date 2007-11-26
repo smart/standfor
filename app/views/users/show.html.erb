@@ -1,0 +1,14 @@
+<h1><%= @account.nickname -%></h1>
+
+<% if @account.avatar.nil? %>
+ <p>No avatar.  We need a no avatar icon.</p>
+<% else %>
+ <%= image_tag(@account.avatar.public_filename(:normal)) -%>
+<% end %>
+
+<p>
+<ul>
+<li>Number of Badges:  <b><%= @account.my_badges.size-%></b> </li>
+<li>Total Donations:  <b><%= @account.total_donations -%></b> </li>
+</ul>
+</p>

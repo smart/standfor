@@ -38,6 +38,7 @@ ActionController::Routing::Routes.draw do |map|
   map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
   map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
   map.connect '/user/sessions/new', :controller => 'sessions', :action => 'new'
+  map.about_user '/about/:id', :controller => 'users', :action => 'show'
   map.home '/', :controller => 'site', :action => 'index'
 
   map.resource :sessions
