@@ -11,13 +11,13 @@
 	<dl>
 		<dt><label for="search_organization">organization</label></dt>
 			<dd>
-<%= select 'search', 'organization', Organization.find(:all, :order => 'name').collect {|o| [o.name, o.id] },{:include_blank => true }  %>
+<%= select 'search', 'organization', Organization.find(:all, :order => 'name').collect {|o| [o.name, o.id] },{:prompt => 'Select an Organization' }  %>
  <%= observe_field 'search_organization', :url => {:controller => 'badges', :action => 'update_causes' }, :with => 'search_organization' %>
 </dd>
 	</dl>
 	<dl>
 		<dt><label for="search_segment">cause</label></dt>
-			<dd id="cause-select"><%= select 'search', 'segment', Segment.find(:all, :order => 'name').collect {|s| [s.name, s.id] }, {:include_blank => true}  %>
+			<dd id="cause-select"><%= select 'search', 'segment', Segment.find(:all, :order => 'name').collect {|s| [s.name, s.id] }, {:prompt => 'Select a Cause' }  %>
  <%= observe_field 'search_segment', :url => {:controller => 'badges', :action => 'update_badges' }, :with => 'search_segment' %>
 </dd>
 	</dl>
