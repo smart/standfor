@@ -84,4 +84,32 @@ class Badge < ActiveRecord::Base
           return 0
      end
 
+   def source_path(opts = {})
+      size = opts[:size] || 'full'
+     "/images/cache/badges/#{self.id}/#{size}.jpg"
+   end
+
+   def save_thumbnails
+      structure = Structure.find(self.structure_id)
+      example = structure.example
+      remote_path = "#{ADISERVER}/adis/#{example['id']}.jpg" 
+      @file_data = open(remote_path) 
+      image =  Magick::Image::read( @file_data.path  ).first
+      full_path = File.join(File.join(self.cache_path , 'full.jpg' ) ) 
+      image.write(full_path)
+      thumb = image.resize_to_fit(300, 300)
+      thumb_path = File.join(File.join(self.cache_path , 'medium.jpg' ) ) 
+      thumb.write(thumb_path)
+      small = image.resize_to_fit(225, 225)
+      small_path = File.join(File.join(self.cache_path , 'small.jpg' ) ) 
+      small.write(small_path)
+   end
+
+   def cache_path
+     dir = File.join(RAILS_ROOT, 'public', 'images', 'cache', 'badges' , self.id.to_s )
+     FileUtils.mkdir(dir) unless File.exists?(dir)
+     dir
+   end
+
+
 end
