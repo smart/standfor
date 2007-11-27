@@ -40,29 +40,24 @@
 				<dd><%= f.text_field :access_code, :size => 6 %></dd>
 				<dd><%= submit_tag "Enter Code" %></dd>
 		</dl>
-    
-	    	  
-			<%if false %>
-				<%= button(:image => "/text/button_text/enter code!.png", :alt => "Enter Access Code!", :link => my_badge_create_path , :class => "large-button" ) -%>
-			<% end %>
-		
+
 		<% end %>
   	<span class="clear"></span>
 	</div>
 
 	<div id="enter-donation" class="right">
 		<h2>Make a Donation</h2>
-		<% form_for :order, :url => organization_segment_order_path(@my_badge.badge.organization, @my_badge.badge.segment , @order), :method => :post  do |f| %>
+
+<script language="javascript">
+ var min = "<%=@my_badge.minimum_donation-%>"
+</script>
+
+		<% form_for :order, :url => organization_segment_order_path(@my_badge.badge.organization, @my_badge.badge.segment , @order), :html => {:method => :post, :onsubmit => 'javascript:return ValidateDonationForm(this, min)' }  do |f| %>
 		<dl>
 			<dt><label for="donation">Enter donation amount:</label></dt>
-				<dd><%= f.text_field :amount, :size => 6 -%></dd>
+				<dd><%= f.text_field :amount, :size => 6  -%></dd>
 				<dd><%= f.submit  'Donate'  -%></dd>
 		</dl>
-	     
-	             
-			<%if false %>
-				<%= button(:image => "/text/button_text/donate!.png", :alt => "Donate!", :link => organization_segment_order_path(@my_badge.badge.organization, @my_badge.badge.segment , @order  ), :class => "large-button" ) -%>
-			<% end %>
 
   	<% end %>
 	</div>

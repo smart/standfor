@@ -70,6 +70,10 @@ class MyBadge < ActiveRecord::Base
      "/images/thumbnails/#{self.id}/" 
    end
 
+   def minimum_donation
+      self.badge.minimum_donation
+   end
+
    protected
    def after_initialize
       if self.adi_id.nil?

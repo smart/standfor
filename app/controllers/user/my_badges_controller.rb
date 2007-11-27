@@ -35,6 +35,9 @@ class User::MyBadgesController < ApplicationController
   # GET /user_my_badges/new.xml
   def new
     @order = Order.new
+    if !@my_badge.minimum_donation.nil?
+       @order.amount = @my_badge.minimum_donation
+    end
     respond_to do |format|
       format.html 
     end

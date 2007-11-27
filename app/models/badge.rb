@@ -78,4 +78,10 @@ class Badge < ActiveRecord::Base
        Account.find(:all, :conditions =>  ["id IN ( SELECT account_id FROM my_badges WHERE badge_id = ? ) ",  self.id ] )
      end
 
+     def minimum_donation
+          @donation_requirement = self.requirements.find_by_type('DonationRequirement')
+          return @donation_requirement.value.to_i if !@donation_requirement.nil?
+          return 0
+     end
+
 end
