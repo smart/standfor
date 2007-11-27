@@ -374,6 +374,10 @@ img {
 	display:none;
 }
 
+#badge-list img {
+	padding:0 10px 10px 0;
+}
+
 /* organization page specific styles */
 
 #overview {

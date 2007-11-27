@@ -28,7 +28,7 @@
 
 <% grey_fade(:id => "badges" ) do -%>
 	<h2><%= image_tag("/text/basicborder_header/my badges.png", :alt => "My Badges") %> <%= link_to  'view all' , user_my_badges_path -%></h2>
-   <div id="my-badge-list">
+   <div id="badge-list">
 	<% if @my_badges.empty? %>
 		<p>You haven't created any badges yet. Please <%= link_to 'create a badge', badges_path %> first.</p>
 	<% else %>

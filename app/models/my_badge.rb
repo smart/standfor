@@ -52,10 +52,10 @@ class MyBadge < ActiveRecord::Base
       image =  Magick::Image::read( @file_data.path  ).first
       full_path = File.join(File.join(self.cache_path , 'full.jpg' ) ) 
       image.write(full_path)
-      thumb = image.resize_to_fit(200, 135)
+      thumb = image.resize_to_fit(300, 300)
       thumb_path = File.join(File.join(self.cache_path , 'medium.jpg' ) ) 
       thumb.write(thumb_path)
-      small = image.resize_to_fit(100, 67)
+      small = image.resize_to_fit(225, 225)
       small_path = File.join(File.join(self.cache_path , 'small.jpg' ) ) 
       small.write(small_path)
     end
