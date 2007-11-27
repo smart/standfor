@@ -1,5 +1,12 @@
 <% content_box("welcome #{@account.nickname}", :class => "shadow", :id => "welcome" ) do -%>
-    <%= image_tag(current_account.avatar.public_filename(:thumb)) -%> <br />
+
+ <% if !current_account.avatar.nil? %>
+ <%= image_tag(current_account.avatar.public_filename(:thumb)) -%> 
+  <% else %>
+ <%= image_tag('missing_avatar.jpg') -%>
+  <% end %>
+
+   <br />
  <%= link_to "upload an avatar", new_user_avatar_path , :class => 'small-link' %>
 
   <%= link_to 'Edit', edit_user_account_path %>
