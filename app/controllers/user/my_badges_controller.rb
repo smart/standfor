@@ -132,6 +132,20 @@ class User::MyBadgesController < ApplicationController
   def customize 
   end
 
+  def update_causes
+    @organization = Organization.find_by_id(params[:search_organization])
+    @results = current_account.my_badges.find(:all, 
+                :conditions =>  ['badge_id  IN (SELECT id FROM badges where organization_id = ? ) ' ,  @organization.id ] )
+    render :action => 'update_causes.rjs'
+  end
+
+  def update_badges
+    @segment = Segment.find_by_id(params[:search_segment])
+    @results = current_account.my_badges.find(:all, 
+                              :conditions => [ 'badge_id IN (SELECT id FROM badges WHERE segment_id  = ? ) ',  @segment.id] )
+    render :action => 'update_badges.rjs'
+  end
+
 
    protected
 

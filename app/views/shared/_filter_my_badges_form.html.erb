@@ -6,11 +6,17 @@
 	</dl>
 	<dl>
 		<dt><label for="search_organization">organization</label></dt>
-			<dd><%= select 'search', 'organization', Organization.find(:all, :order => 'name').collect {|o| [o.name, o.id] },{:include_blank => true }  %></dd>
+			<dd>
+ <%= select 'search', 'organization', Organization.find(:all, :order => 'name').collect {|o| [o.name, o.id] }, {:prompt => 'Select An Organization'}  %>
+ <%= observe_field 'search_organization', :url => {:controller => 'user/my_badges', :action => 'update_causes' }, :with => 'search_organization' %>
+</dd>
 	</dl>
 	<dl>
 		<dt><label for="search_segment">cause</label></dt>
-			<dd id="cause-select"><%= select 'search', 'segment', Segment.find(:all, :order => 'name').collect {|s| [s.name, s.id] }, {:include_blank => true}  %></dd>
+<dd id="cause-select">
+<%= select 'search', 'segment', Segment.find(:all, :order => 'name').collect {|s| [s.name, s.id] }, {:prompt => 'Select A Cause' }  %>
+ <%= observe_field 'search_segment', :url => {:controller => 'user/my_badges', :action => 'update_badges' }, :with => 'search_segment' %>
+</dd>
 	</dl>
 	<%= submit_tag 'search' %>
 	</form >
