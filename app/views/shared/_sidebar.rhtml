@@ -1,18 +1,18 @@
 <% radial_box(:id => "stats") do %>
 	<% if current_account != :false %>
 	<div id="your-stats">
-		<h2><%= image_tag("/text/side_button/my stats.png", :alt => "my stats") %></h2>
+		<h2>my stats</h2>
 	  <ul class="stats">
-	    <li>number of badges: <%= current_account.my_badges.size -%></li>
-	    <li>contributions: <%= current_account.total_donations(@organization) -%> </li>
-	    <li>awareness points: <%= current_account.awareness_points -%> </li>
+	    <li>number of badges: <span><%= current_account.my_badges.size -%></span></li>
+	    <li>contributions: <span><%= current_account.total_donations(@organization) -%></span></li>
+	    <li>awareness points: <span><%= current_account.awareness_points -%></span></li>
 		</ul>
 	</div>
  	<span class="seperator"></span>
 	<% end %>
 	<% if !@organization.nil? %>
 	  <div id="org-stats">
-	   <h2><%= image_tag("/text/side_button/#{@organization.name} stats.png", :alt => "my stats") %></h2>
+	   <h2><%= @organization.name -%> stats</h2>
 	   <%= render :partial => '/organizations/statistics', :locals => {:organization => @organization } -%> 
 	  </div>
 	  <span class="seperator"></span>
@@ -20,7 +20,7 @@
 
 	<%  if true  %>
 	  <div id="system-stats">
-	   <h2><%= image_tag("/text/side_button/system stats.png", :alt => "system stats") %></h2>
+	   <h2>system stats</h2>
 	      <%= render :partial => '/shared/system_statistics' -%>
 	  </div>
 	  <span class="seperator"></span>

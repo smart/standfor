@@ -1,4 +1,3 @@
-<% unless @my_badges.empty? %>
 <% content_box("badge spotlight", :class => 'shadow', :id => 'preview') do %>
 	<%= image_tag("/images/placeholders/largebadge.jpg", :alt => "Badge Preview") %>
 <% end %>
@@ -14,33 +13,12 @@
 <% grey_fade(:id => "badges" ) do -%>
 	<h1><%= image_tag("/text/basicborder_header/my badges.png", :alt => "My Badges") %></h1>
   <div id="my-badge-list">
-	<% current_account.my_badges.each do |my_badge| %>
- 		<%= badge_link(my_badge, user_my_badge_path(my_badge), {:width => 260 , :height => 120, :style =>"margin:5px;" } ) -%>
+	<% if @my_badges.empty? %>
+		<p>You haven't created any badges yet. Please <%= link_to 'create a badge', badges_path %> first.</p>
+	<% else %>
+		<% current_account.my_badges.each do |my_badge| %>
+	 		<%= badge_link(my_badge, user_my_badge_path(my_badge), :size => 'small' ) -%>
+		<% end %>
 	<% end %>
 </div>
-<% end %>
-
-<% else %>
-<p>
-	You have not created any badges yet. <%= link_to "Browse Badges.", badges_path %>
-</p>
-
-<!-- The following is for mockup purposes only -->
-<% content_box("badge spotlight", :class => 'shadow', :id => 'preview') do %>
-	<%= image_tag("/images/placeholders/largebadge.jpg", :alt => "Badge Preview") %>
-<% end %>
-
-<% content_box("filter badges", :class => 'basicborder', :id => 'instructions') do %>
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
-	</p>
-<% end %>
-<% grey_fade(:id => "badges" ) do -%>
-	<h1><%= image_tag("/text/basicborder_header/my badges.png", :alt => "My Badges") %></h1>
-	<% 6.times do %>
-		<%= image_tag("/images/placeholders/imageselections.jpg") %>
-	<% end %>
-<% end %>
-<!-- end of mockup -->
-
 <% end %>

@@ -5,11 +5,11 @@ module BadgesHelper
   	mouseover = "Element.show('#{dom_id(badge)}')"
   	mouseout = "Element.hide('#{dom_id(badge)}')"
   	meta = content_tag(:li, "<h4>#{badge.name}</h4>")
-  	meta << content_tag(:li, "<strong>Organization:</strong> " + badge.organization.name)
+  	meta << content_tag(:li, "<strong>Organization:</strong> " + link_to(badge.organization.name, organization_path(badge.organization.site_name)) )
   	meta << content_tag(:li, "<strong>Cause:</strong> " + badge.segment.name)
-  	meta << content_tag(:li, link_to("View this Badge", path))
+  	meta << content_tag(:li, link_to(image_tag('icons/navigation/get_badge.png', :alt => "Get Badge"), path))
   	meta = content_tag(:ul, meta)
-  	meta = link_to(image_tag( badge.source_path(:size => 'medium')) , path) + meta
+  	meta = link_to(image_tag( badge.source_path(:size => 'medium'), :class => 'preview') , path) + meta
   	meta = content_tag(:div, meta, :class => 'badge-meta', :id => dom_id(badge), :style => "display:none;")
     html = content_tag(:div, meta + link, :class => 'badge-link', :onmouseover => mouseover, :onmouseout => mouseout)
     html

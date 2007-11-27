@@ -34,13 +34,13 @@
 <%= render :partial => '/shared/filter_my_badges_form.html.erb' %>
 
 <% grey_fade(:id => "badges" ) do -%>
-	<h2><%= image_tag("/text/basicborder_header/my badges.png", :alt => "My Badges") %> <%= link_to  'view all' , user_my_badges_path -%></h2>
+	<h2>my badges<span><%= link_to  'view all' , user_my_badges_path -%></span></h2>
    <div id="my-badge-list">
 	<% if @my_badges.empty? %>
 		<p>You haven't created any badges yet. Please <%= link_to 'create a badge', badges_path %> first.</p>
 	<% else %>
 		<% @my_badges.each do |my_badge| %>
-			<%= badge_link(my_badge, user_my_badge_path(my_badge), :size => 'medium' ) -%>
+			<%= badge_link(my_badge, user_my_badge_path(my_badge), :size => 'small' ) -%>
 		<% end %>	
 	<% end %>
   </div>
