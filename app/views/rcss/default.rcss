@@ -24,7 +24,7 @@ ul, li {
 
 h1 {
   font-size:130%;
-  line-height:34px;
+  line-height:28px;
 }
 
 h2 {
@@ -900,7 +900,6 @@ div.small-logo img {
 
 .box h1 {
     height:30px;
-    font-size:1em;
     padding-bottom:10px;
     text-align:right;
 }

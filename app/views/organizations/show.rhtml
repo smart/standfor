@@ -10,10 +10,7 @@
 <% end %>
 
 <% content_box("our causes", :class => 'basicborder', :id => 'ranking') do %>
-  <% @organization.segments.each do |segment| %>
-	<h3><%= link_to(segment.name, organization_segment_path(@organization, segment))%></h3>
-  	<p><%= segment.description -%></p>
-	<% end %>
+  <%= render :partial => 'navigation', :locals => { :organization => @organization } %>
 <% end %>
 
 <% content_box(@organization.name + " stands for:", :class => 'basic', :id => 'overview') do %>
