@@ -34,7 +34,7 @@ class OrdersController < ApplicationController
       if @order.save
         session[:order] = nil
         flash[:notice] = "Thank you for your donation to #{@segment.name}"
-        session[:receipt] = "View your receipt from the 'My Account Section' "
+        session[:receipt] = "Thank you for your donation! View your receipt from the 'My Account Section' "
         format.html { redirect_to my_badge_create_url }
         format.xml  { render :xml => @order, :status => :created, :location => @order }
       else
