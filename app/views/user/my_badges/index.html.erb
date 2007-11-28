@@ -1,5 +1,7 @@
 <% content_box("badge spotlight", :class => 'shadow', :id => 'preview') do %>
-	<%= image_tag("/images/placeholders/largebadge.jpg", :alt => "Badge Preview") %>
+	<div id="badge">
+		<%= image_tag(@my_badges.first.source_path, :alt => 'Badge Preview') %>
+	</div>
 <% end %>
 
 <% content_box("filter badges", :class => 'basicborder', :id => 'instructions') do %>

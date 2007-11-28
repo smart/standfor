@@ -1,16 +1,28 @@
-<div id="preview">
-  <% content_box( "your charity badge", :class => "shadow" ) do -%>
-    <div id="badge">
-      <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
-    </div>
+<% content_box( "your charity badge", :class => "shadow", :id => "preview" ) do -%>
+	<div id="badge-actions">
+		<ul class="navigation">
+	    <li>
+	    	<%= link_to image_tag('icons/navigation/save_badge.png', :alt => "Save Badge") , :controller => 'user/my_badges', :action => 'new', :badge_id => @my_badge.badge %>
+    	</li>
+    	<li>
+	    	<%= link_to image_tag('icons/navigation/reset_badge.png', :alt => "Reset Badge") , :controller => 'badge', :action => 'show', :badge_id => @badge %>
+    	</li>
+		</ul>
+		<span class="clear"></span>
+	</div>
+	
+  <div id="badge">
+    <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
+  </div>
+  
+	<div id="badge-functions">
+		<ul class="navigation">
+	    <li class="back"><span><%= link_to 'back to badges', badges_path %></span></li>
+		</ul>
+		<span class="clear"></span>
+	</div>
 
-    <%= button(:image => '/text/button_text/claim.png', :alt => 'Save This Badge ', 
-               :link => url_for( :controller => 'user/my_badges', 
-                                 :action => 'new', 
-                                 :badge_id => @my_badge.badge), 
-                                 :class => 'large-button' ) %>
-  <% end %>
-</div>
+<% end %>
 <div id="howto">
   <% content_box( "how to customize a badge", :class => "basic" ) do -%>
     <p>
@@ -29,7 +41,7 @@
 <div id="toolbar">
   <% grey_fade do -%>
     <div id="tool-options">
-    	<h2><%= image_tag("/text/basicborder_header/tool options.png", :alt => "Tool Options") %></h2>
+    	<h2>tool options</h2>
       <span class="min-height"></span>
     </div>
   <% end %>

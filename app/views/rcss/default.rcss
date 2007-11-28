@@ -142,7 +142,7 @@ img {
 
 #stats ul li {
 	position:relative;
-	line-height:1.5em;
+	line-height:1.7em;
 	font-size:1.1em;
 	margin-bottom:3px;
 }
@@ -155,6 +155,13 @@ img {
 	right:0;
 	font-size:1.1em;
 	font-weight:bold;
+	line-height:23px;
+	border:1px solid black;
+}
+
+.stats li {
+	background:url(/images/backgrounds/b7b9bb_fade.jpg) repeat-x top left;
+	padding-left:5px;
 }
 
 .radial {
@@ -304,13 +311,20 @@ img {
 #badge-functions {
 	margin-top:5px;
 }
-#badge-functions ul.navigation {
+#badge-actions {
+	margin-top:-5px;
+	padding-bottom:5px;
+}
+#badge-functions ul.navigation,
+#badge-actions ul.navigation {
 	float:left;
 }
-#badge-functions ul.actions {
+#badge-functions ul.actions,
+#badge-actions ul.actions {
 	float:right;
 }
-#badge-functions ul li {
+#badge-functions ul li,
+#badge-actions ul li {
 	display:block;
 	height:28px;
 	line-height:28px;
@@ -320,7 +334,11 @@ img {
 	_width:32px;
 	float:left;
 }
-#badge-functions .actions span {
+#badge-actions ul li {
+	margin-top:-20px;
+}
+#badge-functions .actions span,
+#badge-actions .actions span {
 	display:none;
 }
 #badge-functions .actions span.show {
@@ -330,7 +348,8 @@ img {
 	display:block;
 	padding-left:32px;
 }
-#badge-functions ul li.back {
+#badge-functions ul li.back,
+#badge-actions ul li.back {
 	background-image:url(/images/icons/navigation/back.png);
 }
 #badge-functions ul li.share {

@@ -8,13 +8,9 @@
   </ul>
   <ul class="actions">
   	<%= my_badge_options('share this badge', 'share', url_for(:controller =>  'user/share' , :action => 'index' , :id => my_badge)) %>
-	  <!--<li class="share"><span style="display:none;"><%= link_to 'share your badge',  :controller =>  'user/share' , :action => 'index' , :id => my_badge -%></span></li>-->
 	  <%= my_badge_options('customize this badge', 'customize', url_for(:controller =>  'user/customize' , :action => 'index' , :id => my_badge)) %>
-	  <!--<li class="customize"><span style="display:none;"><%= link_to 'customize your badge' ,  :controller =>  'user/customize' , :action => 'index' , :id => my_badge -%></span></li>-->
 	  <%= my_badge_options('sponsorship options', 'sponsors', url_for(:controller =>  'user/my_badges' , :action => 'sponsorship_options', :id => my_badge )) %>
-	  <!--<li class="sponsors"><span style="display:none;"><%= link_to 'sponsorship options',  :controller =>  'user/my_badges' , :action => 'sponsorship_options', :id => my_badge -%></span></li>-->
 	  <%= my_badge_options('merit options', 'merits', url_for(:controller =>  'user/my_badges' , :action => 'merit_options', :id => my_badge)) %>
-	  <!--<li class="merits"><span style="display:none;"><%= link_to 'merit options',  :controller =>  'user/my_badges' , :action => 'merit_options', :id => my_badge -%></span></li>-->
 	</ul>
 	<span class="clear"></span>
 </div>
