@@ -6,7 +6,7 @@
 		    	<%= link_to image_tag('icons/navigation/get_badge.png', :alt => "Get Badge") , :controller => 'customize', :action => 'index', :badge_id => badge.id %>
 	    	</li>
 	    	<li>
-		    	<%= link_to image_tag('icons/navigation/view_badge.png', :alt => "View Badge") , :controller => 'badge', :action => 'show', :badge_id => badge %>
+		    	<%= link_to image_tag('icons/navigation/view_badge.png', :alt => "View Badge") , badge_path(badge) %>
 	    	</li>
 			</ul>
 			<span class="clear"></span>
@@ -24,7 +24,7 @@
 <%= render :partial => '/shared/filter_badges_form' , :locals => {:in_my_badges => false } -%>
 
 <% grey_fade(:id => "badges" ) do -%>
-	<h1><%= image_tag("/text/basicborder_header/most recent badges.png", :alt => "My Badges") %></h1>
+	<h2>recent badges</h2>
    <div id="badge-list">
 		<% @badges.each do |badge| %>
 			<%= badge_link(badge, badge_path(badge), { :size => 'small' } ) -%>

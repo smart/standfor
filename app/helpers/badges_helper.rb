@@ -7,12 +7,21 @@ module BadgesHelper
   	meta = content_tag(:li, "<h4>#{badge.name}</h4>")
   	meta << content_tag(:li, "<strong>Organization:</strong> " + link_to(badge.organization.name, organization_path(badge.organization.site_name)) )
   	meta << content_tag(:li, "<strong>Cause:</strong> " + badge.segment.name)
-  	meta << content_tag(:li, link_to(image_tag('icons/navigation/get_badge.png', :alt => "Get Badge"), :controller => 'customize', :action => 'index', :badge_id => badge.id) + link_to(image_tag('icons/navigation/view_badge.png', :alt => "View Badge"), path))
+  	meta << content_tag(:li, customize_link(badge) + link_to(image_tag('icons/navigation/view_badge.png', :alt => "View Badge"), path))
   	meta = content_tag(:ul, meta)
   	meta = link_to(image_tag( badge.source_path(:size => 'medium'), :class => 'preview') , path) + meta
   	meta = content_tag(:div, meta, :class => 'badge-meta', :id => dom_id(badge), :style => "display:none;")
     html = content_tag(:div, meta + link, :class => 'badge-link', :onmouseover => mouseover, :onmouseout => mouseout)
     html
+  end
+  
+  def customize_link(badge)
+  	if controller.controller_name == 'badges'
+			link = link_to(image_tag('icons/navigation/get_badge.png', :alt => "Get Badge"), url_for(:controller => 'customize', :action => 'index', :badge_id => badge.id))
+		else
+			link = link_to(image_tag('icons/navigation/edit_badge.png', :alt => "Edit Badge"), url_for(:controller => 'user/customize', :action => 'index', :id => badge.id))
+		end
+  	return link
   end
   
   def show_badge_meta(badge)

@@ -132,7 +132,7 @@ class User::MyBadgesController < ApplicationController
   def share 
   end
 
-  def customize 
+  def customize
   end
 
   def update_causes
