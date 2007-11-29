@@ -33,6 +33,15 @@ class User::MyBadgesController < ApplicationController
   # GET /user_my_badges/new.xml
   def new
     @order = Order.new
+    if @my_badge.available?(current_account)
+       @my_badge.account = current_account 
+       if @my_badge.save
+          session[:unsaved_badge] = nil
+          redirect_to user_my_badge_url(@my_badge) and return false
+       else 
+          raise Exception, 'Could not save my_badge'
+       end
+    end
     if !@my_badge.minimum_donation.nil?
        @order.amount = @my_badge.minimum_donation
     end

@@ -5,6 +5,7 @@ class Sponsorship < ActiveRecord::Base
    has_many :sponsorship_hits
    
    def send_golden?
+    return true
     return false if num_golden_links.nil?
      if num_golden_links > 0 && rand(10) > 8
        true

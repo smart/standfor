@@ -102,6 +102,7 @@ class SponsorshipsController < ApplicationController
   end
 
   private 
+
   def get_sponsor
     @sponsor = current_account.sponsor
   end
