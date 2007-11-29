@@ -37,3 +37,7 @@
 	</p>
 <% end %>
 
+<% content_box("about your donation", :class => 'basicborder', :id => 'instructions') do %>
+  <%= render :partial => 'order' , :locals => { :order => @order } -%>
+<% end %>
+

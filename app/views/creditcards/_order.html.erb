@@ -1,0 +1,13 @@
+<% if order.donations.empty? %>
+ <p>Your order currently has no donations. </p>
+<% else %>
+<ul>
+<% order.donations.each do |d| %>
+ <li>
+<%= d.organization.name -%> | <%= d.segment.name -%> | <%= number_to_currency(d.amount) -%>
+</li>
+<% end %>
+ <li>Total <%= number_to_currency(order.total) -%></li>
+</ul>
+
+<% end %>
