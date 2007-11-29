@@ -3,8 +3,9 @@ badges_001:
   cached_tag_list: ""
   structure_id: "1"
   segment_id: "1"
-  name: Childrens Awareness Badge
-  updated_at: 2007-10-02 19:04:37
+  name: Gift of Life Childrens Awarenes Badge
+  updated_at: 2007-11-21 15:01:04
+  featured: "1"
   campaign_id: 
   id: "1"
   description: Show this badge to raise awaerness about the medical needs of children around the world.
@@ -16,6 +17,7 @@ badges_002:
   segment_id: "2"
   name: Freemans Legion Badge
   updated_at: 2007-10-03 10:08:37
+  featured: "0"
   campaign_id: 
   id: "2"
   description: Use this badge to raise awareness about Freeman's Legions
@@ -27,6 +29,7 @@ badges_003:
   segment_id: "3"
   name: Uganda Peace Awareness Badge
   updated_at: 2007-10-03 10:15:04
+  featured: "0"
   campaign_id: 
   id: "3"
   description: Show this badge to support peace Uganda
@@ -38,6 +41,7 @@ badges_004:
   segment_id: "4"
   name: Khartoum Women's Entrepreneureship Badge
   updated_at: 2007-10-03 10:17:25
+  featured: "0"
   campaign_id: 
   id: "4"
   description: Show this badge to support Women's Entrepreneuship in Khartoum
@@ -49,6 +53,7 @@ badges_005:
   segment_id: "5"
   name: Human Rights Awareness Badge
   updated_at: 2007-10-03 10:19:38
+  featured: "0"
   campaign_id: 
   id: "5"
   description: Show this badge to support Human Rights around the world.
@@ -60,6 +65,7 @@ badges_006:
   segment_id: "6"
   name: International Justice Awarenes Badge
   updated_at: 2007-10-03 10:22:05
+  featured: "0"
   campaign_id: 
   id: "6"
   description: Display the badge to  support justice around the world.
