@@ -3,11 +3,12 @@ sponsors_001:
   city: Cupertino
   address1: One Infinite Loop
   name: Apple
-  updated_at: 2007-10-05 14:31:31
+  updated_at: 2007-11-21 13:09:10
   zip: "94105"
   address2: ""
   account_id: 
   address3: ""
+  featured: "1"
   url: www.apple.com
   country: United States
   logo: 
@@ -28,6 +29,7 @@ sponsors_002:
   address2: ""
   account_id: 
   address3: ""
+  featured: "0"
   url: www.microsoft.com
   country: United States
   logo: 
