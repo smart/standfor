@@ -1,7 +1,10 @@
 <% content_box("badge spotlight", :class => 'shadow', :id => 'preview') do %>
+	
+	
 	<div id="badge">
 		<%= image_tag(@my_badges.first.source_path, :alt => 'Badge Preview') %>
 	</div>
+	<%= render :partial => 'navigation' , :locals => {:my_badge => @my_badges.first} -%>
 <% end %>
 
 <% content_box("filter badges", :class => 'basicborder', :id => 'instructions') do %>
@@ -13,7 +16,7 @@
 <%= render :partial => '/shared/filter_my_badges_form.html.erb' %>
 
 <% grey_fade(:id => "badges" ) do -%>
-	<h1><%= image_tag("/text/basicborder_header/my badges.png", :alt => "My Badges") %></h1>
+	<h1>my badges</h1>
   <div id="my-badge-list">
 	<% if @my_badges.empty? %>
 		<p>You haven't created any badges yet. Please <%= link_to 'create a badge', badges_path %> first.</p>
