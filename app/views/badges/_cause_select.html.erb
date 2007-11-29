@@ -1,2 +1,3 @@
+ <dt><label for="search_segment">cause</label></dt>
 <%= select 'search', 'segment', organization.segments.collect {|s| [s.name, s.id] }, {:prompt => 'Select a Cause'  }  %>
 <%= observe_field 'search_segment', :url => {:controller => 'badges', :action => 'update_badges' }, :with => 'search_segment' %>

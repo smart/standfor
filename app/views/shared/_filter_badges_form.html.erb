@@ -16,10 +16,7 @@
 </dd>
 	</dl>
 	<dl>
-		<dt><label for="search_segment">cause</label></dt>
-			<dd id="cause-select"><%= select 'search', 'segment', Segment.find(:all, :order => 'name').collect {|s| [s.name, s.id] }, {:prompt => 'Select a Cause' }  %>
- <%= observe_field 'search_segment', :url => {:controller => 'badges', :action => 'update_badges' }, :with => 'search_segment' %>
-</dd>
+	<dd id="cause-select"> </dd>
 	</dl>
 	<%= submit_tag 'search' %>
 	</form >

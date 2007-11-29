@@ -109,9 +109,10 @@ class BadgesController < ApplicationController
   end
 
   def update_causes
+    render :action => 'clear_causes.rjs'  and return false if params[:search_organization].blank?
     @organization = Organization.find_by_id(params[:search_organization])
     @results = @organization.badges
-    render :action => 'update_causes.rjs'
+    render :action => 'update_causes.rjs' 
   end
 
   def update_badges
