@@ -22,7 +22,7 @@
 		<p>You haven't created any badges yet. Please <%= link_to 'create a badge', badges_path %> first.</p>
 	<% else %>
 		<% current_account.my_badges.each do |my_badge| %>
-	 		<%= badge_link(my_badge, user_my_badge_path(my_badge), :size => 'small' ) -%>
+	 		<%= badge_link(my_badge, :size => 'small' ) -%>
 		<% end %>
 	<% end %>
 </div>

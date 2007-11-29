@@ -25,7 +25,7 @@
 	<h2><%= @organization.name -%> Badges</h2>
 	<div id="badge-list">
 		<% @organization.featured_badges.each do |badge| %>
-			<%= badge_link(badge, badge_path(badge), {:width => 260, :height => 120, :style=> "margin:5px;" } ) -%>
+			<%= badge_link(badge, :size => 'small' ) -%>
 		<% end %>
   </div>
 	<span class="clear"></span>

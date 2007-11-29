@@ -254,6 +254,8 @@ img {
 }
 .home #featured-badges {
 	width:315px;
+	position:relative;
+	z-index:100;
 }
 #get-badge, #customize-badge, #share-badge, #make-difference {
 	margin-right:15px;

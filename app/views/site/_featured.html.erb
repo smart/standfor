@@ -1,3 +1,3 @@
 <% Badge.find(:all, :conditions => 'featured = 1 ', :order => 'id DESC', :limit => 3 ).each do |b| %>
-<%= badge_link(b, badge_path(b), :size => 'medium' ) -%><br clear="all" /> 
+	<%= badge_link(b, :size => 'medium' ) -%>
 <% end %>

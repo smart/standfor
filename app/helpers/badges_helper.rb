@@ -1,6 +1,8 @@
 module BadgesHelper
-  def badge_link(badge, path, opts = {} )
+  def badge_link(badge, opts = {})
     opts[:size] ||=  'medium'
+    badge_type = check_badge_type(badge)
+    badge_type == 'Badge' ? path = badge_path(badge) : path = user_my_badge_path(badge)
   	link = link_to(image_tag( badge.source_path(:size => opts[:size])), path ) 
   	mouseover = "Element.show('#{dom_id(badge)}')"
   	mouseout = "Element.hide('#{dom_id(badge)}')"
@@ -15,11 +17,12 @@ module BadgesHelper
     html
   end
   
-  def customize_link(badge)
-  	if controller.controller_name == 'badges'
-			link = link_to(image_tag('icons/navigation/get_badge.png', :alt => "Get Badge"), url_for(:controller => 'customize', :action => 'index', :badge_id => badge.id))
-		else
-			link = link_to(image_tag('icons/navigation/edit_badge.png', :alt => "Edit Badge"), url_for(:controller => 'user/customize', :action => 'index', :id => badge.id))
+  def customize_link(badge, opts = {})
+  	opts[:type] ||= badge.class.to_s	
+  	if opts[:type] == 'Badge'
+  		link = link_to(image_tag('icons/navigation/get_badge.png', :alt => "Get Badge"), url_for(:controller => 'customize', :action => 'index', :badge_id => badge.id))
+  	else
+  		link = link_to(image_tag('icons/navigation/edit_badge.png', :alt => "Edit Badge"), url_for(:controller => 'user/customize', :action => 'index', :id => badge.id))
 		end
   	return link
   end
@@ -51,6 +54,14 @@ module BadgesHelper
 				(state == 'show') ? item.add_class_name('show') : item.remove_class_name('show')
 			end
 		end
+	end
+	
+	def badge_preview
+		
+	end
+	
+	def check_badge_type(badge)
+		return badge.class.to_s
 	end
 
   def featured_options
