@@ -17,7 +17,7 @@ config.action_controller.perform_caching             = true
 # Disable delivery errors, bad email addresses will be ignored
 # config.action_mailer.raise_delivery_errors = false
 
-ADISERVER = "http://adiserver.eval.sympact.net"
+ADISERVER = "http://adiserver.sympact.net"
 ADISERVER_USER = "quentin"
 ADISERVER_PASS = "test"
 
