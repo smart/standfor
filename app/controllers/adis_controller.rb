@@ -24,12 +24,13 @@ class AdisController < ApplicationController
   end
   
   def render_adi
-    @sponsorship = @my_badge.all_sponsorships[rand(@my_badge.all_sponsorships.length - 1)]
-    @golden = @sponsorship.send_golden? 
-    adi_response = Net::HTTP.get_response(URI.parse(ADISERVER + "/adis/#{@my_badge.adi_id}.png?golden=#{@golden}&sponsor=#{@sponsorship.sponsor_id}"))  || (raise Exception, 'Image resource not specified')
+    #@sponsorship = @my_badge.all_sponsorships[rand(@my_badge.all_sponsorships.length - 1)]
+    #@golden = @sponsorship.send_golden? 
+    #adi_response = Net::HTTP.get_response(URI.parse(ADISERVER + "/adis/#{@my_badge.adi_id}.png?golden=#{@golden}&sponsor=#{@sponsorship.sponsor_id}"))  || (raise Exception, 'Image resource not specified')
+    adi_response = Net::HTTP.get_response(URI.parse(ADISERVER + "/adis/#{@my_badge.adi_id}.png"))
     send_data adi_response.body, :filename => params[:action] + '.png', :type =>'image/png', :disposition => 'inline'
-    if adi_response['x-adi-authentication'] == "true"
-      @my_badge.sponsorship_hits.create(:sponsorship => @sponsorship, :golden => @golden, :ip => request.env["REMOTE_ADDR"], :referrer => request.env['HTTP_REFERER'] )
-    end
+    #if adi_response['x-adi-authentication'] == "true"
+    #  @my_badge.sponsorship_hits.create(:sponsorship => @sponsorship, :golden => @golden, :ip => request.env["REMOTE_ADDR"], :referrer => request.env['HTTP_REFERER'] )
+    #end
   end
 end
