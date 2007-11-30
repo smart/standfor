@@ -1,23 +1,5 @@
 <% content_box(@badge.name, :class => 'shadow', :id => 'preview') do %>
-	<div id="badge-actions">
-		<ul class="navigation">
-	    <li>
-	    	<%= link_to image_tag('icons/navigation/get_badge.png', :alt => "Get Badge") , :controller => 'customize', :action => 'index', :badge_id => @badge.id %>
-    	</li>
-		</ul>
-		<span class="clear"></span>
-	</div>
-
-	<div id="badge">
-		<%= image_tag(@badge.source_path, :alt => 'Badge Preview') %>
-	</div>
-	
-	<div id="badge-functions">
-		<ul class="navigation">
-	    <li class="back"><span><%= link_to 'back to badges', badges_path %></span></li>
-		</ul>
-		<span class="clear"></span>
-	</div>
+	<%= render :partial => 'shared/badge_preview', :locals => {:badge => @badge} %>
 <% end %>
 
 <% content_box("badge details", :class => 'basicborder', :id => 'instructions') do %>

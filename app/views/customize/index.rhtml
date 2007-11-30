@@ -1,27 +1,5 @@
 <% content_box( "your charity badge", :class => "shadow", :id => "preview" ) do -%>
-	<div id="badge-actions">
-		<ul class="navigation">
-	    <li>
-	    	<%= link_to image_tag('icons/navigation/save_badge.png', :alt => "Save Badge") , :controller => 'user/my_badges', :action => 'new', :badge_id => @my_badge.badge %>
-    	</li>
-    	<li>
-	    	<%= link_to image_tag('icons/navigation/reset_badge.png', :alt => "Reset Badge") , :controller => 'badge', :action => 'show', :badge_id => @badge %>
-    	</li>
-		</ul>
-		<span class="clear"></span>
-	</div>
-	
-  <div id="badge">
-    <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
-  </div>
-  
-	<div id="badge-functions">
-		<ul class="navigation">
-	    <li class="back"><span><%= link_to 'back to badges', badges_path %></span></li>
-		</ul>
-		<span class="clear"></span>
-	</div>
-
+	<%= render :partial => 'shared/badge_preview', :locals => {:badge => @my_badge} %>
 <% end %>
 <div id="howto">
   <% content_box( "how to customize a badge", :class => "basic" ) do -%>

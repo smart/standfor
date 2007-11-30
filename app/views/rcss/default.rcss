@@ -490,7 +490,7 @@ div.small-logo img {
 #badge {
   width:390px;
 }
-#badge .min-height {
+#badge.min-height {
   height:160px;
 }
 

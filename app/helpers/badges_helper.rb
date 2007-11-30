@@ -9,7 +9,7 @@ module BadgesHelper
   	meta = content_tag(:li, "<h4>#{badge.name}</h4>")
   	meta << content_tag(:li, "<strong>Organization:</strong> " + link_to(badge.organization.name, organization_path(badge.organization.site_name)) )
   	meta << content_tag(:li, "<strong>Cause:</strong> " + badge.segment.name)
-  	meta << content_tag(:li, customize_link(badge) + link_to(image_tag('icons/navigation/view_badge.png', :alt => "View Badge"), path))
+  	meta << content_tag(:li, customize_link(badge) + link_to(image_tag('icons/navigation/view_badge.png', :alt => "View Badge"), get_badge_path(badge)))
   	meta = content_tag(:ul, meta)
   	meta = link_to(image_tag( badge.source_path(:size => 'medium'), :class => 'preview') , path) + meta
   	meta = content_tag(:div, meta, :class => 'badge-meta', :id => dom_id(badge), :style => "display:none;")
@@ -20,11 +20,27 @@ module BadgesHelper
   def customize_link(badge, opts = {})
   	opts[:type] ||= badge.class.to_s	
   	if opts[:type] == 'Badge'
-  		link = link_to(image_tag('icons/navigation/get_badge.png', :alt => "Get Badge"), url_for(:controller => 'customize', :action => 'index', :badge_id => badge.id))
+  		link_to(image_tag('icons/navigation/get_badge.png', :alt => "Get Badge"), url_for(:controller => 'customize', :action => 'index', :badge_id => badge.id))
   	else
-  		link = link_to(image_tag('icons/navigation/edit_badge.png', :alt => "Edit Badge"), url_for(:controller => 'user/customize', :action => 'index', :id => badge.id))
+  		link_to(image_tag('icons/navigation/edit_badge.png', :alt => "Edit Badge"), url_for(:controller => 'user/customize', :action => 'index', :id => badge.id))
 		end
-  	return link
+  end
+  
+  def save_link(badge, opts = {})
+  	opts[:type] ||= badge.class.to_s
+  	if badge.new_record?
+  		link_to(image_tag('icons/navigation/save_badge.png', :alt => 'Save Badge'), url_for(:controller => 'user/my_badges', :action => 'new', :badge_id => badge ))
+		else
+			link_to(image_tag('icons/navigation/save_badge.png', :alt => 'Save Badge'), url_for(:controller => 'user/customize', :action => 'save', :id => badge ))
+		end
+  end
+  
+  def get_badge_path(badge)
+  	if badge.class.to_s == 'Badge'
+  		badge_path(badge)
+		else
+			user_my_badge_path(badge)
+		end
   end
   
   def show_badge_meta(badge)

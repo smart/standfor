@@ -1,27 +1,21 @@
-<div class="oi1">
-  <div id="preview">
-    <% content_box( "share your badge", :class => "shadow" ) do -%>
-      <div id="badge">
-        <%= render :partial => "user/customize/current_view", :locals => {:my_badge => @my_badge } -%>
-      </div>
-      <%= render :partial => '/user/my_badges/navigation' , :locals => {:my_badge => @my_badge} -%>
-    <% end %>
-  </div>
-  <div id="howto">
-    <% content_box( "how to share your badge", :class => "basic" ) do -%>
-      <p>Share your badge by clicking....
-      </p>
-    <% end %>
-  </div>
-  <div id="networks">
-    <%= render :partial => "webapps", :locals => {:my_badge => @my_badge, :shares => @shares  }  -%> 
-  </div>
-  <div id="toolbar">
-	  <% grey_fade do -%>
-	    <div id="share-options">
-	    	<h2><%= image_tag("/text/basicborder_header/share options.png", :alt => "Share Options") %></h2>
-	      <span class="min-height"></span>
-	    </div>
-	  <% end %>
-	</div>
+<% content_box( "share your badge", :class => "shadow", :id => 'preview' ) do -%>
+  <%= render :partial => 'shared/badge_preview', :locals => {:badge => @my_badge} %>
+<% end %>
+<div id="howto">
+  <% content_box( "how to share your badge", :class => "basic" ) do -%>
+    <p>Share your badge by clicking....
+    </p>
+  <% end %>
 </div>
+<div id="networks">
+  <%= render :partial => "webapps", :locals => {:my_badge => @my_badge, :shares => @shares  }  -%> 
+</div>
+<div id="toolbar">
+  <% grey_fade do -%>
+    <div id="share-options">
+    	<h2><%= image_tag("/text/basicborder_header/share options.png", :alt => "Share Options") %></h2>
+      <span class="min-height"></span>
+    </div>
+  <% end %>
+</div>
+

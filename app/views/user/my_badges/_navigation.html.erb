@@ -2,7 +2,7 @@
 	<ul class="navigation">
 		<% if controller.action_name == 'show' -%>
 	  <li class="back"><span><%= link_to 'back to my badges', user_my_badges_path %></span></li>
-	  <% else -%>
+	  <% elsif controller.action_name != 'index' -%>
 	  <li class="back"><span><%= link_to 'back to badge', user_my_badge_path(my_badge) -%></span></li>
 	  <% end -%>
   </ul>

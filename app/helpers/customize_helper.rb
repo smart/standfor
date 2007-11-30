@@ -13,4 +13,5 @@ module CustomizeHelper
     html = content_tag(:li, html, :class => icon_class)
     return html
   end
+  
 end

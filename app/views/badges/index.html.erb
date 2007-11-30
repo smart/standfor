@@ -1,17 +1,6 @@
 <% Badge.find(:all, :conditions => 'featured = 1 ' ,  :order => 'RAND()', :limit => 1).each do |badge|  %>
 	<% content_box("featured badge", :class => 'shadow', :id => 'preview') do %>
-		<div id="badge-actions">
-			<ul class="navigation">
-		    <li>
-		    	<%= link_to image_tag('icons/navigation/get_badge.png', :alt => "Get Badge") , :controller => 'customize', :action => 'index', :badge_id => badge.id %>
-	    	</li>
-	    	<li>
-		    	<%= link_to image_tag('icons/navigation/view_badge.png', :alt => "View Badge") , badge_path(badge) %>
-	    	</li>
-			</ul>
-			<span class="clear"></span>
-		</div>
-		<%= link_to(image_tag( badge.source_path(:size => 'full')), badge_path(badge)) %>
+		<%= render :partial => 'shared/badge_preview', :locals => {:badge => badge} %>
 	<% end %>
 <% end %>
 

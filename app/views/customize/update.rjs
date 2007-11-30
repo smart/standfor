@@ -1,1 +1,1 @@
-page.replace_html 'badge', :partial =>"current_view", :locals => {:my_badge => @my_badge, :size => :medium }
+page.replace_html 'badge', image_tag("#{ADISERVER}/adis/#{@my_badge.adi_id}.jpg?&draft=true&rand=#{rand(100).to_s})", :alt => 'Badge Preview')

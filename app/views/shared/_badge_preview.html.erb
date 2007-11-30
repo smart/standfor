@@ -1,0 +1,30 @@
+<div id="badge-actions">
+	<ul class="navigation">
+		<% if controller.controller_name != 'customize' -%>
+    	<li><%= customize_link(badge) %></li>
+			<% if controller.action_name != 'show'  %>
+	  		<li><%= link_to(image_tag('icons/navigation/view_badge.png', :alt => "View Badge"), get_badge_path(badge)) %></li>
+	  	<% end %>
+  	<% end -%>
+  	<% if controller.controller_name == 'customize' -%>
+  	<li>
+  		<%= save_link(badge) %>
+		</li>
+		<li><%= image_tag('icons/navigation/reset_badge.png', :alt => 'Reset Badge') %></li>
+		<% end -%>
+	</ul>
+</div>
+
+<div id="badge" class="min-height">
+	<% if controller.controller_name != 'customize' -%>
+		<%= link_to(image_tag(badge.source_path(:size => 'full'), :alt => 'Badge Preview'), get_badge_path(badge)) %>
+	<% else -%>
+		<%= image_tag("#{ADISERVER}/adis/#{badge.adi_id}.jpg?&draft=true&rand=#{rand(100).to_s})", :alt => 'Badge Preview') %>
+	<% end -%>
+</div>
+
+<% if badge.class.to_s == 'MyBadge' and !badge.new_record? -%>
+	<%= render :partial => 'user/my_badges/navigation' , :locals => {:my_badge => badge} -%>
+<% elsif controller.controller_name == 'badges' and controller.action_name == 'show' %>
+	<%= render :partial => 'badges/navigation' , :locals => {:badge => badge} -%>
+<% end -%>
