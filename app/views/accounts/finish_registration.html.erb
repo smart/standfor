@@ -1,4 +1,4 @@
-<% content_box('settings', :id => 'settings') do -%>
+<% content_box('settings', :class => 'shadow', :id => 'preview') do -%>
 
 <%= error_messages_for :user %>
 <% form_for :account, current_account, { :url => {:action => :save_registration}, :html => {:method => :put, :id => "settings-form" } } do |f| -%>
@@ -17,17 +17,19 @@
 			
 		</dl>
 	</fieldset>
-	
+	<%= submit_tag 'save settings' %>
+	<!--
   <%= button(:image => "/text/button_text/save settings.png", :alt => "Save Settings",  :type => "submit", :class => "large-button", :form_id => 'settings-form' ) -%>
-  
+  -->
   <%= link_to 'logout', logout_url %>
   <%= link_to "destroy account", account_path(@account), :method => :delete %>
 
 <% end -%>
-<% content_box('we need more details', :class => 'basicborder', :id => 'dialog') do  %>
+
+<span class="clear"><span>
+<% end -%>
+<% content_box('we need more details', :class => 'basicborder', :id => 'instructions') do  %>
 	<p>
 		We have pulled your information from [authentication source]. However, standfor:us requires a few more details before we can create your account. Please enter the required fields in the form to the left to continue.
 	</p>
 <% end %>
-<span class="clear"><span>
-<% end -%>

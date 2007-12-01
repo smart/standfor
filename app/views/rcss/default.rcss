@@ -448,6 +448,12 @@ img {
 #description p {
 	padding:0 10px 0 10px;
 }
+#preview img.avatar, #welcome img.avatar {
+	float:right;
+	padding:5px;
+	border:1px solid black;
+	margin:0 0 0 5px;
+}
 /* segment page specific styles */
 
 .badges {
@@ -487,6 +493,10 @@ div.small-logo img {
   float:left;
   display:inline;
 }
+
+#member-login {
+	width:225px;
+}
 #badge {
   width:390px;
 }
@@ -499,6 +509,13 @@ div.small-logo img {
 }
 #howto h1 {
   padding-bottom:0px;
+}
+
+#share .left {
+	width:20%;
+}
+#share .right {
+	width:80%;
 }
 
 #howto, #options, #networks {
@@ -643,19 +660,21 @@ div.small-logo img {
 #login {
 
 }
-
+#member-login fieldset {
+	margin-bottom:0;
+}
 .login dl {
 	clear:none;
 }
 #login-form dl {
-	width:50%;
+
 }
 #login-form dl.input {
 	float:left;
 	clear:left;
 }
 #login-form dl.checkbox {
-	float:right;
+
 }
 
 #login-form dt, #login-from dd {
@@ -663,20 +682,34 @@ div.small-logo img {
 }
 
 #member-login .input dd {
-	margin-left:40%;
+	margin-left:0;
+	padding-bottom:5px;
+}
+#member-login dt {
+	width:auto;
 }
 #member-login .input dt {
-	width:40%;
+	margin-bottom:3px;
+}
+#member-login .input input {
+	font-size:1.2em;
 }
 #member-login .checkbox dt {
-	width:75%;
+	padding-top:4px;
 }
 #member-login .checkbox dd {
-	margin-left:25%;
+	float:left;
+	margin-left:33%;
 }
 #member-login .input input, #open-id input {
 	_width:90%;
 }
+.login #facebook, .login #open-id {
+	float:left;
+	padding-left:15px;
+	width:214px;
+}
+
 /* payment page specific styles */
 #payment {
   width:450px;
@@ -726,7 +759,7 @@ div.small-logo img {
 	margin-left:50%;
 }
 #merits {
-	clear:both;
+	margin-left:50%;
 }
 #my-badges {
 	width:300px;
@@ -743,7 +776,17 @@ div.small-logo img {
 #my-info form {
 	width:350px;
 }
-
+.donation {
+	margin-top:8px;
+}
+.donation h2 {
+	font-size:.9em;
+	position:relative;
+}
+.donation h2 span {
+	right:0;
+	position:absolute;
+}
 
 /* account settings specific styles */
 #settings-form {
@@ -756,7 +799,7 @@ div.small-logo img {
 	width:275px;
 }
 
-#instructions, #flash {
+#instructions, #flash, #org-contact {
 	margin-left:465px;
 }
 

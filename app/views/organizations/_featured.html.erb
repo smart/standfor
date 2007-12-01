@@ -1,11 +1,12 @@
 <% Organization.find(:all, :conditions => 'featured = 1 ' ,  :order => 'RAND()', :limit => 1).each do |organization|  %>
 
 <% content_box("featured organization", :class => "shadow", :id => "welcome" ) do -%>
-	<%= image_tag organization.organizationslogo.public_filename(:medium) -%>
+	<%= image_tag organization.organizationslogo.public_filename(:medium), :class => 'avatar' -%>
 	<ul>
     <li><%= link_to organization.name,  organization_path(organization) -%></li>
     <li><%= organization.statement -%></li>
 	</ul>
- <% end %>
-
+	<span class="clear"></span>
+	<% end %>
+	
 <% end %>

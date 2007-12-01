@@ -1,21 +1,22 @@
 <% content_box( "share your badge", :class => "shadow", :id => 'preview' ) do -%>
   <%= render :partial => 'shared/badge_preview', :locals => {:badge => @my_badge} %>
 <% end %>
-<div id="howto">
-  <% content_box( "how to share your badge", :class => "basic" ) do -%>
-    <p>Share your badge by clicking....
-    </p>
-  <% end %>
-</div>
-<div id="networks">
-  <%= render :partial => "webapps", :locals => {:my_badge => @my_badge, :shares => @shares  }  -%> 
-</div>
+<% content_box( "how to share your badge", :class => "basicborder", :id => 'instructions' ) do -%>
+  <p>
+  	The standfor.us business model thrives on word of mouth to raise awarness for our causes. To that end we have made it extremely easy to share your badges with all your friends across the internet. Simply choose from the options below and share it!
+  </p>
+<% end %>
+
 <div id="toolbar">
-  <% grey_fade do -%>
-    <div id="share-options">
-    	<h2><%= image_tag("/text/basicborder_header/share options.png", :alt => "Share Options") %></h2>
-      <span class="min-height"></span>
+  <% grey_fade :id => 'share' do -%>
+    <div id="share-options" class="min-height left">
+    	<h2>share options</h2>
+    	<%= render :partial => "webapps", :locals => {:my_badge => @my_badge, :shares => @shares  }  -%>
     </div>
+    <div id="share-it" class="right">
+    	
+    </div>
+    
   <% end %>
 </div>
 

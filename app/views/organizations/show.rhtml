@@ -1,5 +1,12 @@
-<% content_box(@organization.name, :class => 'shadow', :id => 'welcome') do -%>
-	<%= render :partial => 'details', :locals => { :organization => @organization } %>
+<% content_box(@organization.name, :class => 'shadow', :id => 'preview') do -%>
+	<% if !@organization.organizationslogo.nil? %>
+	<%= image_tag(@organization.organizationslogo.public_filename(:medium), :alt => @organization.name, :class => 'avatar') -%>
+	<% else %>
+	<%= image_tag('missing_avatar.jpg') %>
+	<% end %>		
+		<p>
+			<%= @organization.description %>
+		</p>
 		<% if current_account != :false %>
 			<% if current_account.is_sponsor? %>
 				<p><%= link_to 'Sponsor', :controller=> 'sponsorships', :action => 'new', :sponsorable_type => 'Organization', :sponsorable_id => @organization.id -%> </p>
@@ -9,10 +16,16 @@
 		<% end %>
 <% end %>
 
-<% content_box("our causes", :class => 'basicborder', :id => 'ranking') do %>
+
+
+<% content_box("our causes", :class => 'basicborder', :id => 'instructions') do %>
   <%= render :partial => 'navigation', :locals => { :organization => @organization } %>
 <% end %>
 
+<% content_box("contact #{@organization.name}", :class => 'basicborder', :id => 'org-contact') do %>
+	<%= render :partial => 'details', :locals => { :organization => @organization } %>
+<% end %>
+<!--
 <% content_box(@organization.name + " stands for:", :class => 'basic', :id => 'overview') do %>
  <div id="description">
   <p>
@@ -20,7 +33,7 @@
   </p> 
  </div>
 <% end %>
-
+-->
 <% grey_fade(:id => "organization-badges" ) do -%>
 	<h2><%= @organization.name -%> Badges</h2>
 	<div id="badge-list">

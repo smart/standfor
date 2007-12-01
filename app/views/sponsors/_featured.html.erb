@@ -1,4 +1,5 @@
 <% Sponsor.find(:all, :conditions => 'featured = 1', :order => 'RAND()', :limit => 1).each do |sponsor| %>
-	<%= link_to image_tag(sponsor.sponsorslogo.public_filename(:thumb)), sponsor_path(sponsor) -%>
+	<%= link_to image_tag(sponsor.sponsorslogo.public_filename(:thumb), :class => 'avatar'), sponsor_path(sponsor) -%>
   <%= sponsor.name -%>
+  <span class="clear"></span>
 <% end %>

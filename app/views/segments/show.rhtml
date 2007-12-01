@@ -1,5 +1,5 @@
 <% content_box(@organization.name, :class => 'shadow', :id => 'welcome') do -%>
-	<%= render :partial => 'organizations/details', :locals => { :organization => @organization } %>
+	<p><%= @segment.description -%></p>
 		<% if current_account != :false %>
 			<% if current_account.is_sponsor? %>
 				<p><%= link_to 'Sponsor', :controller=> 'sponsorships', :action => 'new', :sponsorable_type => 'Organization', :sponsorable_id => @organization.id -%> </p>
@@ -13,15 +13,15 @@
 	<%= render :partial => 'organizations/navigation', :locals => { :organization => @organization } %>
 <% end %>
 
-<% content_box("description", :class => "basicborder", :id => "description" ) do -%>
-  <p><%= @segment.description -%></p>
+<% content_box("contact #{@organization.name}", :class => "basicborder", :id => "org-contact" ) do -%>
+  <%= render :partial => 'organizations/details', :locals => { :organization => @organization } %>
 <% end %>
 
 <% grey_fade(:id => "segment-badges" ) do -%>
 	<h2><%= @organization.name -%> Badges</h2>
 	<div id="badge-list">
 		<% @segment.badges.each do |badge| %> 
-			<%= badge_link(badge, badge_path(badge), :size => 'medium' ) -%>
+			<%= badge_link(badge, :size => 'medium' ) -%>
 		<% end %>
   </div>
 	<span class="clear"></span>

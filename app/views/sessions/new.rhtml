@@ -1,44 +1,55 @@
 <% content_box("standfor us account", :class => 'shadow', :id => 'member-login') do %>
 	<% form_tag sessions_path, :id => 'login-form' do -%>
+	<fieldset>
     <dl class="input">
-    	<dt><label for="login">Username:</label></dt>
+    	<dt><label for="login"><strong>Username:</strong></label></dt>
     		<dd><%= text_field_tag 'login', nil, :size => 20 -%></dd>
 		</dl>
 		<dl class="input">
-    	<dt><label for="password">Password:</label></dt>
+    	<dt><label for="password"><strong>Password:</strong></label></dt>
     		<dd><%= password_field_tag 'password', nil, :size => 20 -%></dd>
 		</dl>
 		<dl class="checkbox">
-    	<dt><label for="remember_me">Remember Me:</label></dt>
-    		<dd><%= check_box_tag 'remember_me' -%></dd>
+    	<dt><label for="remember_me"><%= check_box_tag 'remember_me' -%> Remember Me</label></dt>
+    		<dd><%= submit_tag 'login' %></dd>
     </dl>
     <span class="clear"></span>
+    		
+	</fieldset>
+
+    <!--
 		<%= button(:image => "/text/button_text/login.png", :alt => "Login",  :type => "submit", :class => "large-button", :form_id => 'login-form' ) -%>
+		-->
 	<% end %>
 
 <% end %>
 
-<% content_box("more ways to login", :class => 'basicborder', :id => 'instructions') do %>
+<% content_box("login with facebook", :class => 'basicborder', :id => 'facebook') do -%>
+	<div>
+		<p>Authenticate yourself through facebook to take advantage of our advanced social networking features.</p>
+		<% form_tag sessions_path, :id => 'facebook-login' do -%>
+	    <%= hidden_field_tag( 'facebook', :value => true ) %>
+	    <%= submit_tag 'facebook login' %>
+		<% end %>
+	</div>
+<% end -%>
+
+<% content_box("login with openID", :class => 'basicborder', :id => 'open-id') do %>
 	<div>
 		<% form_tag sessions_path, :id => 'openid-login' do -%>
 	    <dl class="input">
-	    	<dt><label for="openid_url"><%= image_tag("/text/basicborder_header/open id.png", :alt => "open-id") %></label></dt>
+	    	<dt><label for="openid_url">openID</label></dt>
 	    		<dd><%= text_field_tag "openid_url" %></dd>
-	    </dl>	
+	    </dl>
+	    <%= submit_tag 'openID login' %>
 	  <% end %>
 	</div>
-	
-	<div>
-		<% form_tag sessions_path, :id => 'facebook-login' do -%>
-	    <%= hidden_field_tag( 'facebook', :value => true ) %>
-	    <%= button(:image => "/text/button_text/facebook.png", :alt => "facebook",  :type => "submit", :class => "large-button", :form_id => 'login-form' ) -%>
-		<% end %>
-	</div>
+<% end -%>
 
-<% end %>
+
 
 <% grey_fade(:id => "badge-extras" ) do -%>
-	<h1><%= image_tag("/text/basicborder_header/register.png", :alt => "Register") %></h1>
+	<h2>register</h2>
 <% end %>
 
 

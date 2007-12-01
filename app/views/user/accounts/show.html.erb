@@ -1,12 +1,11 @@
 <% content_box("welcome #{@account.nickname}", :class => "shadow", :id => "welcome" ) do -%>
 
  <% if !current_account.avatar.nil? %>
- <%= image_tag(current_account.avatar.public_filename(:thumb)) -%> 
+ <%= image_tag(current_account.avatar.public_filename(:full), :class => 'avatar') -%> 
   <% else %>
- <%= image_tag('missing_avatar.jpg') -%>
+ <%= image_tag('missing_avatar.jpg', :class => 'avatar') -%>
   <% end %>
 
-   <br />
  <%= link_to "upload an avatar", new_user_avatar_path , :class => 'small-link' %>
 
   <%= link_to 'Edit', edit_user_account_path %>
@@ -16,12 +15,13 @@
 	<p>
  		<%= link_to  'my donations' , user_orders_path -%> 
 	</p>
+	<span class="clear"></span>
 <% end %>
-
+<!-- Commented out until requirements are defined >
 <% content_box("ranking", :class => "basicborder", :id => "ranking" ) do -%>
   <p>Ranking Stats</p>
 <% end %>
-
+-->
 <% content_box("my donations", :class => "basicborder", :id => "ranking" ) do -%>
   <%= render :partial => 'my_donations' -%>
 <% end %>

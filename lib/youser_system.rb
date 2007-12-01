@@ -143,7 +143,7 @@ module YouserSystem
     
     def failed_login(message)
       flash.now[:error] = message
-      render :action => 'new'
+      redirect_to :action => 'new'
     end  
     
     # Store the URI of the current request in the session.

@@ -4,16 +4,15 @@
 
 <% end %>
 
-<div id="howto">
-  <% content_box( "how to customize a badge", :class => "basic" ) do -%>
-    <p>
-      Choose from the categories below to change the appearance of your badge. You will be shown 
-      several options that allow you to modify your badge to suit your tastes. Once you are satisfied 
-      with your changes, click the save and share button to commit your changes and post to various 
-      social networking sites!
-    </p>
-  <% end %>
-</div>
+<% content_box( "how to customize a badge", :class => "basicborder", :id => 'instructions' ) do -%>
+  <p>
+    Choose from the categories below to change the appearance of your badge. You will be shown 
+    several options that allow you to modify your badge to suit your tastes. Once you are satisfied 
+    with your changes, click the save and share button to commit your changes and post to various 
+    social networking sites!
+  </p>
+<% end %>
+
 
 <div id="options">
  <%= render :partial => 'customizables', 
