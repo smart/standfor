@@ -1,7 +1,7 @@
 class AdisController < ApplicationController
 
   def index
-    @my_badge = MyBadge.find(params[:id])
+    @my_badge = MyBadge.find_by_public_adi_id(params[:id])
    
     respond_to do |format|
       format.html {  render_adi }
@@ -12,7 +12,7 @@ class AdisController < ApplicationController
   end
   
   def click_adi
-    @my_badge = MyBadge.find(params[:id])
+    @my_badge = MyBadge.find_by_public_adi_id(params[:id])
     @hit = @my_badge.sponsorship_hits.find_by_ip(request.env['REMOTE_ADDR'], :order => "created_at DESC", :limit => 1)
     unless @hit.nil?
     @my_badge.sponsorship_clicks.create(:sponsorship => @hit.sponsorship, :sponsorship_hit => @hit, :golden => @hit.golden, :ip => request.env['REMOTE_ADDR'], :referrer => request.env['HTTP_REFERER'])

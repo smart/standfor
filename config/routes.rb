@@ -27,7 +27,7 @@ ActionController::Routing::Routes.draw do |map|
   map.worldreach_login '/worldreach/login' , :controller => '/worldreach/sessions', :action => 'new'
   map.worldreach_logout '/worldreach/logout' , :controller => '/worldreach/sessions', :action => 'destroy'
 
-  map.view_badge "/standfor/:id.:ext", :controller => "adis", :action => "index"
+  map.view_badge "/badges/:id.:ext", :controller => "adis", :action => "index"
   map.login   '/login',  :controller => 'sessions', :action => 'new'
   map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
   map.signup  '/signup', :controller => 'accounts',   :action => 'new'

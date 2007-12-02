@@ -2,7 +2,7 @@
 # migrations feature of ActiveRecord to incrementally modify your database, and
 # then regenerate this schema definition.
 
-ActiveRecord::Schema.define(:version => 42) do
+ActiveRecord::Schema.define(:version => 43) do
 
   create_table "access_codes", :force => true do |t|
     t.integer "scope_id",                                  :null => false
@@ -130,6 +130,7 @@ ActiveRecord::Schema.define(:version => 42) do
     t.integer  "adi_id"
     t.string   "sponsorship_option"
     t.string   "merit_option"
+    t.string   "public_adi_id"
   end
 
   create_table "open_id_authentication_associations", :force => true do |t|
