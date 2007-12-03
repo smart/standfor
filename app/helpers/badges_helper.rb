@@ -29,9 +29,9 @@ module BadgesHelper
   def save_link(badge, opts = {})
   	opts[:type] ||= badge.class.to_s
   	if badge.new_record?
-  		link_to(image_tag('icons/navigation/save_badge.png', :alt => 'Save Badge'), url_for(:controller => 'user/my_badges', :action => 'new', :badge_id => badge ))
+  		link_to(image_tag('icons/navigation/save_badge.png', :alt => 'Save Badge'), url_for(:controller => 'user/my_badges', :action => 'new', :badge_id => badge.id ))
 		else
-			link_to(image_tag('icons/navigation/save_badge.png', :alt => 'Save Badge'), url_for(:controller => 'user/customize', :action => 'save', :id => badge ))
+			link_to(image_tag('icons/navigation/save_badge.png', :alt => 'Save Badge'), url_for(:controller => 'user/customize', :action => 'save', :id => badge.id ))
 		end
   end
   

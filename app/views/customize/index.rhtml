@@ -1,20 +1,19 @@
-<% content_box( "your charity badge", :class => "shadow", :id => "preview" ) do -%>
+<% content_box( @my_badge.name, :class => "shadow", :id => "preview" ) do -%>
 	<%= render :partial => '/shared/badge_preview', :locals => {:badge => @my_badge} %>
 <% end %>
-<div id="howto">
-  <% content_box( "how to customize a badge", :class => "basic" ) do -%>
-    <p>
-      Choose from the categories below to change the appearance of your badge. You will be shown 
-      several options that allow you to modify your badge to suit your tastes. Once you are satisfied 
-      with your changes, click the save and share button to commit your changes and post to various 
-      social networking sites!
-    </p>
-  <% end %>
-</div>
 
-<div id="options">
+<% content_box( "how to customize a badge", :class => "basicborder", :id => 'instructions' ) do -%>
+  <p>
+    Choose from the categories below to change the appearance of your badge. You will be shown 
+    several options that allow you to modify your badge to suit your tastes. Once you are satisfied 
+    with your changes, click the save and share button to commit your changes and post to various 
+    social networking sites!
+  </p>
+<% end %>
+
+<div id="tools">
  <%= render :partial => 'customizables', 
-      :locals => {:my_badge => @my_badge, :customizables => @customizables   }  -%>
+      :locals => {:my_badge => @my_badge, :customizables => @customizables}  -%>
 </div>
 <div id="toolbar">
   <% grey_fade do -%>

@@ -1,1 +1,1 @@
-page.replace_html 'badge', image_tag("#{ADISERVER}/adis/#{@my_badge.adi_id}.jpg?&draft=true&rand=#{rand(100).to_s})", :alt => 'Badge Preview')page.replace_html 'badge', image_tag("#{ADISERVER}/adis/#{adi}.jpg?&draft=true&rand=#{rand(100).to_s})", :alt => 'Badge Preview')
+page.replace_html 'badge', image_tag("#{ADISERVER}/adis/#{@my_badge.adi_id}.jpg?&draft=true&rand=#{rand(100).to_s})", :alt => 'Badge Preview')

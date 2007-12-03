@@ -524,11 +524,11 @@ div.small-logo img {
   margin-right:5px;
 }
 
-#options, #networks {
+#tools, #networks {
   clear:right;
   margin-top:5px;
 }
-#options li {
+#tools li {
   display:block;
   line-height:35px;
   width:50%;
@@ -537,20 +537,21 @@ div.small-logo img {
   background-position:top left;
   background-repeat:no-repeat;
   margin-bottom:5px;
+  font-size:80%;
 }
-#options li a {
+#tools li a {
   padding-left:35px;
 }
-#options li.edges {
+#tools li.edges {
   background-image:url(/images/icons/edges.png);
 }
-#options li.fonts {
+#tools li.fonts {
   background-image:url(/images/icons/font.png);
 }
-#options li.images {
+#tools li.images {
   background-image:url(/images/icons/picture.png);
 }
-#options, #network a {
+#tools, #network a {
   display:block;
 }
 #toolbar {
@@ -799,7 +800,7 @@ div.small-logo img {
 	width:275px;
 }
 
-#instructions, #flash, #org-contact {
+#instructions, #flash, #org-contact, #tools {
 	margin-left:465px;
 }
 
@@ -985,7 +986,7 @@ div.small-logo img {
   display:none;
 }
 .basicborder h1, .basic h1 {
-  padding-bottom:0;
+  padding-bottom:5px;
   padding-top:5px;
   height:20px;
   font-size:1.2em;

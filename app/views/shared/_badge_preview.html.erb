@@ -19,7 +19,7 @@
 	<% if controller.controller_name != 'customize' -%>
 		<%= link_to(image_tag(badge.source_path(:size => 'full'), :alt => 'Badge Preview'), get_badge_path(badge)) %>
 	<% else -%>
-		<%= image_tag("#{ADISERVER}/adis/#{badge.adi_id}.gif?&draft=true&rand=#{rand(100).to_s})", :alt => 'Badge Preview') %>
+		<%= image_tag("#{ADISERVER}/adis/#{badge.adi_id}.gif?&draft=true&rand=#{rand(100).to_s}", :alt => 'Badge Preview') %>
 	<% end -%>
 </div>
 
