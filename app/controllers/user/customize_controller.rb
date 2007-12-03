@@ -1,18 +1,19 @@
 class User::CustomizeController < ApplicationController
   require 'RMagick'
   layout 'default'
-  helper '/user/customize'
+  helper 'customize'
   before_filter :login_required
   before_filter :get_my_badge
 
    def index 
      @customizables =  Customization.find(:all, :params => {:adi_id => @my_badge.adi_id } )
+     render :template  => 'shared/customize/index.html.erb' 
    end
 
    def choose_customizable 
      @customization = Customization.find(URI::escape(params[:customizable_name]),
                                         :params => { :adi_id => @my_badge.adi_id } )
-     render :action => 'choose_customizable.rjs'
+     render :action => "shared/customize/choose_customizable.rjs"
    end
 
    def update
@@ -28,7 +29,7 @@ class User::CustomizeController < ApplicationController
       @customization.image_data = Base64.encode64(image.to_blob)
     end
      @customization.save
-     render :action => 'update.rjs'
+     render :action => '../../shared/customize/update.rjs'
    end
 
    def save

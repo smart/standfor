@@ -1,3 +1,4 @@
+<h2><%= image_tag("/text/basicborder_header/choose a color.png", :alt => "Color Chooser") %></h2>
 <ul class="palette">
 
 <% customization.custom_options.attributes.each  do |key, val| %>
@@ -5,7 +6,7 @@
 <li>
   <span style="background-color:<%=val-%>;">
   <%= link_to_remote("",
-              :url => {:controller => "user/customize",
+              :url => {:controller => "/customize",
                        :action => 'update',
                        :id  => my_badge ,
                        :option_value => val,

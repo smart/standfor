@@ -22,7 +22,7 @@ module BadgesHelper
   	if opts[:type] == 'Badge'
   		link_to(image_tag('icons/navigation/get_badge.png', :alt => "Get Badge"), url_for(:controller => 'customize', :action => 'index', :badge_id => badge.id))
   	else
-  		link_to(image_tag('icons/navigation/edit_badge.png', :alt => "Edit Badge"), url_for(:controller => 'user/customize', :action => 'index', :id => badge.id))
+  		link_to(image_tag('icons/navigation/edit_badge.png', :alt => "Edit Badge"), url_for(:controller => 'customize', :action => 'index', :id => badge.id))
 		end
   end
   
