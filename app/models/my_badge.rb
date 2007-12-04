@@ -44,7 +44,7 @@ class MyBadge < ActiveRecord::Base
 
    def source_path(opts = {})
       size = opts[:size] || 'full'
-     "/images/cache/my_badges/#{self.id}/#{size}.jpg"
+     "/images/cache/my_badges/#{self.id}/#{size}.gif"
    end
 
    def save_thumbnails
