@@ -2,7 +2,7 @@ class User::MyBadgesController < ApplicationController
   layout 'default' 
   helper 'user::my_badges'
   helper 'badges'
- # before_filter :login_required
+  before_filter :login_required
   before_filter :get_my_badge, :only => [:new, :create, :update, :sponsorship_options, :merit_options, :show, :share, :customize]
 #  before_filter :sponsorship_option_required, :only => [:show]
 #  before_filter :merit_option_required, :only => [:show]

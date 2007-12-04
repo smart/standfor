@@ -3,7 +3,7 @@
 		<% if controller.controller_name != 'customize' -%>
     	<li><%= customize_link(badge) %></li>
 			<% if controller.action_name != 'show'  %>
-	  		<li><%= link_to(image_tag('icons/navigation/view_badge.png', :alt => "View Badge"), get_badge_path(badge)) %></li>
+  		<li><%= link_to(image_tag('icons/navigation/view_badge.png', :alt => "View Badge"), get_badge_path(badge)) %></li>
 	  	<% end %>
   	<% end -%>
   	<% if controller.controller_name == 'customize' -%>
