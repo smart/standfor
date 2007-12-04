@@ -1,11 +1,8 @@
 <% content_box( "your  badge", :class => "shadow", :id => "preview" ) do -%>
-	
 	<%= render :partial => 'shared/badge_preview', :locals => {:badge => @my_badge} %>
-	
 <% end %>
 
 <%= render :partial => 'shared/flash', :locals => { :flash => flash } %>
-
 <% content_box("badge details", :class => 'basicborder', :id => 'instructions') do %>
 	<ul>
     <li>Organization: <%= @my_badge.badge.organization.name -%></li>
