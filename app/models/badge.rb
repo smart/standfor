@@ -55,7 +55,7 @@ class Badge < ActiveRecord::Base
 
     def source_path(opts = {})
     	size = opts[:size] || 'full'
-      "/images/examples/#{self.id}/#{size}.jpg"
+      "/images/examples/#{self.id}/#{size}.gif"
     end
 
     def example_path

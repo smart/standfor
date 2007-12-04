@@ -2,7 +2,7 @@
 <ul>
 
 <% customization.custom_options.attributes.each_pair do |name,value|  %>
-<li><%= link_to_remote(image_tag( "customization/#{value}", :height => 100, :width => 130 ) , 
+<li><%= link_to_remote(image_tag( "customization/#{value}" ) , 
 		:url => {:controller => 'customize', 
 			 :action => :update,
 			 :id => my_badge, 
