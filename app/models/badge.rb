@@ -86,22 +86,22 @@ class Badge < ActiveRecord::Base
 
    def source_path(opts = {})
       size = opts[:size] || 'full'
-     "/images/cache/badges/#{self.id}/#{size}.jpg"
+     "/images/cache/badges/#{self.id}/#{size}.gif"
    end
 
    def save_thumbnails
       structure = Structure.find(self.structure_id)
       example = structure.example
-      remote_path = "#{ADISERVER}/adis/#{example['id']}.jpg" 
+      remote_path = "#{ADISERVER}/adis/#{example['id']}.gif" 
       @file_data = open(remote_path) 
       image =  Magick::Image::read( @file_data.path  ).first
-      full_path = File.join(File.join(self.cache_path , 'full.jpg' ) ) 
+      full_path = File.join(File.join(self.cache_path , 'full.gif' ) ) 
       image.write(full_path)
       thumb = image.resize_to_fit(300, 300)
-      thumb_path = File.join(File.join(self.cache_path , 'medium.jpg' ) ) 
+      thumb_path = File.join(File.join(self.cache_path , 'medium.gif' ) ) 
       thumb.write(thumb_path)
       small = image.resize_to_fit(225, 225)
-      small_path = File.join(File.join(self.cache_path , 'small.jpg' ) ) 
+      small_path = File.join(File.join(self.cache_path , 'small.gif' ) ) 
       small.write(small_path)
    end
 
