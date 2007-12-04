@@ -2,11 +2,11 @@
 	<% form_tag sessions_path, :id => 'login-form' do -%>
 	<fieldset>
     <dl class="input">
-    	<dt><label for="login"><strong>Username:</strong></label></dt>
+    	<dt><label for="login">Username:</label></dt>
     		<dd><%= text_field_tag 'login', nil, :size => 20 -%></dd>
 		</dl>
 		<dl class="input">
-    	<dt><label for="password"><strong>Password:</strong></label></dt>
+    	<dt><label for="password">Password:</label></dt>
     		<dd><%= password_field_tag 'password', nil, :size => 20 -%></dd>
 		</dl>
 		<dl class="checkbox">
@@ -17,9 +17,6 @@
     		
 	</fieldset>
 
-    <!--
-		<%= button(:image => "/text/button_text/login.png", :alt => "Login",  :type => "submit", :class => "large-button", :form_id => 'login-form' ) -%>
-		-->
 	<% end %>
 
 <% end %>
@@ -47,9 +44,34 @@
 <% end -%>
 
 
+<%= error_messages_for :account -%>
 
-<% grey_fade(:id => "badge-extras" ) do -%>
+<% grey_fade(:id => "register" ) do -%>
 	<h2>register</h2>
+	<p class="instructions">You must register with standfor.us before you can begin to make a difference. At standfor.us we value your privacy and will never sell or give away your information.</p>
+	<% form_for :account, :url => accounts_path, :html => { :id => "register-form" } do |f| -%>
+	<fieldset>
+		<dl class="input">
+			<dt><label for="account_login">Username:</label></dt>
+				<dd><%= f.text_field :login, :size => 20 %></dd>
+		</dl>
+		<dl class="input">
+			<dt><label for="account_email">Email:</label></dt>
+				<dd><%= f.text_field :email, :size => 20 %></dd>
+		</dl>
+		<dl class="input">
+			<dt><label for="account_password">Password:</label></dt>
+				<dd><%= f.password_field :password, :size => 20 %></dd>
+		</dl>
+		<dl class="input">
+			<dt><label for="account_password_confirmation">Confirm Password:</label></dt>
+				<dd><%= f.password_field :password_confirmation, :size => 20 %></dd>
+		</dl>
+		<%= submit_tag 'register' %>
+	</fieldset>
+	
+	<span class="clear"></span>
+	<% end -%>
 <% end %>
 
 

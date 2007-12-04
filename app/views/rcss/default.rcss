@@ -501,7 +501,8 @@ div.small-logo img {
   width:390px;
 }
 #badge.min-height {
-  height:160px;
+	min-height:160px;
+  _height:160px;
 }
 
 #howto {
@@ -661,6 +662,15 @@ div.small-logo img {
 #login {
 
 }
+#register fieldset {
+	width:188px;
+	padding-bottom:10px;
+}
+#register .instructions {
+	float:right;
+	margin-left:200px;
+	padding-right:15px;
+}
 #member-login fieldset {
 	margin-bottom:0;
 }
@@ -670,15 +680,21 @@ div.small-logo img {
 #login-form dl {
 
 }
-#login-form dl.input {
+#login-form dl.input, #register dl.input {
 	float:left;
 	clear:left;
 }
 #login-form dl.checkbox {
 
 }
+#login-form .input label, #register .input label {
+	font-weight:bold;
+}
 
-#login-form dt, #login-from dd {
+#login-form dt, 
+#login-form dd,
+#register dt,
+#register dd {
 	margin:0;
 }
 
@@ -686,23 +702,30 @@ div.small-logo img {
 	margin-left:0;
 	padding-bottom:5px;
 }
-#member-login dt {
+#member-login dt,
+#register dt {
 	width:auto;
 }
-#member-login .input dt {
+#member-login .input dt,
+#register .input dt {
 	margin-bottom:3px;
 }
-#member-login .input input {
+#member-login .input input,
+#register .input input {
 	font-size:1.2em;
 }
-#member-login .checkbox dt {
+#member-login .checkbox dt,
+#register .checkbox dt {
 	padding-top:4px;
 }
-#member-login .checkbox dd {
+#member-login .checkbox dd,
+#register .checkbox dd {
 	float:left;
 	margin-left:33%;
 }
-#member-login .input input, #open-id input {
+#member-login .input input, 
+#open-id input,
+#register .input input {
 	_width:90%;
 }
 .login #facebook, .login #open-id {
@@ -745,16 +768,7 @@ div.small-logo img {
 #requirements .or {
   margin:5px 0px 0px 100px;
 }
-/* register page specific styles */
-#register form {
-	width:450px;
-}
-#register form .input dt {
-	width:45%;
-}
-#register form .input dd {
-	margin-left:45%;
-}
+
 /* my account specific styles */
 #ranking {
 	margin-left:50%;
