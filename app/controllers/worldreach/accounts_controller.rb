@@ -10,6 +10,7 @@ class Worldreach::AccountsController < ApplicationController
   def initialize
   	@context = 'account'
   end
+
   def new
   end
   
@@ -34,7 +35,6 @@ class Worldreach::AccountsController < ApplicationController
     else
       render :template => "/worldreach/sessions/new"
     end
-
   end
 
 end

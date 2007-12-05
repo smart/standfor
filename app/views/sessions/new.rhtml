@@ -44,10 +44,10 @@
 <% end -%>
 
 
-<%= error_messages_for :account -%>
-
 <% grey_fade(:id => "register" ) do -%>
 	<h2>register</h2>
+  account regisration error messages should go here but they do not
+ <%= error_messages_for :account -%>
 	<p class="instructions">You must register with standfor.us before you can begin to make a difference. At standfor.us we value your privacy and will never sell or give away your information.</p>
 	<% form_for :account, :url => accounts_path, :html => { :id => "register-form" } do |f| -%>
 	<fieldset>

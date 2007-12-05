@@ -3,7 +3,11 @@ class AccountsController < ApplicationController
   # If you want "remember me" functionality, add this before_filter to Application Controller
   before_filter :login_from_cookie
 	layout 'default'
-  # render new.rhtml
+  include YouserSystem
+
+
+
+
   def new
   end
   
@@ -14,8 +18,7 @@ class AccountsController < ApplicationController
   def save_registration
     @account = current_account
     if current_account.update_attributes(params[:account])
-      redirect_back_or_default('/')
-      false
+      redirect_back_or_default('/') and  return  false
     else
       render :action => 'finish_registration'
     end
@@ -23,11 +26,12 @@ class AccountsController < ApplicationController
 
   def create
     @local_user = LocalUser.new(params[:account])
-    if @local_user.save!
+    if @local_user.save
       successful_local_user_login(@local_user)
       return false
     else
-      render :action => "new"
+      flash[:notice] = 'Could not save account.'
+      render :template => "/sessions/new"
     end
   end
 
