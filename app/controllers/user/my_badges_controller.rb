@@ -42,6 +42,7 @@ class User::MyBadgesController < ApplicationController
           raise Exception, 'Could not save my_badge'
        end
     end
+    p @my_badge
     if !@my_badge.minimum_donation.nil?
        @order.amount = @my_badge.minimum_donation
     end

@@ -1,7 +1,6 @@
 <% content_box(@my_badge.badge.name, :id => "preview", :class => "shadow" ) do %>
-
 	<div id="badge">
-    <%= render :partial => "shared/current_view", :locals => {:my_badge => @my_badge } -%>
+    <%= render :partial => "shared/badge_preview", :locals => {:badge => @my_badge } -%>
 	</div>
 	<span class="clear"></span>
 <% end %>

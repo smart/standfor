@@ -1,25 +1,24 @@
 <% content_box("authorize payment", :class => 'shadow', :id => 'preview') do %>
 	<% form_for(@order, :url => "/organizations/#{@organization.site_name}/segments/#{@segment.site_name}/orders", :method => :post ) do |f| %>
-	 <ul>
+
 	   <% if @order.creditcard.nil? %> 
 	   <%= render :partial => 'fields' , :locals => {:f => f , :segment => @segment } -%>
 	   <% else  %> 
 	      <%= f.hidden_field  :amount -%>
-	     <p>Clicking 'Authorize' below will authorize Standforus to charge your creditcard ending in '<%=@order.creditcard.number.strip.slice(-4,4) -%>' to be charged <%= number_to_currency(@order.amount) -%>. </p>
+	     <p>Clicking 'Authorize' will authorize Standforus to charge your creditcard ending in '<%=@order.creditcard.number.strip.slice(-4,4) -%>' <%= number_to_currency(@order.amount) -%>.</p>
+	     <p>Please do not click the authorize button more than once or your card may be charged twice.</p>
 	   <% end %> 
 	
-	  <li>
-	    <%= f.submit "#{(@order.creditcard.nil?) ? 'donate!' : 'Authorize'}" %>
-	  </li>
-	 </ul>
+    <%= f.submit "#{(@order.creditcard.nil?) ? 'donate!' : 'Authorize'}", :class => 'submit' %>
+
 	
 	<% end %>
 	
 <% end %>
 
 <% content_box("about your donation", :class => 'basicborder', :id => 'instructions') do %>
-	<%= error_messages_for :order %>
+	<%= render :partial => 'shared/orders/donation', :locals => {:order => @order} %>
 	<p>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
+		All funds are collected & distributed by registered  501c <a href="http://www.worldreachcharity.org">WorldReach</a>. 
 	</p>
 <% end %>

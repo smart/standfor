@@ -11,7 +11,7 @@
 		</dl>
 		<dl class="checkbox">
     	<dt><label for="remember_me"><%= check_box_tag 'remember_me' -%> Remember Me</label></dt>
-    		<dd><%= submit_tag 'login' %></dd>
+    		<dd><%= submit_tag 'login', :class => 'submit' %></dd>
     </dl>
     <span class="clear"></span>
     		
@@ -26,7 +26,7 @@
 		<p>Authenticate yourself through facebook to take advantage of our advanced social networking features.</p>
 		<% form_tag sessions_path, :id => 'facebook-login' do -%>
 	    <%= hidden_field_tag( 'facebook', :value => true ) %>
-	    <%= submit_tag 'facebook login' %>
+	    <%= submit_tag 'facebook login', :class => 'submit' %>
 		<% end %>
 	</div>
 <% end -%>
@@ -38,7 +38,7 @@
 	    	<dt><label for="openid_url">openID</label></dt>
 	    		<dd><%= text_field_tag "openid_url" %></dd>
 	    </dl>
-	    <%= submit_tag 'openID login' %>
+	    <%= submit_tag 'openID login', :class => 'submit' %>
 	  <% end %>
 	</div>
 <% end -%>
@@ -67,7 +67,7 @@
 			<dt><label for="account_password_confirmation">Confirm Password:</label></dt>
 				<dd><%= f.password_field :password_confirmation, :size => 20 %></dd>
 		</dl>
-		<%= submit_tag 'register' %>
+		<%= submit_tag 'register', :class => 'submit' %>
 	</fieldset>
 	
 	<span class="clear"></span>

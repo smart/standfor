@@ -1,7 +1,7 @@
 <% content_box( "credit card details", :class => "shadow" ,:id => 'preview') do %>
 	<% form_for(:creditcard, :url => save_creditcard_path, :method => :post)  do |f| %>
 
-	  <dl>
+	  <dl class="input">
 	    <dt><label for="creditcard_first_name">First Name:</label></dt>
 	      <dd><%= f.text_field :first_name , :size => 20 -%></dd>
 	 
@@ -15,29 +15,28 @@
 	      <dd><%= f.text_field :number -%></dd>
 	  </dl>
 	
-	  <dl class="expiration">
+	  <dl class="input expiration">
 	    <dt><label for="creditcard_expiration_month_year">Expiration:</label></dt>
 	    <dd><%= select_month(Date.today)%><%= select_year(Date.today)%></dd>
 	  </dl>
 	 
-	  <dl class="verification">
+	  <dl class="input verification">
 	  <dt><label for="creditcard_verification_value">Verification:</label></dt>
 	    <dd><%= f.text_field :verification_value, :size => 6 -%></dd>
 	  </dl>
-	
-	  <dl class="submit">
-	    <dd><%= f.submit 'enter card' -%></dd>
+	  
+	  <dl>
+	    <dd><%= f.submit 'enter card', :class => "submit" -%></dd>
 	  </dl>
 	<% end -%>
 <% end -%>
 
-<% content_box("about your donation", :class => 'basicborder', :id => 'instructions') do %>
-	<p>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat.
-	</p>
-<% end %>
+<%= render :partial => 'shared/flash', :locals => { :flash => flash } %>
 
 <% content_box("about your donation", :class => 'basicborder', :id => 'instructions') do %>
   <%= render :partial => 'order' , :locals => { :order => @order } -%>
+	<p>
+		All funds are collected & distributed by registered  501c <a href="http://www.worldreachcharity.org">WorldReach</a>. 
+	</p>
 <% end %>
 

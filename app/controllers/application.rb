@@ -58,6 +58,7 @@ class ApplicationController < ActionController::Base
       @my_badge = MyBadge.find(params[:id])
     end
     return true if @my_badge
+    raise  Exception('Could not find my_badge.')
   end
   
 end

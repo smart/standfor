@@ -30,7 +30,7 @@ class CreditcardsController < ApplicationController
         @order.creditcard = creditcard 
         format.html { redirect_to session[:creditcard_redirect] }
       else
-        flash[:notice] = "The credit card information entered is not valid."
+        flash[:error] = "The credit card information entered is not valid."
         format.html { render :action => "new" }
       end
     end

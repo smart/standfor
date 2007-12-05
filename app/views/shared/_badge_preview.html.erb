@@ -1,12 +1,12 @@
 <div id="badge-actions">
 	<ul class="navigation">
-		<% if controller.controller_name != 'customize' -%>
+		<% if !is_location?(:controller => 'customize') -%>
     	<li><%= customize_link(badge) %></li>
-			<% if controller.action_name != 'show'  %>
+			<% if is_location?(:action => 'show') %>
   		<li><%= link_to(image_tag('icons/navigation/view_badge.png', :alt => "View Badge"), get_badge_path(badge)) %></li>
 	  	<% end %>
   	<% end -%>
-  	<% if controller.controller_name == 'customize' -%>
+  	<% if is_location?(:controller => 'customize') -%>
   	<li>
   		<%= save_link(badge) %>
 		</li>
@@ -16,7 +16,7 @@
 </div>
 
 <div id="badge" class="min-height">
-	<% if controller.controller_name != 'customize' -%>
+	<% if !is_location?(:controller => 'customize') and !is_location?(:controller => 'my_badges', :action => 'new') -%>
 		<%= link_to(image_tag(badge.source_path, :alt => 'Badge Preview'), get_badge_path(badge)) %>
 	<% else -%>
 		<%= image_tag("#{ADISERVER}/adis/#{badge.adi_id}.gif?&draft=true&rand=#{rand(100).to_s}", :alt => 'Badge Preview') %>
@@ -25,6 +25,6 @@
 
 <% if badge.class.to_s == 'MyBadge' and !badge.new_record? -%>
 	<%= render :partial => 'user/my_badges/navigation' , :locals => {:my_badge => badge} -%>
-<% elsif controller.controller_name == 'badges' and controller.action_name == 'show' %>
+<% elsif is_location?(:controller => 'badges', :action => 'show') %>
 	<%= render :partial => 'badges/navigation' , :locals => {:badge => badge} -%>
 <% end -%>

@@ -18,6 +18,7 @@ body, p, ol, ul, td {
 
 p {
 	line-height:140%;
+	margin-bottom:5px;
 }
 
 ul, li {
@@ -691,6 +692,10 @@ div.small-logo img {
 	font-weight:bold;
 }
 
+#openid_url {
+	width:100%;
+}
+
 #login-form dt, 
 #login-form dd,
 #register dt,
@@ -954,8 +959,7 @@ div.small-logo img {
 }
 
 .box h1,
-.box h2,
-.box p {
+.box h2 {
   margin:0px; /* margins will blow out backgrounds, leaving whitespace. */
   padding:0px;
 }
@@ -1075,39 +1079,56 @@ form label {
 
 /* basic form list items */
 
-form dl{
+form dl {
     margin:0px 0px 0px 0px;
     padding:0px;
     width:auto;
     clear:both;
 }
 
-form dt{
-    float:left;
-    width:33%;
-    margin:0px 0px 0px 0px;
-    color:#000000;
-    text-align:right;
+form dl.input label {
+	font-weight:bold;
 }
 
-form dd{
-    margin:0px 0px 0px 33%;
-    padding-bottom:10px;
-    color:#666666;
-    _text-indent:-3px !important;
+form .submit {
+	padding:3px 5px 3px 5px;
+	border:1px solid black;
+	cursor:pointer;
+}
+form .submit:hover {
+	background:black;
+	color:white;
+	border:1px solid white;
+}
+
+form dt{
+  float:left;
+  width:33%;
+  margin:0px 0px 0px 0px;
+  color:#000000;
+  text-align:right;
+}
+
+form dd {
+  margin:0px 0px 0px 33%;
+  padding-bottom:10px;
+  color:#666666;
+  _text-indent:-3px !important;
 }
 
 form dd label{
-    vertical-align:top;
-    *vertical-align:baseline;
-    margin:0px 8px 0px 0px;
-    line-height:1.6em;
+  vertical-align:top;
+  *vertical-align:baseline;
+  margin:0px 8px 0px 0px;
+  line-height:1.6em;
 }
 
 form .input input {
-	width:100%;
+	width:auto;
 	border:1px solid grey;
+	font-size:1.2em;
 }
+
 form .input dt {
 	padding:2px 0px 0px 0px;
 }

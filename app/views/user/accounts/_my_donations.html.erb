@@ -7,13 +7,7 @@
 		<h2>
 			<%= number_to_currency(order.amount) %> on <%= order.created_at.strftime("%B %d, %Y") -%><span><%= link_to 'View Receipt', user_order_path(order) %></span>
 		</h2>
-		<ul>
-			<% order.donations.each do |donation| %>
-			<li><strong><%= link_to(donation.organization.name, organization_path(donation.organization)) %></strong></li>
-			<li><%= link_to(donation.segment.name, organization_segment_path(donation.segment.organization, donation.segment)) %></li>
-			<li><%= number_to_currency(donation.amount) %></li>
-			<% end %>
-		</ul> 
+		<%= render :partial => 'shared/orders/donation', :locals => {:order => order} %>
 	</div>
 <% end %>
 </ul>
