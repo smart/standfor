@@ -10,11 +10,11 @@
 	</p>
 <% end %>
 
-<%= render :partial => '/shared/filter_my_badges_form.html.erb' %>
+<%= render :partial => '/shared/filter_badges_form', :locals => {:in_my_badges => true } %>
 
 <% grey_fade(:id => "badges" ) do -%>
 	<h1>my badges</h1>
-  <div id="my-badge-list">
+  <div id="badge-list">
 	<% if @my_badges.empty? %>
 		<p>You haven't created any badges yet. Please <%= link_to 'create a badge', badges_path %> first.</p>
 	<% else %>

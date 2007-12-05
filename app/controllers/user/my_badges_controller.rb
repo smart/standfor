@@ -121,9 +121,8 @@ class User::MyBadgesController < ApplicationController
          results.compact!
        end
     end
-
     render :update do |page|
-      page.replace_html 'my-badge-list' , :partial => 'search_results' ,  :locals => { :results => results } 
+      page.replace_html 'my-badge-list' , :partial => '/shared/search_results' ,  :locals => { :results => results } 
       if !@org.nil?
         page.replace_html 'cause-select' , :partial => '/shared/cause_select' ,:locals => { :organization => @org } 
      end
@@ -146,14 +145,14 @@ class User::MyBadgesController < ApplicationController
     render :action => 'clear_causes.rjs'  and return false if params[:search_organization].blank?
     @organization = Organization.find_by_id(params[:search_organization])
     @results = current_account.my_badges.find(:all, 
-                :conditions =>  ['badge_id  IN (SELECT id FROM badges where organization_id = ? ) ' ,  @organization.id ] )
+            :conditions =>  ['badge_id  IN (SELECT id FROM badges where organization_id = ? ) ' ,  @organization.id ] )
     render :action => 'update_causes.rjs'
   end
 
   def update_badges
     @segment = Segment.find_by_id(params[:search_segment])
     @results = current_account.my_badges.find(:all, 
-                              :conditions => [ 'badge_id IN (SELECT id FROM badges WHERE segment_id  = ? ) ',  @segment.id] )
+                   :conditions => [ 'badge_id IN (SELECT id FROM badges WHERE segment_id  = ? ) ',  @segment.id] )
     render :action => 'update_badges.rjs'
   end
 

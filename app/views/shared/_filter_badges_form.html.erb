@@ -1,5 +1,5 @@
 <% content_box("filter badges", :class => 'basic', :id => 'filter') do -%>
-	<%= form_remote_tag :url => { :controller => 'badges', :action => 'search' } %>
+	<%= form_remote_tag :url => { :controller => "#{ (in_my_badges) ? 'user/my_badges' : 'badges' }", :action => 'search' } %>
     <% if in_my_badges %>
    <%= hidden_field_tag  'filter_by_account', 'yes' %>
     <% end %>
@@ -12,7 +12,7 @@
 		<dt><label for="search_organization">organization</label></dt>
 			<dd>
 <%= select 'search', 'organization', Organization.find(:all, :order => 'name').collect {|o| [o.name, o.id] },{:prompt => 'Select an Organization' }  %>
- <%= observe_field 'search_organization', :url => {:controller => 'badges', :action => 'update_causes' }, :with => 'search_organization' %>
+ <%= observe_field 'search_organization', :url => {:controller => "#{ (in_my_badges) ? 'user/my_badges' : 'badges' }", :action => 'update_causes' }, :with => 'search_organization' %>
 </dd>
 	</dl>
 	<dl>
