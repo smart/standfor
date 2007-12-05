@@ -16,6 +16,12 @@
      #deactivate_path = self.class.collection_path(self.prefix_options) + ";deactivate"
      #(connection.put(deactivate_path, to_xml).code == "200") ? true : false
     end
+
+    def reset 
+     Adi.put(:reset, :id => self.id ).code == "200" ? true : false 
+     #deactivate_path = self.class.collection_path(self.prefix_options) + ";deactivate"
+     #(connection.put(deactivate_path, to_xml).code == "200") ? true : false
+    end
   
     def public_path
     "#{ADISERVER}/badges/#{self.public_id}" 

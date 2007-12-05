@@ -39,6 +39,12 @@ class User::CustomizeController < ApplicationController
     redirect_to user_my_badge_path(@my_badge)
    end
 
+   def reset
+     @adi = Adi.find(@my_badge.adi_id)
+     @adi.reset
+     render :action => '../../shared/customize/update.rjs'
+   end
+
    private 
 
    def get_my_badge
