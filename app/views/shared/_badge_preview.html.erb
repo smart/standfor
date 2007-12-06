@@ -10,7 +10,7 @@
   	<li>
   		<%= save_link(badge) %>
 		</li>
-		<li><%= link_to_remote image_tag('icons/navigation/reset_badge.png', :alt => 'Reset Badge'), :url => url_for(:controller => 'user/customize', :action => 'reset', :id => badge )   %></li>
+		<li><%= link_to_remote image_tag('icons/navigation/reset_badge.png', :alt => 'Reset Badge'), :url => url_for(:controller => '/customize', :action => 'reset', :id => badge )   %></li>
 		<% end -%>
 	</ul>
 </div>

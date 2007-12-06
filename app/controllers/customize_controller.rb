@@ -31,4 +31,10 @@ class CustomizeController < ApplicationController
      render :action => '../shared/customize/update.rjs'
    end
 
+   def reset
+     @adi = Adi.find(@my_badge.adi_id)
+     @adi.reset
+     render :action => '../shared/customize/update.rjs'
+   end
+
 end
