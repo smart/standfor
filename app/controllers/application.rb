@@ -42,6 +42,10 @@ class ApplicationController < ActionController::Base
   end  
 
   def get_my_badge
+  	if params[:id]
+      @my_badge = MyBadge.find(params[:id])
+    end
+    return true if @my_badge
     #session[:my_badge_return_to] = request.request_uri
     if !session[:unsaved_badge].nil?
       @my_badge = session[:unsaved_badge]
@@ -54,10 +58,7 @@ class ApplicationController < ActionController::Base
     end
     return true if @my_badge
 
-    if params[:id]
-      @my_badge = MyBadge.find(params[:id])
-    end
-    return true if @my_badge
+    
     raise  Exception('Could not find my_badge.')
   end
   
