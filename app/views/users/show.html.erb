@@ -3,11 +3,18 @@
 <% if @account.avatar.nil? %>
  <%= image_tag('missing_avatar.jpg') -%>
 <% else %>
- <%= image_tag(@account.avatar.public_filename(:normal)) -%>
+ <%= image_tag(@account.avatar.public_filename(:full)) -%>
 <% end %>
+
+<p>
+Social Features coming soon.
+</p>
+
+<% if false %>
 <p>
 <ul>
-<li>Number of Badges:  <b><%= @account.my_badges.size-%></b> </li>
+<li>Number of Badges:  <b><%= @account.my_badges.size -%></b> </li>
 <li>Total Donations:  <b><%= @account.total_donations -%></b> </li>
 </ul>
 </p>
+<% end %>
