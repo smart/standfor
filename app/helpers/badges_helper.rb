@@ -52,8 +52,7 @@ module BadgesHelper
   		badge_path(badge)
   	elsif badge.new_record? and !is_location?(:action => 'show')
   		badge_path(badge.badge)
-		else
-			#user_my_badge_path(params[:id])
+		elsif badge.class == MyBadge
 			user_my_badge_path(badge)
 		end
   end

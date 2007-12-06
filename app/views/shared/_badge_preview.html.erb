@@ -2,7 +2,7 @@
 	<ul class="navigation">
 		<% if !is_location?(:controller => 'customize') -%>
     	<li><%= customize_link(badge) %></li>
-			<% if is_location?(:action => 'show') %>
+			<% if !is_location?(:action => 'show') %>
   		<li><%= link_to(image_tag('icons/navigation/view_badge.png', :alt => "View Badge"), get_badge_path(badge)) %></li>
 	  	<% end %>
   	<% end -%>

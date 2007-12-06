@@ -1,8 +1,8 @@
-<ul>
-  <li>Total Raised Through Standfor Us:<%= organization.total_raised -%></li>
-  <li>Number of Donors: <%= organization.number_of_donors -%></li>
-  <li>Number of Badges: <%= organization.number_of_badges -%></li>
+<ul class="stats">
+  <li>Total Raised: <span><%= organization.total_raised -%></span></li>
+  <li>Number of Donors: <span><%= organization.number_of_donors -%></span></li>
+  <li>Number of Badges: <span><%= organization.number_of_badges -%></span></li>
   <% if !organization.top_sponsor.nil? %>
-  <li>Top Donor: <%= organization.top_sponsor.nickname -%> </li>
+  <li>Top Donor: <span><%= organization.top_sponsor.nickname -%></span></li>
   <% end %>
 </ul>

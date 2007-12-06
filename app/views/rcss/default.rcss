@@ -18,7 +18,7 @@ body, p, ol, ul, td {
 
 p {
 	line-height:140%;
-	margin-bottom:5px;
+	padding-bottom:10px;
 }
 
 ul, li {
