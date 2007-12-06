@@ -1,12 +1,14 @@
 <h1>My Badge Landing</h1>
 
-<pre>
-Need a few requirements. What do we think about writing requirements inside of templates?
-</pre>
+<h2>Badge</h2>
 
-<p>
+<div>
  <%= image_tag(@my_badge.source_path) -%> 
-</p>
+</div>
+
+<h2>Badge Statistics</h2>
+<%= render :partial => 'statistics' , :locals => {:stats => @adi.stats} -%>
+
 
 <p> This badge belongs to: <%= link_to @my_badge.account.nickname, about_user_path(@my_badge.account) -%>
 </p>

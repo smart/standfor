@@ -1,0 +1,12 @@
+<ul>
+<% stats.each do |stat| %>
+
+<li>
+<%= stat.attributes['name'] -%>  |
+<%= stat.attributes['stat_summary'].total_uniques -%>  | 
+<%= stat.attributes['stat_summary'].total_hits -%>  
+</li>
+
+<% end %>
+
+</ul>

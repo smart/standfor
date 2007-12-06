@@ -1,14 +1,15 @@
 class MyBadgesController < ApplicationController
   layout 'default'
-  before_filter :login_required, :only => [:create]
-  before_filter :get_my_badge, :only => [:new, :create, :customize]
+  #before_filter :login_required, :only => [:create]
+  #before_filter :get_my_badge, :only => [:new, :create, :customize]
   
   def initialize
     @context = "my-badges"
   end
   
   def show
-    @my_badge = MyBadge.find(params[:id])
+    @my_badge = MyBadge.find_by_public_adi_id(params[:id])
+    @adi = Adi.find(@my_badge.adi_id)
     respond_to do |format|
       format.html 
     end
