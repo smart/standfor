@@ -25,6 +25,10 @@ ul, li {
   list-style-type:none;
 }
 
+ol, ol li {
+	list-style-type:decimal;
+}
+
 h1 {
   font-size:130%;
   line-height:28px;
@@ -821,6 +825,17 @@ div.small-logo img {
 
 #instructions, #flash, #org-contact, #tools {
 	margin-left:465px;
+}
+
+/* leaderboard page specific styles */
+
+div.leaders {
+	width:50%;
+	float:left;
+}
+
+div.leaders #most-donated {
+	
 }
 
 /* box styles */
