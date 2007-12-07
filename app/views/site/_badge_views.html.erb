@@ -1,0 +1,7 @@
+<ul>
+  <% System.most_badge_views.each do |account, amount| %> 
+  <li>
+   <%= render :partial => 'leader', :locals => {:account => account, :amount => amount }  -%>
+ </li>
+  <% end %>
+<ul>

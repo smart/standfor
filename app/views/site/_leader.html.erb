@@ -1,0 +1,10 @@
+<div>
+
+<% if account.avatar.nil? %>
+ <%= image_tag('missing_avatar.jpg') -%>
+<% else %>
+ <%= image_tag(account.avatar.public_filename(:small)) -%>
+<% end %>
+
+<%= link_to account.nickname, :controller => 'site', :action => 'meet', :id => account   -%> : <%= amount -%>
+</div>

@@ -1,11 +1,9 @@
 <% content_box( "leaderboard", :class => "shadow" ) do -%>
 
-<ol>
-  <% System.top_donors.each do |account, amount| %> 
-  <li>
-   <%= link_to account.nickname, :controller => 'site', :action => 'meet', :id => account   -%> : <%= amount -%>
- </li>
-  <% end %>
-</ol>
+<h2>Most Money Donated</h2>
+ <%= render :partial => 'money_donated' -%>
+
+<h2>Most Badge Views </h2>
+ <%= render :partial => 'badge_views' -%>
 
 <% end %>

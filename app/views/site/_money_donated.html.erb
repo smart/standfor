@@ -1,0 +1,8 @@
+
+<ol>
+  <% System.top_donors.each do |account, amount| %> 
+  <li>
+   <%= render :partial => 'leader', :locals => {:account => account, :amount => amount }  -%>
+ </li>
+  <% end %>
+</ol>
