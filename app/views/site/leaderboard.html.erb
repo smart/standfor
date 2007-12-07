@@ -1,9 +1,14 @@
-<% content_box( "leaderboard", :class => "shadow" ) do -%>
+<div class="leaders">
+	<% grey_fade(:id => 'most-donated' ) do -%>
+	<h2>Most Money Donated</h2>
+		<%= render :partial => 'money_donated' -%>
+	<% end %>
+</div>
 
-<h2>Most Money Donated</h2>
- <%= render :partial => 'money_donated' -%>
+<div class="leaders">
+	<% grey_fade(:id => 'most-views' ) do -%>
+	<h2>Most Badge Views </h2>
+	 <%= render :partial => 'badge_views' -%>
+	<% end %>
+</div>
 
-<h2>Most Badge Views </h2>
- <%= render :partial => 'badge_views' -%>
-
-<% end %>

@@ -53,7 +53,7 @@ window.attachEvent("onload", correctPNG);
          <li><%= link_to(image_tag("/text/navigation_text/organizations.png", :alt => 'organizations'), organizations_path ) %></li>
          <li><%= link_to(image_tag("/text/navigation_text/badges.png", :alt => 'badges') , badges_path  ) %></li>
          <li><%= link_to(image_tag("/text/navigation_text/sponsors.png", :alt => 'sponsors'), sponsors_path ) %></li>
-         <li><%= link_to(image_tag("/text/navigation_text/leaderboard.png", :alt => 'leaderboard'),  :controller => 'site', :action => 'leaderboard') %></li>
+         <li><%= link_to(image_tag("/text/navigation_text/leaderboard.png", :alt => 'leaderboard'),  :controller => '/site', :action => 'leaderboard') %></li>
          <li class="last"><%= link_to(image_tag("/text/navigation_text/about : us.png", :alt => 'About Us'), :controller => '/site', :action => 'about_us' ) %></li>
      </ul>
    </div>

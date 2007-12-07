@@ -26,11 +26,7 @@ ul, li {
 }
 
 ol, ol li {
-	list-style-type:decimal;
-}
-
-ol {
-	padding-left:20px;
+	list-style:decimal inside;
 }
 
 h1 {
@@ -834,15 +830,27 @@ div.small-logo img {
 /* leaderboard page specific styles */
 
 div.leaders {
-	width:50%;
 	float:left;
+	width:365px;
 }
 
 div.leaders #most-donated {
 
 }
 div.leaders #most-views {
+	margin-left:35px;
+}
 
+div.leaders ol li {
+	border-bottom:1px dotted black;
+	margin:0 15px 5px 0;
+	padding:0 0 5px 10px;
+	font-size:1.2em;
+}
+
+div.leaders ol li img {
+	margin-right:5px;
+	margin-bottom:-6px;
 }
 
 /* box styles */
