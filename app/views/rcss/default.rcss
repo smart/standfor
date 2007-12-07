@@ -29,6 +29,10 @@ ol, ol li {
 	list-style-type:decimal;
 }
 
+ol {
+	padding-left:20px;
+}
+
 h1 {
   font-size:130%;
   line-height:28px;
@@ -835,7 +839,10 @@ div.leaders {
 }
 
 div.leaders #most-donated {
-	
+
+}
+div.leaders #most-views {
+
 }
 
 /* box styles */
