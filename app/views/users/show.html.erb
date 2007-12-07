@@ -1,14 +1,14 @@
-<h1><%= @account.nickname -%></h1>
-
-<% if @account.avatar.nil? %>
- <%= image_tag('missing_avatar.jpg') -%>
-<% else %>
- <%= image_tag(@account.avatar.public_filename(:full)) -%>
+<% content_box(@account.nickname, :class => "shadow", :id => "welcome" ) do -%>
+	<%= image_tag(@account.get_avatar(:full), :class => 'avatar', :alt => 'Avatar') -%>	
+	<span class="clear"></span>
 <% end %>
 
-<p>
-Social Features coming soon.
-</p>
+<% content_box("socialize", :class => "basicborder", :id => "ranking" ) do -%>
+  <p>Social Features coming soon.</p>
+<% end %>
+
+
+
 
 <% if false %>
 <p>
