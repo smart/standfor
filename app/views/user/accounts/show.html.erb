@@ -1,10 +1,6 @@
 <% content_box("welcome #{@account.nickname}", :class => "shadow", :id => "welcome" ) do -%>
-
- <% if !current_account.avatar.nil? %>
- <%= image_tag(current_account.avatar.public_filename(:full), :class => 'avatar') -%> 
-  <% else %>
- <%= image_tag('missing_avatar.jpg', :class => 'avatar') -%>
-  <% end %>
+	
+ <%= image_tag(current_account.get_avatar(:full), :class => 'avatar') -%> 
 
  <%= link_to "upload an avatar", new_user_avatar_path , :class => 'small-link' %>
 
@@ -37,7 +33,7 @@
 	<h2>my badges<span><%= link_to  'view all' , user_my_badges_path -%></span></h2>
    <div id="badge-list">
 	<% if @my_badges.empty? %>
-		<p>You haven't created any badges yet. Please <%= link_to 'create a badge', badges_path %> first.</p>
+		<p>You haven't created any badges yet. Please <%= link_to 'get a badge', badges_path %> first.</p>
 	<% else %>
 		<% @my_badges.each do |my_badge| %>
 			<%= badge_link(my_badge, :size => 'small') -%>

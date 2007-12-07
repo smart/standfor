@@ -97,12 +97,16 @@ class Account< ActiveRecord::Base
     organizations = Organization.find(:all, :conditions => "id IN (#{seen.join(',')} )" ) 
   end
 
-   def segments
+  def segments
     seen = []
     self.my_badges.each do |mb|
        seen << mb.badge.segment.id unless seen.include?(mb.badge.segment.id)
     end
     segments  = Segment.find(:all, :conditions => "id IN (#{seen.join(',')} )" ) 
-   end
+  end
+   
+  def get_avatar(size)
+   	!self.avatar.nil? ? self.avatar.public_filename(size) : "missing_avatar_#{size}.png"
+  end
   
 end
