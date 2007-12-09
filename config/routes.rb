@@ -39,7 +39,7 @@ ActionController::Routing::Routes.draw do |map|
   map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
   map.connect '/user/sessions/new', :controller => 'sessions', :action => 'new'
   map.about_user '/about/:id', :controller => 'users', :action => 'show'
-  map.my_badge_landing '/landing/:id', :controller => 'my_badges', :action => 'show'
+  map.my_badge_landing '/landing/:id', :controller => 'landing', :action => 'index'
   map.home '/', :controller => 'site', :action => 'index'
 
   map.resource :sessions
