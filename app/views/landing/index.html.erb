@@ -1,14 +1,27 @@
-<h1>My Badge Landing</h1>
+<% content_box( @my_badge.badge.name, :class => "shadow", :id => "preview" ) do -%>
+	<%= render :partial => 'shared/badge_preview', :locals => {:badge => @my_badge} %>
+<% end %>
 
-<h2>Badge</h2>
+<%= render :partial => 'shared/flash', :locals => { :flash => flash } %>
 
-<div>
- <%= image_tag(@my_badge.source_path) -%> 
-</div>
+<% content_box("#{@my_badge.account.nickname} standsfor:", :class => 'basicborder', :id => 'instructions') do %>
+	<ul>
+    <li>Organization: <%= @my_badge.badge.organization.name -%></li>
+    <li>Segment: <%= @my_badge.badge.segment.name -%></li>
+	</ul>
+<% end %>
 
-<h2>Badge Statistics</h2>
-<%= render :partial => 'statistics' , :locals => {:stats => @adi.stats} -%>
+<% grey_fade(:id => "badge-extras" ) do -%>
+	<div id="stats" class="left">
+		<h2>badge stats</h2>
+		<%= render :partial => 'statistics' , :locals => {:stats => @adi.stats} -%>
+	</div>
+	<div id="sponsors" class="right">
+		<h2>sponsors</h2>
+		<p>
+		  Implement sponsorship details here.
+		</p>
+	</div>
+<% end %>
 
 
-<p> This badge belongs to: <%= link_to @my_badge.account.nickname, about_user_path(@my_badge.account) -%>
-</p>

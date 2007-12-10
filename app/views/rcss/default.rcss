@@ -17,8 +17,11 @@ body, p, ol, ul, td {
 }
 
 p {
-	line-height:140%;
-	padding-bottom:10px;
+  line-height:140%;
+  padding-bottom:10px;
+}
+#footer p {
+  padding-bottom:0;
 }
 
 ul, li {
@@ -323,6 +326,10 @@ img {
 #badge-actions {
 	margin-top:-5px;
 	padding-bottom:5px;
+}
+#badge-actions h2 {
+  clear:both;
+  text-align:right;
 }
 #badge-functions ul.navigation,
 #badge-actions ul.navigation {

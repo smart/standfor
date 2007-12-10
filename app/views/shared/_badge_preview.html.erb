@@ -23,7 +23,7 @@
 	<% end -%>
 </div>
 
-<% if badge.class.to_s == 'MyBadge' and !badge.new_record? -%>
+<% if badge.class.to_s == 'MyBadge' and !badge.new_record? and !is_location?(:controller => 'landing') -%>
 	<%= render :partial => 'user/my_badges/navigation' , :locals => {:my_badge => badge} -%>
 <% elsif is_location?(:controller => 'badges', :action => 'show') %>
 	<%= render :partial => 'badges/navigation' , :locals => {:badge => badge} -%>

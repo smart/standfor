@@ -62,7 +62,7 @@ window.attachEvent("onload", correctPNG);
    	</h1>
    	<% if current_account != :false %>
      		<div id="user-functions">
-     			<%= link_to (image_tag("/text/top_text_small/my account.png", :alt => "my account"), user_account_path) -%>
+     			<%= link_to(image_tag("/text/top_text_small/my account.png", :alt => "my account"), user_account_path) -%>
      			&nbsp;&nbsp;&nbsp;
      			<%= link_to(image_tag("/text/top_text_small/logout.png", :alt => "logout"), logout_path) -%>
 	     	</div>

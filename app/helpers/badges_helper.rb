@@ -18,14 +18,9 @@ module BadgesHelper
   end
   
   def customize_link(badge, opts = {})
-   	opts[:type] ||= badge.class.to_s	
-		#   	if opts[:type] == 'Badge'
-		#   		link_to(image_tag('icons/navigation/get_badge.png', :alt => "Get Badge"), url_for(:controller => 'customize', :action => 'index', :badge_id => badge.id))
-		#   	else
-		#   		link_to(image_tag('icons/navigation/edit_badge.png', :alt => "Edit Badge"), url_for(:controller => 'user/customize', :action => 'index', :id => badge.id))
-		# end
+   	opts[:type] ||= badge.class.to_s
 		case 
-		when opts[:type] == 'Badge'
+		when opts[:type] == 'Badge' || is_location?(:controller => 'landing')
 			prefix = 'get'
 			path = url_for(:controller => 'customize', :action => 'index', :badge_id => badge.id)
 		when badge.new_record?
