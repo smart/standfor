@@ -43,13 +43,16 @@ module BadgesHelper
   end
   
   def get_badge_path(badge)
-  	if badge.class.to_s == 'Badge' 
-  		badge_path(badge)
-  	elsif badge.new_record? and !is_location?(:action => 'show')
-  		badge_path(badge.badge)
-		elsif badge.class == MyBadge
-			user_my_badge_path(badge)
-		end
+    case 
+    when badge.class == Badge
+      badge_path(badge)
+    when badge.new_record? && !is_location?(:action => 'show')
+      badge_path(badge.badge)
+    when badge.class == MyBadge && is_location?(:controller => 'landing')
+      badge_path(badge.badge)
+    when badge.class == MyBadge
+      user_my_badge_path(badge)
+    end
   end
   
   def show_badge_meta(badge)

@@ -8,6 +8,9 @@
     <li>Organization: <%= @my_badge.badge.organization.name -%></li>
     <li>Segment: <%= @my_badge.badge.segment.name -%></li>
 	</ul>
+	<p>
+	  <%= link_to('landing page', my_badge_landing_path(@my_badge.public_adi_id)) %>
+	</p>
 <% end %>
 
 <% grey_fade(:id => "badge-extras" ) do -%>
