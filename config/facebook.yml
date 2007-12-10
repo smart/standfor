@@ -21,13 +21,14 @@ test:
       port: 1234
       local_port: 5678
 
+staging:
+    key: adb7e39670c9b66d72ea7fd12e477f99
+    secret: 831581055b087e694a93a2c9cae0df94
+    canvas_path: /standforus/
+    callback_path: http://standfor.eval.sympact.net
+
 production:
-    key: YOUR_API_KEY_HERE
-    secret: YOUR_API_SECRET_HERE
-    canvas_path: /yourAppName/
-    callback_path: /path/to/your/callback/
-    tunnel:
-      username: yourLoginName
-      host: www.yourexternaldomain.com
-      port: 1234
-      local_port: 5678
+    key: b0a5a113a615767e72f94827a3d4ce6b
+    secret: 5bdcaadab6930821165c1b32054937ce
+    canvas_path: /standfor/
+    callback_path: http://www.standfor.us
