@@ -151,9 +151,13 @@ class User::MyBadgesController < ApplicationController
   end
 
   def update_badges
-    @segment = Segment.find_by_id(params[:search_segment])
-    @results = current_account.my_badges.find(:all, 
-                   :conditions => [ 'badge_id IN (SELECT id FROM badges WHERE segment_id  = ? ) ',  @segment.id] )
+    @organization = Organization.find_by_id(params[:search_organization])
+    where = "1=1"
+    if !params[:search_segment].nil? and !params[:search_segment].blank?
+      @segment = Segment.find_by_id(params[:search_segment])
+      where = "badge_id IN (SELECT id FROM badges WHERE segment_id  = #{@segment.id} )"  
+    end
+    @results = current_account.my_badges.find(:all, :conditions => where )
     render :action => 'update_badges.rjs'
   end
 

@@ -116,8 +116,13 @@ class BadgesController < ApplicationController
   end
 
   def update_badges
-    @segment = Segment.find_by_id(params[:search_segment])
-    @results = @segment.badges
+    @organization = Organization.find_by_id( params[:search_organization] )
+    where = " organization_id = #{ @organization.id } " 
+    if params[:search_segment] and !params[:search_segment].blank?
+      @segment = Segment.find_by_id(params[:search_segment]) 
+      where << "AND segment_id = #{ @segment.id }"
+    end
+    @results = Badge.find(:all, :conditions => where ) 
     render :action => 'update_badges.rjs'
   end
 
