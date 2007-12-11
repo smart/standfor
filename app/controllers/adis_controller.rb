@@ -2,19 +2,8 @@ class AdisController < ApplicationController
    before_filter :update_statistics
 
   def index
-
       redirect_to my_badge_landing_url(params[:id])  and return false if params[:ext] == 'html' 
       render_adi
-
-  if false
-    respond_to do |format|
-      format.jpg  {  render_adi }
-      format.gif  {  render_adi }
-      format.png  {  render_adi }
-      format.html {  redirect_to my_badge_landing_url(params[:id])  }
-    end
-
- end
   end
   
   def click_adi
