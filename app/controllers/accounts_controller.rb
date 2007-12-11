@@ -13,6 +13,7 @@ class AccountsController < ApplicationController
   
   def finish_registration
     @account = current_account
+    @account.my_badge_referrer = session[:my_badge_referrer] if !session[:my_badge_referrer].nil?
   end
   
   def save_registration

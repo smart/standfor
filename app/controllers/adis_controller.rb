@@ -37,6 +37,7 @@ class AdisController < ApplicationController
   def update_statistics
     @my_badge = MyBadge.find_by_public_adi_id(params[:id])
     if params[:ext] == 'html'  # an adi has been clicked
+      session[:my_badge_referrer] = @my_badge.id
       @hit = @my_badge.sponsorship_hits.find_by_ip(request.env['REMOTE_ADDR'] , :order => "created_at DESC", :limit => 1)
       if  !@hit.nil?
         @my_badge.sponsorship_clicks.create(:sponsorship => @hit.sponsorship, 
