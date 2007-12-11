@@ -10,7 +10,7 @@ class ApplicationController < ActionController::Base
   helper 'badges'
   session :session_key => '_standfor_session_id'
   before_filter :init
-  before_filter :print_info
+  #before_filter :print_info
   
    def print_info
     if !fbsession.nil?

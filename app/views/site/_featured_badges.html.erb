@@ -2,12 +2,10 @@
 	<ul>
 	<% @badges.each do |badge|%>
 		<li>
-		<%= image_tag(badge.example_path, :width => 220 )-%><br />
+		<%= image_tag(badge.example_path, :width => 220 )-%> <br />
 		<%= link_to badge.organization.name, organization_path(badge.organization)  %>
 		</li>
-		
 	<% end  %>
-	
 	</ul>
 	<span class="clear"></span>
 <% end %>

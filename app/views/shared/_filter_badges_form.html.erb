@@ -1,9 +1,5 @@
 <% content_box("filter badges", :class => 'basic', :id => 'filter') do -%>
 	<%= form_remote_tag :url => { :controller => "#{ (in_my_badges) ? 'user/my_badges' : 'badges' }", :action => 'search' } %>
-    <% if in_my_badges %>
-   <%= hidden_field_tag  'filter_by_account', 'yes' %>
-    <% end %>
-
 	<dl>
 		<dt><label for="search_term">keyword</label></dt>
 			<dd><%=  text_field  'search' , 'term', :size => 20 -%></dd>
@@ -11,7 +7,7 @@
 	<dl>
 		<dt><label for="search_organization">organization</label></dt>
 			<dd>
-<%= select 'search', 'organization', Organization.find(:all, :order => 'name').collect {|o| [o.name, o.id] },{:prompt => 'Select an Organization' }  %>
+<%= select 'search', 'organization', Organization.find(:all, :order => 'name').collect {|o| [o.name, o.id] },{:prompt => 'All  Organizations'  }  %>
  <%= observe_field 'search_organization', :url => {:controller => "#{ (in_my_badges) ? 'user/my_badges' : 'badges' }", :action => 'update_causes' }, :with => 'search_organization' %>
 </dd>
 	</dl>
