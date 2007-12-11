@@ -1,3 +1,9 @@
  <dt><label for="search_segment">cause</label></dt>
-<%= select 'search', 'segment', organization.segments.collect {|s| [s.name, s.id] }, {:prompt => 'Select a Cause'  }  %>
-<%= observe_field 'search_segment', :url => { :controller => "#{ (in_my_badges) ? '/user/my_badges' : '/badges' }", :action => 'update_badges' , :search_organization => (organization.nil? ? '' : organization.id }, :with => 'search_segment' %>
+
+<% if !organization.nil?  %>
+<%= select 'search', 'segment', organization.segments.collect {|s| [s.name, s.id] }, {:prompt => "All #{organization.name}  Causes"  }  %>
+<% else  %>
+<%= select 'search', 'segment', Segment.find(:all).collect {|s| [s.name, s.id] }, {:prompt => 'All Causes'  }  %>
+<% end  %>
+
+<%= observe_field 'search_segment', :url => { :controller => "#{ (in_my_badges) ? '/user/my_badges' : '/badges' }", :action => 'update_badges' , :search_organization => (organization.nil? ? '' : organization.id )}, :with => 'search_segment' %>
