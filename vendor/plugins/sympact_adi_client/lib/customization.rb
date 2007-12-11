@@ -8,9 +8,9 @@ class Customization < AdiserverResource
       Customization.put(:commit, :adi_id => adi_id).code == "200" ? true : false 
     end
   
-    def commit
-      Customization.put(:commit, :adi_id => @prefix_options[:adi_id])
-    end
+    #def commit
+    #  Customization.put(:commit, :adi_id => @prefix_options[:adi_id])
+    #end
     
     
     def icon_class
