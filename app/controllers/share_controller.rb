@@ -29,7 +29,7 @@ class ShareController < ApplicationController
    def get_my_badge
      if !session[:unsaved_badge].nil?
        # This is the transition from the unlogged in state to the logged in state
-       # The before_filter :login_requirdd will ensure that current_account is set.
+       # The before_filter :login_required will ensure that current_account is set.
        @my_badge = session[:unsaved_badge]
        session[:unsaved_badge] = nil
        @my_badge.account = current_account

@@ -1,6 +1,11 @@
 <li class="leader">
 	<span>
 	<%= image_tag(account.get_avatar(:small), :class => 'avatar', :alt => 'no avatar') %>
-	<%= link_to account.nickname, :controller => 'site', :action => 'meet', :id => account   -%>: <%= number_to_currency(amount, :precision => 0) -%>
+	<%= link_to account.nickname, :controller => 'site', :action => 'meet', :id => account   -%>: 
+    <% if metric == 'dollars' %> 
+     <%= number_to_currency(amount, :precision => 0) -%>
+    <% else %>
+     <%= amount -%>
+    <% end %>
 	</span>
 </li>

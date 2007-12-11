@@ -1,5 +1,5 @@
 <ol>
   <% System.top_donors.each do |account, amount| %> 
-		<%= render :partial => 'leader', :locals => {:account => account, :amount => amount }  -%>
+		<%= render :partial => 'leader', :locals => {:account => account, :amount => amount, :metric => 'dollars' }  -%>
   <% end %>
 </ol>

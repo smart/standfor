@@ -1,5 +1,5 @@
 <ol>
   <% System.most_badge_views.each do |account, amount| %> 
-   <%= render :partial => 'leader', :locals => {:account => account, :amount => amount }  -%>
+   <%= render :partial => 'leader', :locals => {:account => account, :amount => amount, :metric => 'views'  }  -%>
   <% end %>
 <ol>
