@@ -22,7 +22,7 @@ Rails::Initializer.run do |config|
   # Add additional load paths for your own custom dirs
   # config.load_paths += %W( #{RAILS_ROOT}/extras )
    config.load_paths += Dir[RAILS_ROOT + '/app/models/*/']
-
+   config.active_record.observers = :younety_observer
   # Force all environments to use the same logger level 
   # (by default production uses :info, the others :debug)
   # config.log_level = :debug
@@ -56,18 +56,9 @@ end
 #   inflect.uncountable %w( fish sheep )
 # end
 
-# Add new mime types for use in respond_to blocks:
-# Mime::Type.register "text/richtext", :rtf
-# Mime::Type.register "application/x-mobile", :mobile
-Mime::Type.register "image/png",  :png
-Mime::Type.register "image/jpeg", :jpeg
-Mime::Type.register "image/jpeg", :jpg
-Mime::Type.register "image/gif",  :gif
-Mime::Type.register "application/x-shockwave-flash", :swf
 
 # Include your application configuration below
 #
 #
 
-require 'RMagick'
-require 'open-uri'
+
