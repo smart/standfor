@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-   layout 'default'
+   layout :get_layout 
 
     def setorg
        if request.host.match(/statndfor(\w+).org/)   
@@ -33,6 +33,7 @@ class SiteController < ApplicationController
     def meet 
       @account = Account.find(params[:id])
     end
+
     def email_embed_instructions
       render :layout => nil
     end
@@ -57,6 +58,10 @@ class SiteController < ApplicationController
    end
   
    private
+
+   def get_layout 
+     (params[:action]  == 'email_embed_instructions' ) ? nil  :  'default' 
+   end
 
    def get_featured_badges
      @badges = Badge.find(:all, :limit => 6 )
