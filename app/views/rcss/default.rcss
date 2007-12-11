@@ -296,7 +296,7 @@ img {
 	border:1px solid black;
 	padding:5px;
 }
-/* badge index specific styles */
+/* badge specific styles */
 #filter {
 	clear:both;
 }
@@ -319,6 +319,26 @@ img {
 }
 #filter select option {
 	padding-right:5px;
+}
+#badge {
+  clear:both;
+  position:relative;
+}
+#badge img {
+  left:0;
+  margin-left:auto;
+  right:0;
+  margin-right:auto;
+  top:0;
+  margin-top:auto;
+  bottom:0;
+  margin-bottom:auto;
+  width:300px;
+  height:100px;
+  position:absolute;
+  padding:5px;
+  border:1px solid #CCCCCC;
+  background:#616161;
 }
 #badge-functions {
 	margin-top:5px;

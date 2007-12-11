@@ -33,6 +33,9 @@ class SiteController < ApplicationController
     def meet 
       @account = Account.find(params[:id])
     end
+    def email_embed_instructions
+      render :layout => nil
+    end
 
    # These actions are for development purposes, it can probably be deleted  
    def _login 
