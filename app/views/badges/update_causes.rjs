@@ -1,2 +1,2 @@
 page.replace_html 'cause-select', :partial => '/shared/cause_select', :locals => {:organization => @organization, :in_my_badges => false}
-page.replace_html 'badge-list',  :partial => '/shared/search_results' ,  :locals => { :results => @results }
+page.replace 'badge-list',  :partial => '/shared/search_results' ,  :locals => { :results => @results }
