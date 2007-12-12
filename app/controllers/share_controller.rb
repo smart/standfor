@@ -4,11 +4,7 @@ class ShareController < ApplicationController
   before_filter :get_my_badge
 
    def index 
-     @customizations = Customization.find(:all, :params => { :adi_id => @my_badge.adi_id } )
-      @customizations.each do |customization|
-      customization.commit
-    end
-
+     @customizations = Customization.commit(@my_badge.adi_id)
      @shares  = Share.find(:all, :params => {:adi_id => @my_badge.adi_id } )
    end
 
