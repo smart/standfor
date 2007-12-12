@@ -19,10 +19,6 @@
 
 <% grey_fade(:id => "segment-badges" ) do -%>
 	<h2><%= @organization.name -%> Badges</h2>
-	<div id="badge-list">
-		<% @segment.badges.each do |badge| %> 
-			<%= badge_link(badge, :size => 'medium' ) -%>
-		<% end %>
-  </div>
+  <%= badge_list(@segment.badges, 'small') %>
 	<span class="clear"></span>
 <% end %>
