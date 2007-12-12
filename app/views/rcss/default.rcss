@@ -550,6 +550,16 @@ table#badge-list td {
   display:inline;
 }
 
+ul.segments {
+  
+}
+
+ul.segments li {
+  font-weight:bold;
+  font-size:1.3em;
+  text-align:right;
+}
+
 /* sponsors page specific styles */
 
 div.small-logo {
@@ -750,6 +760,7 @@ div.small-logo img {
 }
 #member-login fieldset {
 	margin-bottom:0;
+	padding-bottom:10px;
 }
 .login dl {
 	clear:none;
@@ -781,7 +792,7 @@ div.small-logo img {
 
 #member-login .input dd {
 	margin-left:0;
-	padding-bottom:5px;
+	padding-bottom:10px;
 }
 #member-login dt,
 #register dt {
@@ -1197,6 +1208,7 @@ form .submit {
 	padding:3px 5px 3px 5px;
 	border:1px solid black;
 	cursor:pointer;
+	float:right;
 }
 form .submit:hover {
 	background:black;
@@ -1227,7 +1239,6 @@ form dd label{
 }
 
 form .input input {
-	width:auto;
 	border:1px solid grey;
 	font-size:1.2em;
 }

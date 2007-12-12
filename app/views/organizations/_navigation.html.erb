@@ -3,6 +3,6 @@
   <%= controller.controller_name == 'segments' ? content_tag(:li, link_to("Back to #{organization.name}", organization_path(organization))) : nil %>
 </ul>
 
-<ul>
-  <%= render :partial => 'segments/segment', :collection => organization.segments %>
+<ul class="segments">
+  <%= render :partial => organization.segments %>
 </ul>

@@ -9,10 +9,7 @@
     	<dt><label for="password">Password:</label></dt>
     		<dd><%= password_field_tag 'password', nil, :size => 20 -%></dd>
 		</dl>
-		<dl class="checkbox">
-    	<dt><label for="remember_me"><%= check_box_tag 'remember_me' -%> Remember Me</label></dt>
-    		<dd><%= submit_tag 'login', :class => 'submit' %></dd>
-    </dl>
+    <%= submit_tag 'login', :class => 'submit' %>
     <span class="clear"></span>
     		
 	</fieldset>
@@ -28,6 +25,7 @@
 	    <%= hidden_field_tag( 'facebook', :value => true ) %>
 	    <%= submit_tag 'facebook login', :class => 'submit' %>
 		<% end %>
+		<span class="clear"></span>
 	</div>
 <% end -%>
 
@@ -40,6 +38,7 @@
 	    </dl>
 	    <%= submit_tag 'openID login', :class => 'submit' %>
 	  <% end %>
+	  <span class="clear"></span>
 	</div>
 <% end -%>
 
