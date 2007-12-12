@@ -26,12 +26,16 @@ class AccountsController < ApplicationController
   end
 
   def create
+    @context = "login"
     @local_user = LocalUser.new(params[:account])
     if @local_user.save
       successful_local_user_login(@local_user)
       return false
     else
-      flash[:notice] = 'Could not save account.'
+      flash[:error] = "<li>Account Could not be saved</li>"
+       @local_user.errors.full_messages.each do |e|
+        flash[:error] << "<li>#{e}</li>"  
+      end
       render :template => "/sessions/new"
     end
   end
