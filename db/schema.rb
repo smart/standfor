@@ -116,11 +116,11 @@ ActiveRecord::Schema.define(:version => 45) do
   create_table "donations", :force => true do |t|
     t.integer  "account_id"
     t.integer  "organization_id"
+    t.integer  "amount"
     t.integer  "segment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order_id"
-    t.integer  "amount"
   end
 
   create_table "local_users", :force => true do |t|
