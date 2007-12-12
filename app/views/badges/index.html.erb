@@ -14,9 +14,6 @@
 
 <% grey_fade(:id => "badges" ) do -%>
 	<h2>recent badges</h2>
-   <div id="badge-list">
-		<% @badges.each do |badge| %>
-			<%= badge_link(badge, { :size => 'small' } ) -%>
-		<% end %>
-  </div>
+		<%= render :partial => 'shared/badge_list', :locals => {:badges => @badges, :size => 'small' } %>
+
 <% end %>

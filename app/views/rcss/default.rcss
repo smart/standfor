@@ -49,7 +49,15 @@ h3 {
 h4 {
   font-size:115%;
 }
+table {
+  border-collapse:collapse;
+  border-spacing:0;
+}
 
+td, th {
+  margin:0;
+  padding:0;
+}
 pre {
   background-color:#eee;
   padding:10px;
@@ -429,11 +437,39 @@ img {
 	position:relative;
 }
 
+table#badge-list {
+  width:100%;
+  table-layout:auto;
+}
+table#badge-list tr {
+  border-bottom:1px dotted black;
+}
+
+table#badge-list td {
+  vertical-align:middle;
+  text-align:center;
+  width:33%;
+}
 
 .badge-link {
-	float:left;
 	position:relative;
+	margin:10px auto;
 }
+.badge-wrapper {
+  width:33%;
+  position:absolute;
+  height:auto;
+  top:0;
+  bottom:0;
+}
+.badge-row {
+  height:200px;
+  position:relative;
+}
+.badge-position {
+  position:absolute;
+}
+
 .badge-link .badge-meta {
 	position:absolute;
 	top:20px;
@@ -1083,6 +1119,7 @@ div.leaders ol li img {
 	margin-left:15px;
 	padding-top:10px;
 	clear:both;
+	padding-right:15px;
 }
 .grey-fade .end-cap {
 	position:absolute;

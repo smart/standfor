@@ -1,3 +1,7 @@
-<% results.each do |badge| %>
-	<%= badge_link(badge, :size => 'small') -%>
+<% if !results.nil? %>
+  <%= badge_list(results, 'small') %>
+<% else %>
+<p>
+  No badges found. Please search again.
+</p>
 <% end %>

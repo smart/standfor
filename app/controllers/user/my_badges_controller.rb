@@ -123,9 +123,9 @@ class User::MyBadgesController < ApplicationController
        end
     end
     render :update do |page|
-      page.replace_html 'my-badge-list' , :partial => '/shared/search_results' ,  :locals => { :results => results } 
+      page.replace 'badge-list' , :partial => '/shared/badge_list' ,  :locals => { :badges => results, :size => 'small' } 
       if !@org.nil?
-        page.replace_html 'cause-select' , :partial => '/shared/cause_select' ,:locals => { :organization => @org } 
+        page.replace_html 'cause-select' , :partial => '/shared/cause_select' , :locals => { :organization => @org } 
      end
     end
   end

@@ -3,7 +3,7 @@ module BadgesHelper
     opts[:size] ||=  'medium'
     badge_type = check_badge_type(badge)
     badge_type == 'Badge' ? path = badge_path(badge) : path = user_my_badge_path(badge)
-  	link = link_to(image_tag( badge.source_path(:size => opts[:size])), path ) 
+  	link = link_to(image_tag( badge.source_path(:size => opts[:size]), :class => "badge"), path ) 
   	mouseover = "Element.show('#{dom_id(badge)}')"
   	mouseout = "Element.hide('#{dom_id(badge)}')"
   	meta = content_tag(:li, "<h4>#{badge.name}</h4>")
@@ -84,9 +84,19 @@ module BadgesHelper
 		end
 	end
 	
-	def badge_preview
-		
+	def badge_list(badges, size)
+		render :partial => 'shared/badge_list', :locals => {:badges => badges, :size => size}
 	end
+	
+	def extra_cells(expected, given)
+    diff = expected - (given % expected)
+    html = ''
+    diff.times do 
+      html << '<td>&nbsp;</td>'
+    end
+    return html
+	end
+	
 	
 	def check_badge_type(badge)
 		return badge.class.to_s

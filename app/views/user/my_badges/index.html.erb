@@ -14,13 +14,9 @@
 
 <% grey_fade(:id => "badges" ) do -%>
 	<h1>my badges</h1>
-  <div id="badge-list">
 	<% if @my_badges.empty? %>
 		<p>You haven't created any badges yet. Please <%= link_to 'create a badge', badges_path %> first.</p>
 	<% else %>
-		<% current_account.my_badges.each do |my_badge| %>
-	 		<%= badge_link(my_badge, :size => 'small' ) -%>
-		<% end %>
+		<%= badge_list(@my_badges, 'small') %>
 	<% end %>
-</div>
 <% end %>

@@ -101,7 +101,7 @@ class BadgesController < ApplicationController
     where << " AND segment_id  = #{@segment} " if !@segment.nil? and !@segment.blank?
     @results = Badge.find(:all, :conditions => where )
     render :update do |page|
-      page.replace_html 'badge-list' , :partial => 'search_results' ,  :locals => { :results => @results } 
+      page.replace 'badge-list' , :partial => '/shared/badge_list' ,  :locals => { :badges => @results, :size => 'small' } 
       if !@org.nil?
         page.replace_html 'cause-select' , :partial => '/shared/cause_select' ,:locals => { :organization => @org } 
      end
