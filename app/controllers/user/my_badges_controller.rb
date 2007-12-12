@@ -143,7 +143,6 @@ class User::MyBadgesController < ApplicationController
   end
 
   def update_causes
-    #render :action => 'clear_causes.rjs'  and return false if params[:search_organization].blank?
     if !params[:search_organization].nil? and  !params[:search_organization].blank?
        @organization = Organization.find_by_id(params[:search_organization])
        where = "badge_id  IN ( SELECT id FROM badges where organization_id = #{@organization.id} ) " 
