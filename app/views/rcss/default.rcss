@@ -493,6 +493,15 @@ table#badge-list td {
 	display:none;
 }
 
+/* badge landing specific styles */
+
+#action-call {
+  width:279px;
+  height:110px;
+  float:right;
+  margin-top:-45px;
+}
+
 #badge-list img {
 	/*padding:0 10px 10px 0;*/
 }
