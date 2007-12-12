@@ -4,6 +4,7 @@ class User::MyBadgesController < ApplicationController
   helper 'badges'
   before_filter :login_required
   before_filter :get_my_badge, :only => [:new, :create, :update, :sponsorship_options, :merit_options, :show, :share, :customize]
+  before_filter :show_receipt, :only => [:show]
 #  before_filter :sponsorship_option_required, :only => [:show]
 #  before_filter :merit_option_required, :only => [:show]
 
@@ -42,7 +43,6 @@ class User::MyBadgesController < ApplicationController
           raise Exception, 'Could not save my_badge'
        end
     end
-    p @my_badge
     if !@my_badge.minimum_donation.nil?
        @order.amount = @my_badge.minimum_donation
     end
@@ -184,13 +184,16 @@ class User::MyBadgesController < ApplicationController
      end
    end
 
-   def sponsorship_option_required   
-    return true if !@my_badge.sponsorship_option.nil? and !@my_badge.sponsorship_option.blank?
-    flash[:warning] = 'You must specify sponsorship options'
+   def show_receipt
     if !session[:receipt].nil?
       flash[:notice] = session[:receipt]
       session[:receipt] = nil
     end
+   end
+
+   def sponsorship_option_required   
+    return true if !@my_badge.sponsorship_option.nil? and !@my_badge.sponsorship_option.blank?
+    flash[:warning] = 'You must specify sponsorship options'
     render :action =>  :sponsorship_options and return false 
    end
 
