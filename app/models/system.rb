@@ -51,6 +51,7 @@ class System
       money[account.id] = account.referred_money_raised
      end
      sorted = money.sort {|a,b| a[1] <=> b[1] }
+     limit = sorted.size  if sorted.size < limit
      results = []
      sorted.slice(limit * -1 , limit).reverse.each do |account_id, amount|
        account = Account.find(account_id) 
