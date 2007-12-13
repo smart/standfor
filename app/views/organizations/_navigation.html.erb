@@ -1,8 +1,8 @@
-<ul>
-	<li><%= link_to 'All Organizations', organizations_path %></li>
-  <%= controller.controller_name == 'segments' ? content_tag(:li, link_to("Back to #{organization.name}", organization_path(organization))) : nil %>
+<ul class="org-nav">
+	<li class="organization"><%= link_to 'All Organizations', organizations_path %></li>
+  <%= controller.controller_name == 'segments' ? content_tag(:li, link_to("Back to #{organization.name}", organization_path(organization)), :class => 'segment') : nil %>
 </ul>
 
 <ul class="segments">
-  <%= render :partial => organization.segments %>
+  <%= render :partial => organization.segments  %>
 </ul>

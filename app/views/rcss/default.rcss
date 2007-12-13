@@ -531,6 +531,21 @@ table#badge-list td {
 	border:1px solid black;
 	margin:0 0 0 5px;
 }
+ul.org-nav {
+  margin-top:-20px;
+  margin-bottom:5px;
+}
+
+ul.org-nav li {
+  padding-left:32px;
+  height:28px;
+}
+ul.org-nav li.organization {
+  background:url(/images/icons/navigation/organization.png) no-repeat center left;
+}
+ul.org-nav li.segment {
+  background:url(/images/icons/navigation/back.png) no-repeat center left;
+}
 /* segment page specific styles */
 
 .badges {
@@ -551,14 +566,23 @@ table#badge-list td {
 }
 
 ul.segments {
-  
+  border-top:1px dotted black;
 }
 
 ul.segments li {
   font-weight:bold;
   font-size:1.3em;
   text-align:right;
+  border-bottom:1px dotted black;
+  padding:5px 32px 0 0;
+  min-height:28px;
+  background:url(/images/icons/navigation/segment.png) no-repeat right center;
 }
+
+ul.segments li.current {
+  border-left:5px solid grey;
+}
+
 
 /* sponsors page specific styles */
 

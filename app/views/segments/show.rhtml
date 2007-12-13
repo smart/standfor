@@ -1,4 +1,5 @@
-<% content_box(@organization.name, :class => 'shadow', :id => 'welcome') do -%>
+<% content_box(@organization.name, :class => 'shadow', :id => 'preview') do -%>
+  <h2><%= @segment.name %></h2>
 	<p><%= @segment.description -%></p>
 		<% if current_account != :false %>
 			<% if current_account.is_sponsor? %>
@@ -9,7 +10,7 @@
 		<% end %>
 <% end %>
 
-<% content_box("our causes", :class => 'basicborder', :id => 'ranking') do %>
+<% content_box("our causes", :class => 'basicborder', :id => 'instructions') do %>
 	<%= render :partial => 'organizations/navigation', :locals => { :organization => @organization } %>
 <% end %>
 

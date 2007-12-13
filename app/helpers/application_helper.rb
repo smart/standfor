@@ -139,6 +139,10 @@ module ApplicationHelper
 		expected_action == controller.action_name
 	end
 	
+	def is_id?(expected_id)
+	  expected_id == params[:id]
+	end
+	
   def flash_header(key)
   	case
 		when key == "error"
