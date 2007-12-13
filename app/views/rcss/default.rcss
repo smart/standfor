@@ -579,7 +579,9 @@ ul.segments li {
   background:url(/images/icons/navigation/segment.png) no-repeat right center;
 }
 
-ul.segments li.current {
+
+
+ul.segments li.current, ul.segments li:hover {
   border-left:5px solid grey;
 }
 
