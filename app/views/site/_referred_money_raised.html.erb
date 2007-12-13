@@ -1,0 +1,5 @@
+<ol>
+  <% System.most_referred_money_raised.each do |account, amount| %> 
+   <%= render :partial => 'leader', :locals => {:account => account, :amount => amount, :metric => 'dollars'  }  -%>
+  <% end %>
+<ol>
