@@ -1,7 +1,8 @@
 require 'digest/sha1'
 class LocalUser < ActiveRecord::Base
   # Virtual attribute for the unencrypted password
-  attr_accessor :password
+  attr_accessor :password 
+  attr_accessor :my_badge_referrer
 
   validates_presence_of     :login, :email
   validates_presence_of     :password,                   :if => :password_required?

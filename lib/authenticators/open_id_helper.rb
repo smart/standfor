@@ -42,6 +42,7 @@ module OpenIdHelper
       # CHOOSE - Uncomment to clean up logins as desired for application; 
       #          else login = nickname, e.g. "Dr Nic" instead of 'drnic'
       # @user.login.gsub!(/\W+/,'').downcase unless @user.login.blank?
+      @account.my_badge_referrer = local_user.my_badge_referrer if @account.my_badge_referrer.blank? 
       @account.save
     end
     

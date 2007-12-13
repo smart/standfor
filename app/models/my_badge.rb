@@ -75,6 +75,18 @@ class MyBadge < ActiveRecord::Base
       self.badge.minimum_donation
    end
 
+  def referred_accounts
+    Account.find(:all, :conditions => ["my_badge_referrer = ?  ", self.id ] )
+  end
+
+  def referred_money_raised
+    total = 0 
+    self.referred_accounts.each do |ra|
+      total +=   ra.total_donations 
+    end
+    total
+  end
+
    protected
    def after_initialize
       if self.adi_id.nil?

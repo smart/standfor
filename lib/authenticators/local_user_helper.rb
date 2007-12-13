@@ -37,6 +37,7 @@ module LocalUserHelper
         @account.send("#{model_attribute}=", local_user.send("#{registration_attribute}"))
       end
     end
+    @account.my_badge_referrer = local_user.my_badge_referrer if @account.my_badge_referrer.blank? 
     @account.save       
   end
   

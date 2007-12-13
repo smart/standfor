@@ -45,4 +45,18 @@ class System
     a 
   end
 
+  def self.most_referred_money_raised(limit = 10)
+     money = {}
+     Account.find(:all).each do |account|
+      money[account.id] = account.referred_money_raised
+     end
+     sorted = money.sort {|a,b| a[1] <=> b[1] }
+     results = []
+     sorted.slice(limit * -1 , limit).reverse.each do |account_id, amount|
+       account = Account.find(account_id) 
+       results << [account, amount]
+     end
+     results
+  end
+
 end

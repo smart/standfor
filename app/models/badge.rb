@@ -111,5 +111,9 @@ class Badge < ActiveRecord::Base
      dir
    end
 
+   def referred_accounts
+     Account.find(:all,:conditions=>["my_badge_referrer IN (SELECT id FROM my_badges WHERE badge_id = ? )", self.id ])
+   end
+
 
 end

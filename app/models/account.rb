@@ -108,5 +108,13 @@ class Account< ActiveRecord::Base
   def get_avatar(size)
    	!self.avatar.nil? ? self.avatar.public_filename(size) : "missing_avatar_#{size}.png"
   end
+
+  def referred_money_raised
+     total = 0
+     self.my_badges.each do |mb|
+       total += mb.referred_money_raised
+     end
+    total
+  end
   
 end

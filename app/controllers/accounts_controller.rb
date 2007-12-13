@@ -5,15 +5,11 @@ class AccountsController < ApplicationController
 	layout 'default'
   include YouserSystem
 
-
-
-
   def new
   end
   
   def finish_registration
     @account = current_account
-    @account.my_badge_referrer = session[:my_badge_referrer] if !session[:my_badge_referrer].nil?
   end
   
   def save_registration
@@ -28,6 +24,7 @@ class AccountsController < ApplicationController
   def create
     @context = "login"
     @local_user = LocalUser.new(params[:account])
+    @local_user.my_badge_referrer = session[:my_badge_referrer] if !session[:my_badge_referrer].nil? 
     if @local_user.save
       successful_local_user_login(@local_user)
       return false
