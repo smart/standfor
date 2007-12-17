@@ -22,7 +22,8 @@ class CreditcardsController < ApplicationController
       :month => params[:date][:month],
       :year  => params[:date][:year],
       :first_name => params[:creditcard][:first_name],
-      :last_name  => params[:creditcard][:last_name] )
+      :last_name  => params[:creditcard][:last_name] ,
+      :verification_value => params[:creditcard][:verification_value] )
 
     respond_to do |format|
       if creditcard.valid?
@@ -31,6 +32,9 @@ class CreditcardsController < ApplicationController
         format.html { redirect_to session[:creditcard_redirect] }
       else
         flash[:error] = "The credit card information entered is not valid."
+        creditcard.errors.each do |error, msg|
+            flash[:error] +=  "<br />#{error.to_s}  #{msg.to_s}"
+        end
         format.html { render :action => "new" }
       end
     end
