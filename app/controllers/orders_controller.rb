@@ -81,11 +81,7 @@ class OrdersController < ApplicationController
   def authorize_card
     #TODO  Replace this with real informaiton when we go into production
     gateway = ActiveMerchant::Billing::PaypalGateway.new( :login => PAYPAL_LOGIN, :password => PAYPAL_PASS, :pem => PAYPAL_PEM)
-    #@order.creditcard.number = '1'
-    p @order.amount
-    p @order.creditcard
-    p ENV['IP']
-    response = gateway.authorize(@order.amount, @order.creditcard, {:ip => "24.243.232.212", :verification_value => @order.creditcard.verification_value})
+    response = gateway.authorize((@order.amount * 100), @order.creditcard, {:ip => request.env["REMOTE_ADDR"]})
     p '-------------------'
     p '-------------------'
     p '-------------------'
