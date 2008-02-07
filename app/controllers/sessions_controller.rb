@@ -1,46 +1,29 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
   layout 'default'
-  # Be sure to include YouserSystem in Application Controller instead
-  include YouserSystem
-  # If you want "remember me" functionality, add this before_filter to Application Controller
-  before_filter :login_from_cookie
   
+  def ssl_required?
+     ENV['RAILS_ENV'] == 'production'
+  end
 
   # render new.rhtml
   def new
+    session[:return_to] = request.env['HTTP_REFERER'] || "/" if session[:return_to].blank? 
   	@context = 'login'
   end
   
   #this is the create function for session
   def create
-    case determine_authenticator
-      
-        when "OpenId"
-        open_id_authentication
-      
-      
-      when "Facebook"
-        facebook_authentication
-      
-      
-      when "LocalUser"
-        local_user_authentication
-      
-      else
-      normal_create
-    end  
+    youser_authenticate
+    #save_referrer_info and return false
   end
-  
-  def normal_create
-    throw "Implement me in this controller!"
-  end  
 
   def destroy
-    self.current_account.forget_me if logged_in?
+    #self.current_account.forget_me if logged_in?
+    @current_account.forget_me if logged_in?
     cookies.delete :auth_token
     reset_session
     flash[:notice] = "You have been logged out."
-    redirect_back_or_default('/')
+    redirect_to("/")
   end
 end

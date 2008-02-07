@@ -1,9 +1,7 @@
 class AccountsController < ApplicationController
   # Be sure to include AuthenticationSystem in Application Controller instead
   # If you want "remember me" functionality, add this before_filter to Application Controller
-  before_filter :login_from_cookie
 	layout 'default'
-  include YouserSystem
 
   def new
   end
@@ -26,7 +24,10 @@ class AccountsController < ApplicationController
     @local_user = LocalUser.new(params[:account])
     @local_user.my_badge_referrer = session[:my_badge_referrer] if !session[:my_badge_referrer].nil? 
     if @local_user.save
-      successful_local_user_login(@local_user)
+      save_referrer_info
+      params[:login] = params[:account][:login]
+      params[:password] = params[:account][:password]
+      local_user_authentication    
       return false
     else
       flash[:error] = "<li>Account Could not be saved</li>"

@@ -3,7 +3,6 @@
 
 class ApplicationController < ActionController::Base
   include StandforAccountSystem 
-  include YouserSystem
   include SegmentSystem
   include StyleSystem
   # Pick a unique cookie name to distinguish our session data from others'
