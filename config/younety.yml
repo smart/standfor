@@ -1,0 +1,24 @@
+
+development:
+    user: quentin
+    pass: test
+    younety_app: 1
+    url: http://localhost:3100
+
+test:
+    user: quentin
+    pass: test
+    younety_app: 1
+    url: http://localhost:3100
+
+staging:
+    user: quentin
+    pass: test
+    younety_app: 1
+    url: http://localhost:3100
+
+production:
+    user: quentin
+    pass: test
+    younety_app: 1
+    url: http://localhost:3100
