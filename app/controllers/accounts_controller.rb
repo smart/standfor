@@ -24,7 +24,6 @@ class AccountsController < ApplicationController
     @local_user = LocalUser.new(params[:account])
     @local_user.my_badge_referrer = session[:my_badge_referrer] if !session[:my_badge_referrer].nil? 
     if @local_user.save
-      save_referrer_info
       params[:login] = params[:account][:login]
       params[:password] = params[:account][:password]
       local_user_authentication    
