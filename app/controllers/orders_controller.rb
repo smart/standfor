@@ -82,13 +82,6 @@ class OrdersController < ApplicationController
     #TODO  Replace this with real informaiton when we go into production
     gateway = ActiveMerchant::Billing::PaypalGateway.new( :login => PAYPAL_LOGIN, :password => PAYPAL_PASS, :pem => PAYPAL_PEM)
     response = gateway.authorize((@order.amount * 100), @order.creditcard, {:ip => request.env["REMOTE_ADDR"]})
-    p '-------------------'
-    p '-------------------'
-    p '-------------------'
-    p response
-    p '-------------------'
-    p '-------------------'
-    p '-------------------'
       if response.success?
         @order.payment_authorization = response.authorization
         return true
