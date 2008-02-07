@@ -1,32 +1,3 @@
-# Copyright (c) 2007, Matt Pizzimenti (www.livelearncode.com)
-# All rights reserved.
-# 
-# Redistribution and use in source and binary forms, with or without modification,
-# are permitted provided that the following conditions are met:
-# 
-# Redistributions of source code must retain the above copyright notice,
-# this list of conditions and the following disclaimer.
-# 
-# Redistributions in binary form must reproduce the above copyright notice,
-# this list of conditions and the following disclaimer in the documentation
-# and/or other materials provided with the distribution.
-# 
-# Neither the name of the original author nor the names of contributors
-# may be used to endorse or promote products derived from this software
-# without specific prior written permission.
-# 
-# THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
-# AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
-# IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE
-# ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE
-# LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
-# DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
-# SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
-# CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
-# OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
-# OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-#
-
 require File.dirname(__FILE__) + "/test_helper"
 require "test/unit"
 require "rubygems"
@@ -39,100 +10,10 @@ class APITest < Test::Unit::TestCase
     assert @controller.fbsession.respond_to?(:session_key)
     assert @controller.fbsession.respond_to?(:session_expires)
     assert @controller.fbsession.respond_to?(:last_error_message), "This assertion is OK to fail with RFacebook Gem <= 0.9.1"
-    assert @controller.fbsession.respond_to?(:suppress_errors), "This assertion is OK to fail with RFacebook Gem <= 0.9.1"
-    assert @controller.fbsession.respond_to?(:suppress_errors=), "This assertion is OK to fail with RFacebook Gem <= 0.9.1"
     assert @controller.fbsession.respond_to?(:logger)
     assert @controller.fbsession.respond_to?(:logger=)
-    assert @controller.fbsession.respond_to?(:is_activated?) # alias for "is_ready?"
-    assert @controller.fbsession.respond_to?(:is_expired?), "This assertion is OK to fail with RFacebook Gem <= 0.9.1"
-    assert @controller.fbsession.respond_to?(:is_ready?), "This assertion is OK to fail with RFacebook Gem <= 0.9.1"    
+    assert @controller.fbsession.respond_to?(:ready?), "This assertion is OK to fail with RFacebook Gem <= 0.9.1"    
   end
-  
-  def test_method_missing_dispatches_to_facebook_api
-    @controller.fbsession.expects(:call_method).returns("mocked")
-    assert_equal "mocked", @controller.fbsession.some_method_that_doesnt_exist
-  end
-    
-  def test_remote_error_causes_fbsession_to_raise_errors    
-    # stub out the response to be a Facebook error
-    fbsessionDup = @controller.fbsession.dup
-    fbsessionDup.expects(:post_request).returns @dummy_error_response
-    assert_raise(RFacebook::FacebookSession::RemoteStandardError){fbsessionDup.friends_get}
-  end
-  
-  def test_api_call_to_group_getMembers
-    
-    # stub out the response
-    fbsessionDup = @controller.fbsession.dup
-    fbsessionDup.expects(:post_request).returns @dummy_group_getMembers_response
-    
-    # fake the remote call
-    memberInfo = fbsessionDup.group_getMembers
-    
-    # check the response data
-    assert memberInfo
-    assert_equal memberInfo.members.uid_list.size, 4
-    assert_equal memberInfo.admins.uid_list.size, 1
-    assert memberInfo.officers
-    assert memberInfo.not_replied
-    
-  end
-  
-  def test_api_call_to_users_getLoggedInUser
-    
-    # stub out the response
-    fbsessionDup = @controller.fbsession.dup
-    fbsessionDup.expects(:post_request).returns @dummy_users_getLoggedInUser_response
-    
-    # fake the remote call
-    assert_equal fbsessionDup.users_getLoggedInUser.response, "1234567"
-
-  end
-
-  def test_api_call_to_users_getInfo
-    # stub out the response
-    fbsessionDup = @controller.fbsession.dup
-    fbsessionDup.expects(:post_request).returns @dummy_users_getInfo_response
-    
-    # fake the remote call
-    userInfo = fbsessionDup.users_getInfo
-    
-    # check the response data
-    assert userInfo
-    assert_equal "94303", userInfo.current_location.get(:zip)
-  end
-  
-  def test_should_return_install_url
-    assert_equal "http://www.facebook.com/install.php?api_key=#{@controller.facebook_api_key}", @controller.fbsession.get_install_url
-  end
-  
-  def test_should_return_login_url
-    assert_equal "http://www.facebook.com/login.php?v=1.0&api_key=#{@controller.facebook_api_key}", @controller.fbsession.get_login_url
-  end
-  
-  def test_should_get_valid_fb_sig_params_only_when_valid
-    
-    # make a correct set of fb_sig params
-    rawParams = {"fb_sig_foo" => "1234", "fb_sig_bar" => "abcd", "fb_sig_time" => Time.now.to_i+48*3600}
-    rawParams["fb_sig"] = Digest::MD5.hexdigest("bar=abcdfoo=1234time=#{rawParams["fb_sig_time"]}#{@controller.facebook_api_secret}")
-    
-    # ensure that fbparams is parsed out from this properly
-    fbparams = @controller.fbsession.get_fb_sig_params(rawParams)
-    assert fbparams, "fbparams should exist"
-    assert_equal 3, fbparams.size, "fbparams should be 3 elements in size (#{fbparams.inspect})"
-    assert_equal rawParams["fb_sig_foo"], fbparams["foo"]
-    assert_equal rawParams["fb_sig_bar"], fbparams["bar"]
-    assert_equal rawParams["fb_sig_time"], fbparams["time"]
-    
-    # ensure that fbparams is empty when the signature is wrong
-    rawParams["fb_sig"] = "badsignature"
-    fbparams = @controller.fbsession.get_fb_sig_params(rawParams)
-    assert fbparams, "fbparams should exist"
-    assert_equal 0, fbparams.size, "fbparams should not be populated (#{fbparams.inspect})"
-    
-  end
-
-
 
   def setup
     
@@ -147,7 +28,7 @@ class APITest < Test::Unit::TestCase
     post :index
     
     assert @controller.fbparams.size > 0, "API Test should have simulated fbparams properly"
-    assert @controller.fbsession.is_ready?, "API Test should have an fbsession that is ready to go"
+    assert @controller.fbsession.ready?, "API Test should have an fbsession that is ready to go"
     
     # set up some dummy responses from the API
     @dummy_error_response = <<-EOF
