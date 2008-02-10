@@ -49,7 +49,8 @@ class Account< ActiveRecord::Base
   end
    
   def get_avatar(size)
-   	!self.avatar.nil? ? self.avatar.public_filename(size) : "missing_avatar_#{size}.png"
+   	"missing_avatar_#{size}.png"
+   	#!self.avatar.nil? ? self.avatar.public_filename(size) : "missing_avatar_#{size}.png"
   end
 
   def referred_money_raised
