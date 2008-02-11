@@ -92,9 +92,9 @@ class MyBadge < ActiveRecord::Base
       if self.adi_id.nil?
     #self.adi_id = Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false ).id if badge_id
         if badge_id
-          adi = Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false ) 
+          adi = Younety::Remote::Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false ) 
           self.adi_id = adi.id
-          adi = Adi.find(self.adi_id) 
+          adi = Younety::Remote::Adi.find(self.adi_id) 
           self.public_adi_id = adi.attributes['public_id']
         end
       end

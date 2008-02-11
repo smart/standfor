@@ -90,9 +90,8 @@ class Badge < ActiveRecord::Base
    end
 
    def save_thumbnails
-      structure = Structure.find(self.structure_id)
-      example = structure.example
-      remote_path = "#{ADISERVER}/adis/#{example['id']}.gif" 
+      structure = Younety::Remote::Structure.find(self.structure_id)
+      remote_path = "#{ADISERVER}/adis/#{structure.example_adi_id}.gif" 
       @file_data = open(remote_path) 
       image =  Magick::Image::read( @file_data.path  ).first
       full_path = File.join(File.join(self.cache_path , 'full.gif' ) ) 
