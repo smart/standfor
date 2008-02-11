@@ -21,6 +21,7 @@ class AccountsController < ApplicationController
 
   def create
     @context = "login"
+    params[:account][:login] = params[:account][:email]
     @local_user = LocalUser.new(params[:account])
     @local_user.my_badge_referrer = session[:my_badge_referrer] if !session[:my_badge_referrer].nil? 
     if @local_user.save

@@ -50,10 +50,6 @@
 	<% form_for :account, :url => accounts_path, :html => { :id => "register-form" } do |f| -%>
 	<fieldset>
 		<dl class="input">
-			<dt><label for="account_login">Username:</label></dt>
-				<dd><%= f.text_field :login, :size => 20 %></dd>
-		</dl>
-		<dl class="input">
 			<dt><label for="account_email">Email:</label></dt>
 				<dd><%= f.text_field :email, :size => 20 %></dd>
 		</dl>
