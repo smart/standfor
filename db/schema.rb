@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 46) do
+ActiveRecord::Schema.define(:version => 47) do
 
   create_table "access_codes", :force => true do |t|
     t.integer "scope_id",                                  :null => false
@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(:version => 46) do
     t.datetime "remember_token_expires_at"
     t.integer  "hits",                      :default => 0
     t.integer  "my_badge_referrer"
+    t.string   "younety_token"
   end
 
   create_table "accounts_roles", :id => false, :force => true do |t|
@@ -116,11 +117,11 @@ ActiveRecord::Schema.define(:version => 46) do
   create_table "donations", :force => true do |t|
     t.integer  "account_id"
     t.integer  "organization_id"
+    t.integer  "amount"
     t.integer  "segment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order_id"
-    t.integer  "amount"
   end
 
   create_table "local_users", :force => true do |t|

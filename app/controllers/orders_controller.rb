@@ -84,13 +84,19 @@ class OrdersController < ApplicationController
 
   def authorize_card
     #TODO  Replace this with real informaiton when we go into production
-    gateway = ActiveMerchant::Billing::PaypalGateway.new( :login => PAYPAL_LOGIN, :password => PAYPAL_PASS, :pem => PAYPAL_PEM)
+    if  ENV['RAILS_ENV'] == 'production'
+      gateway = ActiveMerchant::Billing::PaypalGateway.new( :login => PAYPAL_LOGIN, :password => PAYPAL_PASS, :pem => PAYPAL_PEM )  #test mode is set in environments/(development|production).rb
+    else
+      gateway = ActiveMerchant::Billing::BogusGateway.new()  #test mode is set in environments/(development|production).rb
+      @order.creditcard.number = '1'
+    end
     response = gateway.authorize((@order.amount * 100), @order.creditcard, {:ip => request.env["REMOTE_ADDR"]})
+
       if response.success?
         @order.payment_authorization = response.authorization
         return true
       else
-        flash[:notice]  = "Authorization of your credit card failed, please check your info and try again"
+        flash[:notice]  = "Authorization of your credit card failed, please check your info and try again."
         redirect_to new_creditcard_path and return false
       end
  end 
@@ -101,7 +107,6 @@ class OrdersController < ApplicationController
     donation = Donation.new
     donation.segment = @segment
     donation.account = current_account 
-    #donation.amount = params[:segment][@segment.site_name].to_i  if !params[:segment].nil?
     donation.amount = params[:order][:amount].to_i  if !params[:order].nil?
     donation.organization = @organization
     @order.donations << donation

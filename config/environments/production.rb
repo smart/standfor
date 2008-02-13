@@ -23,3 +23,6 @@ ADISERVER_USER = "quentin"
 ADISERVER_PASS = "test"
 
 STANDFOR_ROOT = "http://www.standfor.us" 
+
+PAYPALTEST_MODE = false 
+
