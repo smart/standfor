@@ -20,6 +20,11 @@ class ShareController < ApplicationController
      render :action => "do.rjs"
    end
 
+   def download_signature
+      @share  = Share.find("Embed%20Code", :params => {:adi_id => @my_badge.adi_id }  ) 
+      send_data @share.snippet.strip , :filename => "emai.signature.#{@my_badge.adi_id}.html", :type =>'text/plain' , :disposition => 'attachment'
+   end
+
    private 
 
    def get_my_badge

@@ -4,7 +4,8 @@ ActionController::Routing::Routes.draw do |map|
     worldreach.resources :sessions
     worldreach.resources :accounts
   end
-
+ 
+ map.download_signature '/download/signature/:my_badge_id', :controller => 'share', :action => 'download_signature'    
  map.presave_customize 'customize', :controller => "customize", :action => 'index'
  map.share 'share', :controller => "share", :action => 'index'
  map.my_badge_create '/create/my/badge',:controller =>'user/my_badges',:action =>'create',:requirements=>{:method=>:any}

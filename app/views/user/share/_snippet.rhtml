@@ -6,3 +6,7 @@
 <%= link_to 'click here to learn how add your badge to your email signature', 
     {:controller => '/site', :action => 'email_embed_instructions' }, :popup => ['new_window', 'height=1000,width=800,resizable=yes,scrollbars=yes'] %> 
 </p>
+
+<p>
+<%= link_to 'download email signature',  :controller => '/share', :action => 'download_signature'  , :my_badge_id => @my_badge.id -%>
+</p>
