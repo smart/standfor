@@ -6,6 +6,10 @@ class Worldreach::AccountsController < ApplicationController
 
   include YouserSystem
 
+   def ssl_required?
+     false and ENV['RAILS_ENV'] == 'production'
+  end
+
   # render new.rhtml
   def initialize
   	@context = 'account'

@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   layout 'default'
   
   def ssl_required?
-     ENV['RAILS_ENV'] == 'production'
+     false and ENV['RAILS_ENV'] == 'production'
   end
 
   # render new.rhtml

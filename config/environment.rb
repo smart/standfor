@@ -47,6 +47,8 @@ Rails::Initializer.run do |config|
 
 end
 
+ExceptionNotifier.exception_recipients = %w(elliott.blatt@gmail.com admin@bokayme.com)
+
 # Add new inflection rules using the following format 
 # (all these examples are active by default):
 # Inflector.inflections do |inflect|

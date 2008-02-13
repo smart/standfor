@@ -10,6 +10,10 @@ class Worldreach::OrdersController < ApplicationController
   before_filter :confirmation_required, :only => [:create]
   before_filter :authorization_required, :only => [:create]
 
+   def ssl_required?
+     false and ENV['RAILS_ENV'] == 'production'
+  end
+
 	def initialize
 		@context = 'orders'
 	end

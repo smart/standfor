@@ -5,6 +5,10 @@ class Worldreach::SessionsController < ApplicationController
   include YouserSystem
   # If you want "remember me" functionality, add this before_filter to Application Controller
   before_filter :login_from_cookie
+
+  def ssl_required?
+     false and ENV['RAILS_ENV'] == 'production'
+  end
   
   # render new.rhtml
   
