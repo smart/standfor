@@ -3,7 +3,7 @@ development:
     user: quentin
     pass: test
     younety_app: 1
-    url: http://localhost:3100
+    url: http://0.0.0.0:3001
 
 test:
     user: quentin

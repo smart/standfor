@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 45) do
+ActiveRecord::Schema.define(:version => 46) do
 
   create_table "access_codes", :force => true do |t|
     t.integer "scope_id",                                  :null => false
@@ -116,11 +116,11 @@ ActiveRecord::Schema.define(:version => 45) do
   create_table "donations", :force => true do |t|
     t.integer  "account_id"
     t.integer  "organization_id"
-    t.integer  "amount"
     t.integer  "segment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order_id"
+    t.integer  "amount"
   end
 
   create_table "local_users", :force => true do |t|
@@ -341,6 +341,22 @@ ActiveRecord::Schema.define(:version => 45) do
 
   create_table "tags", :force => true do |t|
     t.string "name"
+  end
+
+  create_table "youser_authenticators", :force => true do |t|
+    t.string   "type"
+    t.string   "email"
+    t.integer  "account_id"
+    t.integer  "facebook_uid"
+    t.string   "facebook_session_key"
+    t.string   "identity_url"
+    t.string   "nickname"
+    t.string   "fullname"
+    t.string   "login"
+    t.string   "crypted_password",     :limit => 40
+    t.string   "salt",                 :limit => 40
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
