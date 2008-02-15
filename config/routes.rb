@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+
   map.namespace(:worldreach) do |worldreach|
     worldreach.resources :orders
     worldreach.resources :sessions
@@ -72,6 +73,7 @@ ActionController::Routing::Routes.draw do |map|
 
  map.namespace(:admin) do |admin|
     admin.resources :configurations
+    admin.resources :access_codes
     admin.resources :sponsors do |sponsors|
       sponsors.resources :sponsorslogos  
     end 

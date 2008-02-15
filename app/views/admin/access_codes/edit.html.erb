@@ -1,0 +1,12 @@
+<h1>Editing access_code</h1>
+
+<%= error_messages_for :access_code %>
+
+<% form_for(@access_code, :url => admin_access_code_path(@access_code), :method => :put  ) do |f| %>
+  <ul>
+    <%= render :partial => 'fields', :locals => {:f => f } -%>
+    <li><%= f.submit "Update" %> </li>
+  </ul>
+<% end %>
+
+<%= link_to 'Show', admin_access_code_path(@access_code) %> | <%= link_to 'Back', admin_access_codes_path %>
