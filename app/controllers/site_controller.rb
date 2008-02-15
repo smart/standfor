@@ -56,7 +56,7 @@ class SiteController < ApplicationController
    private
 
    def get_layout 
-     (params[:action]  == 'email_embed_instructions' ) ? nil  :  'default' 
+     (params[:action]  == 'email_embed_instructions' ) ? 'popup':  'default' 
    end
 
    def get_featured_badges

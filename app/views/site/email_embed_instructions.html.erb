@@ -1,20 +1,56 @@
-<h1>How to embed your badge in your email.</h1>
+<style>
+  h1.instructions { font-family:arial; }
+  p.instructions { width:auto; }
+</style>
 
-<p> You can include your badge in your email signature by properly installing the 'embed' HTML code snippet provided here.  The process for installing the HTML code differs amoung the popular email software available.  Here you'll find instructions for some of the more popular email programs. </p>
+<h1 class="instructions">How to embed your standfor.us badge in your email signature.</h1>
 
+<p class="instructions"> 
+You can include your badge in your email signature by properly installing the 'embed' HTML code snippet provided here.  The process for installing the HTML code differs amoung the popular email software available.  Here you'll find instructions for some of the more popular email programs.
+</p>
+
+<ul>
+
+<p>
+<%= link_to_function 'Microsoft Outlook Express', "Element.toggle('outlook-express');" -%>
+</p>
+<li id="outlook-express" style="display:none;"> 
 <%= render :partial => 'outlook_express_embed_instructions' -%>
+</li>
 
+<p>
+<%= link_to_function 'Microsoft Outlook', "Element.toggle('outlook');" -%>
+</p>
+<li id="outlook" style="display:none;">  
 <%= render :partial => 'outlook_0703_embed_instructions' -%>
+</li> 
 
+<p>
+<%= link_to_function 'MSN', "Element.toggle('msn');" -%>
+</p>
+<li id="msn" style="display:none;">  
+<%= render :partial => 'msn_embed_instructions' -%>
+</li> 
+
+<p>
+<%= link_to_function 'Mozilla Thunderbird', "Element.toggle('mozilla');" -%>
+</p>
+
+<li id="mozilla" style="display:none;"> 
 <%= render :partial => 'mozilla_embed_instructions' -%>
+</li> 
 
-<%= render :partial => 'site/yahoo_classic_embed_instructions' -%>
-
+<p>
+<%= link_to_function 'Yahoo!', "Element.toggle('yahoo');" -%>
+</p>
+<li id="yahoo" style="display:none;"> 
 <%= render :partial => 'site/yahoo_embed_instructions' -%>
+</li> 
 
+<p><%= link_to_function 'Yahoo! Classic', "Element.toggle('classic');" -%></p>
+
+<li id="classic" style="display:none;"> 
 <%= render :partial => 'site/yahoo_classic_embed_instructions' -%>
+</li> 
 
-<%= render :partial => 'site/gmail_embed_instructions' -%>
-
-<%= render :partial => 'site/apple_embed_instructions' -%>
-
+</ul>
