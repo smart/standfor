@@ -1,0 +1,10 @@
+<h1>Which email program do you use? </h1>
+
+<ul>
+<li><%= link_to_remote 'Microsoft Outlook Express', :url => email_signature_two_path(my_badge) + '?q=outlook_express' -%></li>
+<li><%= link_to_remote 'Microsoft Outlook', :url => email_signature_two_path(my_badge) + '?q=outlook' -%></li>
+<li><%= link_to_remote 'MSN/Hotmail', :url => email_signature_two_path(my_badge) + '?q=msn' -%></li>
+<li><%= link_to_remote 'Mozilla', :url => email_signature_two_path(my_badge) + '?q=mozilla' -%></li>
+<li><%= link_to_remote 'Yahoo!', :url => email_signature_two_path(my_badge) + '?q=yahoo' -%></li>
+<li><%= link_to_remote 'Yahoo! Classic', :url => email_signature_two_path(my_badge) + '?q=yahoo_classic' -%></li>
+</ul>

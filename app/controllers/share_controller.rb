@@ -22,7 +22,7 @@ class ShareController < ApplicationController
 
    def download_signature
       @share  = Share.find("Embed%20Code", :params => {:adi_id => @my_badge.adi_id }  ) 
-      send_data @share.snippet.strip , :filename => "standfor.signature.#{@my_badge.adi_id}.html", :type =>'text/plain' , :disposition => 'attachment'
+      send_data @share.snippet.strip , :filename => "standfor.signature.html", :type =>'text/plain' , :disposition => 'attachment'
    end
 
    private 

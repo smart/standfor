@@ -1,0 +1,1 @@
+page.replace_html 'share-it', :partial => 'signature_two', :locals => { :my_badge => @my_badge}

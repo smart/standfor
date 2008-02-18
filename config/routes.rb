@@ -44,6 +44,11 @@ ActionController::Routing::Routes.draw do |map|
   map.my_badge_landing '/landing/:id', :controller => 'landing', :action => 'index'
   map.home '/', :controller => 'site', :action => 'index'
 
+  map.email_signature_one   '/email/share/one/:id', :controller => 'user/share', :action => 'signature_one'
+  map.email_signature_two   '/email/share/two/:id', :controller => 'user/share', :action => 'signature_two'
+  map.email_signature_three '/email/share/three/:id', :controller => 'user/share', :action => 'signature_three'
+  map.email_signature_four  '/email/share/four/:id', :controller => 'user/share', :action => 'signature_four'
+
   map.resource :sessions
   map.resources :accounts do |user|
     user.resources :acconts_openids

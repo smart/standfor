@@ -1,0 +1,17 @@
+<% if @client == 'outlook_express' %>
+  <%= render :partial => 'site/outlook_express_embed_instructions.html.erb' -%>
+<% elsif @client == 'outlook' %>
+  <%= render :partial => 'site/outlook_0703_embed_instructions.html.erb' -%>
+<% elsif @client == 'msn' %>
+  <%= render :partial => 'site/msn_embed_instructions.html.erb' -%>
+<% elsif @client == 'mozilla' %>
+  <%= render :partial => 'site/mozilla_embed_instructions.erb' -%>
+<% elsif @client == 'yahoo' %>
+  <%= render :partial => 'site/yahoo_embed_instructions.html.erb' -%>
+<% elsif @client == 'yahoo_classic' %>
+  <%= render :partial => 'site/yahoo_classic_embed_instructions.html.erb' -%>
+<% else %>
+   <p>Invalid</p>
+<% end %>
+
+<%= link_to_remote 'next step', :url => email_signature_three_path(my_badge) -%>

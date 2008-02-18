@@ -20,6 +20,25 @@ class User::ShareController < ApplicationController
      render :action => "do.rjs"
    end
 
+   def signature_one
+     render :action => 'signature_one.rjs'
+   end
+
+   def signature_two
+     @client = params[:q]
+     render :action => 'signature_two.rjs'
+   end
+
+   def signature_three
+     render :action => 'signature_three.rjs'
+   end
+
+   def signature_four
+     render :action => 'signature_four.rjs'
+   end
+
+
+
    private 
 
    def get_my_badge
