@@ -1,0 +1,1 @@
+page.replace_html 'share-it', :partial => 'webapp_choose', :locals => { :my_badge => @my_badge, :share => @shares }

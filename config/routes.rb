@@ -1,15 +1,12 @@
 ActionController::Routing::Routes.draw do |map|
 
+# Start World Reach Routes
   map.namespace(:worldreach) do |worldreach|
     worldreach.resources :orders
     worldreach.resources :sessions
     worldreach.resources :accounts
   end
  
- map.download_signature '/download/signature/:my_badge_id', :controller => 'share', :action => 'download_signature'    
- map.presave_customize 'customize', :controller => "customize", :action => 'index'
- map.share 'share', :controller => "share", :action => 'index'
- map.my_badge_create '/create/my/badge',:controller =>'user/my_badges',:action =>'create',:requirements=>{:method=>:any}
   map.connect '/worldreach' , :controller => '/worldreach/site', :action => 'index'
   map.worldreach_segments '/worldreach/segments' , :controller => '/worldreach/segments', :action => 'index'
   map.worldreach_segment '/worldreach/segments/:id' , :controller => '/worldreach/segments', :action => 'show'
@@ -27,41 +24,72 @@ ActionController::Routing::Routes.draw do |map|
   map.worldreach_save_creditcard '/worldreach/save/creditcard' , :controller => '/worldreach/orders', :action => 'save_creditcard'
   map.worldreach_receipt '/worldreach/receipt/:id' , :controller => '/worldreach/orders', :action => 'receipt'
   map.worldreach_login '/worldreach/login' , :controller => '/worldreach/sessions', :action => 'new'
-  map.worldreach_logout '/worldreach/logout' , :controller => '/worldreach/sessions', :action => 'destroy'
+  map.worldreach_logout '/worldreach/logout' , :controller => '/worldreach/sessions', :action => 'destroy' 
+ 
+# END World Reach Routes 
+ 
+ 
+ #Start Account/Session routes
+ 
+ map.view_badge "/badges/:id.:ext", :controller => "adis", :action => "index"
+ map.login   '/login',  :controller => 'sessions', :action => 'new'
+ map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
+ map.signup  '/signup', :controller => 'accounts',   :action => 'new'
+ map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
+ map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
+ map.account_signup '/account_signup', :controller => 'accounts', :action => 'new'
+ map.resources :sessions, :accounts
+ # END Account/Session Routes
+ 
+ #main site nav
+ map.home '/', :controller => 'site', :action => 'index'
+ map.about_us "/about_us", :controller => "site", :action => "about_us"
+ map.leaderboard "/leaderboard", :controller => "site", :action => "leaderboard"
 
-  map.view_badge "/badges/:id.:ext", :controller => "adis", :action => "index"
-  map.login   '/login',  :controller => 'sessions', :action => 'new'
-  map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
-  map.signup  '/signup', :controller => 'accounts',   :action => 'new'
+ map.resources :badges do |badges|
+   badges.badge_customize "customize", :controller => "customize", :action => "index"
+ end
+
+ map.resources :badges, :sponsors
+  map.resources :organizations do |organizations|
+    organizations.resources :segments
+  end
+ 
+ 
+ map.download_signature '/download/signature/:my_badge_id', :controller => 'share', :action => 'download_signature'    
+ #map.presave_customize 'customize', :controller => "customize", :action => 'index'
+ map.my_badge_create '/create/my/badge',:controller =>'user/my_badges',:action =>'create',:requirements=>{:method=>:any}
+  
+
+  
+  #order routes
+  map.creditcard_info '/creditcard_info', :controller => 'creditcards', :action => 'new'
   map.save_creditcard '/save/creditcard' , :controller => 'creditcards', :action => 'create'
+  map.resources :creditcards
+  map.authorize_order '/authorize_donation', :controller => 'orders', :action => 'new'
   map.save_order  '/save/orders' , :controller => 'orders', :action => 'create'
-  map.open_id_complete 'sessions', :controller => "sessions", :action => "create", :requirements => { :method => :get }
-  map.open_id_complete_on_accounts 'accounts',    :controller => "accounts",    :action => "create", :requirements => { :method => :get }
-  map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
-  map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
-  map.connect '/user/sessions/new', :controller => 'sessions', :action => 'new'
+  
+  
+  
+  #landing routes
   map.about_user '/about/:id', :controller => 'users', :action => 'show'
   map.my_badge_landing '/landing/:id', :controller => 'landing', :action => 'index'
-  map.home '/', :controller => 'site', :action => 'index'
+
 
   map.email_signature_one   '/email/share/one/:id', :controller => 'user/share', :action => 'signature_one'
   map.email_signature_two   '/email/share/two/:id', :controller => 'user/share', :action => 'signature_two'
   map.email_signature_three '/email/share/three/:id', :controller => 'user/share', :action => 'signature_three'
   map.email_signature_four  '/email/share/four/:id', :controller => 'user/share', :action => 'signature_four'
 
-  map.resource :sessions
-  map.resources :accounts do |user|
-    user.resources :acconts_openids
-  end
-
- map.resources :creditcards, :badges, :sponsors
- map.resources :organizations do |organizations|
-   organizations.resources :segments
- end
-
+ 
+  map.resources :my_badges, :controller => "user/my_badges", :path_prefix => "/user", :name_prefix => "user_" do |my_badge|
+    my_badge.customize "customize/:action", :controller => "user/customize", :action => "index"
+    my_badge.share "share/:action", :controller => "user/share", :action => "index"
+   end 
+ 
+ 
  map.namespace(:user) do |user|
     user.resources :orders
-    user.resources :my_badges 
     user.resources :avatars
     user.resources :organizations
     user.resource :account
@@ -99,9 +127,16 @@ ActionController::Routing::Routes.draw do |map|
        organizations.resources :style_infos
     end
  end
+ 
+  #style system routes
+  map.connect "/rcss/:rcss.css", :controller => "rcss", :action => "rcss"
+  map.connect "/rcss/:rcss/:style_info.css", :controller => "rcss", :action => "rcss"
+  map.connect "/style/:action/:style_info.:ext", :controller => "style"
+  map.connect "/text/:action/:text.:ext", :controller => "text"
+  map.connect "/text/:text.:ext", :controller => "text", :action => "index"
   
 
-  # end youser routes
+ 
 =begin
   map.with_options :conditions => {:subdomain => /standfor/ },:embedded => true do |embedded| 
    embedded.connect '/', :controller => 'organizations', :action => 'show'
@@ -114,35 +149,8 @@ ActionController::Routing::Routes.draw do |map|
 =end
   #map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:host => /standfor.(\w+).org/ } 
   #map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:subdomain => /(\w+).standfor.org/ } 
-  map.connect "/rcss/:rcss.css", :controller => "rcss", :action => "rcss"
-  map.connect "/rcss/:rcss/:style_info.css", :controller => "rcss", :action => "rcss"
-  map.connect "/style/:action/:style_info.:ext", :controller => "style"
-  map.connect "/text/:action/:text.:ext", :controller => "text"
-  map.connect "/text/:text.:ext", :controller => "text", :action => "index"
-  #map.connect "/:organization/:segment/:controller/:action"
-  #map.connect "/:organization/:segment/donate/:action", :controller => "donations"
-  #map.connect "/:organization/:segment/badges/:action", :controller => "badges"
-  #map.connect "/:organization/:segment/authorizations/:action",:controller => "authorizations">
-  # Youser routes
-  # The priority is based upon order of creation: first created -> highest priority.
-  # Sample of regular route:
-  # map.connect 'products/:id', :controller => 'catalog', :action => 'view'
-  # Keep in mind you can assign values other than :controller and :action
-  # Sample of named route:
-  # map.purchase 'products/:id/purchase', :controller => 'catalog', :action => 'purchase'
-  # This route can be invoked with purchase_url(:id => product.id)
-  # You can have the root of your site routed by hooking up '' 
-  # -- just remember to delete public/index.html.
-  # map.connect '', :controller => "welcome"
-  # Allow downloading Web Service WSDL as a file with an extension
-  # instead of a file named 'wsdl'
-  map.connect '/', :controller => 'site', :action => 'index'
-  map.connect '/catalog', :controller => 'badges', :action => 'index'
-  map.connect '/my/account', :controller => 'my_account', :action => 'index'
-  map.connect '/:organization', :controller => 'organizations', :action => 'show'
-  #map.connect '/get/badge/:badge_id', :controller => 'my_badges', :action => 'new'
-  # Install the default route as the lowest priority.
-  map.connect '/support/:organization/:segment', :controller => 'segments', :action => 'show'
+ 
+ 
   map.connect ':controller/:action/:id.:format'
   map.connect ':controller/:action/:id'
   map.connect ':controller/service.wsdl', :action => 'wsdl'

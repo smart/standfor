@@ -1,10 +1,8 @@
 <ul>
+<% webapps.each do |webapp| %>
 
-<%= link_to_remote 'email signature', :url => email_signature_one_path(my_badge) -%>
-
-<% shares.each do |share| %>
 	<li>
-		<%= link_to_remote image_tag("icons/#{share.name}.png", :alt => share.name), :url => {:controller => 'share', :action => 'choose', :id => my_badge, :share  => u(share.name)  } -%>
+		<%= link_to_remote image_tag("icons/#{webapp.name}.png", :alt => webapp.name), :url => {:controller => 'share', :action => 'webapp_choose', :my_badge_id => my_badge, :webapp  => webapp.id  } -%>
 	</li>
 <% end %>
 </ul>

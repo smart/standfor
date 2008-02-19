@@ -22,13 +22,16 @@ module BadgesHelper
 		case 
 		when opts[:type] == 'Badge'
 			prefix = 'get'
-			path = url_for(:controller => 'customize', :action => 'index', :badge_id => badge.id)
+			#path = url_for(:controller => 'customize', :action => 'index', :badge_id => badge.id)
+		  path = badge_badge_customize_url(badge)
 		when is_location?(:controller => 'landing')
 		  prefix = 'get'
-		  path = url_for(:controller => 'customize', :action => 'index', :badge_id => badge.badge.id)
+		   path = badge_badge_customize_url(badge.badge)
+		  #path = url_for(:controller => 'customize', :action => 'index', :badge_id => badge.badge.id)
 		when badge.new_record?
 			prefix = 'edit'
-			path = url_for(:controller => '/customize', :action => 'index', :badge_id => badge.id )
+			 path = badge_badge_customize_url(badge.badge)
+			#path = url_for(:controller => '/customize', :action => 'index', :badge_id => badge.id )
 		when opts[:type] == 'MyBadge'
 			prefix = 'edit'
 			path = url_for(:controller => 'user/customize', :action => 'index', :id => badge.id )

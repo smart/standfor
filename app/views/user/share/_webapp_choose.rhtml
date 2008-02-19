@@ -1,0 +1,6 @@
+<h2>Choose Which way to share it!</h2>
+
+<% @shares.each do |share| %>
+ <%= link_to( share.name, :url => {:controller => 'share', :action => 'choose', :my_badge_id => my_badge, :share  => share.id  }) %>
+ <br>
+ <% end %>

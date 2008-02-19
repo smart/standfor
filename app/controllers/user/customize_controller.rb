@@ -48,7 +48,7 @@ class User::CustomizeController < ApplicationController
    private 
 
    def get_my_badge
-     @my_badge = current_account.my_badges.find(params[:id])
+     @my_badge = current_account.my_badges.find(params[:my_badge_id])
    end
 
 end
