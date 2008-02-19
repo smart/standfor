@@ -22,19 +22,16 @@ module BadgesHelper
 		case 
 		when opts[:type] == 'Badge'
 			prefix = 'get'
-			#path = url_for(:controller => 'customize', :action => 'index', :badge_id => badge.id)
 		  path = badge_badge_customize_url(badge)
 		when is_location?(:controller => 'landing')
 		  prefix = 'get'
 		   path = badge_badge_customize_url(badge.badge)
-		  #path = url_for(:controller => 'customize', :action => 'index', :badge_id => badge.badge.id)
 		when badge.new_record?
 			prefix = 'edit'
 			 path = badge_badge_customize_url(badge.badge)
-			#path = url_for(:controller => '/customize', :action => 'index', :badge_id => badge.id )
 		when opts[:type] == 'MyBadge'
 			prefix = 'edit'
-			path = url_for(:controller => 'user/customize', :action => 'index', :id => badge.id )
+			path = user_my_badge_customize_url(badge)
 		end
 		link_to(image_tag("icons/navigation/#{prefix}_badge.png", :alt => "#{prefix.capitalize} Badge"), path)
   end
@@ -44,7 +41,7 @@ module BadgesHelper
   	if badge.new_record?
   		link_to(image_tag('icons/navigation/save_badge.png', :alt => 'Save Badge'), url_for(:controller => 'user/my_badges', :action => 'new', :badge_id => badge.id ))
 		else
-			link_to(image_tag('icons/navigation/save_badge.png', :alt => 'Save Badge'), url_for(:controller => 'user/customize', :action => 'save', :id => badge.id ))
+			link_to(image_tag('icons/navigation/save_badge.png', :alt => 'Save Badge'), url_for(:controller => 'user/customize', :action => 'save', :my_badge_id => badge.id ))
 		end
   end
   
