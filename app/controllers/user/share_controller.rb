@@ -1,5 +1,5 @@
 class User::ShareController < ApplicationController
-  layout 'default'
+  layout :get_layout
   before_filter :login_required
   before_filter :get_my_badge
 
@@ -15,7 +15,6 @@ class User::ShareController < ApplicationController
         p params[:webapp].to_s
         share.webapp_id.to_s == params[:webapp].to_s
       end
-      p @shares
   
       if @shares.size == 1
         @share = @shares.first
@@ -59,12 +58,19 @@ class User::ShareController < ApplicationController
      render :action => 'signature_four.rjs'
    end
 
+   def instructions
+      @share  = Younety::Remote::Share.find(params[:share]) 
+   end
 
 
    private 
 
    def get_my_badge
      @my_badge = current_account.my_badges.find(params[:my_badge_id])
+   end
+
+   def get_layout
+      params[:action] == 'instructions' ?  'popup' : 'default'
    end
 
 end
