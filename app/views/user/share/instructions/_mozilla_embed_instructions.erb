@@ -1,0 +1,14 @@
+<h1>Attaching the Standfor.us badge to your email signature using Mozilla Thunderbird.</h1>
+<p>Follow these steps to add your Standfor.us badge to your email signature using Mozilla Thunderbird: </p>
+   <ol>
+   <li> <%= link_to 'Click here to download email signature', "#{ADISERVER}/shares/#{@share.id}/external_spec?adi_id=#{@my_badge.adi_id}" -%>  to download your signtaure file named  <b>my-signature.html</b>.</li>
+   <li> Open your Mozilla Thunderbird application.</li>
+   <li> Choose Tools >  Account Settings. 
+   </li>
+   <li> On the left, you'll see a list of accounts. Choose email account you would like to add your badge to by clicking on the of the account (yourname@something.com).</li>
+   <li> In the right panel, you'll see a section called 'Default Identity'. Within that section, check the box next to the text 'Attach this signature'.
+      <p><%= image_tag('/images/tutorial/mozilla-step-2.jpg') -%> </p>
+   </li>
+   <li> Click 'Choose...' and find and select the "my-signature.html" file you saved on step 1.</li>
+   <li> Click 'OK' on the lower right hand side.</li>
+ </ol>

@@ -1,6 +1,15 @@
 <h2>Choose Which way to share it!</h2>
 
+<ul> 
 <% @shares.each do |share| %>
- <%= link_to( share.name, :url => {:controller => 'share', :action => 'choose', :my_badge_id => my_badge, :share  => share.id  }) %>
- <br>
- <% end %>
+<li>
+  <% if share.attributes['share_method'] ==  'Form' %>
+     <%= link_to_remote( share.name, :url => {:controller => 'share', :action => 'choose', :my_badge_id => my_badge, :share  => share.id  } ) %>
+  <% elsif share.attributes['share_method'] ==  'Popup' %>
+     <%= link_to( share.name, {:controller => 'share', :action => 'instructions', :my_badge_id => my_badge, :share  => share.id  }, :popup => ['email-instructions', 'height=300,width=600'] ) %>
+  <% else %>  
+    <p>urecognized share method</p>
+  <% end  %>  
+</li>
+<% end %>
+<ul>

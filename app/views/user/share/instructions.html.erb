@@ -1,0 +1,13 @@
+<% if @share.attributes['name'] == 'outlook_express' %>
+  <%= render :partial => 'user/share/instructions/outlook_express_embed_instructions.html.erb' -%>
+<% elsif @share.attributes['name'] == 'outlook' %>
+  <%= render :partial => 'user/share/instructions/outlook_0703_embed_instructions.html.erb' -%>
+<% elsif @share.attributes['name'] == 'mozilla' %>
+  <%= render :partial => 'user/share/instructions/mozilla_embed_instructions.erb' -%>
+<% elsif @share.attributes['name'] == 'yahoo' %>
+  <%= render :partial => 'user/share/instructions/yahoo_embed_instructions.html.erb' -%>
+<% elsif @share.attributes['name'] == 'yahoo_classic' %>
+  <%= render :partial => 'user/share/instructions/yahoo_classic_embed_instructions.html.erb' -%>
+<% else %>
+   <p>Invalid</p>
+<% end %>
