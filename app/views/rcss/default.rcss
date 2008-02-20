@@ -588,14 +588,14 @@ ul.segments li.current, ul.segments li:hover {
 
 /* sponsors page specific styles */
 
-div.small-logo {
+.small-logo {
 	border:1px solid black;
 	float:left;
 	margin-right:5px;
 	background-color:grey;
 }
 
-div.small-logo img {
+.small-logo img {
 	padding:4px;
 }
 
@@ -630,6 +630,9 @@ div.small-logo img {
 }
 #share .right {
 	width:80%;
+}
+#share-it img {
+  float:left;
 }
 
 #howto, #options, #networks {

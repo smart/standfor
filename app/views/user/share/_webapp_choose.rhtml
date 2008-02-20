@@ -2,7 +2,7 @@
 
 <ul> 
 <% @shares.each do |share| %>
-<li>
+<li class="small-logo">
   <% if share.attributes['share_method'] ==  'Form' %>
      <%= link_to_remote( image_tag(share.icon_path, :alt => share.name), :url => {:controller => 'share', :action => 'choose', :my_badge_id => my_badge, :share  => share.id  } ) %>
   <% elsif share.attributes['share_method'] ==  'Popup' %>
