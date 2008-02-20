@@ -4,9 +4,9 @@
 <% @shares.each do |share| %>
 <li>
   <% if share.attributes['share_method'] ==  'Form' %>
-     <%= link_to_remote( share.name, :url => {:controller => 'share', :action => 'choose', :my_badge_id => my_badge, :share  => share.id  } ) %>
+     <%= link_to_remote( image_tag(share.icon_path, :alt => share.name), :url => {:controller => 'share', :action => 'choose', :my_badge_id => my_badge, :share  => share.id  } ) %>
   <% elsif share.attributes['share_method'] ==  'Popup' %>
-     <%= link_to( share.name, {:controller => 'share', :action => 'instructions', :my_badge_id => my_badge, :share  => share.id  }, :popup => ['email-instructions', 'height=300,width=600'] ) %>
+     <%= link_to( image_tag(share.icon_path, :alt => share.name), {:controller => 'share', :action => 'instructions', :my_badge_id => my_badge, :share  => share.id  }, :popup => ['email-instructions', 'height=300,width=600'] ) %>
   <% else %>  
     <p>urecognized share method</p>
   <% end  %>  

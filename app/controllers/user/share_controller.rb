@@ -11,14 +11,11 @@ class User::ShareController < ApplicationController
     def webapp_choose
      
       @shares = Younety::Remote::Share.find(:all).select do |share|
-        p share.webapp_id.to_s
-        p params[:webapp].to_s
         share.webapp_id.to_s == params[:webapp].to_s
       end
   
       if @shares.size == 1
         @share = @shares.first
-        p @share
         render :action => 'choose.rjs'
       else
         render :action => "webapp_choose.rjs"

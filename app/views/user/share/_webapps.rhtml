@@ -2,7 +2,7 @@
 <% webapps.each do |webapp| %>
 
 	<li>
-		<%= link_to_remote image_tag("icons/#{webapp.name}.png", :alt => webapp.name), :url => {:controller => 'share', :action => 'webapp_choose', :my_badge_id => my_badge, :webapp  => webapp.id  } -%>
+		<%= link_to_remote image_tag(webapp.icon_path, :alt => webapp.name), :url => {:controller => 'share', :action => 'webapp_choose', :my_badge_id => my_badge, :webapp  => webapp.id  } -%>
 	</li>
 <% end %>
 </ul>
