@@ -136,7 +136,6 @@ ActionController::Routing::Routes.draw do |map|
   map.connect "/text/:text.:ext", :controller => "text", :action => "index"
   
 
- 
 =begin
   map.with_options :conditions => {:subdomain => /standfor/ },:embedded => true do |embedded| 
    embedded.connect '/', :controller => 'organizations', :action => 'show'
