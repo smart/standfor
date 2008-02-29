@@ -7,6 +7,7 @@ module CustomizeHelper
       'picture'   => 'images' ,
       'name text' => 'fonts'  ,
       'color'     => 'edges'  ,
+      'affiliation' => 'affiliation'
     }
     html = link_to_remote text, 
       :url => {:controller => "/customize",

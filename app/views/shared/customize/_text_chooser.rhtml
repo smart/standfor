@@ -1,4 +1,4 @@
-<h2>edit statement text</h2>
+<h2>edit your name</h2>
 
 <%= form_remote_tag :url => { 	:controller => "/customize",
                   		:action  => "update", 
@@ -6,7 +6,7 @@
 				:customization => u(customization.name) } ,
                     :before => "Element.show('indicator')",
                     :complete => "Element.hide('indicator')" -%>
-<textarea rows="6" cols="40" name="option_value" >
+<textarea rows="2" cols="40" name="option_value" >
 <%= (customization.draft_value.nil? || customization.empty? ) ? customization.current_value : customization.draft_value -%>
 </textarea>
 <%= submit_tag  "Update #{customization.name}"  -%>

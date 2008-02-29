@@ -1,4 +1,4 @@
-<h2>choose a background image</h2>
+<h2><%= customization.name == "affiliation" ? "choose an affiliation badge" : "choose a background image" -%></h2>
 <ul>
 
 <% customization.custom_options.attributes.each_pair do |name,value|  %>

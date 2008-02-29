@@ -1,6 +1,6 @@
-<h2><%= image_tag("/text/basicborder_header/choose a background image.png", :alt => "Background Images") %></h2>
+<h2><%= image_tag("/text/basicborder_header/chooseabackgroundimage.png", :alt => "Background Images") %></h2>
 <ul>
-
+hi
 <% customization.custom_options.attributes.each_pair do |name,value|  %>
 <li><%= link_to_remote(image_tag( "customization/#{value}", :height => 100, :width => 130 ) , 
 		:url => {:controller => 'customize', 

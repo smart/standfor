@@ -668,6 +668,10 @@ ul.segments li.current, ul.segments li:hover {
 #tools li.images {
   background-image:url(/images/icons/picture.png);
 }
+#tools li.affiliation {
+  background-image:url(/images/icons/affiliation.png);
+}
+
 #tools, #network a {
   display:block;
 }
