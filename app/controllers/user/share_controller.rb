@@ -5,14 +5,12 @@ class User::ShareController < ApplicationController
 
     def index 
       @customizations = Customization.commit(@my_badge.adi_id)
-      @webapps  = Younety::Remote::Webapp.find(:all)
+      @webapps  = Younety::Remote::Webapp.find_all_with_shares
     end
     
     def webapp_choose
      
-      @shares = Younety::Remote::Share.find(:all).select do |share|
-        share.webapp_id.to_s == params[:webapp].to_s
-      end
+      @shares = Younety::Remote::Share.find_all_by_webapp_id(params[:webapp])
   
       if @shares.size == 1
         @share = @shares.first

@@ -38,7 +38,8 @@ class User::MyBadgesController < ApplicationController
        @my_badge.account = current_account 
        if @my_badge.save
           session[:unsaved_badge] = nil
-          redirect_to user_my_badge_url(@my_badge) and return false
+          flash[:notice] = "You have successfully earned this badge.  Now share it!"
+          redirect_to user_my_badge_share_url(@my_badge) and return false
        else 
           raise Exception, 'Could not save my_badge'
        end

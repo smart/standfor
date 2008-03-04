@@ -11,7 +11,7 @@
  <%= render :partial => 'form', :locals => {:my_badge => my_badge, :share => share}  -%>
 <% elsif share.share_method == "CodeSnippet" %>
   <%= render :partial => 'snippet', :locals => {:my_badge => my_badge, :share => share}  -%>
-<%  elsif share.share_method = 'Popup' %>
+<%  elsif share.share_method == 'Popup' || share.share_method == 'redirect' %>
 <%= render :partial => 'popup', :locals => {:my_badge => my_badge, :share => share}  -%>
  <% else %>
  error no method given 

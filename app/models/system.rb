@@ -34,15 +34,17 @@ class System
     end
     a 
   end
-
-  def self.most_badge_views( limit = 10 )
-      a = []
-      Account.sum(:hits, :group => :id, :order => "sum(hits) DESC ", :limit => limit ).each do |val|
-      (id, amount)  = val
-      account = Account.find(id)
-      a << [account, amount ]
+ 
+  def self.most_badge_views(limit = 10)
+    a = []
+    Account.find(:all).each do |account|
+      begin
+        a << [account, account.total_hits]
+      rescue
+        next
+      end
     end
-    a 
+    a.sort!{|x,y| y[1] <=> x[1]}[0..10]
   end
 
   def self.most_referred_money_raised(limit = 10)

@@ -1,9 +1,10 @@
 <% content_box( "share your badge", :class => "shadow", :id => 'preview' ) do -%>
   <%= render :partial => 'shared/badge_preview', :locals => {:badge => @my_badge} %>
 <% end %>
+<%= render :partial => 'shared/flash', :locals => { :flash => flash } %>
 <% content_box( "how to share your badge", :class => "basicborder", :id => 'instructions' ) do -%>
   <p>
-  	The standfor.us business model thrives on word of mouth to raise awarness for our causes. To that end we have made it extremely easy to share your badges with all your friends across the internet. Simply choose from the options below and share it!
+  	The standfor.us business model thrives on word of mouth to raise awareness for our causes. To that end we have made it extremely easy to share your badges with all your friends across the internet. Simply choose from the options below and share it!
   </p>
 <% end %>
 
@@ -14,7 +15,8 @@
     	<%= render :partial => "webapps", :locals => {:my_badge => @my_badge, :webapps => @webapps  }  -%>
     </div>
     <div id="share-it" class="right">
-    	
+    <p>If adding your badge to your personal website or blog you can copy and paste the code snippet below.  You can also use our share it library to automatically share your badge.  Choose an application to the left to begin the process.</p>
+	<%= text_area_tag("snippet", @my_badge.adi.embed_code("gif", true, true), :size => "60x4") -%> 	
     </div>
     
   <% end %>

@@ -1,3 +1,6 @@
+<p> Coming soon... for now if you would like to be a sponsor or would like to join Stand For email <a href="mailto:sponsors@standfor.us">sponsors@standfor.us</a></p>
+
+<% if false %>
 <% content_box("featured sponsor", :class => "shadow", :id => "welcome" ) do -%>
 	<%=  render :partial => 'featured' -%>
 <% end %>
@@ -14,4 +17,5 @@
 		  <p><%= link_to image_tag(sponsor.sponsorslogo.public_filename(:thumb)), sponsor_path(sponsor) -%> </p>
 		</div>
 	<% end %>
+<% end %>
 <% end %>

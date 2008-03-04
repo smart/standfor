@@ -1,6 +1,5 @@
 class TextController < ApplicationController
   # MAKE SURE TO MAKE CACHE ENTRY WHEN YOU CREATE A NEW ACTION!
-  caches_page :bread_crumbs, :top_text, :header_text, :basicborder_header, :button_text, :index
 
 
   def bread_crumbs
@@ -222,6 +221,7 @@ class TextController < ApplicationController
     @output_image = @output_image.trim unless trim == false
     @output_image.format = params[:ext] 
     send_data @output_image.to_blob, :filename => params[:action] + '.' + params[:ext], :type =>'image/' + params[:ext], :disposition => 'inline'
+    cache_page
   end
 
 

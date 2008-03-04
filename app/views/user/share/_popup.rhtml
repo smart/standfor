@@ -1,4 +1,3 @@
-<% @result = share.post(:go) %>
-<% response_hash = Hash.from_xml(@result.body) %>
-<% the_url = response_hash['hash']['response']  %>
+<% response_hash = share.share_it(my_badge.adi_id) %>
+<% the_url = response_hash['response']  %>
 <a href="<%= the_url-%>" target="_blank">Click to add to <%= share.webapp_name -%></a>
