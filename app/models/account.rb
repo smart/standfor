@@ -1,4 +1,5 @@
 class Account< ActiveRecord::Base
+  STATS_CACHE = 900
   acts_as_youser
   has_many :my_badges
   has_many :donations
@@ -61,4 +62,45 @@ class Account< ActiveRecord::Base
     total
   end
   
+  def update_stats
+    total_hits = 0
+    total_clicks = 0
+    total_unique_hits = 0
+    total_unique_clicks = 0
+    self.my_badges.each do |badge|
+      total_hits += badge.total_hits
+      total_clicks += badge.total_clicks
+      total_unique_hits += badge.total_unique_hits
+      total_unique_clicks += badge.total_unique_clicks
+    end
+     self.update_attributes(:total_hits => total_hits, :total_clicks => total_clicks,
+                             :total_unique_hits => total_unique_hits, :total_unique_clicks => total_unique_clicks,
+                             :stats_updated_at => Time.now)
+
+    self.reload
+  end
+  
+  def stats_check
+    update_stats if stats_updated_at.nil? || (stats_updated_at + STATS_CACHE.seconds) < Time.now
+  end
+  
+  def total_hits 
+     stats_check
+     self['total_hits']
+   end
+
+   def total_unique_hits
+     stats_check
+     self['total_unique_hits']
+   end
+
+   def total_clicks
+     stats_check
+     self['total_clicks']
+   end
+
+   def total_unique_clicks
+     stats_check
+     self['total_unique_clicks']
+   end
 end
