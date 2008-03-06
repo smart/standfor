@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 47) do
+ActiveRecord::Schema.define(:version => 49) do
 
   create_table "access_codes", :force => true do |t|
     t.integer "scope_id",                                  :null => false
@@ -41,6 +41,13 @@ ActiveRecord::Schema.define(:version => 47) do
     t.integer  "hits",                      :default => 0
     t.integer  "my_badge_referrer"
     t.string   "younety_token"
+    t.integer  "total_hits",                :default => 0
+    t.integer  "total_clicks",              :default => 0
+    t.integer  "total_unique_hits",         :default => 0
+    t.integer  "total_unique_clicks",       :default => 0
+    t.integer  "awareness_points",          :default => 0
+    t.datetime "stats_updated_at"
+    t.string   "reset_password_code"
   end
 
   create_table "accounts_roles", :id => false, :force => true do |t|
@@ -142,6 +149,12 @@ ActiveRecord::Schema.define(:version => 47) do
     t.string   "sponsorship_option"
     t.string   "merit_option"
     t.string   "public_adi_id"
+    t.integer  "total_hits",          :default => 0
+    t.integer  "total_clicks",        :default => 0
+    t.integer  "total_unique_hits",   :default => 0
+    t.integer  "total_unique_clicks", :default => 0
+    t.integer  "awareness_points",    :default => 0
+    t.datetime "stats_updated_at"
   end
 
   create_table "open_id_authentication_associations", :force => true do |t|

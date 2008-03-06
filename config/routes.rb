@@ -30,7 +30,6 @@ ActionController::Routing::Routes.draw do |map|
  
  
  #Start Account/Session routes
- 
  map.view_badge "/badges/:id.:ext", :controller => "adis", :action => "index"
  map.login   '/login',  :controller => 'sessions', :action => 'new'
  map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
@@ -38,6 +37,9 @@ ActionController::Routing::Routes.draw do |map|
  map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
  map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
  map.account_signup '/account_signup', :controller => 'accounts', :action => 'new'
+ map.forgot_password '/forgot/password', :controller => 'accounts', :action => 'forgot_password'
+ map.reset_password '/reset/password/:id', :controller => 'accounts', :action => 'reset_password'
+ map.change_password '/change/password', :controller => 'accounts', :action => 'change_password'
  map.resources :sessions, :accounts
  # END Account/Session Routes
  

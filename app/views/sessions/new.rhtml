@@ -10,8 +10,13 @@
     		<dd><%= password_field_tag 'password', nil, :size => 20 -%></dd>
 		</dl>
     <%= submit_tag 'login', :class => 'submit' %>
-    <span class="clear"></span>
     		
+  	<dl class="input">
+     <dt><%= link_to 'forgot my password' , forgot_password_path -%></dt>
+   </dl>
+
+    <span class="clear"></span>
+
 	</fieldset>
 
 	<% end %>

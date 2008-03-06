@@ -9,9 +9,38 @@ class Account< ActiveRecord::Base
   has_one :sponsor
   has_one :avatar
 
-   # you can extend this
+  # you can extend this
   #REQUIRED_FIELDS = ['nickname', 'fullname', 'primary_email']
   REQUIRED_FIELDS = ['nickname' , 'primary_email']
+
+  def self.verify_reset_code(code)  
+    #Account.find(:first, :conditions => ["reset_password_code = ? and updated_at > ? ", code , Time.now - 1.hour ] )
+    acct = Account.find(:first, :conditions => ["reset_password_code = ?  ", code  ] )
+    acct
+  end
+
+  def expire_reset_code
+    self.reset_password_code = ''
+    self.save
+  end
+
+  def forgot_password
+     @forgotten_password = true
+     self.make_password_reset_code
+  end
+
+  def reset_password
+   update_attributes(:reset_password_code => nil)
+   @reset_password = true
+  end
+
+  def recently_forgot_password?
+    @forgotten_password
+  end
+
+  def make_password_reset_code
+      self.reset_password_code = Digest::SHA1.hexdigest( Time.now.to_s.split(//).sort_by {rand}.join )
+  end
 
   def total_donations(organization = nil)
      if organization.nil?

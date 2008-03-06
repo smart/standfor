@@ -38,4 +38,58 @@ class AccountsController < ApplicationController
     end
   end
 
+  def change_password
+    @account = Account.verify_reset_code(params[:id])
+    if !@account.nil?  
+      @local_user = LocalUser.find_by_account_id(@account.id)
+      @local_user.password = params[:local_user][:password]
+      @local_user.password_confirmation  = params[:local_user][:password_confirmation]
+      if valid_local_user(@local_user) and @local_user.save
+        @account.expire_reset_code
+        flash[:notice] = "your password has been changed."
+        flash[:reset_errors] = nil
+        redirect_to '/' 
+      else
+        render :action => :reset_password 
+      end
+    end
+  end
+
+  def forgot_password
+    return unless request.post?
+    if @account = Account.find_by_primary_email(params[:account][:email])
+       @account.forgot_password
+       @account.save
+       flash[:notice] = "A password reset link has been sent to your email address" 
+       flash[:reset_errors] = nil
+       redirect_back_or_default('/')
+    else
+       flash[:reset_errors] = { "emaildoesnotexist" , "Could not find a user with that email address"  }
+    end
+  end
+
+  def reset_password
+    @account = Account.verify_reset_code(params[:id])
+    if @account.nil?
+       flash[:notice] = "access code invalid" 
+       redirect_to new_session_url and return false
+     else 
+       flash[:notice] = "access code is valid" 
+       render :action => :reset_password  
+    end
+  end
+
+ private
+
+  def valid_local_user(local_user)
+    flash[:reset_errors] = {} 
+    if local_user.password.blank?
+      flash[:reset_errors][:passwordblank] = "password cannot be blank" 
+    end
+    if local_user.password != local_user.password_confirmation 
+      flash[:reset_errors][:passwordmatch] = "password does not match confirmation" 
+    end
+    return flash[:reset_errors].empty?  ? true :  false
+  end
+
 end
