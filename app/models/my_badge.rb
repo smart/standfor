@@ -120,7 +120,7 @@ class MyBadge < ActiveRecord::Base
   def referred_money_raised
     total = 0 
     self.referred_accounts.each do |ra|
-      total +=   ra.total_donations 
+      total += ra.total_donations 
     end
     total
   end

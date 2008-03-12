@@ -58,11 +58,11 @@ class User::AccountsController < ApplicationController
   # PUT /user_accounts/1
   # PUT /user_accounts/1.xml
   def update
-    @account = current_user.account 
+    @account = current_account 
     respond_to do |format|
       if @account.update_attributes(params[:account])
-        flash[:notice] = 'User::Account was successfully updated.'
-        format.html { redirect_to user_accacount_url }
+        flash[:notice] = 'Account was successfully updated.'
+        format.html { redirect_to user_account_url }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
