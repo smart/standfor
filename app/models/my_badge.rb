@@ -101,7 +101,7 @@ class MyBadge < ActiveRecord::Base
 
    def cache_path
      dir = File.join(RAILS_ROOT, 'public', 'images', 'cache', 'my_badges' , self.id.to_s )
-     FileUtils.mkdir(dir) unless File.exists?(dir)
+     FileUtils.mkdir_p(dir) unless File.exists?(dir)
      dir
    end
 
