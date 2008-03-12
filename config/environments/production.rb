@@ -26,3 +26,11 @@ STANDFOR_ROOT = "http://www.standfor.us"
 
 PAYPALTEST_MODE = false 
 
+ActionMailer::Base.smtp_settings = {
+  :domain             => "standfor.us",
+  :perform_deliveries => true,
+  :address            => 'smtp.ey02.engineyard.com',
+  :port               => 25 
+}
+
+
