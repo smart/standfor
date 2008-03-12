@@ -2,7 +2,7 @@
 	
  <%= image_tag(current_account.get_avatar(:full), :class => 'avatar') -%> 
  <%= link_to "upload an avatar", new_user_avatar_path , :class => 'small-link' %>
- <%= link_to 'Edit', edit_user_account_path %>
+ <%= link_to 'edit', edit_user_account_path, :class => 'small-link' %>
   <p> <%= link_to 'my organizations ' , user_organizations_path -%> </p>
   <p> <%= link_to  'my donations' , user_orders_path -%> </p>
 <span class="clear"></span>
