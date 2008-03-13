@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   include Younety::Remote
   include ExceptionNotifiable
   # Pick a unique cookie name to distinguish our session data from others'
-  helper 'badges'
+  helper :all
   session :session_key => '_standfor_session_id'
   before_filter :init
   #before_filter :print_info

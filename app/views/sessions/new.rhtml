@@ -50,7 +50,7 @@
 
 <% grey_fade(:id => "register" ) do -%>
 	<h2>register</h2>
- <%= error_messages_for :local_user-%>
+ <%= error_messages_for :local_user -%>
 	<p class="instructions">You must register with standfor.us before you can begin to make a difference. At standfor.us we value your privacy and will never sell or give away your information.</p>
 	<% form_for :account, :url => accounts_path, :html => { :id => "register-form" } do |f| -%>
 	<fieldset>

@@ -47,7 +47,7 @@ class AccountsController < ApplicationController
       if valid_local_user(@local_user) and @local_user.save
         @account.expire_reset_code
         flash[:notice] = "your password has been changed."
-        flash[:reset_errors] = nil
+        flash[:error] = nil
         redirect_to '/' 
       else
         render :action => :reset_password 
@@ -61,10 +61,10 @@ class AccountsController < ApplicationController
        @account.forgot_password
        @account.save
        flash[:notice] = "A password reset link has been sent to your email address" 
-       flash[:reset_errors] = nil
+       flash[:error] = nil
        redirect_back_or_default('/')
     else
-       flash[:reset_errors] = { "emaildoesnotexist" , "Could not find a user with that email address"  }
+       flash[:error] = "Could not find a user with that email address"
     end
   end
 
@@ -82,14 +82,14 @@ class AccountsController < ApplicationController
  private
 
   def valid_local_user(local_user)
-    flash[:reset_errors] = {} 
+    flash[:error] = {} 
     if local_user.password.blank?
-      flash[:reset_errors][:passwordblank] = "password cannot be blank" 
+      flash[:error] = "password cannot be blank" 
     end
     if local_user.password != local_user.password_confirmation 
-      flash[:reset_errors][:passwordmatch] = "password does not match confirmation" 
+      flash[:error] = "password does not match confirmation" 
     end
-    return flash[:reset_errors].empty?  ? true :  false
+    return flash[:error].empty?  ? true :  false
   end
 
 end

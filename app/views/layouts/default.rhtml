@@ -77,12 +77,6 @@ window.attachEvent("onload", correctPNG);
 <div id="container">
     <div id="content">
 
-<% if flash[:notice] %>
- <div id="flash" >
-  <%= flash[:notice] -%>
- </div>
-<% end %>
-
    <div class="oi-wrapper">
         <%= yield  %>
       </div>
