@@ -11,9 +11,10 @@ class User::CustomizeController < ApplicationController
    end
 
    def choose_customizable 
-     @customization = Customization.find(URI::escape(params[:customizable_name]),
-                                        :params => { :adi_id => @my_badge.adi_id } )
-     render :action => "shared/customize/choose_customizable.rjs"
+     @customization = Customization.find(URI::escape(params[:customizable_name]), :params => { :adi_id => @my_badge.adi_id } )
+     render :update do |page|
+       page.replace_html 'tool-options', :partial => "/shared/customize/customizable_options", :locals => {:my_badge => @my_badge, :customization => @customization }
+     end
    end
 
    def update
@@ -48,7 +49,12 @@ class User::CustomizeController < ApplicationController
    private 
 
    def get_my_badge
-     @my_badge = current_account.my_badges.find(params[:my_badge_id])
+     @my_badge = current_account.my_badges.find(params[:id])
+     p '--------------------------------'
+     p '--------------------------------'
+     p  @my_badge 
+     p '--------------------------------'
+     p '--------------------------------'
    end
 
 end
