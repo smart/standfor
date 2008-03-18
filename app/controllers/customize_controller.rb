@@ -5,7 +5,7 @@ class CustomizeController < ApplicationController
 
    def index 
      @customizables =  Customization.find(:all, :params => {:adi_id => @my_badge.adi_id } )
-     render :template  => '/shared/customize/index.html.erb' 
+     render :template  => 'shared/customize/index.html.erb' 
    end
 
    def choose_customizable 

@@ -12,7 +12,8 @@
 
 <div id="tools">
  <%= render :partial => 'shared/customize/customizables', 
-      :locals => {:my_badge => @my_badge, :customizables => @customizables   }  -%>
+            :locals  => { :my_badge      => @my_badge     , 
+                          :customizables => @customizables } -%>
 </div>
 <div id="toolbar">
   <% grey_fade do -%>
