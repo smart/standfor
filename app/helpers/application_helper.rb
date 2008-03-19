@@ -25,7 +25,7 @@ module ApplicationHelper
     concat("<div " + (opts[:id] ? "id=\"#{opts[:id]}\" " : "") + "class=\"" + (opts[:class] ? "#{opts[:class]} box\"" : "default box\"") +">", block.binding )   
     concat("<div class=\"content\">", block.binding)
     concat("  <div class=\"t\"></div>", block.binding)
-    concat("  <h1>#{header_text}</h1>", block.binding)
+    concat("  <h1>#{header_text}</h1>", block.binding) if !header_text.empty?
     yield
     concat("</div>", block.binding)
     concat("<div class=\"b\"><div></div></div>", block.binding)

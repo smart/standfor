@@ -60,4 +60,8 @@ class Organization < ActiveRecord::Base
      Badge.count(:id, :conditions => ["organization_id = ?", self.id ] )  
    end
    
+   def logo(size)
+     !self.organizationslogo.nil? ? self.organizationslogo.public_filename(size) : "missing_avatar.jpg"
+   end
+   
 end

@@ -514,6 +514,25 @@ table#badge-list td {
 	border-right:1px solid #525354;
 	background:#828485;
 }
+
+#mission {
+  width:60%;
+  float:left;
+}
+#actions {
+  width:40%;
+  float:right;
+  text-align:center;
+}
+#actions img {
+  margin-bottom:10px;
+}
+#actions img.avatar {
+  border:1px solid black;
+  padding:5px;
+  margin-top:10px;
+}
+
 /* organization page specific styles */
 
 #overview {
