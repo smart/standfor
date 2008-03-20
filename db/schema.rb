@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 51) do
+ActiveRecord::Schema.define(:version => 50) do
 
   create_table "access_codes", :force => true do |t|
     t.integer "scope_id",                                  :null => false
@@ -216,6 +216,7 @@ ActiveRecord::Schema.define(:version => 51) do
     t.string  "site_name"
     t.integer "admin_id"
     t.boolean "featured",    :default => false
+    t.text    "blog_url"
   end
 
   create_table "organizationslogos", :force => true do |t|
