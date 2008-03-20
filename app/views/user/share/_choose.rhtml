@@ -8,6 +8,7 @@
 </p>
 
 <% if share.share_method == "Form" %>
+ <div id="autoshare-message" style="display:none;"></div>
  <%= render :partial => 'form', :locals => {:my_badge => my_badge, :share => share}  -%>
 <% elsif share.share_method == "CodeSnippet" %>
   <%= render :partial => 'snippet', :locals => {:my_badge => my_badge, :share => share}  -%>

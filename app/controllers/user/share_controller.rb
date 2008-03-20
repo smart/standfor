@@ -27,7 +27,11 @@ class User::ShareController < ApplicationController
 
     def do 
       @response = Younety::Remote::Share.share_it(params[:share], @my_badge.adi_id, params[:share_it])
-      @failed = @response.code == "200" ? false : true
+      if @response['response'].match(/Error/)
+          @failed = true
+      else
+          @failed = false 
+      end
       render :action => "do.rjs"
     end
 

@@ -1,9 +1,12 @@
-<%= form_remote_tag :url => {:controller => 'share', :action => 'do', :my_badge_id => my_badge, :share => share.id} -%>
+<%= form_remote_tag :url => {:controller => 'share',  :action => 'do', :my_badge_id => my_badge, :share => share.id } ,
+                    :before => "Element.show('indicator')", 
+                    :complete => "Element.hide('indicator')"  -%>
+
 <% share.share_params.each do |share_param| %>
 <p>
 <label><%= share_param.name -%>:</label>
 <input type="<%= share_param.name == 'password' ? 'password' : 'text' -%>" name='share_it[<%= share_param.name -%>]' value="">
  </p>
  <% end %>
- <%= submit_tag "Share it!" -%>
+ <%= submit_tag "Share it!" -%><img src="/images/indicator.gif" id="indicator" style="display:none;" >
  </form>

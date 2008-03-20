@@ -1,8 +1,9 @@
 if !@failed
   page.replace_html 'share-options', :partial => 'response', :locals => {:response => @response }
 else
- page.replace_html 'share-options', "There was a problem sharing."
+ page.show 'autoshare-message'
+ page.replace_html 'autoshare-message', "There was a problem sharing. Please be sure that you have entered the correct information."
+ page.visual_effect :highlight, 'autoshare-message'
 end
 
-page.visual_effect :highlight, 'share-options'
 
