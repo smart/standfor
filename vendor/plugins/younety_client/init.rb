@@ -12,7 +12,7 @@ require "controller_extentions"
 require "view_extentions"
 require "youser_authenticator"
 require "youser_authenticators/local_user"
-#require "youser_authenticators/facebook_youser"
+require "youser_authenticators/facebook_youser"
 require "youser_authenticators/open_id_youser"
 
 
