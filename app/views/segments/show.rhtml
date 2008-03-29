@@ -1,4 +1,7 @@
-<% content_box(@organization.name, :class => 'shadow', :id => 'preview') do -%>
+<% @sub_layout = 'gala' %>
+
+<% content_box(:box_class => 'shadow', :external_id => 'preview') do -%>
+  <h1><%= @organization.name %></h1>
   <h2><%= @segment.name %></h2>
 	<p><%= @segment.description -%></p>
 		<% if current_account != :false %>
@@ -10,11 +13,13 @@
 		<% end %>
 <% end %>
 
-<% content_box("our causes", :class => 'basicborder', :id => 'instructions') do %>
+<% content_box(:box_class => 'basicborder', :id => 'instructions') do %>
+  <h2>our causes</h2>
 	<%= render :partial => 'organizations/navigation', :locals => { :organization => @organization } %>
 <% end %>
 
-<% content_box("contact #{@organization.name}", :class => "basicborder", :id => "org-contact" ) do -%>
+<% content_box(:box_class => "basicborder", :external_id => "org-contact" ) do -%>
+  <h2>contact <%= @organization.name %></h2>
   <%= render :partial => 'organizations/details', :locals => { :organization => @organization } %>
 <% end %>
 

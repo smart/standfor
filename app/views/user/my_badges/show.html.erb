@@ -1,10 +1,11 @@
-<% content_box( "your  badge", :class => "shadow", :id => "preview" ) do -%>
-	<%= render :partial => 'shared/badge_preview', :locals => {:badge => @my_badge} %>
+<% @sub_layout = 'standard' %>
+
+<% content_for :top_left do -%>
+  <%= render :partial => 'shared/badge_preview', :locals => {:badge => @my_badge} %>
 <% end %>
 
-<%= render :partial => 'shared/flash', :locals => { :flash => flash } %>
-<% content_box("badge details", :class => 'basicborder', :id => 'instructions') do %>
-	<ul>
+<% content_for :top_right do -%>
+  <ul>
     <li>Organization: <%= @my_badge.badge.organization.name -%></li>
     <li>Segment: <%= @my_badge.badge.segment.name -%></li>
 	</ul>
@@ -13,11 +14,17 @@
 	</p>
 <% end %>
 
-<% grey_fade(:id => "badge-extras" ) do -%>
-	<div id="functions" class="left">
-		<h2>badge functions</h2>
-	</div>
-	<div id="sponsors" class="right">
-		<h2>detailed stats</h2>
-	</div>
+<% content_for :tertiary do %>
+  <% grey_fade(:id => "badge-extras" ) do -%>
+    <div id="functions" class="left">
+      <h2>badge functions</h2>
+    </div>
+    <div id="sponsors" class="right">
+      <h2>detailed stats</h2>
+    </div>
+  <% end %> 
 <% end %>
+
+
+
+

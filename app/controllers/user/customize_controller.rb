@@ -1,6 +1,6 @@
 class User::CustomizeController < ApplicationController
   require 'RMagick'
-  layout 'default'
+  
   helper 'customize'
   before_filter :login_required
   before_filter :get_my_badge

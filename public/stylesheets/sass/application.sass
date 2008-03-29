@@ -1,0 +1,168 @@
+!image_path= "/images/new/"
+!site_width= 980px
+
+body
+  :background= "url("+!image_path+"layout/body_background.png) repeat-y top center"
+
+#container
+  :width= !site_width
+  :position relative
+  :margin 0 auto
+  #header
+    :height 100px
+    :position relative
+    :margin-bottom 15px
+    .logo
+      :position absolute
+      :bottom 0
+      :left 0
+    ul#main-navigation
+      :position absolute
+      :bottom 0
+      :right 0
+      li
+        :float left
+        :list-style-type none
+        :padding-left 20px
+        :font
+          :family "Trebuchet MS", "Tahoma"
+          :size 138.5%
+          :weight bold
+
+!standard_right= 220px
+!standard_left= !site_width - !standard_right
+#standard
+  #primary
+    :float left
+    :width= !standard_left
+    #preview
+      :width 420px
+      :float left
+    #copy
+      :width 305px
+      :float right
+      :margin-right 15px
+      :display inline
+  #copy
+  #secondary
+    :float right
+    :width= !standard_right
+    #stats
+      :float right
+  #tertiary
+    :float left
+    :width= !standard_left
+    
+
+
+#footer
+  :width 90%
+  :margin 20px auto 0
+  p
+    :margin-bottom .5em
+    :text-align center
+
+.site.index
+  #get-badge, #customize-badge, #share-badge, #make-difference
+    :margin 0 15px 0 10px
+    :float left
+  #featured-badges, #mission-statement, #leaderboard
+    :float left
+    :margin 15px 15px 0 0
+  #leaderboard, #mission-statement
+    :width 285px
+  #featured-badges
+    :width 315px
+    :position relative
+    :z-index 100
+
+span.clear
+  :clear both
+  :display block
+  :height 0
+  :overflow hidden
+
+.radial
+  :background url(/images/boxes/sidebar/outer_wrapper.png) no-repeat top center
+  :width 217px
+  :float left
+  .inner-wrapper
+    :background url(/images/boxes/sidebar/inner_wrapper.png) no-repeat bottom center
+    :padding 10px
+    :min-height 125px
+    :_height 125px
+  h2, h3
+    :text-align center
+    :margin 0
+  
+.grey-fade, .end-cap
+  :background url(/images/boxes/grey-fade.png) no-repeat top right
+  
+.grey-fade
+  :position relative
+  :min-height 300px
+  :_height 300px
+  :margin-left 15px
+  :padding 10px 15px 0 0
+  .end-cap
+    :position absolute
+    :left 0
+    :top 0
+    :width 15px
+    :margin-left -15px
+    :height 100% 
+    :background-position top left
+    
+.box
+  :position relative
+  :margin 0 auto
+  :min-width 8em
+  :z-index 1
+  :margin 0 0 15px 15px
+  &.round
+    .content, .t, .b, .b div
+      :background transparent url('/images/boxes/solid-smooth-darkhead.png') no-repeat top right
+  &.shadow
+    .content, .t, .b, .b div
+      :background transparent url('/images/boxes/solid-shadow-darkhead.png') no-repeat top right
+  &.basic
+    .content, .t, .b, .b div
+      :background transparent url('/images/boxes/basic-round.png') no-repeat top right
+  &.basicborder
+    .content, .t, .b, .b div
+      :background transparent url('/images/boxes/basic-round-border.png') no-repeat top right
+  &.error, &.warning
+    .content, .t, .b, .b div
+      :background transparent url('/images/boxes/basic-round-red-border.png') no-repeat top right
+  &.notice, &.message
+    .content, .t, .b, .b div
+      :background transparent url('/images/boxes/basic-round-green-border.png') no-repeat top right
+  .content
+    :position relative
+    :zoom 1
+    :_overflow-y hidden
+    :padding 10px 15px 0 0
+    p:last-child
+      :margin-bottom 0 !important
+  .t
+    :position absolute
+    :left 0
+    :top 0
+    :width 15px
+    :margin-left -15px
+    :height 100%
+    :_height 1600px
+    :background-position top left !important
+  .b
+    :position relative
+    :width 100%
+    :background-position bottom right !important
+  .b, .b div
+    :height 15px
+    :font-size 1px
+  .b div
+    :position relative
+    :width 15px
+    :margin-left -15px
+    :background-position bottom left !important
+    

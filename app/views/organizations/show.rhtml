@@ -1,8 +1,12 @@
-<% content_box(@organization.name, :class => 'shadow', :id => 'preview') do -%>
+<% @sub_layout = 'gala' %>
+
+<% content_box(:box_class => 'shadow', :external_id => 'preview') do -%>
+  <h2><%= @organization.name %></h2>
 	<%= image_tag(@organization.logo(:medium), :alt => @organization.name, :class => "avatar" ) %>
 		<p>
 			<%= textilize(@organization.description) %>
 		</p>
+		<% if false %>
 		<% if current_account != :false %>
 			<% if current_account.is_sponsor? %>
 				<p><%= link_to 'Sponsor', :controller=> 'sponsorships', :action => 'new', :sponsorable_type => 'Organization', :sponsorable_id => @organization.id -%> </p>
@@ -10,27 +14,21 @@
 				<p><%= link_to 'Become A Sponsor',  new_organization_sponsor_path(@organization) -%></p>
 			<% end %>
 		<% end %>
+		<% end %>
 		<span class="clear"></span>
 <% end %>
 
 
 
-<% content_box("our causes", :class => 'basicborder', :id => 'instructions') do %>
+<% content_box(:box_class => 'basicborder', :external_id => 'instructions') do %>
   <%= render :partial => 'navigation', :locals => { :organization => @organization } %>
 <% end %>
 
-<% content_box("contact #{@organization.name}", :class => 'basicborder', :id => 'org-contact') do %>
+<% content_box(:box_class => 'basicborder', :external_id => 'org-contact') do %>
+  <h2>contact <%= @organization.name %></h2>
 	<%= render :partial => 'details', :locals => { :organization => @organization } %>
 <% end %>
-<!--
-<% content_box(@organization.name + " stands for:", :class => 'basic', :id => 'overview') do %>
- <div id="description">
-  <p>
-   <%= @organization.description %>
-  </p> 
- </div>
-<% end %>
--->
+
 <% grey_fade(:id => "organization-badges" ) do -%>
 	<h2><%= @organization.name -%> Badges</h2>
   <%= badge_list(@organization.featured_badges, 'small') %>

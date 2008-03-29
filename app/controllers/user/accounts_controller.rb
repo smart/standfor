@@ -1,5 +1,4 @@
 class User::AccountsController < ApplicationController
-  layout 'default'
   before_filter :login_required
   # GET /user_accounts
   # GET /user_accounts.xml

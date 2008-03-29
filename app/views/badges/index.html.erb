@@ -1,18 +1,27 @@
-<% Badge.find(:all, :conditions => 'featured = 1 ' ,  :order => 'RAND()', :limit => 1).each do |badge|  %>
-	<% content_box("featured badge", :class => 'shadow', :id => 'preview') do %>
-		<%= render :partial => 'shared/badge_preview', :locals => {:badge => badge} %>
-	<% end %>
+<% @sub_layout = 'standard' %>
+
+<% content_for :top_left do %>
+	<%= render :partial => 'shared/badge_preview', :locals => {:badge => Badge.featured } %>
 <% end %>
 
-<% content_box("about badges", :class => 'basicborder', :id => 'instructions') do %>
-	<p> Badges are statements of support, as well as tools to promote your advocacy to your network of family, friends and admirers. Badges are a simple way to drive new donations to the charity of your choice. Creating and sharing these badges is as simple as choosing your charity and the place where you want to show your advocacy. Sign up today.
-	</p>
+<% content_for :top_right do %>
+  <p>
+    Badges are statements of support, as well as tools to promote your advocacy to your network of family, friends and admirers. Badges are a simple way to drive new donations to the charity of your choice. Creating and sharing these badges is as simple as choosing your charity and the place where you want to show your advocacy. Sign up today.
+  </p>
 <% end %>
 
-<%= render :partial => '/shared/filter_badges_form' , :locals => { :in_my_badges => false  } -%>
-
-<% grey_fade(:id => "badges" ) do -%>
-	<h2>recent badges</h2>
-		<%= render :partial => 'shared/badge_list', :locals => {:badges => @badges, :size => 'small' } %>
-
+<% content_for :secondary do %>
+  <%= render :partial => '/shared/sidebar' -%>
 <% end %>
+
+<% content_for :tertiary do %>
+  
+  <%= render :partial => '/shared/filter_badges_form' , :locals => { :in_my_badges => false  } -%>
+
+  <% grey_fade(:id => "badges" ) do -%>
+  	<h2>recent badges</h2>
+  		<%= render :partial => 'shared/badge_list', :locals => {:badges => @badges, :size => 'small' } %>
+  <% end %>
+  
+<% end %>
+

@@ -1,6 +1,5 @@
 class RequirementsController < ApplicationController
-  layout  'default'
-  helper 'requirements'
+
   before_filter :get_badge
   # GET /requirements
   # GET /requirements.xml

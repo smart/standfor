@@ -114,5 +114,8 @@ class Badge < ActiveRecord::Base
      Account.find(:all,:conditions=>["my_badge_referrer IN (SELECT id FROM my_badges WHERE badge_id = ? )", self.id ])
    end
 
+  def self.featured
+    find_by_featured(true, :order => 'RAND()', :limit => 1)
+  end
 
 end

@@ -1,5 +1,5 @@
 class User::MyBadgesController < ApplicationController
-  layout 'default' 
+   
   helper 'user::my_badges'
   helper 'badges'
   before_filter :login_required

@@ -1,5 +1,4 @@
 class OrdersController < ApplicationController
-  layout 'default'
   before_filter :login_required, :except => [:new]
   before_filter :get_organization_and_segment
   before_filter :get_order 

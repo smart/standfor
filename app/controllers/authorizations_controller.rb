@@ -1,6 +1,5 @@
 class AuthorizationsController < ApplicationController
   require 'active_merchant'
-  layout 'default'
   before_filter :init
 
   def new

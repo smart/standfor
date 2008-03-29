@@ -1,0 +1,14 @@
+<div <%= external_id -%>class="outside-box">
+  <div class="<%= box_class -%>">
+    <div class="content">
+      <div class="t"></div>
+      <div <%= internal_id  -%>class="inside-box">
+        <%= yield %>
+      </div>
+      <span class="clear">&nbsp;</span>
+    </div>
+    <div class="b">
+      <div></div>
+    </div>
+  </div>
+</div>

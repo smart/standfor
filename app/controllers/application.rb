@@ -4,7 +4,7 @@
 class ApplicationController < ActionController::Base
   include StandforAccountSystem 
   include SegmentSystem
-  include StyleSystem
+  #include StyleSystem
   include Younety::Remote
   include ExceptionNotifiable
   # Pick a unique cookie name to distinguish our session data from others'

@@ -1,5 +1,4 @@
 class SegmentsController < ApplicationController
-  layout 'default'
   before_filter :organization_required, :except => [:denied]
   # GET /segments
   # GET /segments.xml

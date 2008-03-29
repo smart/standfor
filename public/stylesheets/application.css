@@ -1,0 +1,150 @@
+body {
+  background: url(/images/new/layout/body_background.png) repeat-y top center; }
+
+#container {
+  width: 980px;
+  position: relative;
+  margin: 0 auto; }
+  #container #header {
+    height: 100px;
+    position: relative;
+    margin-bottom: 15px; }
+    #container #header .logo {
+      position: absolute;
+      bottom: 0;
+      left: 0; }
+    #container #header ul#main-navigation {
+      position: absolute;
+      bottom: 0;
+      right: 0; }
+      #container #header ul#main-navigation li {
+        float: left;
+        list-style-type: none;
+        padding-left: 20px;
+        font-family: "Trebuchet MS", "Tahoma";
+        font-size: 138.5%;
+        font-weight: bold; }
+
+#standard #primary {
+  float: left;
+  width: 760px; }
+  #standard #primary #preview {
+    width: 420px;
+    float: left; }
+  #standard #primary #copy {
+    width: 305px;
+    float: right;
+    margin-right: 15px;
+    display: inline; }
+#standard #secondary {
+  float: right;
+  width: 220px; }
+  #standard #secondary #stats {
+    float: right; }
+#standard #tertiary {
+  float: left;
+  width: 760px; }
+
+#footer {
+  width: 90%;
+  margin: 20px auto 0; }
+  #footer p {
+    margin-bottom: .5em;
+    text-align: center; }
+
+.site.index #get-badge, .site.index #customize-badge, .site.index #share-badge, .site.index #make-difference {
+  margin: 0 15px 0 10px;
+  float: left; }
+.site.index #featured-badges, .site.index #mission-statement, .site.index #leaderboard {
+  float: left;
+  margin: 15px 15px 0 0; }
+.site.index #leaderboard, .site.index #mission-statement {
+  width: 285px; }
+.site.index #featured-badges {
+  width: 315px;
+  position: relative;
+  z-index: 100; }
+
+span.clear {
+  clear: both;
+  display: block;
+  height: 0;
+  overflow: hidden; }
+
+.radial {
+  background: url(/images/boxes/sidebar/outer_wrapper.png) no-repeat top center;
+  width: 217px;
+  float: left; }
+  .radial .inner-wrapper {
+    background: url(/images/boxes/sidebar/inner_wrapper.png) no-repeat bottom center;
+    padding: 10px;
+    min-height: 125px;
+    _height: 125px; }
+  .radial h2, .radial h3 {
+    text-align: center;
+    margin: 0; }
+
+.grey-fade, .end-cap {
+  background: url(/images/boxes/grey-fade.png) no-repeat top right; }
+
+.grey-fade {
+  position: relative;
+  min-height: 300px;
+  _height: 300px;
+  margin-left: 15px;
+  padding: 10px 15px 0 0; }
+  .grey-fade .end-cap {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    margin-left: -15px;
+    height: 100%;
+    background-position: top left; }
+
+.box {
+  position: relative;
+  margin: 0 auto;
+  min-width: 8em;
+  z-index: 1;
+  margin: 0 0 15px 15px; }
+  .box.round .content, .box.round .t, .box.round .b, .box.round .b div {
+    background: transparent url('/images/boxes/solid-smooth-darkhead.png') no-repeat top right; }
+  .box.shadow .content, .box.shadow .t, .box.shadow .b, .box.shadow .b div {
+    background: transparent url('/images/boxes/solid-shadow-darkhead.png') no-repeat top right; }
+  .box.basic .content, .box.basic .t, .box.basic .b, .box.basic .b div {
+    background: transparent url('/images/boxes/basic-round.png') no-repeat top right; }
+  .box.basicborder .content, .box.basicborder .t, .box.basicborder .b, .box.basicborder .b div {
+    background: transparent url('/images/boxes/basic-round-border.png') no-repeat top right; }
+  .box.error .content, .box.error .t, .box.error .b, .box.error .b div, .box.warning .content, .box.warning .t, .box.warning .b, .box.warning .b div {
+    background: transparent url('/images/boxes/basic-round-red-border.png') no-repeat top right; }
+  .box.notice .content, .box.notice .t, .box.notice .b, .box.notice .b div, .box.message .content, .box.message .t, .box.message .b, .box.message .b div {
+    background: transparent url('/images/boxes/basic-round-green-border.png') no-repeat top right; }
+  .box .content {
+    position: relative;
+    zoom: 1;
+    _overflow-y: hidden;
+    padding: 10px 15px 0 0; }
+    .box .content p:last-child {
+      margin-bottom: 0 !important; }
+  .box .t {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 15px;
+    margin-left: -15px;
+    height: 100%;
+    _height: 1600px;
+    background-position: top left !important; }
+  .box .b {
+    position: relative;
+    width: 100%;
+    background-position: bottom right !important; }
+  .box .b, .box .b div {
+    height: 15px;
+    font-size: 1px; }
+  .box .b div {
+    position: relative;
+    width: 15px;
+    margin-left: -15px;
+    background-position: bottom left !important; }

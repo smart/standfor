@@ -1,5 +1,5 @@
 class User::OrganizationsController < ApplicationController
-  layout 'default' 
+   
   before_filter :login_required
   # GET /user_organizations
   # GET /user_organizations.xml

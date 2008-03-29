@@ -1,5 +1,4 @@
 class CampaignsController < ApplicationController
-  layout 'default' 
   before_filter :login_required
   before_filter :organization_and_segment_required, :except => [:denied]
 

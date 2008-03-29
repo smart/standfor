@@ -1,5 +1,4 @@
 class User::ShareController < ApplicationController
-  layout :get_layout
   before_filter :login_required
   before_filter :get_my_badge
 
@@ -58,7 +57,8 @@ class User::ShareController < ApplicationController
    end
 
    def instructions
-      @share  = Younety::Remote::Share.find(params[:share]) 
+      @share  = Younety::Remote::Share.find(params[:share])
+     render :layout => 'popup'
    end
 
 
@@ -66,10 +66,6 @@ class User::ShareController < ApplicationController
 
    def get_my_badge
      @my_badge = current_account.my_badges.find(params[:my_badge_id])
-   end
-
-   def get_layout
-      params[:action] == 'instructions' ?  'popup' : 'default'
    end
 
 end

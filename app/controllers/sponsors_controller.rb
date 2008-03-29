@@ -1,5 +1,4 @@
 class SponsorsController < ApplicationController
-  layout 'default'
   #before_filter :login_required
 
   # GET /sponsors

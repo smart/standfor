@@ -1,5 +1,5 @@
 class Admin::OrganizationsController < ApplicationController
-  layout 'default'
+  
   helper 'organizations'
   before_filter :login_required 
   #access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin" 

@@ -1,5 +1,4 @@
 class SponsorshipsController < ApplicationController
-  layout 'default'
   helper 'sponsorships'
   before_filter :login_required
   before_filter :get_sponsor

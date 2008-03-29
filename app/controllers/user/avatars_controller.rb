@@ -1,5 +1,4 @@
 class User::AvatarsController < ApplicationController
-  layout 'default'
   before_filter :login_required
   # GET /avatars
   # GET /avatars.xml

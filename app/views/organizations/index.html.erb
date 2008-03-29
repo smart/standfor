@@ -1,7 +1,8 @@
+<% @sub_layout = 'gala' %>
 
 <%= render :partial => 'featured' -%>
 
-<% content_box("about organizations", :class => "basicborder", :id => "ranking" ) do -%>
+<% content_box(:box_class => "basicborder", :external_id => "ranking" ) do -%>
 <p> StandforUs has partnered with a wide range of organizations whose cause we believe in. We are always looking to help spread the word for other great organizations.</p>
 <p>If we dont support your favorite cause, let us know and we will work on getting a badge for that organization.</p>
 <% end %>

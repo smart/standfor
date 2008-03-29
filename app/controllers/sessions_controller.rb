@@ -1,6 +1,5 @@
 # This controller handles the login/logout function of the site.  
 class SessionsController < ApplicationController
-  layout 'default'
   
   def ssl_required?
      false and ENV['RAILS_ENV'] == 'production'

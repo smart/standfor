@@ -1,4 +1,4 @@
-<% content_box("filter badges", :class => 'basic', :id => 'filter') do -%>
+<% content_box(:box_class => 'basic', :external_id => 'filter') do -%>
 	<%= form_remote_tag :url => { :controller => "#{ (in_my_badges) ? 'user/my_badges' : 'badges' }", :action => 'search' } %>
 	<dl>
 		<dt><label for="search_term">keyword</label></dt>

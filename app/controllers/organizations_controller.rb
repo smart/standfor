@@ -1,5 +1,4 @@
 class OrganizationsController < ApplicationController
-  layout 'default'
   # GET /organizations
   # GET /organizations.xml
   def index

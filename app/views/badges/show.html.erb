@@ -1,25 +1,36 @@
-<% content_box(@badge.name, :class => 'shadow', :id => 'preview') do %>
+<% @sub_layout = 'standard' %>
+
+
+
+<% content_for :top_left do %>
 	<%= render :partial => 'shared/badge_preview', :locals => {:badge => @badge} %>
 <% end %>
 
-<% content_box("badge details", :class => 'basicborder', :id => 'instructions') do %>
+<% content_for :top_right do %>
 	<ul>
     <li>Organization: <%= @badge.organization.name -%></li>
     <li>Segment: <%= @badge.segment.name -%></li>
 	</ul>
 <% end %>
 
-<% content_box("about the #{@badge.name}", :class => 'basicborder', :id => 'description') do %>
-	<p>
-		<%= @badge.description %>
-	</p>
+<% content_for :secondary do %>
+  <%= render :partial => '/shared/sidebar' -%>
 <% end %>
 
-<% grey_fade(:id => "badge-extras" ) do -%>
-	<div id="leaderboard" class="left">
-		<h2>leaderboard</h2>
-	</div>
-	<div id="sponsors" class="right">
-		<h2>sponsors</h2>
-	</div>
+<% content_for :tertiary do %>
+  <% content_box(:box_class => 'basicborder', :external_id => 'description') do %>
+  	<p>
+  		<%= @badge.description %>
+  	</p>
+  <% end %>
+ 
+
+  <% grey_fade(:id => "badge-extras" ) do -%>
+  	<div id="leaderboard" class="left">
+  		<h2>leaderboard</h2>
+  	</div>
+  	<div id="sponsors" class="right">
+  		<h2>sponsors</h2>
+  	</div>
+  <% end %>
 <% end %>

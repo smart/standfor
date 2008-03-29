@@ -1,0 +1,17 @@
+<div <%= presentation_layout(@sub_layout) %>class="gala layout">
+  <div id="wrapper">
+    <div id="primary">
+      <%= yield %>
+    </div>
+  </div>
+  <div id="secondary">
+    <% default_content_for :secondary do %>
+      <%= render :partial => '/shared/sidebar' -%>
+    <% end %>
+    <%#= yield :secondary %>
+  </div>
+  <div id="tertiary">
+    <%= yield :tertiary %>
+  </div>
+  <span class="clear"></span>
+</div>

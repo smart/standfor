@@ -91,10 +91,12 @@ module BadgesHelper
 	end
 	
 	def extra_cells(expected, given)
-    diff = expected - (given % expected)
-    html = ''
-    diff.times do 
-      html << '<td>&nbsp;</td>'
+	  if expected == given
+      diff = expected - (given % expected)
+      html = ''
+      diff.times do 
+        html << '<td>&nbsp;</td>'
+      end
     end
     return html
 	end

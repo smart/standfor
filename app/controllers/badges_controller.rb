@@ -1,5 +1,4 @@
 class BadgesController < ApplicationController
-  layout 'default'
   helper 'badges'
   before_filter :clear_session_badge, :only => [:index] 
   #before_filter :get_organization_and_segment

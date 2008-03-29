@@ -16,7 +16,7 @@ module ApplicationHelper
 #    Markaby::Builder.new({}, self, &block)
 #  end
 
-  def content_box(header_text, opts = {}, &block)
+  def old_content_box(header_text, opts = {}, &block)
   	escaped_text = CGI.escape(header_text)
   	#image_path = "/text/header_text/#{escaped_text}.png"
 		#image_path = "/text/basicborder_header/#{escaped_text}.png" if (opts[:class] == 'basicborder' || opts[:class] == 'basic' )
@@ -32,7 +32,29 @@ module ApplicationHelper
     concat("</div>", block.binding)
   end
   
+  def content_box(opts = {}, &block)
+    internal_id = opts[:internal_id] ? "id=\"#{opts[:internal_id]}\" " : nil
+    external_id = opts[:external_id] ? "id=\"#{opts[:external_id]}\" " : nil
+    box_class = opts[:box_class] ? opts[:box_class] + " round box" : "round box"
+    
+    opts = opts.merge(:box_class => box_class, :external_id => external_id, :internal_id => internal_id)
+    
+    block_to_partial 'shared/patterns/roundbox', opts, &block
+  end
+  
   def grey_fade(opts = {}, &block)
+    box_class = opts[:class] ? "grey-fade #{opts[:class]}" : "grey-fade"
+    box_id = opts[:id] || nil
+    
+    block_to_partial 'shared/patterns/grey_fade', opts.merge(:box_class => box_class, :box_id => box_id), &block
+  end
+  
+  def trans_image_tag(image, width, height, opts = {})
+    opts.merge!(:src => "/images/#{image}", :width => width, :height => height)
+    content_tag(:img, nil, opts)
+  end
+  
+  def old_grey_fade(opts = {}, &block)
   	box_class = opts[:class] ? "grey-fade #{opts[:class]}" : "grey-fade"
   	box_id = opts[:id] || nil
   	#header_text = opts[:header] || nil
@@ -46,6 +68,13 @@ module ApplicationHelper
   end
   
   def radial_box(opts = {}, &block)
+    box_class  = opts[:class] ? "radial #{opts[:class]}" : "radial"
+    box_id = opts[:id] || nil
+    
+    block_to_partial 'shared/patterns/radial_box', opts.merge(:box_class => box_class, :box_id => box_id), &block
+  end
+  
+  def old_radial_box(opts = {}, &block)
   	box_class = opts[:class] ? "radial #{opts[:class]}" : "radial"
   	box_id = opts[:id] || nil
   	
@@ -143,48 +172,5 @@ module ApplicationHelper
 	  expected_id == params[:id]
 	end
 	
-  def flash_header(key)
-  	case
-		when key == "error"
-			return 'something went wrong'
-		when key == "notice"
-			return 'take note'
-		when key == "warning"
-			return 'warning'
-		when key == "message"
-			return 'a message for you'
-		else
-			return 'no heading defined'
-		end
-  end
-  
 end
-
-#  de markaby(&proc)
-#    assigns = {}
-#      instance_variables.each do |name|
-#        assigns[ name[1..-1] ] =  instance_variable_get(name)
-#      end
-#    Markaby::Builder.new(assigns, self).capture(&proc)
-#  end
-#  
-#  def tasks(&block)
-#    markaby do
-#      div.tasks {
-#        ul {
-#          markaby(&block)
-#        }
-#      }
-#    end
-#  end
-#  
-#  def contenter()
-#    tasks do
-#      task
-#    end
-#  end
-#  
-#  def task 
-#    return "hi there"
-#  end
   

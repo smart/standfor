@@ -1,5 +1,4 @@
 class CreditcardsController < ApplicationController
-  layout 'default'
   before_filter :login_required
   before_filter :order_required
 

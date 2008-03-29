@@ -1,5 +1,4 @@
 class LandingController < ApplicationController
-  layout 'default'
 
   def index
     @my_badge = MyBadge.find_by_public_adi_id(params[:id])

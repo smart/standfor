@@ -1,42 +1,51 @@
+<% @sub_layout = 'gala' %>
+
 <%= get_flash %>
 
 <% radial_box(:id => 'get-badge') do %>
-	<h2><%= image_tag("/text/basicborder_header/choose.png", :alt => 'choose') %></h2>
+	<h2>choose</h2>
 	<p>your cause and a digital badge
 </p>
 <% end %>
 
 <% radial_box(:id => 'customize-badge') do %>
-	<h2><%= image_tag("/text/basicborder_header/customize.png", :alt => 'Customize') %></h2>
+	<h2>customize</h2>
 	<p> Your badge because advocating for your cause is a personal statement. </p>
 <% end %>
 
 <% radial_box(:id => 'share-badge') do %>
-	<h2><%= image_tag("/text/basicborder_header/share.png", :alt => 'Share') %></h2>
+	<h2>share</h2>
 	<p> Your commitment to change by placing the badge in your digital world.</p>
 <% end %>
 
 <% radial_box(:id => 'make-difference') do %>
-	<h2><%= image_tag("/text/basicborder_header/challenge.png", :alt => 'Make a Difference') %></h2>
+	<h2>challenge</h2>
 	<p> Your friends and readers to donate to your cause through the badge. </p>
 <% end %>
 
+<span class="clear"></span>
+
 <div id="mission-statement">
-	<h2><%= image_tag("/text/basicborder_header/welcome to standfor%2eus.png", :alt => 'Welcome to Standfor.Us') %></h2>
-<p>The world is full of organizations trying to make a difference by applying their innovative ideas to the problems, big and small, that affect our society. To achieve their mission they need your support to get their message out.</p>
-
-
-<p>StandforUs provides you with tools to both express your support of a cause and for raising money to fulfill your causes mission. Thanks for using StandforUs to help change the world. </p>
-
+	<h2>welcome to standfor.us</h2>
+  <p>
+    The world is full of organizations trying to make a difference by applying their innovative ideas to the problems, big and small, that affect our society. To achieve their mission they need your support to get their message out.
+  </p>
+  <p>
+    StandforUs provides you with tools to both express your support of a cause and for raising money to fulfill your causes mission. Thanks for using StandforUs to help change the world.
+  </p>
 </div>
 
-<% grey_fade(:id => "featured-badges" ) do -%>
-	<h2><%= image_tag("/text/basicborder_header/featured badges.png", :alt => 'Featured Badges') %></h2>
+<div id="featured-badges">
+  <% grey_fade do -%>
+    <h2>featured badges</h2>
     <%= render :partial => 'featured' -%>
-<% end %>
+  <% end %>
+</div>
 
 <div id="leaderboard" class="leaders">
-	<h2><%= image_tag("/text/basicborder_header/leaderboard.png", :alt => 'Leaderboard') %></h2>
+	<h2>leaderboard</h2>
    <p>Here are our all-time donation leaders: </p>
    <%= render :partial => 'money_donated' %>
 </div>
+
+<span class="clear"></span>

@@ -1,7 +1,6 @@
 class DonationsController < ApplicationController
   # GET /donations
   # GET /donations.xml
-  layout 'default'
   before_filter :login_required
   before_filter :segment_required
   before_filter :donation_required, :only => [:confirm, :details, :payment, :create]

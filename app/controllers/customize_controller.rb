@@ -1,6 +1,5 @@
 class CustomizeController < ApplicationController
   require 'RMagick'
-  layout 'default'
   before_filter :get_my_badge
 
    def index 

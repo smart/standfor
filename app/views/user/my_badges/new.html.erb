@@ -1,14 +1,16 @@
-<% content_box(@my_badge.badge.name, :id => "preview", :class => "shadow" ) do %>
+<% @sub_layout = 'standard' %>
+
+<% content_for :top_left do %>
+  <h1><%= @my_badge.badge.name %></h1>
 	<div id="badge">
     <%= render :partial => "shared/badge_preview", :locals => {:badge => @my_badge } -%>
 	</div>
 	<span class="clear"></span>
 <% end %>
 
-<%= render :partial => 'shared/flash', :locals => { :flash => flash } %>
-
 <% if @my_badge.available?(current_account)  %>
-	<% content_box("Get This Badge", :id => "instructions", :class => "basicborder") do %>
+	<% content_for :top_left do %>
+	  <h2>Get This Badge</h2>
 		<p>You have met all the requirements for this badge!</p>
 	  	<% form_for :my_badge, :url => my_badge_create_path , :method => :post, :html => {:id => 'tocustomize-form' }  do |f| %>
 	  		<%= f.submit 'save this to my account' -%>
@@ -16,15 +18,20 @@
    <% end %>
 <% else  %>
 		
-	<% content_box("badge requirements", :id => "instructions", :class => "basicborder") do %>
+	<% content_for :top_right do %>
+	  <h2>badge requirements</h2>	
 		<p>
 			You have not met all the requirements for this badge! You need to complete one of the following requirements to get this badge: <br />
      	<%= render :partial => 'requirements', :locals => {:my_badge => @my_badge } -%>
     </p>
     <p>Please complete below.</p>
-	 	<% end %>
-	<% end %> <!-- end else -->
+ 	<% end %>
+<% end %> <!-- end else -->
 <span class="clear"></span>
+
+<% content_for :tertiary do %>
+  
+
 
 <% if @my_badge.available?(current_account)  %>
    available
@@ -60,5 +67,6 @@
   	<% end %>
 	</div>
 <% end  %>
+<% end %>
 <span class="clear"></span>
 <% end  %>

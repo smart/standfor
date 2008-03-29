@@ -1,5 +1,5 @@
 class Admin::BadgesController < ApplicationController
-  layout 'default'
+  
   helper 'badges' 
   before_filter :login_required 
   before_filter :get_organization

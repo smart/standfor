@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+  <title>Standforus</title>
+  <%= javascript_include_tag :defaults %>
+  <%= stylesheet_link_tag 'reset', 'base', 'fonts', 'application' %>
+  <!--[if lt IE 8]>
+    <%= javascript_include_tag 'IE8' %>
+  <![endif]-->
+</head>
+
+<body>
+  <div id="container" class="<%= page_class %>">
+    <div id="header">
+      
+      <%= link_to(trans_image_tag('new/layout/logo-trans.png', 450, 79, :class => "logo"), home_path) %>
+      
+      <ul id="main-navigation">
+        <li><%= link_to 'organizations', organizations_path %></li>
+        <li><%= link_to 'badges', badges_path %></li>
+        <!--<li><%= link_to 'sponsors', sponsors_path %></li>-->
+        <li><%= link_to 'leaderboard', leaderboard_path %></li>
+        <li class="last"><%= link_to 'about us', about_us_path %></li>
+      </ul>
+     
+    </div>
+    
+    <%= render :partial => "layouts/#{view_layout(@sub_layout)}" %>
+
+	  <% content_box(:external_id => 'footer', :box_class => 'basic') do -%>
+	    <p>
+	      Developed by <%= link_to 'Sympact Technologies', 'http://www.sympact.net' %>.
+      </p>
+	    <p>
+	      Funds Collected &amp; Distributed by Registered  501c <%= link_to 'WorldReach', 'http://www.worldreachcharity.org' %>.
+      </p>
+	    <p>
+	      Copyright 2007 Standfor.us &amp; Sympact Technologies
+      </p>
+	<% end -%>
+
+  </div>
+</body>
+</html>

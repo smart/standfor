@@ -1,5 +1,5 @@
 class SiteController < ApplicationController
-   layout :get_layout 
+   #layout :get_layout 
 
     def setorg
        if request.host.match(/statndfor(\w+).org/)   
