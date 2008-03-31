@@ -1,4 +1,7 @@
-<% content_box( "credit card details", :class => "shadow" ,:id => 'preview') do %>
+<% @sub_layout = 'standard' %>
+
+<% content_for :top_left do %>
+  <h1>credit card details</h1>
 	<% form_for(:creditcard, :url => save_creditcard_path, :method => :post)  do |f| %>
 
 	  <dl class="input">
@@ -31,9 +34,7 @@
 	<% end -%>
 <% end -%>
 
-<%= render :partial => 'shared/flash', :locals => { :flash => flash } %>
-
-<% content_box("about your donation", :class => 'basicborder', :id => 'instructions') do %>
+<% content_for :top_right do %>
   <%= render :partial => 'order' , :locals => { :order => @order } -%>
 	<p>
 		All funds are collected & distributed by registered  501c <a href="http://www.worldreachcharity.org">WorldReach</a>. 

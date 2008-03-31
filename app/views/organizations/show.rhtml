@@ -1,7 +1,7 @@
-<% @sub_layout = 'gala' %>
+<% @sub_layout = 'standard' %>
 
-<% content_box(:box_class => 'shadow', :external_id => 'preview') do -%>
-  <h2><%= @organization.name %></h2>
+<% content_for :top_left do -%>
+  <h1><%= @organization.name %></h1>
 	<%= image_tag(@organization.logo(:medium), :alt => @organization.name, :class => "avatar" ) %>
 		<p>
 			<%= textilize(@organization.description) %>
@@ -20,7 +20,7 @@
 
 
 
-<% content_box(:box_class => 'basicborder', :external_id => 'instructions') do %>
+<% content_for :top_right do %>
   <%= render :partial => 'navigation', :locals => { :organization => @organization } %>
 <% end %>
 
@@ -29,8 +29,10 @@
 	<%= render :partial => 'details', :locals => { :organization => @organization } %>
 <% end %>
 
-<% grey_fade(:id => "organization-badges" ) do -%>
-	<h2><%= @organization.name -%> Badges</h2>
-  <%= badge_list(@organization.featured_badges, 'small') %>
-	<span class="clear"></span>
+<% content_for :tertiary do %>
+  <% grey_fade(:id => "organization-badges" ) do -%>
+  	<h2><%= @organization.name -%> Badges</h2>
+    <%= badge_list(@organization.featured_badges, 'small') %>
+  	<span class="clear"></span>
+  <% end %>
 <% end %>

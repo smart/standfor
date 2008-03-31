@@ -1,6 +1,7 @@
 <% @sub_layout = 'standard' %>
 
 <% content_for :top_left do %>
+  <h1>Featured Badge</h1>
 	<%= render :partial => 'shared/badge_preview', :locals => {:badge => Badge.featured } %>
 <% end %>
 
@@ -16,7 +17,7 @@
 
 <% content_for :tertiary do %>
   
-  <%= render :partial => '/shared/filter_badges_form' , :locals => { :in_my_badges => false  } -%>
+  <%#= render :partial => '/shared/filter_badges_form' , :locals => { :in_my_badges => false  } -%>
 
   <% grey_fade(:id => "badges" ) do -%>
   	<h2>recent badges</h2>

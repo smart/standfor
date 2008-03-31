@@ -1,6 +1,9 @@
 body {
   background: url(/images/new/layout/body_background.png) repeat-y top center; }
 
+h2 {
+  margin: 0 0 .5em 0; }
+
 #container {
   width: 980px;
   position: relative;
@@ -24,6 +27,14 @@ body {
         font-family: "Trebuchet MS", "Tahoma";
         font-size: 138.5%;
         font-weight: bold; }
+    #container #header ul.session-links {
+      position: absolute;
+      top: 0;
+      right: 0; }
+      #container #header ul.session-links li {
+        float: left;
+        list-style-type: none;
+        padding-left: 20px; }
 
 #standard #primary {
   float: left;
@@ -31,11 +42,13 @@ body {
   #standard #primary #preview {
     width: 420px;
     float: left; }
-  #standard #primary #copy {
+  #standard #primary #copy, #standard #primary #tools {
     width: 305px;
     float: right;
     margin-right: 15px;
     display: inline; }
+  #standard #primary #tools {
+    clear: right; }
 #standard #secondary {
   float: right;
   width: 220px; }
@@ -44,6 +57,8 @@ body {
 #standard #tertiary {
   float: left;
   width: 760px; }
+  #standard #tertiary .grey-fade, #standard #tertiary .outside-box {
+    margin-right: 15px; }
 
 #footer {
   width: 90%;
@@ -64,6 +79,60 @@ body {
   width: 315px;
   position: relative;
   z-index: 100; }
+
+.site.leaderboard .leaders {
+  float: left;
+  width: 33%; }
+  .site.leaderboard .leaders .grey-fade {
+    margin-right: 15px; }
+
+.accounts.show .avatar {
+  float: left; }
+.accounts.show ul#user-navigation {
+  float: left; }
+
+.sessions.new #member-login, .sessions.new #open-id, .sessions.new #facebook {
+  float: left;
+  width: 33%; }
+  .sessions.new #member-login .box, .sessions.new #open-id .box, .sessions.new #facebook .box {
+    margin-right: 15px; }
+    .sessions.new #member-login .box .content, .sessions.new #open-id .box .content, .sessions.new #facebook .box .content {
+      padding-top: 0; }
+    .sessions.new #member-login .box .inside-box, .sessions.new #open-id .box .inside-box, .sessions.new #facebook .box .inside-box {
+      min-height: 200px; }
+    .sessions.new #member-login .box h2, .sessions.new #open-id .box h2, .sessions.new #facebook .box h2 {
+      padding-top: 10px; }
+
+.organizations ul.org-nav, .segments ul.org-nav {
+  margin: 0;
+  padding: 0; }
+  .organizations ul.org-nav li, .segments ul.org-nav li {
+    padding-left: 32px;
+    height: 28px;
+    line-height: 23px;
+    list-style-type: none; }
+    .organizations ul.org-nav li.organization, .segments ul.org-nav li.organization {
+      background: url(/images/icons/navigation/organization.png) no-repeat center left; }
+    .organizations ul.org-nav li.segment, .segments ul.org-nav li.segment {
+      background: url(/images/icons/navigation/back.png) no-repeat center left; }
+.organizations ul.segments, .segments ul.segments {
+  margin: 0;
+  padding: 0;
+  border-top: 1px dotted black; }
+  .organizations ul.segments li, .segments ul.segments li {
+    list-style-type: none;
+    font-weight: bold;
+    font-size: 138.5%;
+    text-align: right;
+    border-bottom: 1px dotted black;
+    padding: 5px 32px 0 0;
+    min-height: 28px;
+    background: url(/images/icons/navigation/segment.png) no-repeat right center; }
+    .organizations ul.segments li.current, .organizations ul.segments li:hover, .segments ul.segments li.current, .segments ul.segments li:hover {
+      border-left: 5px solid gray; }
+
+#flash {
+  margin-right: 15px; }
 
 span.clear {
   clear: both;
@@ -112,6 +181,15 @@ span.clear {
     background: transparent url('/images/boxes/solid-smooth-darkhead.png') no-repeat top right; }
   .box.shadow .content, .box.shadow .t, .box.shadow .b, .box.shadow .b div {
     background: transparent url('/images/boxes/solid-shadow-darkhead.png') no-repeat top right; }
+  .box.shadow .content {
+    padding-top: 0; }
+    .box.shadow .content h1 {
+      margin: 0 0 15px 0;
+      padding: 0;
+      height: 29px;
+      line-height: 29px;
+      font-size: 123.1%;
+      color: #fff; }
   .box.basic .content, .box.basic .t, .box.basic .b, .box.basic .b div {
     background: transparent url('/images/boxes/basic-round.png') no-repeat top right; }
   .box.basicborder .content, .box.basicborder .t, .box.basicborder .b, .box.basicborder .b div {

@@ -1,10 +1,10 @@
 <% render(:layout => 'layouts/shared/gala') do %>
 
+  <%= get_flash unless flash.empty? %>
+
   <% content_box(:external_id => "preview", :box_class => 'shadow') do %>
     <%= yield :top_left %>
   <% end %>
-  
-  <%= get_flash unless flash.empty? %>
   
   <% content_box(:external_id => "copy", :box_class => 'basicborder') do %>
      <%= yield :top_right %>

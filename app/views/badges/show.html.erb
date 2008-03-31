@@ -1,8 +1,7 @@
 <% @sub_layout = 'standard' %>
 
-
-
 <% content_for :top_left do %>
+  <h1><%= @badge.name %></h1>
 	<%= render :partial => 'shared/badge_preview', :locals => {:badge => @badge} %>
 <% end %>
 

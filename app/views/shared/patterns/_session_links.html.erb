@@ -1,0 +1,11 @@
+<ul class="session-links">
+<% if current_account != :false %>
+  <li>Logged in as: <i><%= current_account.nickname %></i></li>
+  <li><%= account_link %></li>
+  <li><%= logout_link %></li>
+<% else %>
+  <li><%= login_link %></li>
+  <li><%= signup_link %></li>
+<% end %>
+</ul>
+

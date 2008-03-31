@@ -1,5 +1,5 @@
-<% content_box('create a standfor:us account', :id => 'register', :class => 'shadow') do -%>
-
+<% content_box(:external_id => 'register', :box_class => 'shadow') do -%>
+  <h1>create a standfor:us account</h1>
 	<%= error_messages_for :account -%>
 	<% form_for :account, :url => accounts_path, :html => { :id => "register-form" } do |f| -%>
 	<fieldset class="input">
@@ -21,7 +21,7 @@
 		</dl>
 
 	</fieldset>
-	<%= button(:image => "/text/button_text/signup!.png", :alt => "Login",  :type => "submit", :class => "large-button", :form_id => 'register-form' ) -%>		
+	<%= submit_tag 'Signup' %>
 
 	<span class="clear"></span>
 	<% end -%>

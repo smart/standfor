@@ -1,35 +1,56 @@
-<% content_box("welcome #{@account.nickname}", :class => "shadow", :id => "welcome" ) do -%>
+<% @sub_layout = 'standard' %>
+
+<% content_for :top_left do -%>
+  
+  <h1>welcome <%= @account.nickname %></h1>
 	
- <%= image_tag(current_account.get_avatar(:full), :class => 'avatar') -%> 
- <%= link_to "upload an avatar", new_user_avatar_path , :class => 'small-link' %>
- <%= link_to 'edit', edit_user_account_path, :class => 'small-link' %>
-  <p> <%= link_to 'my organizations ' , user_organizations_path -%> </p>
-  <p> <%= link_to  'my donations' , user_orders_path -%> </p>
-<span class="clear"></span>
+  <%= image_tag(current_account.get_avatar(:full), :class => "avatar") -%>
+  
+  <ul id="user-navigation">
+    <li>
+      <%= link_to 'edit', edit_user_account_path %>
+    </li>
+    <li>
+      <%= link_to "upload an avatar", new_user_avatar_path %>
+    </li>
+    <li>
+      <%= link_to 'my organizations', user_organizations_path -%>
+    </li>
+    <li>
+      <%= link_to 'my donations', user_orders_path -%>
+    </li>
+  </ul>
+
+  <span class="clear"></span>
 
 <% end %>
 <!-- Commented out until requirements are defined >
-<% content_box("ranking", :class => "basicborder", :id => "ranking" ) do -%>
+<% content_box(:box_class => "basicborder", :external_id => "ranking" ) do -%>
+  <h2>ranking</h2>
   <p>Ranking Stats</p>
 <% end %>
 -->
-<% content_box("my donations", :class => "basicborder", :id => "ranking" ) do -%>
+<% content_for :top_right do -%>
+  <h2>my donations</h2>
   <%= render :partial => 'my_donations' -%>
 <% end %>
 
-
-<% content_box("merits", :class => "basicborder", :id => "merits" ) do -%>
+<% if false %>
+<% content_box(:box_class => "basicborder", :external_id => "merits" ) do -%>
+  <h2>merits</h2>
   <p>merit bar</p>
 <% end %>
 
 <%= render :partial => '/shared/filter_badges_form', :locals => {:in_my_badges => true } %>
-
-<% grey_fade(:id => "badges" ) do -%>
-	<h2>my badges<span><%= link_to  'view all' , user_my_badges_path -%></span></h2>
-	<% if @my_badges.empty? %>
-		<p>You haven't created any badges yet. Please <%= link_to 'get a badge', badges_path %> first.</p>
-	<% else %>
-    <%= badge_list(@my_badges, 'small') %>
-	<% end %>
 <% end %>
 
+<% content_for :tertiary do %>
+  <% grey_fade(:id => "badges" ) do -%>
+  	<h2>my badges<span><%= link_to  'view all' , user_my_badges_path -%></span></h2>
+  	<% if @my_badges.empty? %>
+  		<p>You haven't created any badges yet. Please <%= link_to 'get a badge', badges_path %> first.</p>
+  	<% else %>
+      <%= badge_list(@my_badges, 'small') %>
+  	<% end %>
+  <% end %>
+<% end %>

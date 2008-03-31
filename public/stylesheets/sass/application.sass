@@ -4,6 +4,9 @@
 body
   :background= "url("+!image_path+"layout/body_background.png) repeat-y top center"
 
+h2
+  :margin 0 0 .5em 0
+
 #container
   :width= !site_width
   :position relative
@@ -28,6 +31,14 @@ body
           :family "Trebuchet MS", "Tahoma"
           :size 138.5%
           :weight bold
+    ul.session-links
+      :position absolute
+      :top 0
+      :right 0
+      li
+        :float left
+        :list-style-type none
+        :padding-left 20px
 
 !standard_right= 220px
 !standard_left= !site_width - !standard_right
@@ -38,12 +49,13 @@ body
     #preview
       :width 420px
       :float left
-    #copy
+    #copy, #tools
       :width 305px
       :float right
       :margin-right 15px
       :display inline
-  #copy
+    #tools
+      :clear right
   #secondary
     :float right
     :width= !standard_right
@@ -52,8 +64,8 @@ body
   #tertiary
     :float left
     :width= !standard_left
-    
-
+    .grey-fade, .outside-box
+      :margin-right 15px
 
 #footer
   :width 90%
@@ -75,6 +87,64 @@ body
     :width 315px
     :position relative
     :z-index 100
+    
+.site.leaderboard .leaders
+  :float left
+  :width 33%
+  .grey-fade
+    :margin-right 15px
+
+.accounts.show
+  .avatar
+    :float left
+  ul#user-navigation
+    :float left
+    
+.sessions.new
+  #member-login, #open-id, #facebook
+    :float left
+    :width 33%
+    .box
+      :margin-right 15px
+      .content
+        :padding-top 0
+      .inside-box
+        :min-height 200px  
+      h2
+        :padding-top 10px
+
+.organizations, .segments
+  ul.org-nav
+    :margin 0
+    :padding 0
+    li
+      :padding-left 32px
+      :height 28px
+      :line-height 23px
+      :list-style-type none
+      &.organization
+        :background url(/images/icons/navigation/organization.png) no-repeat center left
+      &.segment
+        :background url(/images/icons/navigation/back.png) no-repeat center left
+  ul.segments
+    :margin 0
+    :padding 0
+    :border-top 1px dotted black
+    li
+      :list-style-type none
+      :font
+        :weight bold
+        :size 138.5%
+      :text-align right
+      :border-bottom 1px dotted black
+      :padding 5px 32px 0 0
+      :min-height 28px
+      :background url(/images/icons/navigation/segment.png) no-repeat right center
+      &.current, &:hover
+        :border-left 5px solid gray 
+#flash
+  :margin-right 15px
+
 
 span.clear
   :clear both
@@ -125,6 +195,15 @@ span.clear
   &.shadow
     .content, .t, .b, .b div
       :background transparent url('/images/boxes/solid-shadow-darkhead.png') no-repeat top right
+    .content
+      :padding-top 0
+      h1
+        :margin 0 0 15px 0
+        :padding 0
+        :height 29px
+        :line-height 29px
+        :font-size 123.1%
+        :color #fff
   &.basic
     .content, .t, .b, .b div
       :background transparent url('/images/boxes/basic-round.png') no-repeat top right
@@ -165,4 +244,3 @@ span.clear
     :width 15px
     :margin-left -15px
     :background-position bottom left !important
-    

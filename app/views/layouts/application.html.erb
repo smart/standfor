@@ -16,7 +16,9 @@
   <div id="container" class="<%= page_class %>">
     <div id="header">
       
-      <%= link_to(trans_image_tag('new/layout/logo-trans.png', 450, 79, :class => "logo"), home_path) %>
+      <%= link_to(trans_image_tag('new/layout/logo-trans.png', 450, 79, :class => "logo", :alt => "standfor.us"), home_path) %>
+      
+      <%= session_links %>
       
       <ul id="main-navigation">
         <li><%= link_to 'organizations', organizations_path %></li>

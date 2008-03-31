@@ -1,7 +1,8 @@
-<%= get_flash %>
+<%= get_flash unless flash.empty? %>
 
-<% content_box("standfor us account", :class => 'shadow', :id => 'member-login') do %>
+<% content_box(:box_class => 'shadow', :external_id => 'member-login') do %>
 	<% form_tag sessions_path, :id => 'login-form' do -%>
+	<h1>standfor us account</h1>
 	<fieldset>
     <dl class="input">
     	<dt><label for="login">Username:</label></dt>
@@ -11,33 +12,24 @@
     	<dt><label for="password">Password:</label></dt>
     		<dd><%= password_field_tag 'password', nil -%></dd>
 		</dl>
-    <%= submit_tag 'login', :class => 'submit' %>
-    		
-  	<dl class="input">
-     <dt><%= link_to 'forgot my password' , forgot_password_path -%></dt>
-   </dl>
-
-    <span class="clear"></span>
-
+    <%= submit_tag 'login', :class => 'submit' %> | <%= link_to 'forgot my password' , forgot_password_path -%>
 	</fieldset>
 
 	<% end %>
 
 <% end %>
 
-<% content_box("login with facebook", :class => 'basicborder', :id => 'facebook') do -%>
-	<div>
-		<p>Authenticate yourself through facebook to take advantage of our advanced social networking features.</p>
-		<% form_tag sessions_path, :id => 'facebook-login' do -%>
-	    <%= hidden_field_tag( 'facebook', :value => true ) %>
-	    <%= submit_tag 'facebook login', :class => 'submit' %>
-		<% end %>
-		<span class="clear"></span>
-	</div>
+<% content_box(:box_class => 'basicborder', :external_id => 'facebook') do -%>
+  <h2>login with facebook</h2>
+	<p>Authenticate yourself through facebook to take advantage of our advanced social networking features.</p>
+	<% form_tag sessions_path, :id => 'facebook-login' do -%>
+    <%= hidden_field_tag( 'facebook', :value => true ) %>
+    <%= submit_tag 'facebook login', :class => 'submit' %>
+	<% end %>
 <% end -%>
 
-<% content_box("login with openID", :class => 'basicborder', :id => 'open-id') do %>
-	<div>
+<% content_box(:box_class => 'basicborder', :external_id => 'open-id') do %>
+  <h2>open id</h2>
 		<% form_tag sessions_path, :id => 'openid-login' do -%>
 	    <dl class="input">
 	    	<dt><label for="openid_url">openID</label></dt>
@@ -45,10 +37,9 @@
 	    </dl>
 	    <%= submit_tag 'openID login', :class => 'submit' %>
 	  <% end %>
-	  <span class="clear"></span>
-	</div>
 <% end -%>
 
+<span class="clear"></span>
 
 <% grey_fade(:id => "register" ) do -%>
 	<h2>register</h2>
@@ -74,6 +65,4 @@
 	<span class="clear"></span>
 	<% end -%>
 <% end %>
-
-
 

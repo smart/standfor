@@ -1,6 +1,6 @@
-<% @sub_layout = 'gala' %>
+<% @sub_layout = 'standard' %>
 
-<% content_box(:box_class => 'shadow', :external_id => 'preview') do -%>
+<% content_for :top_left do -%>
   <h1><%= @organization.name %></h1>
   <h2><%= @segment.name %></h2>
 	<p><%= @segment.description -%></p>
@@ -13,7 +13,7 @@
 		<% end %>
 <% end %>
 
-<% content_box(:box_class => 'basicborder', :id => 'instructions') do %>
+<% content_for :top_right do %>
   <h2>our causes</h2>
 	<%= render :partial => 'organizations/navigation', :locals => { :organization => @organization } %>
 <% end %>
@@ -23,8 +23,10 @@
   <%= render :partial => 'organizations/details', :locals => { :organization => @organization } %>
 <% end %>
 
-<% grey_fade(:id => "segment-badges" ) do -%>
-	<h2><%= @organization.name -%> Badges</h2>
-  <%= badge_list(@segment.badges, 'small') %>
-	<span class="clear"></span>
+<% content_for :tertiary do %>
+  <% grey_fade(:id => "segment-badges" ) do -%>
+  	<h2><%= @organization.name -%> Badges</h2>
+    <%= badge_list(@segment.badges, 'small') %>
+  	<span class="clear"></span>
+  <% end %>
 <% end %>

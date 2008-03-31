@@ -1,4 +1,7 @@
-<% content_box("authorize payment", :class => 'shadow', :id => 'preview') do %>
+<% @sub_layout = 'standard' %>
+
+<% content_for :top_left do %>
+  <h1>authorize payment</h1>
 	<% form_for(@order, :url => "/organizations/#{@organization.site_name}/segments/#{@segment.site_name}/orders", :method => :post ) do |f| %>
 
 	   <% if @order.creditcard.nil? %> 
@@ -16,7 +19,8 @@
 	
 <% end %>
 
-<% content_box("about your donation", :class => 'basicborder', :id => 'instructions') do %>
+<% content_for :top_right do %>
+  <h1>about your donation</h1>
 	<%= render :partial => 'shared/orders/donation', :locals => {:order => @order} %>
 	<p>
 		All funds are collected & distributed by registered  501c <a href="http://www.worldreachcharity.org">WorldReach</a>. 

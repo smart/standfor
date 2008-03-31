@@ -1,6 +1,4 @@
-<% @sub_layout = 'gala' %>
-
-<%= get_flash %>
+<%= get_flash unless flash.empty? %>
 
 <% radial_box(:id => 'get-badge') do %>
 	<h2>choose</h2>

@@ -1,12 +1,15 @@
-<% @sub_layout = 'gala' %>
+<% @sub_layout = 'standard' %>
 
-<%= render :partial => 'featured' -%>
-
-<% content_box(:box_class => "basicborder", :external_id => "ranking" ) do -%>
-<p> StandforUs has partnered with a wide range of organizations whose cause we believe in. We are always looking to help spread the word for other great organizations.</p>
-<p>If we dont support your favorite cause, let us know and we will work on getting a badge for that organization.</p>
+<% content_for :top_left do %>
+  <%= render :partial => 'featured' -%>
 <% end %>
 
+<% content_for :top_right do -%>
+  <p> StandforUs has partnered with a wide range of organizations whose cause we believe in. We are always looking to help spread the word for other great organizations.</p>
+  <p>If we dont support your favorite cause, let us know and we will work on getting a badge for that organization.</p>
+<% end %>
+
+<% content_for :tertiary do %>
 <% grey_fade(:id => "organizations" ) do -%>
 	<h2>we standfor:</h2>
 	<% @organizations.each do |organization| -%>
@@ -15,4 +18,4 @@
 		</div>
 	<% end -%>
 <% end -%>
-
+<% end -%>
