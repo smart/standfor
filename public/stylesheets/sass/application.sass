@@ -6,6 +6,14 @@ body
 
 h2
   :margin 0 0 .5em 0
+  
+a
+  :color #666
+  :text-decoration  none
+  &:visited
+    :color #666
+  &:hover
+    :color #808080
 
 #container
   :width= !site_width
@@ -31,6 +39,8 @@ h2
           :family "Trebuchet MS", "Tahoma"
           :size 138.5%
           :weight bold
+      a:hover
+        :border-bottom 4px solid black
     ul.session-links
       :position absolute
       :top 0
@@ -84,9 +94,9 @@ h2
   #leaderboard, #mission-statement
     :width 285px
   #featured-badges
-    :width 315px
     :position relative
     :z-index 100
+    :width 330px
     
 .site.leaderboard .leaders
   :float left
@@ -141,10 +151,200 @@ h2
       :min-height 28px
       :background url(/images/icons/navigation/segment.png) no-repeat right center
       &.current, &:hover
-        :border-left 5px solid gray 
+        :border-left 5px solid gray
+  img.avatar
+    :float right
+    :margin-left 15px
+  .small-logo
+    :float left
+    :margin-right 10px
+        
+.landing.index
+  #tertiary
+    :margin-top 15px
+  #action-call
+    :width 279px
+    :height 110px
+    :float right
+    :margin -45px 27px 0 0
+  #badge-extras
+    #mission
+      :width 60%
+      :float left
+    #actions
+      :width 40%
+      :float right
+      :text-align center
+      h3
+        :margin 0 0 .5em 0
+      img.avatar
+        :margin 10px 0 10px 0
+        
+.customize.index
+  #tool-options
+    ul
+      :margin 0
+      li
+        :list-style-type none
+    ul.palette 
+      li
+        :padding 2px
+        :border 1px solid black
+        :float left
+        :margin 0 4px 4px 0
+        a
+          :width 35px
+          :height 35px
+          :display block
+      span
+        :display block
+        :border 1px solid black
+    ul.image-chooser
+      li
+        :float left
+        :margin 0 20px 20px 0
+
+table#badge-list
+  :width 100%
+  :table-layout auto
+  :border none
+  tr
+    :border-bottom 1px dotted black
+  td
+    :vertical-align middle
+    :width 33%
+    :border none
+    :padding 0
+
+.badge-link
+  :position relative
+  :margin 10px auto
+  .badge-meta
+    :position absolute
+    :top 20px
+    :left 20px
+    :z-index 10
+    :border 1px solid #000
+    :background #b7b9bb
+    ul
+      :margin 0
+      :padding 5px
+      :background url(/images/backgrounds/b7b9bb_fade.jpg) repeat-x top left
+      :border-top 1px solid #cfd2d4
+      :border-left 1px solid #cfd2d4
+      :border-right 1px solid #828485
+      :border-bottom 1px solid #828485
+      li
+        :margin 0
+        :padding 0
+        :list-style-type none
+    img.preview
+      :padding 8px
+      :background-color #828485
+      :border-bottom 1px solid #000
+      :border-top 1px solid #cfd2d4
+      :border-left 1px solid #cfd2d4
+      :border-right 1px solid #525354
+  span
+    :display none
+    
+#badge-actions
+  :float right
+  ul
+    :margin 0
+    :padding 0 
+    :text-align center
+    li
+      :list-style-type none
+
+#badge-functions
+  :margin-top 5px
+  ul
+    :margin 0
+    :padding 0
+    li
+      :display block
+      :height 28px
+      :line-height 28px
+      :background
+        :position top left
+        :repeat no-repeat
+      :min-width 32px
+      :float left
+      &.back
+        :background-image url(/images/icons/navigation/back.png)
+      &.share
+        :background-image url(/images/icons/navigation/share.png)
+      &.customize
+        :background-image url(/images/icons/navigation/heart.png)
+      &.sponsors
+        :background-image url(/images/icons/navigation/sponsors.png)
+      &.merits
+        :background-image url(/images/icons/navigation/merits.png)
+      a
+        :display block
+        :padding-left 32px
+  ul.actions
+    :float right
+    span
+      :display none
+      &.show
+        :display inline
+        
+#share
+  ul
+    :margin 0
+    :padding 0
+    li
+      :list-style-type none
+  .left
+    :width 20%
+    :float left
+  .right
+    :width 80%
+    :float right
+  .small-logo
+    :float left
+    :margin-right 10px
+   
+#tools ul
+  :margin 0
+  :padding 0
+  li
+    :display block
+    :line-height 35px
+    :width 49%
+    :float left
+    :height 35px
+    :background
+      :position top left
+      :repeat no-repeat
+    :margin-bottom 5px
+    a
+      :padding-left 40px
+    &.edges
+      :background-image url(/images/icons/edges.png)
+    &.fonts
+      :background-image url(/images/icons/font.png)
+    &.images
+      :background-image url(/images/icons/picture.png)
+    &.affiliation
+      :background-image url(/images/icons/affiliation.png)
+        
 #flash
   :margin-right 15px
+  .content
+    :padding-top 2px
+    h2
+      :color #fff
 
+img.avatar, .small-logo img
+  :border 1px solid black
+  :padding 5px
+
+.leader .avatar
+  :border none
+  :padding 0
 
 span.clear
   :clear both

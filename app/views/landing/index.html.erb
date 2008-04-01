@@ -1,10 +1,12 @@
-<% content_box( @my_badge.badge.name, :class => "shadow", :id => "preview" ) do -%>
+<% @sub_layout = 'standard' %>
+
+<% content_for :top_left do -%>
+  <h1><%= @my_badge.badge.name %></h1>
 	<%= render :partial => 'shared/badge_preview', :locals => {:badge => @my_badge} %>
 <% end %>
 
-<%= get_flash %>
-
-<% content_box("#{@my_badge.account.nickname} stands for", :class => 'basicborder', :id => 'instructions') do %>
+<% content_for :top_right do %>
+  <h2><%= @my_badge.account.nickname %> stands for</h2>
   <% if true %>
 	<ul>
     <li>Organization: <%= @my_badge.badge.organization.name -%></li>
@@ -19,26 +21,33 @@
 	 <% end %>
 <% end %>
 
-<% if true %>
-<div id="action-call" class="box-foot">
-  <%= link_to(image_tag('polish/get_a_badge.png', :alt => 'Get A Badge'), badge_badge_customize_path(@my_badge.badge.id)) %>
-</div>
-<% end %>
-<span class="clear"></span>
-<% content_box(@my_badge.badge.organization.statement, :class => 'basicborder') do %>
-  <%= @my_badge.badge.description %>
+<% content_for :supplementary do %>
+
+  <div id="action-call" class="box-foot">
+    <%= link_to(image_tag('polish/get_a_badge.png', :alt => 'Get A Badge'), badge_badge_customize_path(@my_badge.badge.id)) %>
+  </div>
+
 <% end %>
 
-<% grey_fade(:id => "badge-extras" ) do -%>
-  <h2>About <%= @my_badge.badge.organization.name %> & the <%= @my_badge.badge.segment.name %></h2>
-	<div id="mission">
-		<%= textilize(@my_badge.badge.organization.description) %>
-	</div>
-	<div id="actions">
-	  <h3><%= link_to('Go to Gift of Life Website', @my_badge.badge.organization.url ) %></h3>
-	  <h3><%= link_to('Go to Gift of Life Blog', @my_badge.badge.organization.blog_url ) %></h3>
-	  <%= image_tag(@my_badge.badge.organization.logo(:medium), :class => "avatar") %>
-	</div>
+<% content_for :tertiary do %>
+<span class="clear"></span>
+  <% content_box(:box_class => 'basicborder') do %>
+    <h2><%= @my_badge.badge.organization.statement %></h2>
+    <%= @my_badge.badge.description %>
+  <% end %>
+
+  <% grey_fade(:id => "badge-extras" ) do -%>
+    <h2>About <%= @my_badge.badge.organization.name %> & the <%= @my_badge.badge.segment.name %></h2>
+  	<div id="mission">
+  		<%= textilize(@my_badge.badge.organization.description) %>
+  	</div>
+  	<div id="actions">
+  	  <h3><%= link_to('Go to Gift of Life Website', @my_badge.badge.organization.url ) %></h3>
+  	  <h3><%= link_to('Go to Gift of Life Blog', @my_badge.badge.organization.blog_url ) %></h3>
+  	  <%= image_tag(@my_badge.badge.organization.logo(:medium), :class => "avatar") %>
+  	</div>
+  <% end %>
+  
 <% end %>
 
 

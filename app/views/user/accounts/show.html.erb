@@ -46,7 +46,7 @@
 
 <% content_for :tertiary do %>
   <% grey_fade(:id => "badges" ) do -%>
-  	<h2>my badges<span><%= link_to  'view all' , user_my_badges_path -%></span></h2>
+  	<h2>my badges<span><%#= link_to  'view all' , user_my_badges_path -%></span></h2>
   	<% if @my_badges.empty? %>
   		<p>You haven't created any badges yet. Please <%= link_to 'get a badge', badges_path %> first.</p>
   	<% else %>

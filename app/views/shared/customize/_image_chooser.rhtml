@@ -1,5 +1,5 @@
 <h2><%= customization.name == "affiliation" ? "choose an affiliation badge" : "choose a background image" -%></h2>
-<ul>
+<ul class="image-chooser">
 
 <% customization.custom_options.attributes.each_pair do |name,value|  %>
 <li><%= link_to_remote(image_tag( "customization/#{value}" ) , 

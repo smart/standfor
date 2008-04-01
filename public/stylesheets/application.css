@@ -4,6 +4,14 @@ body {
 h2 {
   margin: 0 0 .5em 0; }
 
+a {
+  color: #666;
+  text-decoration: none; }
+  a:visited {
+    color: #666; }
+  a:hover {
+    color: #808080; }
+
 #container {
   width: 980px;
   position: relative;
@@ -27,6 +35,8 @@ h2 {
         font-family: "Trebuchet MS", "Tahoma";
         font-size: 138.5%;
         font-weight: bold; }
+      #container #header ul#main-navigation a:hover {
+        border-bottom: 4px solid black; }
     #container #header ul.session-links {
       position: absolute;
       top: 0;
@@ -76,9 +86,9 @@ h2 {
 .site.index #leaderboard, .site.index #mission-statement {
   width: 285px; }
 .site.index #featured-badges {
-  width: 315px;
   position: relative;
-  z-index: 100; }
+  z-index: 100;
+  width: 330px; }
 
 .site.leaderboard .leaders {
   float: left;
@@ -130,9 +140,190 @@ h2 {
     background: url(/images/icons/navigation/segment.png) no-repeat right center; }
     .organizations ul.segments li.current, .organizations ul.segments li:hover, .segments ul.segments li.current, .segments ul.segments li:hover {
       border-left: 5px solid gray; }
+.organizations img.avatar, .segments img.avatar {
+  float: right;
+  margin-left: 15px; }
+.organizations .small-logo, .segments .small-logo {
+  float: left;
+  margin-right: 10px; }
+
+.landing.index #tertiary {
+  margin-top: 15px; }
+.landing.index #action-call {
+  width: 279px;
+  height: 110px;
+  float: right;
+  margin: -45px 27px 0 0; }
+.landing.index #badge-extras #mission {
+  width: 60%;
+  float: left; }
+.landing.index #badge-extras #actions {
+  width: 40%;
+  float: right;
+  text-align: center; }
+  .landing.index #badge-extras #actions h3 {
+    margin: 0 0 .5em 0; }
+  .landing.index #badge-extras #actions img.avatar {
+    margin: 10px 0 10px 0; }
+
+.customize.index #tool-options ul {
+  margin: 0; }
+  .customize.index #tool-options ul li {
+    list-style-type: none; }
+.customize.index #tool-options ul.palette li {
+  padding: 2px;
+  border: 1px solid black;
+  float: left;
+  margin: 0 4px 4px 0; }
+  .customize.index #tool-options ul.palette li a {
+    width: 35px;
+    height: 35px;
+    display: block; }
+.customize.index #tool-options ul.palette span {
+  display: block;
+  border: 1px solid black; }
+.customize.index #tool-options ul.image-chooser li {
+  float: left;
+  margin: 0 20px 20px 0; }
+
+table#badge-list {
+  width: 100%;
+  table-layout: auto;
+  border: none; }
+  table#badge-list tr {
+    border-bottom: 1px dotted black; }
+  table#badge-list td {
+    vertical-align: middle;
+    width: 33%;
+    border: none;
+    padding: 0; }
+
+.badge-link {
+  position: relative;
+  margin: 10px auto; }
+  .badge-link .badge-meta {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+    border: 1px solid #000;
+    background: #b7b9bb; }
+    .badge-link .badge-meta ul {
+      margin: 0;
+      padding: 5px;
+      background: url(/images/backgrounds/b7b9bb_fade.jpg) repeat-x top left;
+      border-top: 1px solid #cfd2d4;
+      border-left: 1px solid #cfd2d4;
+      border-right: 1px solid #828485;
+      border-bottom: 1px solid #828485; }
+      .badge-link .badge-meta ul li {
+        margin: 0;
+        padding: 0;
+        list-style-type: none; }
+    .badge-link .badge-meta img.preview {
+      padding: 8px;
+      background-color: #828485;
+      border-bottom: 1px solid #000;
+      border-top: 1px solid #cfd2d4;
+      border-left: 1px solid #cfd2d4;
+      border-right: 1px solid #525354; }
+  .badge-link span {
+    display: none; }
+
+#badge-actions {
+  float: right; }
+  #badge-actions ul {
+    margin: 0;
+    padding: 0;
+    text-align: center; }
+    #badge-actions ul li {
+      list-style-type: none; }
+
+#badge-functions {
+  margin-top: 5px; }
+  #badge-functions ul {
+    margin: 0;
+    padding: 0; }
+    #badge-functions ul li {
+      display: block;
+      height: 28px;
+      line-height: 28px;
+      background-position: top left;
+      background-repeat: no-repeat;
+      min-width: 32px;
+      float: left; }
+      #badge-functions ul li.back {
+        background-image: url(/images/icons/navigation/back.png); }
+      #badge-functions ul li.share {
+        background-image: url(/images/icons/navigation/share.png); }
+      #badge-functions ul li.customize {
+        background-image: url(/images/icons/navigation/heart.png); }
+      #badge-functions ul li.sponsors {
+        background-image: url(/images/icons/navigation/sponsors.png); }
+      #badge-functions ul li.merits {
+        background-image: url(/images/icons/navigation/merits.png); }
+      #badge-functions ul li a {
+        display: block;
+        padding-left: 32px; }
+  #badge-functions ul.actions {
+    float: right; }
+    #badge-functions ul.actions span {
+      display: none; }
+      #badge-functions ul.actions span.show {
+        display: inline; }
+
+#share ul {
+  margin: 0;
+  padding: 0; }
+  #share ul li {
+    list-style-type: none; }
+#share .left {
+  width: 20%;
+  float: left; }
+#share .right {
+  width: 80%;
+  float: right; }
+#share .small-logo {
+  float: left;
+  margin-right: 15px; }
+
+#tools ul {
+  margin: 0;
+  padding: 0; }
+  #tools ul li {
+    display: block;
+    line-height: 35px;
+    width: 49%;
+    float: left;
+    height: 35px;
+    background-position: top left;
+    background-repeat: no-repeat;
+    margin-bottom: 5px; }
+    #tools ul li a {
+      padding-left: 40px; }
+    #tools ul li.edges {
+      background-image: url(/images/icons/edges.png); }
+    #tools ul li.fonts {
+      background-image: url(/images/icons/font.png); }
+    #tools ul li.images {
+      background-image: url(/images/icons/picture.png); }
+    #tools ul li.affiliation {
+      background-image: url(/images/icons/affiliation.png); }
 
 #flash {
   margin-right: 15px; }
+  #flash .content {
+    padding-top: 2px; }
+    #flash .content h2 {
+      color: #fff; }
+
+img.avatar, .small-logo img {
+  border: 1px solid black;
+  padding: 5px; }
+
+.leader .avatar {
+  border: none;
+  padding: 0; }
 
 span.clear {
   clear: both;

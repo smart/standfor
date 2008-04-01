@@ -1,16 +1,3 @@
-<!--
-<div class="badge-list">
-	<% badges.each do |badge| %>
-	  <%= cycle('<div class="badge-row">', nil, nil, :name => 'start') %>
-	  <div class="badge-wrapper"><div class="badge-position">
-	    <%= badge_link(badge, { :size => size } ) -%>
-	    <span class="clear"></span>
-	  </div></div>
-	  <%= cycle(nil, nil, '<span class="clear"></span></div>', :name => 'end') %>
-	<% end %>
-</div>
--->
-
 <table id="badge-list">
   <% badges.each do |badge| %>
     <%= cycle('<tr>', nil, nil, :name => 'start') %>

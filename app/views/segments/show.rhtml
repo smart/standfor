@@ -4,6 +4,7 @@
   <h1><%= @organization.name %></h1>
   <h2><%= @segment.name %></h2>
 	<p><%= @segment.description -%></p>
+	<% if false #implement sponsorships %>
 		<% if current_account != :false %>
 			<% if current_account.is_sponsor? %>
 				<p><%= link_to 'Sponsor', :controller=> 'sponsorships', :action => 'new', :sponsorable_type => 'Organization', :sponsorable_id => @organization.id -%> </p>
@@ -11,6 +12,7 @@
 				<p><%= link_to 'Become A Sponsor',  new_organization_sponsor_path(@organization) -%></p>
 			<% end %>
 		<% end %>
+	<% end %>
 <% end %>
 
 <% content_for :top_right do %>
