@@ -37,25 +37,12 @@
    available
 <% else %>
 <% grey_fade(:id => "complete-requirements") do %>
-	<div id="access-code" class="left">
-		<h2>Enter an Access Code</h2>
-		<% form_for :my_badge, :url => my_badge_create_path , :method => :post  do |f| %>
-		<dl>
-			<dt><label for "access_code">Enter an access code:</label></dt>
-				<dd><%= f.text_field :access_code, :size => 6 %></dd>
-		</dl>
-    <%= submit_tag "Enter Code" %>
-		<% end %>
-		<span class="or">OR</span>
-  	<span class="clear"></span>
-	</div>
+	<div id="enter-donation" class="left">
+    <h2>Make a Donation</h2>
 
-	<div id="enter-donation" class="right">
-		<h2>Make a Donation</h2>
-
-<script language="javascript">
- var min = "<%=@my_badge.minimum_donation-%>"
-</script>
+    <script language="javascript">
+     var min = "<%=@my_badge.minimum_donation-%>"
+    </script>
 
 		<% form_for :order, :url => organization_segment_order_path(@my_badge.badge.organization, @my_badge.badge.segment , @order), :html => {:method => :post, :onsubmit => 'javascript:return ValidateDonationForm(this, min)' }  do |f| %>
 		<dl>
@@ -64,6 +51,20 @@
 		</dl>
     <%= f.submit  'Donate'  -%>
   	<% end %>
+  	<span class="or">OR</span>
+	</div>
+
+	<div id="access-code" class="right">
+	  		<h2>Enter an Access Code</h2>
+		<% form_for :my_badge, :url => my_badge_create_path , :method => :post  do |f| %>
+		<dl>
+			<dt><label for "access_code">Enter an access code:</label></dt>
+				<dd><%= f.text_field :access_code, :size => 6 %></dd>
+		</dl>
+    <%= submit_tag "Enter Code" %>
+		<% end %>
+  	<span class="clear"></span>
+		
 	</div>
 <% end  %>
 <% end %>

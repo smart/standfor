@@ -19,7 +19,7 @@
       	<%= render :partial => "webapps", :locals => {:my_badge => @my_badge, :webapps => @webapps  } -%>
       </div>
       <div id="share-it" class="right">
-      <p>If adding your badge to your personal website or blog you can copy and paste the code snippet below.  You can also use our share it library to automatically share your badge.  Choose an application to the left to begin the process.</p>
+      <p>If adding your badge to your personal website, email signature or blog you can copy and paste the code snippet below.  You can also use our share it library to automatically share your badge.  Choose an application to the left to begin the process.</p>
   	<%= text_area_tag("snippet", @my_badge.adi.embed_code("gif", true, true), :size => "60x4") -%> 	
       </div>
       

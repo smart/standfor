@@ -101,16 +101,16 @@ a {
 .accounts.show ul#user-navigation {
   float: left; }
 
-.sessions.new #member-login, .sessions.new #open-id, .sessions.new #facebook {
+.sessions.new #member-login, .sessions.new #open-id, .sessions.new #facebook, .accounts.create #member-login, .accounts.create #open-id, .accounts.create #facebook {
   float: left;
   width: 33%; }
-  .sessions.new #member-login .box, .sessions.new #open-id .box, .sessions.new #facebook .box {
+  .sessions.new #member-login .box, .sessions.new #open-id .box, .sessions.new #facebook .box, .accounts.create #member-login .box, .accounts.create #open-id .box, .accounts.create #facebook .box {
     margin-right: 15px; }
-    .sessions.new #member-login .box .content, .sessions.new #open-id .box .content, .sessions.new #facebook .box .content {
+    .sessions.new #member-login .box .content, .sessions.new #open-id .box .content, .sessions.new #facebook .box .content, .accounts.create #member-login .box .content, .accounts.create #open-id .box .content, .accounts.create #facebook .box .content {
       padding-top: 0; }
-    .sessions.new #member-login .box .inside-box, .sessions.new #open-id .box .inside-box, .sessions.new #facebook .box .inside-box {
+    .sessions.new #member-login .box .inside-box, .sessions.new #open-id .box .inside-box, .sessions.new #facebook .box .inside-box, .accounts.create #member-login .box .inside-box, .accounts.create #open-id .box .inside-box, .accounts.create #facebook .box .inside-box {
       min-height: 200px; }
-    .sessions.new #member-login .box h2, .sessions.new #open-id .box h2, .sessions.new #facebook .box h2 {
+    .sessions.new #member-login .box h2, .sessions.new #open-id .box h2, .sessions.new #facebook .box h2, .accounts.create #member-login .box h2, .accounts.create #open-id .box h2, .accounts.create #facebook .box h2 {
       padding-top: 10px; }
 
 .organizations ul.org-nav, .segments ul.org-nav {
@@ -185,6 +185,20 @@ a {
 .customize.index #tool-options ul.image-chooser li {
   float: left;
   margin: 0 20px 20px 0; }
+
+.my_badges.new #complete-requirements .left, .my_badges.new #complete-requirements .right {
+  width: 50%; }
+.my_badges.new #complete-requirements .left {
+  position: relative;
+  float: left; }
+  .my_badges.new #complete-requirements .left span.or {
+    position: absolute;
+    font-size: 174%;
+    font-weight: bold;
+    right: 88px;
+    top: 30pt; }
+.my_badges.new #complete-requirements .right {
+  float: right; }
 
 table#badge-list {
   width: 100%;
@@ -285,7 +299,7 @@ table#badge-list {
   float: right; }
 #share .small-logo {
   float: left;
-  margin-right: 15px; }
+  margin-right: 10px; }
 
 #tools ul {
   margin: 0;

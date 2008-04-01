@@ -26,7 +26,7 @@ class CreditcardsController < ApplicationController
 
     respond_to do |format|
       if creditcard.valid?
-        flash[:notice] = "The credit card information is valid."
+        #flash[:notice] = "The credit card information is valid."
         @order.creditcard = creditcard 
         format.html { redirect_to session[:creditcard_redirect] }
       else

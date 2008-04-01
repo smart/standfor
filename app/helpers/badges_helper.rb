@@ -2,7 +2,7 @@ module BadgesHelper
   def badge_link(badge, opts = {})
     opts[:size] ||=  'medium'
     badge_type = check_badge_type(badge)
-    badge_type == 'Badge' ? path = badge_path(badge) : path = user_my_badge_path(badge)
+    badge_type == 'Badge' ? path = badge_badge_customize_path(badge) : path = user_my_badge_customize_path(badge)
   	link = link_to(image_tag( badge.source_path(:size => opts[:size]), :class => "badge"), path )
   	mouseover = "Element.show('#{dom_id(badge)}')"
   	mouseout = "Element.hide('#{dom_id(badge)}')"
