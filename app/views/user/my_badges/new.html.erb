@@ -43,10 +43,10 @@
 		<dl>
 			<dt><label for "access_code">Enter an access code:</label></dt>
 				<dd><%= f.text_field :access_code, :size => 6 %></dd>
-				<dd><%= submit_tag "Enter Code" %></dd>
 		</dl>
-
+    <%= submit_tag "Enter Code" %>
 		<% end %>
+		<span class="or">OR</span>
   	<span class="clear"></span>
 	</div>
 
@@ -61,9 +61,8 @@
 		<dl>
 			<dt><label for="donation">Enter donation amount:</label></dt>
 				<dd><%= f.text_field :amount, :size => 6  -%></dd>
-				<dd><%= f.submit  'Donate'  -%></dd>
 		</dl>
-
+    <%= f.submit  'Donate'  -%>
   	<% end %>
 	</div>
 <% end  %>

@@ -1,6 +1,6 @@
 <% content_box(:external_id => 'register', :box_class => 'shadow') do -%>
   <h1>create a standfor:us account</h1>
-	<%= error_messages_for :account -%>
+	<%#= error_messages_for :account -%>
 	<% form_for :account, :url => accounts_path, :html => { :id => "register-form" } do |f| -%>
 	<fieldset class="input">
 		<dl>
