@@ -12,24 +12,28 @@
 	</ul>
 <% end %>
 
-<% content_for :secondary do %>
-  <%= render :partial => '/shared/sidebar' -%>
+<% content_for :supplementary do %>
+  <div id="action-call" class="box-foot">
+    <%= link_to(image_tag('polish/get_a_badge.png', :alt => 'Get A Badge'), badge_badge_customize_path(@badge)) %>
+  </div>
 <% end %>
 
 <% content_for :tertiary do %>
-  <% content_box(:box_class => 'basicborder', :external_id => 'description') do %>
-  	<p>
-  		<%= @badge.description %>
-  	</p>
+<span class="clear"></span>
+  <% content_box(:box_class => 'basicborder') do %>
+    <h2><%= @badge.organization.statement %></h2>
+    <%= @badge.description %>
   <% end %>
- 
 
   <% grey_fade(:id => "badge-extras" ) do -%>
-  	<div id="leaderboard" class="left">
-  		<h2>leaderboard</h2>
+    <h2>About <%= @badge.organization.name %> & the <%= @badge.segment.name %></h2>
+  	<div id="mission">
+  		<%= textilize(@badge.organization.description) %>
   	</div>
-  	<div id="sponsors" class="right">
-  		<h2>sponsors</h2>
+  	<div id="actions">
+  	  <h3><%= link_to('Go to Gift of Life Website', @badge.organization.url, :popup => true ) %></h3>
+  	  <h3><%= link_to('Go to Gift of Life Blog', @badge.organization.blog_url, :popup => true ) %></h3>
+  	  <%= image_tag(@badge.organization.logo(:medium), :class => "avatar") %>
   	</div>
   <% end %>
 <% end %>
