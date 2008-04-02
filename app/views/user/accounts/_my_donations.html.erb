@@ -5,7 +5,7 @@
 <% current_account.orders.each do |order| %>
   <div class="donation">
 		<h2>
-			<%= number_to_currency(order.amount) %> on <%= order.created_at.strftime("%B %d, %Y") -%><span><%= link_to 'View Receipt', user_order_path(order) %></span>
+			<%= number_to_currency(order.amount) %> on <%= order.created_at.strftime("%B %d, %Y") -%><span><%#= link_to 'View Receipt', user_order_path(order) %></span>
 		</h2>
 		<%= render :partial => 'shared/orders/donation', :locals => {:order => order} %>
 	</div>
