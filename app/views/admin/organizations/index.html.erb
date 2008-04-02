@@ -1,18 +1,21 @@
-<h1>Listing organizations</h1>
+<h1>participating organizations</h1>
 
 <table>
   <tr>
+    <th>name</th>
+    <th>edit</th>
+    <th>delete</th>
   </tr>
 
 <% for organization in @organizations %>
-  <tr>
-    <td><%= link_to 'Show', admin_organization_path(organization) %></td>
-    <td><%= link_to 'Edit', edit_admin_organization_path(organization) %></td>
-    <td><%= link_to 'Destroy', admin_organization_path(organization), :confirm => 'Are you sure?', :method => :delete %></td>
+  <tr class="<%=cycle('odd', 'even')-%>" >
+    <td><%= link_to organization.name , admin_organization_path(organization) %></td>
+    <td><%= link_to 'edit', edit_admin_organization_path(organization) %></td>
+    <td><%= link_to 'delete', admin_organization_path(organization), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New organization', new_admin_organization_path %>
+<%= link_to 'new organization', new_admin_organization_path %>

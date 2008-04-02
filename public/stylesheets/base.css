@@ -68,3 +68,11 @@ p,fieldset,table {
 	/*so things don't run into each other*/
 	margin-bottom:1em;
 }
+   
+.odd {
+  background:#ccc;
+}
+
+.even {
+  background:#fff;
+}
