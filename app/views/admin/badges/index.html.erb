@@ -1,13 +1,16 @@
-<h1>Listing badges</h1>
+<h1><%= @organization.name -%>>Badges</h1>
 
 <table>
   <tr>
+    <th>Name</th>
+    <th>Segment</th>
+    <th>Admin</th>
   </tr>
 
 <% for badge in @badges %>
   <tr>
-    <td><%= link_to 'Show', admin_organization_badge_path(@organization, badge) %></td>
-    <td><%= link_to 'Edit', edit_admin_organization_badge_path(@organization, badge) %></td>
+    <td><%= link_to badge.name, edit_admin_organization_badge_path(@organization, badge) %></td>
+    <td><%= link_to badge.segment.name, admin_organization_segment_path(@organization, badge.segment) %></td>
     <td><%= link_to 'Destroy', admin_organization_badge_path(@organization, badge ), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

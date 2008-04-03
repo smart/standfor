@@ -7,11 +7,15 @@ class Segment < ActiveRecord::Base
    has_many :sponsors, :through => :sponsorships 
    acts_as_taggable
 
-   validates_presence_of :name, :keyword, :description, :site_name
+   validates_presence_of :name, :keyword, :description
   
   def self.find(*args)
     return (args[0].is_a?(String) ? self.find_by_site_name(*args) : super )
-  end 
+  end
+  
+  def before_create
+    @attributes['site_name'] = name.downcase.gsub(/\s+/, ' ').gsub(/[^a-zA-Z0-9_]+/, '-')
+  end
    
    def to_param
      "#{site_name}"

@@ -1,11 +1,11 @@
-<h1>Listing segments</h1>
+<h1><%= @organization.name -%>>Segments</h1>
 
-<h1><%= @organization.name -%></h1>
 <table border="1">
   <tr>
    <th>Name</th>
    <th>Site Name</th>
    <th>Keyword</th>
+   <th colspan="2">Admin</th>
   </tr>
 
 <% for segment in @segments %>
@@ -13,7 +13,6 @@
     <td><%= segment.name %></td>
     <td><%= segment.site_name %></td>
     <td><%= segment.keyword %></td>
-    <td><%= link_to 'Show', admin_organization_segment_path(@organization, segment) %></td>
     <td><%= link_to 'Edit', edit_admin_organization_segment_path(@organization, segment) %></td>
     <td><%= link_to 'Destroy', admin_organization_segment_path(@organization, segment ), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

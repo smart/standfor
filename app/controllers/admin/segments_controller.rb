@@ -1,5 +1,4 @@
 class Admin::SegmentsController < ApplicationController
-  layout '/admin/default'
   before_filter :login_required 
   before_filter :get_organization
   access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin" 
@@ -80,7 +79,7 @@ class Admin::SegmentsController < ApplicationController
     @segment.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_segments_url) }
+      format.html { redirect_to(admin_organization_segments_url(@organization)) }
       format.xml  { head :ok }
     end
   end

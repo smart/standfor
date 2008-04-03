@@ -69,8 +69,9 @@ production:
 "
     file.close_write
     puts "  [1] Created config/younety.yml <-- BE SURE TO SET YOUR VALUES"
-    
+  end  
     ###### Finished
     puts "Done."
     puts "======================================================"
   end
+end

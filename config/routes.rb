@@ -115,8 +115,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :organizations do |organizations|
        organizations.resources :segments 
        organizations.resources :badges
-       organizations.resources :campaigns
-       organizations.resources :style_infos
+       #organizations.resources :campaigns
        organizations.resources :organizationslogos  
     end
  end
@@ -125,15 +124,14 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :organizations do |organizations|
        organizations.resources :badges
        organizations.resources :segments 
-       organizations.resources :campaigns
-       organizations.resources :style_infos
+       #organizations.resources :campaigns
     end
  end
  
   #style system routes
   map.connect "/rcss/:rcss.css", :controller => "rcss", :action => "rcss"
   map.connect "/rcss/:rcss/:style_info.css", :controller => "rcss", :action => "rcss"
-  map.connect "/style/:action/:style_info.:ext", :controller => "style"
+  #map.connect "/style/:action/:style_info.:ext", :controller => "style"
   map.connect "/text/:action/:text.:ext", :controller => "text"
   map.connect "/text/:text.:ext", :controller => "text", :action => "index"
   

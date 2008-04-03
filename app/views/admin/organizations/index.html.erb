@@ -1,15 +1,14 @@
-<h1>participating organizations</h1>
+<h1>Organizations</h1>
 
 <table>
   <tr>
-    <th>name</th>
-    <th>edit</th>
-    <th>delete</th>
+    <th>Organizations</th>
+    <th colspan="2">Admin</th>
   </tr>
 
 <% for organization in @organizations %>
   <tr class="<%=cycle('odd', 'even')-%>" >
-    <td><%= link_to organization.name , admin_organization_path(organization) %></td>
+    <td><%= link_to organization.name , admin_organization_segments_path(organization) %></td>
     <td><%= link_to 'edit', edit_admin_organization_path(organization) %></td>
     <td><%= link_to 'delete', admin_organization_path(organization), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
@@ -19,3 +18,7 @@
 <br />
 
 <%= link_to 'new organization', new_admin_organization_path %>
+
+<% content_for :head do %>
+  <%= stylesheet_link_tag 'admin' %>
+<% end %>

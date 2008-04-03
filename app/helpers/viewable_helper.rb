@@ -1,7 +1,7 @@
 module ViewableHelper
   
 	def page_class
-	  controller.controller_name + " " + controller.action_name 
+	  params[:controller].gsub('/', ' ') + " " + controller.action_name 
 	end
 	
 	def is_location?(opts = {})

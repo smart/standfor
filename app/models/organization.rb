@@ -8,16 +8,22 @@ class Organization < ActiveRecord::Base
    has_one :organizationslogo
    has_many :sponsorships, :as => :sponsorable 
    has_many :sponsors, :through => :sponsorships 
-   validates_presence_of :name, :keyword, :description, :site_name
+   validates_presence_of :name, :keyword, :description
    acts_as_taggable
+  
+  def before_create
+    @attributes['site_name'] = name.downcase.gsub(/\s+/, ' ').gsub(/[^a-zA-Z0-9_]+/, '-')
+  end
   
   def self.find(*args)
     return (args[0].is_a?(String) ? self.find_by_site_name(*args) : super )
   end
   
   def to_param
-  "#{site_name}"
+    "#{site_name}"
   end
+  
+
  
   def total_raised
     0 + Donation.sum(:amount,  :conditions => ["organization_id = ? " , self.id ] ).to_i

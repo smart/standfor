@@ -149,28 +149,9 @@ module ApplicationHelper
         ["WI","Wisconsin"], ["WY","Wyoming"]]
 	end
 	
-	def is_location?(opts = {})
-		opts[:controller] ||= controller.controller_name
-		opts[:action] ||= controller.action_name
-		#return controller.action_name
-		if is_controller?(opts[:controller]) and is_action?(opts[:action])
-			true
-		else
-			false
-		end
-	end
-	
-	def is_controller?(expected_controller)
-		expected_controller == controller.controller_name
-	end
-	
-	def is_action?(expected_action)
-		expected_action == controller.action_name
-	end
-	
-	def is_id?(expected_id)
-	  expected_id == params[:id]
-	end
+  def admin_layer?
+    params[:controller] =~ /admin/ ? true : false
+  end
 	
 end
   
