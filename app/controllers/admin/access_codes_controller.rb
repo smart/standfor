@@ -1,10 +1,11 @@
 class Admin::AccessCodesController < ApplicationController
   before_filter :login_required 
-  access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin" 
+  before_filter :get_badge
+  access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin"
   # GET /admin_access_codes
   # GET /admin_access_codes.xml
   def index
-    @access_codes = AccessCode.find(:all)
+    @access_codes = AccessCode.find(:all, :conditions => ["scope_id  = ? ", @badge] )
 
     respond_to do |format|
       format.html # index.html.erb
@@ -83,5 +84,10 @@ class Admin::AccessCodesController < ApplicationController
       format.html { redirect_to(admin_access_codes_url) }
       format.xml  { head :ok }
     end
+  end
+  
+  private
+  def get_badge
+    @badge = Badge.find(params[:badge_id])
   end
 end

@@ -1,5 +1,4 @@
 class Admin::ConfigurationsController < ApplicationController
-  layout '/admin/default'
   access_control 'sympactadmin' 
   # GET /admin_configurations
   # GET /admin_configurations.xml

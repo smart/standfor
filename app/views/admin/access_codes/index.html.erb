@@ -6,8 +6,8 @@
 
 <% for access_code in @access_codes %>
   <tr>
-    <td><%= link_to 'Show', admin_access_code_path(access_code) %></td>
-    <td><%= link_to 'Edit', edit_admin_access_code_path(access_code) %></td>
+    <td><%= link_to 'Show', admin_organization_badge_access_codes_path(@badge.organization, @badge) %></td>
+    <td><%= link_to 'Edit', edit_admin_organization_badge_access_code_path(@badge.organization, @badge, access_code) %></td>
     <td><%= link_to 'Destroy', admin_access_code_path(access_code), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
@@ -15,4 +15,4 @@
 
 <br />
 
-<%= link_to 'New access_code', new_admin_access_code_path %>
+<%= link_to 'New access_code', new_admin_organization_badge_access_code_path(@badge.organization) %>

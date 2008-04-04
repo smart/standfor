@@ -5,7 +5,7 @@ class Admin::SegmentsController < ApplicationController
   # GET /admin_segments
   # GET /admin_segments.xml
   def index
-    @segments = @organization.segments
+    @segments = Segment.find(:all)
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @admin_segments }
@@ -87,7 +87,11 @@ class Admin::SegmentsController < ApplicationController
   private
 
   def get_organization
-   @oranization = Organization.find(params[:organization_id])
+    if !params[:organization_id].nil?
+      @organization = Organization.find(params[:organization_id])
+    else
+    
+    end
   end
 
 end

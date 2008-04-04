@@ -98,7 +98,7 @@ ActionController::Routing::Routes.draw do |map|
  end
 
   map.resources :organizations do |organizations|
-     organizations.resources :sponsors
+     #organizations.resources :sponsors
      organizations.resources :segments , :name_prefix => 'organization_'  do |segments|
       segments.resources :orders, :collection => { :create => :any}
       segments.resources :donations, :collection => { :details=>:any, :confirm => :any, :payment => :any }
@@ -106,6 +106,19 @@ ActionController::Routing::Routes.draw do |map|
      end
   end
 
+  map.namespace(:admin) do |admin|
+    admin.resources :organizations do |organizations|
+      organizations.resources :segments, :has_many => :badges
+      organizations.resources :badges, :has_many => :access_codes
+      organizations.resources :organizationslogos
+      organizations.resources :access_codes
+    end
+    admin.resources :access_codes
+    admin.resources :badges, :has_many => :access_codes
+    admin.resources :segments, :has_many => :badges
+    admin.resources :organizationslogos
+  end
+=begin 
  map.namespace(:admin) do |admin|
     admin.resources :configurations
     admin.resources :access_codes
@@ -128,15 +141,16 @@ ActionController::Routing::Routes.draw do |map|
     end
  end
  
-  #style system routes
+
+  style system routes
   map.connect "/rcss/:rcss.css", :controller => "rcss", :action => "rcss"
   map.connect "/rcss/:rcss/:style_info.css", :controller => "rcss", :action => "rcss"
-  #map.connect "/style/:action/:style_info.:ext", :controller => "style"
+  map.connect "/style/:action/:style_info.:ext", :controller => "style"
   map.connect "/text/:action/:text.:ext", :controller => "text"
   map.connect "/text/:text.:ext", :controller => "text", :action => "index"
   
 
-=begin
+
   map.with_options :conditions => {:subdomain => /standfor/ },:embedded => true do |embedded| 
    embedded.connect '/', :controller => 'organizations', :action => 'show'
    embedded.connect '/my/account', :controller => 'my_account', :action => 'index'
