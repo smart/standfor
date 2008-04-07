@@ -58,9 +58,8 @@ class ApplicationController < ActionController::Base
       session[:unsaved_badge]  = @my_badge
     end
     return true if @my_badge
-
     
-    raise  Exception('Could not find my_badge.')
+    raise( Exception , 'Could not find my_badge.' )
   end
   
 end
