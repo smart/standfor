@@ -22,11 +22,18 @@ class AccountsController < ApplicationController
     @context = "login"
     params[:account][:login] = params[:account][:email]
     @local_user = LocalUser.new(params[:account])
-    @local_user.my_badge_referrer = session[:my_badge_referrer] if !session[:my_badge_referrer].nil? 
+    #@local_user.my_badge_referrer = session[:my_badge_referrer] if !session[:my_badge_referrer].nil?  
     if @local_user.save
       params[:login] = params[:account][:login]
       params[:password] = params[:account][:password]
       local_user_authentication    
+
+      if !session[:my_badge_referrer].nil? 
+        current_account.my_badge_referrer = session[:my_badge_referrer]
+        current_account.save
+        session[:my_badge_referrer] = nil
+      end
+
       return false
     else
       flash[:error] = "<li>Account Could not be saved</li>"
