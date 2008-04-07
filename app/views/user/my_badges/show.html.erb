@@ -6,24 +6,44 @@
 <% end %>
 
 <% content_for :top_right do -%>
-  <ul>
-    <li>Organization: <%= @my_badge.badge.organization.name -%></li>
-    <li>Segment: <%= @my_badge.badge.segment.name -%></li>
-	</ul>
-	<p>
-	  <%= link_to('landing page', my_badge_landing_path(@my_badge.public_adi_id)) %>
-	</p>
+  <h2><%= @my_badge.account.nickname %> stands for</h2>
+  <% if true %>
+    <ul>
+      <li>Organization: <%= @my_badge.badge.organization.name -%></li>
+      <li>Segment: <%= @my_badge.badge.segment.name -%></li>
+  	</ul>
+  <% end %>
+  
+	
+<% end %>
+
+<% content_for :supplementary do %>
+
+  <div id="action-call" class="box-foot">
+    <%= link_to(image_tag('polish/get_a_badge.png', :alt => 'Get A Badge'), badge_badge_customize_path(@my_badge.badge.id)) %>
+  </div>
+
 <% end %>
 
 <% content_for :tertiary do %>
+<span class="clear"></span>
+  <% content_box(:box_class => 'basicborder') do %>
+    <h2><%= @my_badge.badge.organization.statement %></h2>
+    <%= @my_badge.badge.description %>
+  <% end %>
+
   <% grey_fade(:id => "badge-extras" ) do -%>
-    <div id="functions" class="left">
-      <h2>badge functions</h2>
-    </div>
-    <div id="sponsors" class="right">
-      <h2>detailed stats</h2>
-    </div>
-  <% end %> 
+    <h2>About <%= @my_badge.badge.organization.name %> & the <%= @my_badge.badge.segment.name %></h2>
+  	<div id="mission">
+  		<%= textilize(@my_badge.badge.organization.description) %>
+  	</div>
+  	<div id="actions">
+  	  <h3><%= link_to('Go to Gift of Life Website', @my_badge.badge.organization.url ) %></h3>
+  	  <h3><%= link_to('Go to Gift of Life Blog', @my_badge.badge.organization.blog_url ) %></h3>
+  	  <%= image_tag(@my_badge.badge.organization.logo(:medium), :class => "avatar") %>
+  	</div>
+  <% end %>
+  
 <% end %>
 
 
