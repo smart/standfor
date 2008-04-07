@@ -75,7 +75,8 @@ module BadgesHelper
 	def my_badge_options(text, option, url)
 		link = link_to(text, url)
 		link = content_tag(:span, link)
-		button = content_tag(:li, link, :class => option, :onmouseover => toggle_option_text(option, 'show'), :onmouseout => toggle_option_text(option, 'hide'))
+		#button = content_tag(:li, link, :class => option, :onmouseover => toggle_option_text(option, 'show'), :onmouseout => toggle_option_text(option, 'hide'))
+		button = content_tag(:li, link, :class => option)
 	end
 	
 	def toggle_option_text(option, state)
