@@ -89,7 +89,7 @@ class OrdersController < ApplicationController
       gateway = ActiveMerchant::Billing::BogusGateway.new()  #test mode is set in environments/(development|production).rb
       @order.creditcard.number = '1'
     end
-    response = gateway.authorize((@order.amount * 100), @order.creditcard, {:ip => request.env["REMOTE_ADDR"]})
+    response = gateway.purchase((@order.amount * 100), @order.creditcard, {:ip => request.env["REMOTE_ADDR"]})
 
       if response.success?
         @order.payment_authorization = response.authorization
