@@ -1,6 +1,7 @@
 class Admin::LogosController < ApplicationController
   layout '/admin/default'
   before_filter :get_sponsor
+  access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin"
   # GET /admin_logos
   # GET /admin_logos.xml
   def index

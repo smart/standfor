@@ -1,7 +1,7 @@
 class Admin::AccountsController < ApplicationController
   layout 'application'
   before_filter :login_required
-
+  access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin"
   # GET /admin_accounts
   # GET /admin_accounts.xml
   def index

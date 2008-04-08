@@ -1,5 +1,5 @@
 class Admin::ConfigurationsController < ApplicationController
-  access_control 'sympactadmin' 
+  access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin"
   # GET /admin_configurations
   # GET /admin_configurations.xml
   def index
