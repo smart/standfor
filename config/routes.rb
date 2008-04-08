@@ -116,7 +116,10 @@ ActionController::Routing::Routes.draw do |map|
       organizations.resources :access_codes
     end
     admin.resources :access_codes
-    admin.resources :badges, :has_many => :access_codes
+    admin.resources :badges do |badge|
+      badge.resources :requirements
+      badge.resources :access_codes 
+    end
     admin.resources :segments, :has_many => :badges
     admin.resources :organizationslogos
     admin.resources :accounts

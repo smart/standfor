@@ -4,7 +4,7 @@
   <tr>
     <th>Badge Name</th>
     <th>Segment</th>
-    <th>Access Codes</th>
+    <th>Requirements</th>
     <th>Admin</th>
   </tr>
 
@@ -12,7 +12,7 @@
   <tr class="<%= cycle('odd', 'even' )-%>">
     <td><%= link_to badge.name, edit_admin_organization_badge_path(@organization, badge) %></td>
     <td><%= link_to badge.segment.name, admin_organization_segment_path(@organization, badge.segment) %></td>
-    <td><%= link_to 'access codes' ,  admin_badge_access_codes_path(badge) %></td>
+    <td><%= link_to 'requirements' ,  admin_badge_requirements_path(badge) %></td>
     <td><%= link_to 'destroy', admin_organization_badge_path(@organization, badge ), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>

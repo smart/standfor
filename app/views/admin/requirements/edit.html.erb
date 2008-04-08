@@ -1,12 +1,15 @@
-<h1>Editing requirement</h1>
+<h1>update requirement for '<%= @badge.name-%>'</h1>
 
 <%= error_messages_for :requirement %>
 
-<% form_for(@requirement) do |f| %>
+<% form_for(:requirement, :url => admin_badge_requirement_path(@badge, @requirement), :method => :put ) do |f| %>
+
+  <%= render :partial => 'fields', :locals => {:f => f} -%>
+
   <p>
-    <%= f.submit "Update" %>
+    <%= f.submit "update code requirement" %>
   </p>
+
 <% end %>
 
-<%= link_to 'Show', @requirement %> |
-<%= link_to 'Back', requirements_path %>
+<%= link_to 'back to badge requirements list', admin_badge_requirements_path(@badge) %>
