@@ -1,18 +1,22 @@
-<h1>Listing organizationslogos</h1>
+<h1>'<%= @organization.name-%>' logo</h1>
 
 <table>
   <tr>
   </tr>
 
-<% for organizationslogo in @organizationslogos %>
+<% @organizationslogos.each do  |organizationslogo| %>
   <tr>
-    <td><%= link_to 'Show', admin_organization_organizationslogo_path(@organization, organizationslogo ) %></td>
-    <td><%= link_to 'Edit', edit_admin_organization_organizationslogo_path(@organization, organizationslogo) %></td>
-    <td><%= link_to 'Destroy',  admin_organization_organizationslogo_path(@organization, organizationslogo ),  :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= image_tag(organizationslogo.public_filename(:thumb) ) %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New organizationslogo', new_admin_organization_organizationslogo_path(@organization) %>
+<p>
+<%= link_to 'upload a different logo', new_admin_organization_organizationslogo_path(@organization) %>
+</p>
+
+<p>
+<%= link_to 'back to organizations list', admin_organizations_path %>
+</p>

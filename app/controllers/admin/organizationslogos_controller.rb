@@ -1,16 +1,17 @@
 class Admin::OrganizationslogosController < ApplicationController
-  layout '/admin/default'
+  layout 'application'
   access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin"
   before_filter :get_organization
   # GET /admin_organizationslogos
   # GET /admin_organizationslogos.xml
   def index
 
-    @organizationslogos = Organizationslogo.find(:all)
+    #@organizationslogos = Organizationslogo.find(:all)
+    @organizationslogos = Organizationslogo.thumbnails
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @admin_organizationslogos }
+      format.xml  { render :xml => @organizationslogos }
     end
   end
 
@@ -52,7 +53,7 @@ class Admin::OrganizationslogosController < ApplicationController
       @organizationslogo.organization_id  = @organization.id
       @organizationslogo.save
       flash[:notice] = 'Organizationslogo was successfully created.'
-      redirect_to admin_organization_organizationslogo_url(@organization, @organizationslogo ) 
+      redirect_to admin_organization_organizationslogos_url(@organization) 
     rescue ActiveRecord::RecordInvalid
       render :action => 'new'
     end

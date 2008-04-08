@@ -120,6 +120,8 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :segments, :has_many => :badges
     admin.resources :organizationslogos
     admin.resources :accounts
+    admin.resources :configurations
+    admin.resources :sponsors
   end
 =begin 
  map.namespace(:admin) do |admin|

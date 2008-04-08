@@ -1,4 +1,4 @@
-<h1>New organizationslogo</h1>
+<h1>upload a logo for organization:  '<%= @organization.name -%>'</h1>
 
 <%= error_messages_for :organizationslogo %>
 
@@ -9,9 +9,11 @@
   </li>
 
   <li>
-    <%= f.submit "Create" %>
+    <%= f.submit "upload logo" %>
   </li>
  </ul>
 <% end %>
 
-<%= link_to 'Back', admin_organization_organizationslogos_path(@organization) %>
+<p>
+<%= link_to 'back to organizations list', admin_organizations_path %>
+</p>

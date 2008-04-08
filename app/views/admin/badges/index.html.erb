@@ -1,21 +1,29 @@
-<h1><%= @organization.name -%>>Badges</h1>
+<h1>badges for '<%= @organization.name -%>'</h1>
 
 <table>
   <tr>
-    <th>Name</th>
+    <th>Badge Name</th>
     <th>Segment</th>
+    <th>Access Codes</th>
     <th>Admin</th>
   </tr>
 
 <% for badge in @badges %>
-  <tr>
+  <tr class="<%= cycle('odd', 'even' )-%>">
     <td><%= link_to badge.name, edit_admin_organization_badge_path(@organization, badge) %></td>
     <td><%= link_to badge.segment.name, admin_organization_segment_path(@organization, badge.segment) %></td>
-    <td><%= link_to 'Destroy', admin_organization_badge_path(@organization, badge ), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= link_to 'access codes' ,  admin_badge_access_codes_path(badge) %></td>
+    <td><%= link_to 'destroy', admin_organization_badge_path(@organization, badge ), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
 
-<%= link_to 'New badge', new_admin_organization_badge_path(@organization) %>
+<p>
+<%= link_to "create a new badge for '#{@organization.name}'", new_admin_organization_badge_path(@organization) %>
+</p>
+
+<p>
+<%= link_to "back to organizations", admin_organizations_path %>
+</p>

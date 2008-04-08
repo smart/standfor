@@ -2,7 +2,7 @@ class Badge < ActiveRecord::Base
   belongs_to :organization
   belongs_to :segment
   has_many :requirements
-  has_many :my_badges
+  has_many :my_badge
   has_many :authorizations
   has_many :donations
   belongs_to :campaign

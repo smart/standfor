@@ -1,6 +1,6 @@
 class Order < ActiveRecord::Base
   belongs_to :account
-  has_many :donations
+  has_many :donations, :dependent => :destroy
 
   attr_accessor :confirmed
   attr_accessor :creditcard

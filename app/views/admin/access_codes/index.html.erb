@@ -1,6 +1,7 @@
-<h1>Listing access_codes</h1>
+<h1> access codes for <%= @badge.organization.name -%> <%= @badge.name -%></h1>
 
 <table>
+
   <tr>
   </tr>
 
@@ -15,4 +16,6 @@
 
 <br />
 
-<%= link_to 'New access_code', new_admin_organization_badge_access_code_path(@badge.organization) %>
+<p>
+<%= link_to "create a new access code for '#{@badge.organization.name}'  '#{@badge.name}' badge" , new_admin_organization_badge_access_code_path(@badge.organization) %>
+</p>
