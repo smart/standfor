@@ -3,10 +3,14 @@
 	<%#= error_messages_for :account -%>
 	<% form_for :account, :url => accounts_path, :html => { :id => "register-form" } do |f| -%>
 	<fieldset class="input">
+
+<% if false %>
 		<dl>
 			<dt><label for="account_login">Username:</label></dt>
 				<dd><%= f.text_field :login %></dd>
 		</dl>
+<% end  %>
+
 		<dl>
 			<dt><label for="account_email">Email:</label></dt>
 				<dd><%= f.text_field :email %></dd>
