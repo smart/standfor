@@ -1,4 +1,4 @@
-<h1>New segment</h1>
+<h1>add a new segment to <%= @organization.name -%></h1>
 
 <%= error_messages_for :segment %>
 
@@ -6,7 +6,7 @@
  <ul>
   <%= render :partial => 'fields', :locals => {:f => f } -%>
   <li>
-    <%= f.submit "Create" %>
+    <%= f.submit "add new segment" %>
   </li>
  <ul>
 <% end %>

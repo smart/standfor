@@ -1,86 +1,28 @@
 --- 
 accounts_001: 
+  hits: "0"
   status: "1"
   city: 
-  updated_at: "2007-09-24"
-  zip: 
-  primary_email: robbie@giftoflife.org
-  nickname: robbie
-  remember_token_expires_at: 
-  fullname: Robert Donno
-  country: 
-  id: "1"
-  address_1: 
-  remember_token: 
-  address_2: 
-  phone: 
-  created_at: "2007-09-24"
-  state: 
-accounts_002: 
-  status: "1"
-  city: 
-  updated_at: "2007-10-05"
+  total_unique_clicks: "0"
+  updated_at: "2008-04-08"
   zip: 
   primary_email: admin@sympact.net
-  nickname: sympact
+  my_badge_referrer: 
+  nickname: admin@sympact.net
   remember_token_expires_at: 
-  fullname: Sympact Admin
+  fullname: 
   country: 
-  id: "2"
+  reset_password_code: 
+  stats_updated_at: 
+  id: "1"
+  awareness_points: "0"
   address_1: 
   remember_token: 
   address_2: 
   phone: 
-  created_at: "2007-10-02"
-  state: 
-accounts_003: 
-  status: "1"
-  city: ""
-  updated_at: "2007-10-05"
-  zip: ""
-  primary_email: userone@sympact.net
-  nickname: userone
-  remember_token_expires_at: 
-  fullname: User One
-  country: United States
-  id: "3"
-  address_1: ""
-  remember_token: 
-  address_2: ""
-  phone: ""
-  created_at: "2007-10-02"
-  state: Kentucky
-accounts_004: 
-  status: "1"
-  city: 
-  updated_at: "2007-10-04"
-  zip: 
-  primary_email: usertwo@sympact.net
-  nickname: usertwo
-  remember_token_expires_at: 
-  fullname: User Two
-  country: 
-  id: "4"
-  address_1: 
-  remember_token: 
-  address_2: 
-  phone: 
-  created_at: "2007-10-02"
-  state: 
-accounts_005: 
-  status: "1"
-  city: 
-  updated_at: "2007-10-02"
-  zip: 
-  primary_email: userthree@sympact.net
-  nickname: userthree
-  remember_token_expires_at: 
-  fullname: User Three
-  country: 
-  id: "5"
-  address_1: 
-  remember_token: 
-  address_2: 
-  phone: 
-  created_at: "2007-10-02"
+  total_unique_hits: "0"
+  total_hits: "0"
+  total_clicks: "0"
+  younety_token: "22"
+  created_at: "2008-04-08"
   state: 

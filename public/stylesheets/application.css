@@ -147,23 +147,23 @@ a {
   float: left;
   margin-right: 10px; }
 
-.landing.index #tertiary, .badges.show #tertiary {
+.landing.index #tertiary, .badges.show #tertiary, .my_badges.show #tertiary {
   margin-top: 15px; }
-.landing.index #action-call, .badges.show #action-call {
+.landing.index #action-call, .badges.show #action-call, .my_badges.show #action-call {
   width: 279px;
   height: 110px;
   float: right;
   margin: -45px 27px 0 0; }
-.landing.index #badge-extras #mission, .badges.show #badge-extras #mission {
+.landing.index #badge-extras #mission, .badges.show #badge-extras #mission, .my_badges.show #badge-extras #mission {
   width: 60%;
   float: left; }
-.landing.index #badge-extras #actions, .badges.show #badge-extras #actions {
+.landing.index #badge-extras #actions, .badges.show #badge-extras #actions, .my_badges.show #badge-extras #actions {
   width: 40%;
   float: right;
   text-align: center; }
-  .landing.index #badge-extras #actions h3, .badges.show #badge-extras #actions h3 {
+  .landing.index #badge-extras #actions h3, .badges.show #badge-extras #actions h3, .my_badges.show #badge-extras #actions h3 {
     margin: 0 0 .5em 0; }
-  .landing.index #badge-extras #actions img.avatar, .badges.show #badge-extras #actions img.avatar {
+  .landing.index #badge-extras #actions img.avatar, .badges.show #badge-extras #actions img.avatar, .my_badges.show #badge-extras #actions img.avatar {
     margin: 10px 0 10px 0; }
 
 .customize.index #tool-options ul {
@@ -281,10 +281,8 @@ table#badge-list {
         padding-left: 32px; }
   #badge-functions ul.actions {
     float: right; }
-    #badge-functions ul.actions span {
-      display: none; }
-      #badge-functions ul.actions span.show {
-        display: inline; }
+    #badge-functions ul.actions span.show {
+      display: inline; }
 
 #share ul {
   margin: 0;

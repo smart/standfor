@@ -9,7 +9,7 @@
   </tr>
 
 <% for segment in @segments %>
-  <tr>
+  <tr class="<%= cycle('odd','enen')-%>">
     <td><%= segment.name %></td>
     <td><%= segment.site_name %></td>
     <td><%= segment.keyword %></td>
@@ -21,4 +21,4 @@
 
 <br />
 
-<%= link_to 'New segment', new_admin_organization_segment_path(@organization) %>
+<%= link_to "add a new segment to the organization: '#{@organization.name}'", new_admin_organization_segment_path(@organization) %>

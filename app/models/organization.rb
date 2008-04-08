@@ -1,8 +1,8 @@
 class Organization < ActiveRecord::Base
-   has_many :segments
-   has_many :donations
-   has_many :badges
-   has_many :campaigns
+   has_many :segments, :dependent => :destroy
+   has_many :donations, :dependent => :destroy
+   has_many :badges, :dependent => :destroy
+   has_many :campaigns, :dependent => :destroy
    has_one :segment
    has_one :style_info, :as => :scope
    has_one :organizationslogo

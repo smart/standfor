@@ -1,9 +1,9 @@
 class Account< ActiveRecord::Base
   STATS_CACHE = 900
   acts_as_youser
-  has_many :my_badges
-  has_many :donations
-  has_many :orders
+  has_many :my_badges, :dependent => :destroy
+  has_many :donations, :dependent => :destroy
+  has_many :orders, :dependent => :destroy
   has_and_belongs_to_many :access_codes
   has_and_belongs_to_many :roles
   has_one :sponsor
@@ -12,6 +12,12 @@ class Account< ActiveRecord::Base
   # you can extend this
   #REQUIRED_FIELDS = ['nickname', 'fullname', 'primary_email']
   REQUIRED_FIELDS = ['nickname' , 'primary_email']
+
+
+  def before_destroy
+    @local_user  = LocalUser.find_by_email(self.primary_email) 
+    @local_user.destroy if !@local_user.nil?
+  end
 
   def self.verify_reset_code(code)  
     #Account.find(:first, :conditions => ["reset_password_code = ? and updated_at > ? ", code , Time.now - 1.hour ] )

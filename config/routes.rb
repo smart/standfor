@@ -33,7 +33,7 @@ ActionController::Routing::Routes.draw do |map|
  map.view_badge "/badges/:id.:ext", :controller => "adis", :action => "index"
  map.login   '/login',  :controller => 'sessions', :action => 'new'
  map.logout  '/logout', :controller => 'sessions', :action => 'destroy'
- map.signup  '/signup', :controller => 'accounts',   :action => 'new'
+ map.signup  '/signup', :controller => 'sessions',   :action => 'new'
  map.unfinished_registration '/registration', :controller => 'accounts', :action => 'finish_registration'
  map.finish_registration '/finish_registration', :controller => 'accounts', :action => 'save_registration'
  map.account_signup '/account_signup', :controller => 'accounts', :action => 'new'
@@ -106,6 +106,8 @@ ActionController::Routing::Routes.draw do |map|
      end
   end
 
+  map.admin_home '/admin', :controller => 'admin/site', :action => 'index'
+
   map.namespace(:admin) do |admin|
     admin.resources :organizations do |organizations|
       organizations.resources :segments, :has_many => :badges
@@ -117,6 +119,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :badges, :has_many => :access_codes
     admin.resources :segments, :has_many => :badges
     admin.resources :organizationslogos
+    admin.resources :accounts
   end
 =begin 
  map.namespace(:admin) do |admin|
