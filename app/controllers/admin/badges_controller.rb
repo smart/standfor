@@ -1,6 +1,5 @@
 class Admin::BadgesController < AdminController
   before_filter :get_organization
-  #access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin" 
 
   # GET /admin_badges
   # GET /admin_badges.xml

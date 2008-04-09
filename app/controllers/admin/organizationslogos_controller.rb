@@ -1,6 +1,4 @@
 class Admin::OrganizationslogosController < ApplicationController
-  layout 'application'
-  access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin"
   before_filter :get_organization
   # GET /admin_organizationslogos
   # GET /admin_organizationslogos.xml

@@ -1,7 +1,4 @@
-class Admin::RequirementsController < ApplicationController
-  layout 'application'
-  before_filter  :login_required 
-  access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin" 
+class Admin::RequirementsController < AdminController
   before_filter :get_badge
 
   # GET /admin_requirements

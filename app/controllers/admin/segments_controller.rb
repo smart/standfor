@@ -1,7 +1,5 @@
-class Admin::SegmentsController < AdminController
-  before_filter :login_required 
+class Admin::SegmentsController < AdminController 
   before_filter :get_organization
-  access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin" 
   # GET /admin_segments
   # GET /admin_segments.xml
   def index

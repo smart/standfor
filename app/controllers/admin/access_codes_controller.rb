@@ -1,7 +1,5 @@
 class Admin::AccessCodesController < ApplicationController
-  before_filter :login_required 
   before_filter :get_badge
-  access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin"
   # GET /admin_access_codes
   # GET /admin_access_codes.xml
   def index

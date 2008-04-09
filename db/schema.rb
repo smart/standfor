@@ -100,11 +100,6 @@ ActiveRecord::Schema.define(:version => 50) do
     t.integer  "hits",            :default => 0
   end
 
-  create_table "bars", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "campaigns", :force => true do |t|
     t.integer  "organization_id"
     t.integer  "admin_id"
@@ -134,11 +129,6 @@ ActiveRecord::Schema.define(:version => 50) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "order_id"
-  end
-
-  create_table "foos", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "local_users", :force => true do |t|

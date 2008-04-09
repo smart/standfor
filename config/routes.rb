@@ -1,33 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-
-# Start World Reach Routes
-  map.namespace(:worldreach) do |worldreach|
-    worldreach.resources :orders
-    worldreach.resources :sessions
-    worldreach.resources :accounts
-  end
- 
-  map.connect '/worldreach' , :controller => '/worldreach/site', :action => 'index'
-  map.worldreach_segments '/worldreach/segments' , :controller => '/worldreach/segments', :action => 'index'
-  map.worldreach_segment '/worldreach/segments/:id' , :controller => '/worldreach/segments', :action => 'show'
-  map.worldreach_privacy_policy  '/worldreach/privacy/policy' , :controller => '/worldreach/site', :action => 'privacy_policy'
-  map.worldreach_site_map '/worldreach/site/map' , :controller => '/worldreach/site', :action => 'site_map'
-  map.worldreach_home '/worldreach' , :controller => '/worldreach/site', :action => 'index'
-  map.worldreach_donation_tracker '/worldreach/donations/tracker' , :controller => '/worldreach/site', :action => 'donation_tracker'
-  map.worldreach_about_us '/worldreach/about/us' , :controller => '/worldreach/site', :action => 'about_us'
-  map.worldreach_contact_us '/worldreach/contact/us' , :controller => '/worldreach/site', :action => 'contact_us'
-  map.worldreach_accountability '/worldreach/accountability' , :controller => '/worldreach/site', :action => 'accountability'
-  map.worldreach_faq '/worldreach/frequently/asked/questions' , :controller => '/worldreach/site', :action => 'faq'
-  map.new_worldreach_order '/worldreach/donate' , :controller => '/worldreach/orders', :action => 'new'
-  map.worldreach_confirm_order '/worldreach/confirm/order' , :controller => '/worldreach/orders', :action => 'confirm'
-  map.new_worldreach_creditcard '/worldreach/enter/creditcard' , :controller => '/worldreach/orders', :action => 'new_creditcard'
-  map.worldreach_save_creditcard '/worldreach/save/creditcard' , :controller => '/worldreach/orders', :action => 'save_creditcard'
-  map.worldreach_receipt '/worldreach/receipt/:id' , :controller => '/worldreach/orders', :action => 'receipt'
-  map.worldreach_login '/worldreach/login' , :controller => '/worldreach/sessions', :action => 'new'
-  map.worldreach_logout '/worldreach/logout' , :controller => '/worldreach/sessions', :action => 'destroy' 
- 
-# END World Reach Routes 
- 
  
  #Start Account/Session routes
  map.view_badge "/badges/:id.:ext", :controller => "adis", :action => "index"
@@ -98,8 +69,7 @@ ActionController::Routing::Routes.draw do |map|
  end
 
   map.resources :organizations do |organizations|
-     #organizations.resources :sponsors
-     organizations.resources :segments , :name_prefix => 'organization_'  do |segments|
+     organizations.resources :segments do |segments|
       segments.resources :orders, :collection => { :create => :any}
       segments.resources :donations, :collection => { :details=>:any, :confirm => :any, :payment => :any }
       segments.resources :badges
@@ -122,57 +92,41 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :accounts
   end
   
-  
-=begin 
-    #admin.resources :configurations
-    #admin.resources :sponsors
-    #admin.resources :badges  do |badges|
-    #  badges.resources :requirements, :update => :any
-    #end
- map.namespace(:admin) do |admin|
-    admin.resources :configurations
-    admin.resources :access_codes
-    admin.resources :sponsors do |sponsors|
-      sponsors.resources :sponsorslogos  
-    end 
-    admin.resources :organizations do |organizations|
-       organizations.resources :segments 
-       organizations.resources :badges
-       #organizations.resources :campaigns
-       organizations.resources :organizationslogos  
-    end
- end
+=begin
 
- map.namespace(:orgadmin) do |admin|
-    admin.resources :organizations do |organizations|
-       organizations.resources :badges
-       organizations.resources :segments 
-       #organizations.resources :campaigns
-    end
- end
- 
+# TODO
+# Lets try to roll this feature set into a more robust organization templating system.
+# Ideally it would use liquid for custom designs, and be easily extensible by us to
+# support custom feature requirements on an individual org basis.
 
-  style system routes
-  map.connect "/rcss/:rcss.css", :controller => "rcss", :action => "rcss"
-  map.connect "/rcss/:rcss/:style_info.css", :controller => "rcss", :action => "rcss"
-  map.connect "/style/:action/:style_info.:ext", :controller => "style"
-  map.connect "/text/:action/:text.:ext", :controller => "text"
-  map.connect "/text/:text.:ext", :controller => "text", :action => "index"
-  
-
-
-  map.with_options :conditions => {:subdomain => /standfor/ },:embedded => true do |embedded| 
-   embedded.connect '/', :controller => 'organizations', :action => 'show'
-   embedded.connect '/my/account', :controller => 'my_account', :action => 'index'
-   embedded.connect '/:organization/:segment', :controller => 'segments', :action => 'show'
-   embedded.connect '/:segment', :controller => 'segments', :action => 'show'
-   embedded.connect '/:organization', :controller => 'organizations', :action => 'show'
-   embedded.connect "/:segment/:controller/:action"
+# Start World Reach Routes
+  map.namespace(:worldreach) do |worldreach|
+    worldreach.resources :orders
+    worldreach.resources :sessions
+    worldreach.resources :accounts
   end
-=end
-  #map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:host => /standfor.(\w+).org/ } 
-  #map.connect '/', :controller => 'site' , :action => 'setorg', :conditions => {:subdomain => /(\w+).standfor.org/ } 
  
+  map.connect '/worldreach' , :controller => '/worldreach/site', :action => 'index'
+  map.worldreach_segments '/worldreach/segments' , :controller => '/worldreach/segments', :action => 'index'
+  map.worldreach_segment '/worldreach/segments/:id' , :controller => '/worldreach/segments', :action => 'show'
+  map.worldreach_privacy_policy  '/worldreach/privacy/policy' , :controller => '/worldreach/site', :action => 'privacy_policy'
+  map.worldreach_site_map '/worldreach/site/map' , :controller => '/worldreach/site', :action => 'site_map'
+  map.worldreach_home '/worldreach' , :controller => '/worldreach/site', :action => 'index'
+  map.worldreach_donation_tracker '/worldreach/donations/tracker' , :controller => '/worldreach/site', :action => 'donation_tracker'
+  map.worldreach_about_us '/worldreach/about/us' , :controller => '/worldreach/site', :action => 'about_us'
+  map.worldreach_contact_us '/worldreach/contact/us' , :controller => '/worldreach/site', :action => 'contact_us'
+  map.worldreach_accountability '/worldreach/accountability' , :controller => '/worldreach/site', :action => 'accountability'
+  map.worldreach_faq '/worldreach/frequently/asked/questions' , :controller => '/worldreach/site', :action => 'faq'
+  map.new_worldreach_order '/worldreach/donate' , :controller => '/worldreach/orders', :action => 'new'
+  map.worldreach_confirm_order '/worldreach/confirm/order' , :controller => '/worldreach/orders', :action => 'confirm'
+  map.new_worldreach_creditcard '/worldreach/enter/creditcard' , :controller => '/worldreach/orders', :action => 'new_creditcard'
+  map.worldreach_save_creditcard '/worldreach/save/creditcard' , :controller => '/worldreach/orders', :action => 'save_creditcard'
+  map.worldreach_receipt '/worldreach/receipt/:id' , :controller => '/worldreach/orders', :action => 'receipt'
+  map.worldreach_login '/worldreach/login' , :controller => '/worldreach/sessions', :action => 'new'
+  map.worldreach_logout '/worldreach/logout' , :controller => '/worldreach/sessions', :action => 'destroy' 
+ 
+# END World Reach Routes 
+=end
  
   map.connect ':controller/:action/:id.:format'
   map.connect ':controller/:action/:id'

@@ -1,5 +1,5 @@
 class Admin::OrganizationsController < AdminController
-  access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin" 
+
   # GET /admin_organizations
   # GET /admin_organizations.xml
   def index
