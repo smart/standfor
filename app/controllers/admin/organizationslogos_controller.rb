@@ -1,5 +1,5 @@
 class Admin::OrganizationslogosController < ApplicationController
-  before_filter :get_organization
+  #before_filter :get_organization
   # GET /admin_organizationslogos
   # GET /admin_organizationslogos.xml
   def index

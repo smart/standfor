@@ -16,8 +16,10 @@ class AdminController < ApplicationController
       @segment = Segment.find_by_id(get_segment)
     when !get_organization.nil? && get_segment.nil?
       @organization = Organization.find_by_id(get_organization)
+      @segment = @organization.segment
     when get_organization.nil? && !get_segment.nil?
       @segment = Segment.find_by_id(get_segment)
+      @organization = @segment.organization
     end
     #get_organization != nil? ? @organization = Organization.find_by_id(get_organization) : nil
     

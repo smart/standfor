@@ -83,9 +83,7 @@ ActionController::Routing::Routes.draw do |map|
       organizations.resources :segments, :has_many => :badges
       organizations.resources :badges, :has_many => :requirements
       organizations.resources :organizationslogos
-      organizations.resources :access_codes
     end
-    admin.resources :access_codes
     admin.resources :badges, :has_many => :requirements
     admin.resources :segments, :has_many => :badges
     admin.resources :organizationslogos

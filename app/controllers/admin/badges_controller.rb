@@ -1,5 +1,5 @@
 class Admin::BadgesController < AdminController
-  before_filter :get_organization
+  #before_filter :get_organization
 
   # GET /admin_badges
   # GET /admin_badges.xml

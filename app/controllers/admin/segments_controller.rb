@@ -1,5 +1,5 @@
 class Admin::SegmentsController < AdminController 
-  before_filter :get_organization
+  #before_filter :get_organization
   # GET /admin_segments
   # GET /admin_segments.xml
   def index
