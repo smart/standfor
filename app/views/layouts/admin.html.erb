@@ -33,6 +33,12 @@
     
     <%= render :partial => "layouts/#{view_layout(@sub_layout)}", :layout => "layouts/#{controller_layout}" %>
 
+    <div id="debug">
+      <%= debug params %>
+      <%= @organization.name if !@organization.nil? %>
+      <%= @segment.name if !@segment.nil? %>
+    </div>
+
 	  <% content_box(:external_id => 'footer', :box_class => 'basic') do -%>
 	    <p>
 	      Developed by <%= link_to 'Sympact Technologies', 'http://www.sympact.net' %>.

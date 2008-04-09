@@ -2,9 +2,33 @@ class AdminController < ApplicationController
   layout "admin.html.erb"
   before_filter :login_required
   access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin"
+  before_filter :load_context
   
   def permission_denied
     flash[:warning] = "You must be logged in as an admin to do that."
     redirect_to login_path
-  end  
+  end
+  
+  def load_context
+    case 
+    when !get_organization.nil? && !get_segment.nil?
+      @organization = Organization.find_by_id(get_organization)
+      @segment = Segment.find_by_id(get_segment)
+    when !get_organization.nil? && get_segment.nil?
+      @organization = Organization.find_by_id(get_organization)
+    when get_organization.nil? && !get_segment.nil?
+      @segment = Segment.find_by_id(get_segment)
+    end
+    #get_organization != nil? ? @organization = Organization.find_by_id(get_organization) : nil
+    
+    #get_segment != nil? ? @segment = Segment.find_by_id(get_segment) : nil
+  end
+  
+  def get_organization
+    params[:organization_id] ||= nil
+  end
+  
+  def get_segment
+    params[:segment_id] ||= nil
+  end
 end

@@ -23,7 +23,7 @@ module ViewableHelper
 		expected_action == controller.action_name
 	end
 	
-	def is_id?(expected_id)
+	def is_id?(expected_id, opts = {})
 	  expected_id == params[:id]
 	end
 	

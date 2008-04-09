@@ -14,6 +14,8 @@ module NestedLayoutsHelper
     if !controller_namespace.nil?
       if File.exists?(File.join(RAILS_ROOT, 'app', 'views', 'layouts', controller_namespace, "_#{controller.controller_name}.html.erb"))
         "#{controller_namespace}/#{controller.controller_name}.html.erb"
+      else
+        "shared/blank"
       end
     elsif File.exists?(File.join(RAILS_ROOT, 'app', 'views', 'layouts', "_#{controller.controller_name}.html.erb"))
       "_#{controller.controller_name}.html.erb"

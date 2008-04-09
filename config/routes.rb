@@ -81,12 +81,12 @@ ActionController::Routing::Routes.draw do |map|
   map.namespace(:admin) do |admin|
     admin.resources :organizations do |organizations|
       organizations.resources :segments, :has_many => :badges
-      organizations.resources :badges, :has_many => :access_codes
+      organizations.resources :badges, :has_many => :requirements
       organizations.resources :organizationslogos
       organizations.resources :access_codes
     end
     admin.resources :access_codes
-    admin.resources :badges, :has_many => [:requirements, :access_codes] 
+    admin.resources :badges, :has_many => :requirements
     admin.resources :segments, :has_many => :badges
     admin.resources :organizationslogos
     admin.resources :accounts
