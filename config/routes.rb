@@ -116,16 +116,19 @@ ActionController::Routing::Routes.draw do |map|
       organizations.resources :access_codes
     end
     admin.resources :access_codes
-    admin.resources :badges, :has_many => [:requirements, :access_codes]
+    admin.resources :badges, :has_many => [:requirements, :access_codes] 
     admin.resources :segments, :has_many => :badges
     admin.resources :organizationslogos
     admin.resources :accounts
-    #admin.resources :configurations
-    #admin.resources :sponsors
   end
   
   
 =begin 
+    #admin.resources :configurations
+    #admin.resources :sponsors
+    #admin.resources :badges  do |badges|
+    #  badges.resources :requirements, :update => :any
+    #end
  map.namespace(:admin) do |admin|
     admin.resources :configurations
     admin.resources :access_codes

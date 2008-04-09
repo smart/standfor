@@ -2,7 +2,7 @@
 
 <%= error_messages_for :requirement %>
 
-<% form_for(:requirement, :url => admin_badge_requirement_path(@badge, @requirement), :method => :put ) do |f| %>
+<% form_for(:requirement, :url => admin_badge_requirement_path(@badge, @requirement), :html => {:method => :put } ) do |f| %>
 
   <%= render :partial => 'fields', :locals => {:f => f} -%>
 
