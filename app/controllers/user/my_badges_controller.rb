@@ -68,7 +68,8 @@ class User::MyBadgesController < ApplicationController
       if @my_badge.save
         session[:unsaved_badge] = nil
         flash[:notice] = "Your badge was successfully created."
-        format.html { redirect_to user_my_badge_url(@my_badge) }
+        #format.html { redirect_to user_my_badge_url(@my_badge) }
+        format.html { redirect_to user_my_badge_share_url(@my_badge) }
         format.xml  { render :xml => @my_badge, :status => :created, :location => @my_badge }
       else
         format.html { render :action => "new" }
@@ -178,9 +179,10 @@ class User::MyBadgesController < ApplicationController
        requirement = CodeRequirement.find_by_value(code)
        if !requirement.nil?
          access_code = AccessCode.find(:first, :conditions => ["value = ? and scope_id = ? ", code , code_requirement.id] ) 
-         current_account.access_codes.create(:scope_type => 'CodeRequirement', :scope_id => requirement.id, :value => code ) if access_code.nil? 
+         access_code = AccessCode.create(:scope_type => 'CodeRequirement', :scope_id => requirement.id, :value => code ) if !access_code.nil?
+         current_account.access_codes << access_code
        else
-         flash[:error] = "The access code entered for this badge is not valid."
+         flash[:notice] = "The access code entered for this badge is not valid."
          return false
        end 
      end
