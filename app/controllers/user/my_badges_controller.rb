@@ -175,11 +175,12 @@ class User::MyBadgesController < ApplicationController
     code = params[:my_badge][:access_code]
     code_requirement = @my_badge.badge.requirements.find_by_type('CodeRequirement')
     if !code_requirement.nil?
-       access_code=AccessCode.find(:first, :conditions => ["value = ? and scope_id = ? ",code,code_requirement.id]) 
-       if !access_code.nil?
-         current_account.access_codes << access_code
+       requirement = CodeRequirement.find_by_value(code)
+       if !requirement.nil?
+         access_code = AccessCode.find(:first, :conditions => ["value = ? and scope_id = ? ", code , code_requirement.id] ) 
+         current_account.access_codes.create(:scope_type => 'CodeRequirement', :scope_id => requirement.id, :value => code ) if access_code.nil? 
        else
-         flash[:error] = "Invalid access code"
+         flash[:error] = "The access code entered for this badge is not valid."
          return false
        end 
      end

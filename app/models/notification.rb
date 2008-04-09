@@ -14,10 +14,10 @@ class Notification < ActionMailer::Base
    def donation_receipt(order)
       content_type 'text/plain'
       @from = 'admin@standfor.us'
-      @recipients = account.primary_email.strip
+      @recipients = order.account.primary_email.strip
       @subject    = 'donation receipt'
       @body =  {
-          :user => order.account.primary_email 
+          :user => order.account.primary_email,
           :amount => order.amount
       }
   end
