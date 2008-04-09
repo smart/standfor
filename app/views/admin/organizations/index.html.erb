@@ -13,8 +13,10 @@
 
 <% for organization in @organizations %>
   <tr class="<%=cycle('odd', 'even')-%>" >
-    <td><%= link_to organization.name , admin_organization_segments_path(organization) %></td>
-    <td><%= link_to image_tag(organization.logo(:thumb) ) , admin_organization_organizationslogos_path(organization) %></td>
+    <td> <%= image_tag(organization.logo(:thumb)) -%>  <br />
+        <%= link_to organization.name , admin_organization_segments_path(organization) %>
+    </td>
+    <td><%= link_to 'upload logo' , admin_organization_organizationslogos_path(organization) %></td>
     <td><%= link_to 'segments', admin_organization_segments_path(organization) %></td>
     <td><%= link_to 'badges', admin_organization_badges_path(organization) %></td>
     <td><%= link_to 'edit organization attributes', edit_admin_organization_path(organization) %></td>
