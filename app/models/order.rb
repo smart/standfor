@@ -17,4 +17,8 @@ class Order < ActiveRecord::Base
     total
   end
 
+  def after_create
+    Notification.deliver_donation_receipt(self) 
+  end
+
 end

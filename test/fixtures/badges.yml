@@ -11,15 +11,3 @@ badges_001:
   description: Show this badge to raise awaerness about the medical needs of children around the world.
   organization_id: "1"
   created_at: 2007-09-26 13:42:13
-badges_002: 
-  cached_tag_list: ""
-  structure_id: "1"
-  segment_id: "2"
-  name: Freemans Legion Badge
-  updated_at: 2007-10-03 10:08:37
-  featured: "0"
-  campaign_id: 
-  id: "2"
-  description: Use this badge to raise awareness about Freeman's Legions
-  organization_id: "1"
-  created_at: 2007-09-26 13:42:13

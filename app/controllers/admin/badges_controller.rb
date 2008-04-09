@@ -81,7 +81,7 @@ class Admin::BadgesController < AdminController
     @badge.destroy
 
     respond_to do |format|
-      format.html { redirect_to(admin_badges_url) }
+      format.html { redirect_to(admin_organization_badges_url(@organization) ) }
       format.xml  { head :ok }
     end
   end
