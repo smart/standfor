@@ -1,0 +1,7 @@
+<ul>
+  <li><%= link_to 'New Segment', new_admin_organization_segment_path(@organization) %></li>
+  <% unless controller.action_name == 'index' %>
+  <li><%= link_to 'Badges', admin_segment_badges_path(params[:id]) %></li> 
+  <% end %>
+</ul>
+<%= yield %>

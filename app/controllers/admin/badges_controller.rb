@@ -1,5 +1,4 @@
-class Admin::BadgesController < ApplicationController
-  before_filter :login_required 
+class Admin::BadgesController < AdminController
   before_filter :get_organization
   #access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin" 
 
@@ -89,6 +88,10 @@ class Admin::BadgesController < ApplicationController
 
   private
   def get_organization
-    @organization = Organization.find(params[:organization_id])
+    if !params[:organization_id].nil?
+      @organization = Organization.find(params[:organization_id])
+    else
+      @organization = Segment.find(params[:segment_id]).organization
+    end
   end
 end

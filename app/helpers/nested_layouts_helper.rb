@@ -11,7 +11,15 @@ module NestedLayoutsHelper
   end
   
   def controller_layout
-    File.exists?(File.join(RAILS_ROOT, 'app', 'views', 'layouts', "_#{controller.controller_name}.html.erb"))
+    if !controller_namespace.nil?
+      if File.exists?(File.join(RAILS_ROOT, 'app', 'views', 'layouts', controller_namespace, "_#{controller.controller_name}.html.erb"))
+        "#{controller_namespace}/#{controller.controller_name}.html.erb"
+      end
+    elsif File.exists?(File.join(RAILS_ROOT, 'app', 'views', 'layouts', "_#{controller.controller_name}.html.erb"))
+      "_#{controller.controller_name}.html.erb"
+    else
+      "shared/blank"
+    end
   end
   
   def action_layout
@@ -24,6 +32,11 @@ module NestedLayoutsHelper
     else
       %Q[id="sub_layout" ]
     end
+  end
+  
+  def controller_namespace
+    path_items = params[:controller].split("/")
+    path_items.length > 1 ? path_items.first : nil
   end
   
   def inherit_view(options = {}, &block)

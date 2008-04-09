@@ -1,4 +1,4 @@
-class Admin::SegmentsController < ApplicationController
+class Admin::SegmentsController < AdminController
   before_filter :login_required 
   before_filter :get_organization
   access_control [:new, :create, :update, :edit, :destroy, :index]  => "sympactadmin" 

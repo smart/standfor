@@ -1,0 +1,9 @@
+<ul>
+  <% unless controller.action_name == 'index' %>
+  <li>Segments</li>  
+  <li>Badges</li>
+  <li>Logo</li>
+  <% end %>
+  <li><%= link_to 'New Organization', new_admin_organization_path %></li>
+</ul>
+<%= yield %>

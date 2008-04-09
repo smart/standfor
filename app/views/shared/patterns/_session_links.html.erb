@@ -3,9 +3,9 @@
   <li>Logged in as: <i><%= current_account.nickname %></i></li>
   <li><%= account_link %></li>
   <li><%= logout_link %></li>
-  <% restrict_to "sympactadmin" do %>
-   <li><%= link_to "administration area",  admin_home_path  %></li>
-  <% end %>
+<% restrict_to "sympactadmin" do %>
+  <li><%= link_to "Admin",  admin_home_path  %></li>
+<% end %>
 
 <% else %>
   <li><%= login_link %></li>

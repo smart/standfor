@@ -33,8 +33,8 @@ class ApplicationController < ActionController::Base
        site_name = request.host.match(/standfor\.(\w+)\.org/)[1]    
        params[:organization] = site_name
      end
-     @organization = Organization.find(params[:organization_id], :include => [:segments, :style_info]) if !params[:organization_id].nil?
-    @segment = @organization.segments.find(params[:segment_id], :include => [:style_info]) if !params[:segment_id].nil?
+     #@organization = Organization.find(params[:organization_id], :include => [:segments]) if !params[:organization_id].nil?
+    #@segment = @organization.segments.find(params[:segment_id]) if !params[:segment_id].nil?
   end
   
   def permission_denied

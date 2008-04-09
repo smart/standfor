@@ -2,7 +2,7 @@
 
 
 	<h1><%= link_to organization.name,  organization_path(organization) -%></h1>
-	<%= link_to (image_tag organization.organizationslogo.public_filename(:medium), :class => 'avatar'), organization_path(organization) -%>
+	<%= link_to (image_tag organization.logo(:medium), :class => 'avatar'), organization_path(organization) -%>
 	<p><%= organization.statement -%></p>
 	<span class="clear"></span>
 	<% end %>

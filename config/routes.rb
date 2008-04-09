@@ -106,7 +106,7 @@ ActionController::Routing::Routes.draw do |map|
      end
   end
 
-  map.admin_home '/admin', :controller => 'admin/site', :action => 'index'
+  map.admin_home '/admin', :controller => 'admin/organizations', :action => 'index'
 
   map.namespace(:admin) do |admin|
     admin.resources :organizations do |organizations|
@@ -116,16 +116,15 @@ ActionController::Routing::Routes.draw do |map|
       organizations.resources :access_codes
     end
     admin.resources :access_codes
-    admin.resources :badges do |badge|
-      badge.resources :requirements
-      badge.resources :access_codes 
-    end
+    admin.resources :badges, :has_many => [:requirements, :access_codes]
     admin.resources :segments, :has_many => :badges
     admin.resources :organizationslogos
     admin.resources :accounts
-    admin.resources :configurations
-    admin.resources :sponsors
+    #admin.resources :configurations
+    #admin.resources :sponsors
   end
+  
+  
 =begin 
  map.namespace(:admin) do |admin|
     admin.resources :configurations
