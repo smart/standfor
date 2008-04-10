@@ -1,5 +1,3 @@
-<h1><%= @organization.name -%>>Segments</h1>
-
 <table border="1">
   <tr>
    <th>Name</th>
@@ -18,12 +16,6 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<p>
-<%= link_to "add a new segment to the organization: '#{@organization.name}'", new_admin_organization_segment_path(@organization) %>
-</p>
 
 <p>
 <%= link_to "back to organizations", admin_organizations_path %>

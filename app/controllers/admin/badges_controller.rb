@@ -1,6 +1,4 @@
 class Admin::BadgesController < AdminController
-  #before_filter :get_organization
-
   # GET /admin_badges
   # GET /admin_badges.xml
   def index
@@ -85,12 +83,4 @@ class Admin::BadgesController < AdminController
     end
   end
 
-  private
-  def get_organization
-    if !params[:organization_id].nil?
-      @organization = Organization.find(params[:organization_id])
-    else
-      @organization = Segment.find(params[:segment_id]).organization
-    end
-  end
 end

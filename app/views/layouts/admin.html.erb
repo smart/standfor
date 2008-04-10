@@ -30,13 +30,14 @@
     </div>
     
     <%= get_flash %>
-    <%= breadcrumbs %>
+    <%= content_tag(:h1, breadcrumbs) %>
     <%= render :partial => "layouts/#{view_layout(@sub_layout)}", :layout => "layouts/#{controller_layout}" %>
 
     <div id="debug">
       <%= debug params %>
       <%= @organization.name if !@organization.nil? %>
       <%= @segment.name if !@segment.nil? %>
+      <%= params[:organization_id] %>
     </div>
 
 	  <% content_box(:external_id => 'footer', :box_class => 'basic') do -%>

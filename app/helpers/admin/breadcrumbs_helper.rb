@@ -18,4 +18,5 @@ module Admin::BreadcrumbsHelper
     
     html.join('&gt;')
   end
+  
 end
