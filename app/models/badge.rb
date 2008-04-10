@@ -11,6 +11,7 @@ class Badge < ActiveRecord::Base
   acts_as_taggable
 
   def authorized?(account)
+    return true if self.requirements.empty?
     self.requirements.each do |req| 
 	     return true if req.met?(account)
     end
@@ -91,7 +92,7 @@ class Badge < ActiveRecord::Base
 
    def save_thumbnails
       structure = Younety::Remote::Structure.find(self.structure_id)
-      remote_path = "#{ADISERVER}/adis/#{structure.example_adi_id}.gif" 
+      remote_path = "#{YOUNETY['url']}/adis/#{structure.example_adi_id}.gif" 
       @file_data = open(remote_path) 
       image =  Magick::Image::read( @file_data.path  ).first
       full_path = File.join(File.join(self.cache_path , 'full.gif' ) ) 

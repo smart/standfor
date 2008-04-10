@@ -8,16 +8,24 @@ organizations_001:
   address2: Suite 25
   address3: ""
   featured: "1"
-  updated_on: "2007-11-21"
+  updated_on: "2008-04-10"
   admin_id: "1"
   url: http://www.giftoflife.com
   country: United States
   id: "1"
-  description: The Gift Of Life was launched in 1974 when the Manhasset, NY Rotary Club answered a request for help from the Kampala Rotary Club in Uganda. The GIFT OF LIFE is a nonprofit, tax-exempt corporation, the majority of the Board of Directors and members are active Rotarians. The primary purpose of this program is to help needy children receive corrective heart surgery at Gift of Life Participating Hospitals. The program reaches youngsters throughout the world, including the United States.
+  description: |-
+    h2. Our Mission
+    
+    To promote world peace and understanding by providing free medical services to children suffering from congenital heart defects regardless of race, color, creed, gender or national origin.
+    
+    h2. A Brief History
+    
+    Over the past 33 years Gift of Life programs have touched the lives of thousands of people from all over the world. Programs have focused their efforts on children with heart problems. The success of these programs is due to the efforts of health care professionals, volunteers and members of Rotary Clubs. Through the generous contributions of donors, nearly 10,000 disadvantaged children from over 63 countries have received life saving surgery to date.
+  blog_url: http://giftoflife.typepad.com
   site_name: giftoflife
   fax: "2121121111"
   phone: "2121121111"
-  statement: Helping Children one at time.
+  statement: A drop of your kindness will create a ripple that will last throughout a lifetime.
   keyword: children
   email: giftoflife@gol.org
-  state:
+  state: Select State...

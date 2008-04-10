@@ -5,6 +5,7 @@ class User::MyBadgesController < ApplicationController
   before_filter :login_required
   before_filter :get_my_badge, :only => [:new, :create, :update, :sponsorship_options, :merit_options, :show, :share, :customize]
   before_filter :show_receipt, :only => [:show]
+  before_filter :check_for_existing, :only => [:create]
 
 #  before_filter :sponsorship_option_required, :only => [:show]
 #  before_filter :merit_option_required, :only => [:show]
@@ -174,18 +175,15 @@ class User::MyBadgesController < ApplicationController
    def collect_access_code
     return false if params[:my_badge].nil? or params[:my_badge][:access_code].nil?
     code = params[:my_badge][:access_code]
-    code_requirement = @my_badge.badge.requirements.find_by_type('CodeRequirement')
+    code_requirement = @my_badge.badge.requirements.find_by_type_and_value('CodeRequirement', code)
     if !code_requirement.nil?
-       requirement = CodeRequirement.find_by_value(code)
-       if !requirement.nil?
-         access_code = AccessCode.find(:first, :conditions => ["value = ? and scope_id = ? ", code , code_requirement.id] ) 
-         access_code = AccessCode.create(:scope_type => 'CodeRequirement', :scope_id => requirement.id, :value => code ) if !access_code.nil?
-         current_account.access_codes << access_code
-       else
-         flash[:notice] = "The access code entered for this badge is not valid."
-         return false
-       end 
-     end
+       access_code = AccessCode.find(:first, :conditions => [" value = ? and scope_id = ? ", code , code_requirement.id] ) 
+       access_code = AccessCode.create(:scope_type => 'CodeRequirement', :scope_id => code_requirement.id, :value => code ) if access_code.nil?
+       current_account.access_codes << access_code
+     else
+       flash[:notice] = "The access code entered for this badge is not valid."
+       return false
+     end 
    end
 
    def show_receipt
@@ -217,6 +215,9 @@ class User::MyBadgesController < ApplicationController
 
    def get_badge
      @badge = Badge.find(params[:badge_id])
+   end
+
+   def check_for_existing
    end
 
 end

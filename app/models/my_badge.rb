@@ -86,7 +86,7 @@ class MyBadge < ActiveRecord::Base
    end
 
    def save_thumbnails
-      remote_path = "#{ADISERVER}/adis/#{self.adi_id}.gif" 
+      remote_path = "#{YOUNETY['url']}/adis/#{self.adi_id}.gif" 
       @file_data = open(remote_path) 
       image =  Magick::ImageList.new( @file_data.path  )
       full_path = File.join(File.join(self.cache_path , 'full.gif' ) ) 
