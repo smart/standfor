@@ -137,4 +137,13 @@ class Account< ActiveRecord::Base
      stats_check
      self['total_unique_clicks']
    end
+
+   def total_order_amount
+      total = 0 
+      self.orders.each do |order| 
+        total += order.amount
+      end
+      total
+    end
+
 end

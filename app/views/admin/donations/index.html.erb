@@ -1,0 +1,22 @@
+<h1>all donations for <%= @account.primary_email -%></h1>
+
+<table>
+  <tr>
+     <th>Id</th>
+     <th>Amount</th>
+  </tr>
+
+<% for donation in @donations %>
+  <tr>
+    <td><%= link_to donation.id , admin_account_donation_path(@account, donation) %></td>
+    <td> <%= number_to_currency(donation.amount) %></td>
+  </tr>
+<% end %>
+  <tr>
+    <td colspan="2" align="right"> <%= number_to_currency(@account.total_donations) %></td>
+  </tr>
+</table>
+
+<p>
+ <%= link_to 'back to accounts list', admin_accounts_path -%>
+</p>

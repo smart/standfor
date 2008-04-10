@@ -3,12 +3,18 @@
 <table border="1">
   <tr>
    <th>name</th>
+   <th>donations</th>
+   <th>orders</th>
+   <th>my badges</th>
    <th colspan="2">admin</th>
   </tr>
 
 <% for account in @accounts %>
   <tr class="<%=cycle('odd', 'even')-%>">
     <td><%= link_to account.primary_email , edit_admin_account_path(account) %> </td>
+    <td><%= link_to "donatations (#{account.donations.size})" , admin_account_donations_path(account) %> </td>
+    <td><%= link_to "orders (#{account.orders.size})" , admin_account_orders_path(account) %> </td>
+    <td><%= link_to "my badges (#{account.my_badges.size})" , admin_account_my_badges_path(account) %> </td>
     <td><%= link_to 'edit account attributes', edit_admin_account_path(account) %></td>
     <td><%= link_to 'remove this account', admin_account_path(account), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

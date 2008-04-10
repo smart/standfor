@@ -4,8 +4,8 @@ class MyBadge < ActiveRecord::Base
   belongs_to :badge
   attr_accessor :build_data, :access_code
   validates_presence_of :account_id
-  has_many :sponsorship_hits
-  has_many :sponsorship_clicks
+  has_many :sponsorship_hits , :dependent => :destroy
+  has_many :sponsorship_clicks, :dependent => :destroy
 
  def validate_on_create
     unless self.available?(self.account) 

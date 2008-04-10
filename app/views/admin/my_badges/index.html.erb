@@ -1,0 +1,19 @@
+<h1>all user badges for <%= @account.primary_email -%></h1>
+
+<table border="1">
+  <tr>
+   <th>Id</th>
+   <th>Admin</th>
+  </tr>
+
+<% for my_badge in @my_badges %>
+  <tr>
+    <td><%= link_to my_badge.id, admin_account_my_badge_path(@account, my_badge) %></td>
+    <td><%= link_to 'destroy', admin_account_my_badge_path(@account, my_badge), :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<p>
+ <%= link_to 'back to accounts list', admin_accounts_path -%>
+</p>

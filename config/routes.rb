@@ -86,8 +86,8 @@ ActionController::Routing::Routes.draw do |map|
     end
     admin.resources :badges, :has_many => :requirements
     admin.resources :segments, :has_many => :badges
-    admin.resources :organizationslogos
-    admin.resources :accounts
+    #admin.resources :organizationslogos
+    admin.resources :accounts, :has_many => [:my_badges ,:donations, :orders]
   end
   
 =begin
