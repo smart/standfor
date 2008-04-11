@@ -19,6 +19,10 @@ class Account< ActiveRecord::Base
     @local_user.destroy if !@local_user.nil?
   end
 
+  def self.active_users
+    find(:all, :conditions => ['id NOT IN (SELECT account_id FROM accounts_roles WHERE role_id = 1 )' ] )
+  end
+
   def self.verify_reset_code(code)  
     #Account.find(:first, :conditions => ["reset_password_code = ? and updated_at > ? ", code , Time.now - 1.hour ] )
     acct = Account.find(:first, :conditions => ["reset_password_code = ?  ", code  ] )

@@ -5,7 +5,7 @@ class System
    end
 
    def self.total_number_of_donations
-     Donation.count(:all) 
+     Donation.count(:all)  
    end
 
    def self.total_number_of_badges
@@ -13,7 +13,7 @@ class System
    end
 
    def self.total_number_of_accounts
-     Account.count(:all) 
+     Account.count(:all) - 1 
    end
 
    def self.total_number_of_user_badges
@@ -30,6 +30,7 @@ class System
     Donation.sum(:amount, :group => :account_id, :order => "sum(amount) DESC ", :limit => limit ).each do |val|
       (id, amount)  = val
       account = Account.find(id)
+      next if account.roles.size > 0 and account.roles.first.id == 1
       a << [account, amount ]
     end
     a 
@@ -37,7 +38,7 @@ class System
  
   def self.most_badge_views(limit = 10)
     a = []
-    Account.find(:all).each do |account|
+    Account.active_users.each do |account|
       begin
         a << [account, account.total_hits]
       rescue
@@ -49,7 +50,7 @@ class System
 
   def self.most_referred_money_raised(limit = 10)
      money = {}
-     Account.find(:all).each do |account|
+     Account.active_users.each do |account|
       money[account.id] = account.referred_money_raised
      end
      sorted = money.sort {|a,b| a[1] <=> b[1] }
