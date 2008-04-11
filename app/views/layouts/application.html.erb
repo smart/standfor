@@ -7,6 +7,7 @@
   <title>Standforus</title>
   <%= javascript_include_tag :defaults %>
   <%= stylesheet_link_tag 'reset', 'base', 'fonts', 'application' %>
+  <%= stylesheet_link_tag 'sfu_admin' if admin_layer? %>
   <%= stylesheet_link_tag 'admin' if admin_layer? %>
   <!--[if lt IE 8]>
     <%= javascript_include_tag 'IE8' %>
