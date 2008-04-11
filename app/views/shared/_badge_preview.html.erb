@@ -19,7 +19,7 @@
 	<% if !is_location?(:controller => 'customize') and !is_location?(:controller => 'my_badges', :action => 'new') -%>
 		<%= link_to(image_tag(badge.source_path, :alt => 'Badge Preview'), get_badge_path(badge)) %>
 	<% else -%>
-		<%= image_tag("#{ADISERVER}/adis/#{badge.adi_id}.gif?&draft=true&rand=#{rand(100).to_s}", :alt => 'Badge Preview') %>
+		<%= image_tag("#{YOUNETY['url']}/adis/#{badge.adi_id}.gif?&draft=true&rand=#{rand(100).to_s}", :alt => 'Badge Preview') %>
 	<% end -%>
 </div>
 

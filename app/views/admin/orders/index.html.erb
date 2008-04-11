@@ -1,0 +1,25 @@
+<h1>listing orders for <%= @account.primary_email -%> </h1>
+
+<table>
+  <tr>
+   <th>Order # </th>
+   <th>Amount </th>
+  </tr>
+
+<% for order in @orders %>
+  <tr>
+    <td><%= link_to 'Show', admin_account_order_path(@account, order) %></td>
+    <td><%= number_to_currency(order.amount)  %></td>
+  </tr>
+<% end %>
+
+  <tr>
+    <td colspan="2" align="right"><%= number_to_currency(@account.total_order_amount) %></td>
+  </tr>
+  </tr>
+
+</table>
+
+<p>
+ <%= link_to 'back to accounts list', admin_accounts_path -%>
+</p>
