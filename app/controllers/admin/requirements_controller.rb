@@ -1,4 +1,10 @@
 class Admin::RequirementsController < AdminController
+  
+  make_resourceful do
+    actions :all
+    belongs_to :badge
+  end
+=begin  
   before_filter :get_badge
 
   # GET /admin_requirements
@@ -91,5 +97,5 @@ class Admin::RequirementsController < AdminController
  def get_badge
    @badge = Badge.find(params[:badge_id])
  end
-
+=end
 end

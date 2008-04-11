@@ -1,4 +1,9 @@
 class Admin::SegmentsController < AdminController 
+  make_resourceful do
+    actions :all
+    belongs_to :organization
+  end
+=begin
   #before_filter :get_organization
   # GET /admin_segments
   # GET /admin_segments.xml
@@ -91,5 +96,5 @@ class Admin::SegmentsController < AdminController
     
     end
   end
-
+=end
 end

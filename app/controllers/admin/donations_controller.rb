@@ -1,4 +1,9 @@
 class Admin::DonationsController < AdminController
+  make_resourceful do
+    actions :all
+    belongs_to :account
+  end 
+=begin  
   layout "admin.html.erb"
   before_filter :get_account
   # GET /admin_donations
@@ -90,5 +95,5 @@ class Admin::DonationsController < AdminController
   def get_account
     @account = Account.find( params[:account_id] )
   end
-
+=end
 end

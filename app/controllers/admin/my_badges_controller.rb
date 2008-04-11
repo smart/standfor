@@ -1,4 +1,9 @@
 class Admin::MyBadgesController < AdminController
+  make_resourceful do
+    actions :all
+    belongs_to :account
+  end
+=begin  
   layout "admin.html.erb"
   before_filter :get_account
 
@@ -90,5 +95,5 @@ class Admin::MyBadgesController < AdminController
   def get_account
     @account = Account.find( params[:account_id] )
   end
-
+=end
 end

@@ -1,4 +1,9 @@
 class Admin::AccessCodesController < ApplicationController
+  make_resourceful do
+    actions :all
+    belongs_to :account
+  end
+=begin
   before_filter :get_account
   # GET /admin_access_codes
   # GET /admin_access_codes.xml
@@ -89,5 +94,5 @@ class Admin::AccessCodesController < ApplicationController
   def get_account
     @account = Account.find(params[:account_id])
   end
-
+=end
 end

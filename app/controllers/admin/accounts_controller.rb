@@ -1,5 +1,9 @@
 class Admin::AccountsController < AdminController
 
+  make_resourceful do
+    actions :all
+  end
+=begin
   # GET /admin_accounts
   # GET /admin_accounts.xml
   def index
@@ -83,4 +87,5 @@ class Admin::AccountsController < AdminController
       format.xml  { head :ok }
     end
   end
+=end
 end

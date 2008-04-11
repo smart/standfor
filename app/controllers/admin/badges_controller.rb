@@ -1,5 +1,10 @@
 class Admin::BadgesController < AdminController
-  # GET /admin_badges
+  make_resourceful do
+    actions :all
+    belongs_to :organization, :segment
+  end
+=begin
+  # GET /admin_badges 
   # GET /admin_badges.xml
   def index
     @badges = Badge.find(:all, :conditions => ["organization_id  = ? " , @organization ])
@@ -82,5 +87,5 @@ class Admin::BadgesController < AdminController
       format.xml  { head :ok }
     end
   end
-
+=end
 end

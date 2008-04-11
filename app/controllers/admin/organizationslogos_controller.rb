@@ -1,4 +1,9 @@
 class Admin::OrganizationslogosController < ApplicationController
+  make_resourceful do
+    actions :all
+    belongs_to :organization
+  end
+=begin
   before_filter :get_organization
   # GET /admin_organizationslogos
   # GET /admin_organizationslogos.xml
@@ -91,5 +96,5 @@ class Admin::OrganizationslogosController < ApplicationController
   def get_organization
     @organization = Organization.find_by_site_name(params[:organization_id])
   end
-
+=end
 end

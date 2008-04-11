@@ -90,7 +90,6 @@ ActionController::Routing::Routes.draw do |map|
   end
   
 =begin
-
 # TODO
 # Lets try to roll this feature set into a more robust organization templating system.
 # Ideally it would use liquid for custom designs, and be easily extensible by us to
