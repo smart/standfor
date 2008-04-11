@@ -51,7 +51,7 @@ class Badge < ActiveRecord::Base
     end
 
      def belongs_to?(account)
-	return MyBadge.exists?(:account_id => account.id, :badge_id  => self.id )
+ 	     return MyBadge.exists?(:account_id => account.id, :badge_id  => self.id )
      end 
 
     def source_path(opts = {})

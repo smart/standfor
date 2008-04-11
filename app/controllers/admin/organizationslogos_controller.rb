@@ -1,5 +1,5 @@
 class Admin::OrganizationslogosController < ApplicationController
-  #before_filter :get_organization
+  before_filter :get_organization
   # GET /admin_organizationslogos
   # GET /admin_organizationslogos.xml
   def index
@@ -89,7 +89,7 @@ class Admin::OrganizationslogosController < ApplicationController
   private
 
   def get_organization
-    @organization = Organization.find(params[:organization_id])
+    @organization = Organization.find_by_site_name(params[:organization_id])
   end
 
 end
