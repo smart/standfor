@@ -4,7 +4,7 @@ class Account< ActiveRecord::Base
   has_many :my_badges, :dependent => :destroy
   has_many :donations, :dependent => :destroy
   has_many :orders, :dependent => :destroy
-  has_and_belongs_to_many :access_codes
+  has_and_belongs_to_many :access_codes 
   has_and_belongs_to_many :roles
   has_one :sponsor
   has_one :avatar

@@ -6,6 +6,7 @@
    <th>donations</th>
    <th>orders</th>
    <th>my badges</th>
+   <th>access codes</th>
    <th colspan="2">admin</th>
   </tr>
 
@@ -15,6 +16,7 @@
     <td><%= link_to "donatations (#{account.donations.size})" , admin_account_donations_path(account) %> </td>
     <td><%= link_to "orders (#{account.orders.size})" , admin_account_orders_path(account) %> </td>
     <td><%= link_to "my badges (#{account.my_badges.size})" , admin_account_my_badges_path(account) %> </td>
+    <td><%= link_to "access codes (#{account.access_codes.size})" , admin_account_access_codes_path(account) %> </td>
     <td><%= link_to 'edit account attributes', edit_admin_account_path(account) %></td>
     <td><%= link_to 'remove this account', admin_account_path(account), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>

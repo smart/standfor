@@ -1,21 +1,27 @@
-<h1> access codes for <%= @badge.organization.name -%> <%= @badge.name -%></h1>
+<h1> access codes for <%= @account.primary_email -%> </h1>
 
-<table>
+<% if @access_codes.empty? %>
+<tr><p>There are no access codes for this account.</p>
+<% else %>
+<table border="1">
 
   <tr>
+   <th>code </th>
+   <th>admin</th>
   </tr>
+
 
 <% for access_code in @access_codes %>
   <tr>
-    <td><%= link_to 'Show', admin_organization_badge_access_codes_path(@badge.organization, @badge) %></td>
-    <td><%= link_to 'Edit', edit_admin_organization_badge_access_code_path(@badge.organization, @badge, access_code) %></td>
-    <td><%= link_to 'Destroy', admin_access_code_path(access_code), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td><%= access_code.value -%> 
+    <td><%= link_to 'destroy', admin_account_access_code_path(@account, access_code), :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
+<% end%>
 
+<br />
 <p>
-<%= link_to "create a new access code for '#{@badge.organization.name}'  '#{@badge.name}' badge" , new_admin_organization_badge_access_code_path(@badge.organization) %>
+ <%= link_to 'badge to accounts list' , admin_accounts_path -%>
 </p>

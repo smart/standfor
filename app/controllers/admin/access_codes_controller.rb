@@ -1,9 +1,9 @@
 class Admin::AccessCodesController < ApplicationController
-  before_filter :get_badge
+  before_filter :get_account
   # GET /admin_access_codes
   # GET /admin_access_codes.xml
   def index
-    @access_codes = AccessCode.find(:all, :conditions => ["scope_id  = ? ", @badge] )
+    @access_codes = @account.access_codes 
 
     respond_to do |format|
       format.html # index.html.erb
@@ -85,7 +85,9 @@ class Admin::AccessCodesController < ApplicationController
   end
   
   private
-  def get_badge
-    @badge = Badge.find(params[:badge_id])
+
+  def get_account
+    @account = Account.find(params[:account_id])
   end
+
 end
