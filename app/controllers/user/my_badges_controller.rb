@@ -36,6 +36,11 @@ class User::MyBadgesController < ApplicationController
   # GET /user_my_badges/new.xml
   def new
     @order = Order.new
+    existing_badge = current_account.my_badges.find_by_badge_id(@my_badge.badge_id)
+    if !existing_badge.nil?
+      flash[:notice] = "you already have the badge #{existing_badge.badge.name} in your account " 
+      redirect_to user_my_badge_url(existing_badge) and return false
+    end
     if @my_badge.available?(current_account)
        @my_badge.account = current_account 
        if @my_badge.save
