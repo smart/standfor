@@ -2,6 +2,10 @@ class CreditcardsController < ApplicationController
   before_filter :login_required
   before_filter :order_required
 
+  def ssl_required?
+      ENV['RAILS_ENV'] == 'production'
+  end
+
   # GET /creditcards/new
   # GET /creditcards/new.xml
   def new
