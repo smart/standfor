@@ -7,10 +7,6 @@ class OrdersController < ApplicationController
   before_filter :creditcard_required, :only => [:create, :confirm]
   before_filter :authorization_required, :only => [:create]
 
-  def ssl_required?
-      ENV['RAILS_ENV'] == 'production'
-  end
-
   # GET /orders/1
   # GET /orders/1.xml
   def show
