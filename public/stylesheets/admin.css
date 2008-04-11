@@ -1,0 +1,8 @@
+.admin h1 {
+  margin-top: 0;
+  padding-bottom: 4px;
+  border-bottom: 4px solid black; }
+.admin tr.odd {
+  background: #ccc; }
+.admin tr.even {
+  background: #fff; }
