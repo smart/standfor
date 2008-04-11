@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
   #include StyleSystem
   include Younety::Remote
   include ExceptionNotifiable
+  include SslRequirement
   # Pick a unique cookie name to distinguish our session data from others'
   helper :all
   session :session_key => '_standfor_session_id'
