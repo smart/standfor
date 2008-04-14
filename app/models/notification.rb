@@ -17,8 +17,11 @@ class Notification < ActionMailer::Base
       @recipients = order.account.primary_email.strip
       @subject    = 'donation receipt'
       @body =  {
-          :user => order.account.primary_email,
-          :amount => order.amount
+          :user => order.account.primary_email ,
+          :amount => order.amount ,
+          :last_four_digits => order.last_four_digits , 
+          :organization => order.donations.first.segment.organization.name ,
+          :segment => order.donations.first.segment.name
       }
   end
 
