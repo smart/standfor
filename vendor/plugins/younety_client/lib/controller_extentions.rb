@@ -134,7 +134,7 @@ module Younety
         respond_to do |accepts|
           accepts.html do
             store_location if session[:return_to].nil?
-            redirect_to :controller => 'accounts', :action => 'finish_registration' #, :account => current_account.attributes
+            redirect_to :controller => '/accounts', :action => 'finish_registration' #, :account => current_account.attributes
           end
           accepts.xml do
             headers["Status"]           = "Unauthorized"
