@@ -1,4 +1,4 @@
-<% content_box('settings', :class => 'shadow', :id => 'preview') do -%>
+<% content_box(:box_class => 'shadow', :external_id => 'preview') do %>
 
 <%= error_messages_for :user %>
 <% form_for :account, current_account, { :url => {:action => :save_registration}, :html => {:method => :put, :id => "settings-form" } } do |f| -%>
@@ -23,7 +23,7 @@
 
 <span class="clear"><span>
 <% end -%>
-<% content_box('we need more details', :class => 'basicborder', :id => 'instructions') do  %>
+<% content_box(:box_class => 'basicborder', :external_id => 'instructions') do  %>
 	<p>
 		We have pulled your information from [authentication source]. However, standfor:us requires a few more details before we can create your account. Please enter the required fields in the form to the left to continue.
 	</p>
