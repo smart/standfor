@@ -2,12 +2,12 @@ class Organization < ActiveRecord::Base
    has_many :segments, :dependent => :destroy
    has_many :donations, :dependent => :destroy
    has_many :badges, :dependent => :destroy
-   has_many :campaigns, :dependent => :destroy
+   #has_many :campaigns, :dependent => :destroy
    has_one :segment
-   has_one :style_info, :as => :scope
+   #has_one :style_info, :as => :scope
    has_one :organizationslogo
-   has_many :sponsorships, :as => :sponsorable 
-   has_many :sponsors, :through => :sponsorships 
+   #has_many :sponsorships, :as => :sponsorable 
+   #has_many :sponsors, :through => :sponsorships 
    validates_presence_of :name, :keyword, :description
    acts_as_taggable
   

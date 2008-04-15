@@ -82,7 +82,7 @@ ActionController::Routing::Routes.draw do |map|
     admin.resources :organizations do |organizations|
       organizations.resources :segments, :has_many => :badges
       organizations.resources :badges, :has_many => :requirements
-      organizations.resources :organizationslogos
+      organizations.resource :organizationslogo
     end
     admin.resources :badges, :has_many => :requirements
     admin.resources :segments, :has_many => :badges

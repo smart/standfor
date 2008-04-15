@@ -1,7 +1,7 @@
 <ul>
   <% unless controller.action_name == 'index' %>
-  <li>Segments</li>  
-  <li>Badges</li>
+  <li><%= link_to 'Segments', admin_organization_segments_path(@organization) %></li>  
+  <li><%= link_to 'Badges', admin_organization_badges_path(@organization) %></li>
   <li>Logo</li>
   <% end %>
   <li><%= link_to 'New Organization', new_admin_organization_path %></li>

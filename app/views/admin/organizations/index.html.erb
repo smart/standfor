@@ -1,5 +1,3 @@
-
-
 <h1>Organizations</h1>
 
 <table>
@@ -13,18 +11,25 @@
 
 <% for organization in @organizations %>
   <tr class="<%=cycle('odd', 'even')-%>" >
-    <td> <%= image_tag(organization.logo(:thumb)) -%>  <br />
-        <%= link_to organization.name , admin_organization_segments_path(organization) %>
+    <td>
+      <%= link_to organization.name , admin_organization_path(organization) %>
     </td>
-    <td><%= link_to 'upload logo' , admin_organization_organizationslogos_path(organization) %></td>
-    <td><%= link_to 'segments', admin_organization_segments_path(organization) %></td>
-    <td><%= link_to 'badges', admin_organization_badges_path(organization) %></td>
-    <td><%= link_to 'edit organization attributes', edit_admin_organization_path(organization) %></td>
-    <td><%= link_to 'remove organization', admin_organization_path(organization), :confirm => 'Are you sure?', :method => :delete %></td>
+    <td>
+      <%= link_to(image_tag(organization.logo(:thumb), :alt => "click to upload logo"), new_admin_organization_organizationslogo_path(organization)) %>
+    </td>
+    <td>
+      <%= link_to 'segments', admin_organization_segments_path(organization) %>
+    </td>
+    <td>
+      <%= link_to 'badges', admin_organization_badges_path(organization) %>
+    </td>
+    <td>
+      <%= link_to 'edit', edit_admin_organization_path(organization) %>
+    </td>
+    <td>
+      <%= link_to 'delete', admin_organization_path(organization), :confirm => 'Are you sure?', :method => :delete %>
+    </td>
   </tr>
 <% end %>
+
 </table>
-
-<br />
-
-<%= link_to "add a new organization to standfor.us", new_admin_organization_path %>

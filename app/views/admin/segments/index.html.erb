@@ -8,7 +8,7 @@
 
 <% for segment in @segments %>
   <tr class="<%= cycle('odd','enen')-%>">
-    <td><%= segment.name %></td>
+    <td><%= link_to segment.name, admin_segment_path(segment) %></td>
     <td><%= segment.site_name %></td>
     <td><%= segment.keyword %></td>
     <td><%= link_to 'Edit', edit_admin_organization_segment_path(@organization, segment) %></td>
@@ -16,7 +16,3 @@
   </tr>
 <% end %>
 </table>
-
-<p>
-<%= link_to "back to organizations", admin_organizations_path %>
-</p>
