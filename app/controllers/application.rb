@@ -34,8 +34,6 @@ class ApplicationController < ActionController::Base
        site_name = request.host.match(/standfor\.(\w+)\.org/)[1]    
        params[:organization] = site_name
      end
-     #@organization = Organization.find(params[:organization_id], :include => [:segments]) if !params[:organization_id].nil?
-    #@segment = @organization.segments.find(params[:segment_id]) if !params[:segment_id].nil?
   end
   
   def permission_denied
@@ -48,11 +46,9 @@ class ApplicationController < ActionController::Base
       @my_badge = MyBadge.find(params[:id])
     end
     return true if @my_badge
-    #session[:my_badge_return_to] = request.request_uri
     if !session[:unsaved_badge].nil?
       @my_badge = session[:unsaved_badge]
     end
-    #p session[:unsaved_badge]
     return true if @my_badge
     if params[:badge_id]
       @my_badge = Badge.find(params[:badge_id]).my_badges.new
