@@ -79,10 +79,10 @@ ActionController::Routing::Routes.draw do |map|
   map.admin_home '/admin', :controller => 'admin/organizations', :action => 'index'
 
   map.namespace(:admin) do |admin|
-    admin.resources :organizations do |organizations|
-      organizations.resources :segments, :has_many => :badges
-      organizations.resources :badges, :has_many => :requirements
-      organizations.resource :organizationslogo
+    admin.resources :organizations do |organization|
+      organization.resources :segments, :has_many => :badges
+      organization.resources :badges, :has_many => :requirements
+      organization.resource :organizationslogo
     end
     admin.resources :badges, :has_many => :requirements
     admin.resources :segments, :has_many => :badges

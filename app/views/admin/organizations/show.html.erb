@@ -1,13 +1,64 @@
-<ol>
-<% %w{ name address1 address2 address3 city state zip country phone fax email url statement description created_on updated_on keyword site_name tag_list }.each do |field| %>
-<li><%= field -%>: <%= @organization.send(field)-%></li>
-<% end  %>
-</ol>
+<div id="about" class="organization">
+  <h2>Organization Info</h2>
+  <ul>
+      <li>Name: <%= @organization.name %></li>
+      <li>Statement: <%= @organization.statement %></li>
+      <li>Description: 
+        <p>
+          <%= textilize @organization.description %>
+        </p>
+      </li>
+  </ul>
+</div>
 
-<ol>
-<li><%= link_to 'segments',  admin_organization_segments_path(@organization) -%></li>
-</ol>
+<div id="contact" class="organization">
+  <h2>Contact Details</h2>
+  <ul>
+      <li>Email: <%= @organization.email %></li>
+      <li>Url: <%= @organization.url %></li>
+      <li>Phone: <%= @organization.phone %></li>
+      <li>Fax: <%= @organization.fax %></li>
+  </ul>
+</div>
 
-<%= link_to 'Edit', edit_admin_organization_path(@organization) %> |
-<%= link_to 'Back', admin_organizations_path %>
 
+<div id="address" class="organization">
+  <h2>Address</h2>
+  <ul>
+      <li>Address Line 1: <%= @organization.address1 %></li>
+      <li>Address Line 2: <%= @organization.address2 %></li>
+      <li>Address Line 3: <%= @organization.address3 %></li>
+      <li>City: <%= @organization.city %></li>
+      <li>State: <%= @organization.state %></li>
+      <li>Zip: <%= @organization.zip %></li>
+  </ul>
+</div>
+
+<div id="meta" class="organization">
+  <h2>Meta</h2>
+  <ul>
+      <li>Created on: <%= @organization.created_on %></li>
+      <li>Updated on: <%= @organization.updated_on %></li>
+      <li>Keyword: <%= @organization.keyword %></li>
+      <li>Sitename: <%= @organization.site_name %></li>
+      <li>Tag List: <%= @organization.tag_list %></li>
+  </ul>
+</div>
+
+<div id="segments" class="organization">
+  <h2>Segments</h2>
+  <ul>
+    <% for segment in @organization.segments %>
+      <li><%= link_to segment.name %></li>
+    <% end %>
+  </ul>
+</div>
+
+<div id="badges">
+  <h2>Badges</h2>
+  <ul>
+    <% for badge in @organization.badges %>
+      <li><%= link_to badge.name %></li>
+    <% end %>
+  </ul>
+</div>

@@ -1,7 +1,14 @@
 <ul>
-  <li><%= link_to_unless_current 'New Segment', new_admin_organization_segment_path(@organization) %></li>
-  <% unless controller.action_name == 'index' || 'new' %>
+  <% if parent? %>
+    <li><%= link_to_unless_current 'New Segment', new_admin_organization_segment_path(@organization) %></li>
+  <% else %>
+    <li><%= link_to_unless_current 'New Segment', new_admin_segment_path %></li>
+  <% end %>
+  
+  <% unless controller.action_name == 'index' %>
   <li><%= link_to 'Badges', admin_segment_badges_path(params[:id]) %></li> 
+  
   <% end %>
 </ul>
+
 <%= yield %>

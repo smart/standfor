@@ -1,8 +1,26 @@
 class Admin::RequirementsController < AdminController
   
   make_resourceful do
-    actions :all
+    actions :all, :except => :create
     belongs_to :badge
+    
+  end
+  
+  def create
+    type = params[:requirement][:req_type]
+    @requirement = type.constantize.new(params[:requirement]) 
+    @requirement.badge = @badge 
+
+    respond_to do |format|
+      if @requirement.save
+        flash[:notice] = "new requirement for #{@badge.name} was successfully created."
+        format.html { redirect_to admin_badge_requirements_url(@badge)   }
+        format.xml  { render :xml => @requirement, :status => :created, :location => @requirement }
+      else
+        format.html { render :action => "new" }
+        format.xml  { render :xml => @requirement.errors, :status => :unprocessable_entity }
+      end
+    end
   end
 =begin  
   before_filter :get_badge

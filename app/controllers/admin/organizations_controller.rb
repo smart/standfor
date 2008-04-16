@@ -1,6 +1,7 @@
 class Admin::OrganizationsController < AdminController
   make_resourceful do
     actions :all
+    
   end
 
 =begin

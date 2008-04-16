@@ -1,8 +1,14 @@
 <ul>
+<% if parent? && parent_name == "organization" %>
+  <li><%= link_to_unless_current 'New Badge', new_admin_organization_badge_path(params[:organization_id]) %></li>
+<% elsif parent? && parent_name == "segment" %>
   <li><%= link_to_unless_current 'New Badge', new_admin_segment_badge_path(params[:segment_id]) %></li>
-  <% unless controller.action_name == 'index' || 'new' %>
+<% else %>
+  <li><%= link_to_unless_current 'New Badge', new_admin_badge_path %></li>
+<% end %>
+<% unless controller.action_name == 'index' || 'new' %>
   <li><%= link_to 'Requirements', admin_badge_requirements_path(@badge) %></li> 
-  <% end %>
+<% end %>
 </ul>
 
 <%= yield %>
