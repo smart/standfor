@@ -5,12 +5,15 @@ class User::ShareController < ApplicationController
     def index 
       @customizations = Customization.commit(@my_badge.adi_id)
       @webapps  = Younety::Remote::Webapp.find_all_with_shares
+      @default_webapp = @webapps.first
+      @webapps.each do |w|
+        @default_webapp = w if w.name == "Email Signature"
+      end
+      @shares = Younety::Remote::Share.find_all_by_webapp_id(@default_webapp.id)
     end
-    
+
     def webapp_choose
-     
       @shares = Younety::Remote::Share.find_all_by_webapp_id(params[:webapp])
-  
       if @shares.size == 1
         @share = @shares.first
         render :action => 'choose.rjs'
