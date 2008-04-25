@@ -25,7 +25,7 @@
 	 
 	  <dl class="input verification">
 	  <dt><label for="creditcard_verification_value">Verification:</label></dt>
-	    <dd><%= f.text_field :verification_value, :size => 6 -%></dd>
+	    <dd><%= f.text_field :verification_value, :size => 6 -%> <%= image_tag('cvv2_sm.gif', :id => "cvv" ) %>(3 or 4 digits on  back)</dd>
 	  </dl>
 	  
 	  <dl>
