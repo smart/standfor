@@ -1,7 +1,0 @@
-<% content_box( "badges", :class => "shadow" ) do -%>
-  <% Badge.find(:all).each do |badge| %> 
-   <% content_box( "#{badge.name}", :class => "shadow" ) do -%>
-    <%= image_tag badge.example_path -%>
-   <% end %>
-  <% end %>
-<% end %>
