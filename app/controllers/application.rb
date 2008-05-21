@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
   session :session_key => '_standfor_session_id'
   before_filter :init
   #before_filter :print_info
+
+
   
    def print_info
     if !fbsession.nil?
