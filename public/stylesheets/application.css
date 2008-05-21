@@ -104,32 +104,32 @@ a {
 .sessions.new #member-login, .sessions.new #open-id, .sessions.new #facebook, .accounts.create #member-login, .accounts.create #open-id, .accounts.create #facebook {
   float: left;
   width: 33%; }
-  .sessions.new #member-login .box, .sessions.new #open-id .box, .sessions.new #facebook .box, .accounts.create #member-login .box, .accounts.create #open-id .box, .accounts.create #facebook .box {
+  .sessions.new #member-login .box,   .sessions.new #open-id .box,   .sessions.new #facebook .box,   .accounts.create #member-login .box,   .accounts.create #open-id .box,   .accounts.create #facebook .box {
     margin-right: 15px; }
-    .sessions.new #member-login .box .content, .sessions.new #open-id .box .content, .sessions.new #facebook .box .content, .accounts.create #member-login .box .content, .accounts.create #open-id .box .content, .accounts.create #facebook .box .content {
+    .sessions.new #member-login .box .content,     .sessions.new #open-id .box .content,     .sessions.new #facebook .box .content,     .accounts.create #member-login .box .content,     .accounts.create #open-id .box .content,     .accounts.create #facebook .box .content {
       padding-top: 0; }
-    .sessions.new #member-login .box .inside-box, .sessions.new #open-id .box .inside-box, .sessions.new #facebook .box .inside-box, .accounts.create #member-login .box .inside-box, .accounts.create #open-id .box .inside-box, .accounts.create #facebook .box .inside-box {
+    .sessions.new #member-login .box .inside-box,     .sessions.new #open-id .box .inside-box,     .sessions.new #facebook .box .inside-box,     .accounts.create #member-login .box .inside-box,     .accounts.create #open-id .box .inside-box,     .accounts.create #facebook .box .inside-box {
       min-height: 200px; }
-    .sessions.new #member-login .box h2, .sessions.new #open-id .box h2, .sessions.new #facebook .box h2, .accounts.create #member-login .box h2, .accounts.create #open-id .box h2, .accounts.create #facebook .box h2 {
+    .sessions.new #member-login .box h2,     .sessions.new #open-id .box h2,     .sessions.new #facebook .box h2,     .accounts.create #member-login .box h2,     .accounts.create #open-id .box h2,     .accounts.create #facebook .box h2 {
       padding-top: 10px; }
 
 .organizations ul.org-nav, .segments ul.org-nav {
   margin: 0;
   padding: 0; }
-  .organizations ul.org-nav li, .segments ul.org-nav li {
+  .organizations ul.org-nav li,   .segments ul.org-nav li {
     padding-left: 32px;
     height: 28px;
     line-height: 23px;
     list-style-type: none; }
-    .organizations ul.org-nav li.organization, .segments ul.org-nav li.organization {
+    .organizations ul.org-nav li.organization,     .segments ul.org-nav li.organization {
       background: url(/images/icons/navigation/organization.png) no-repeat center left; }
-    .organizations ul.org-nav li.segment, .segments ul.org-nav li.segment {
+    .organizations ul.org-nav li.segment,     .segments ul.org-nav li.segment {
       background: url(/images/icons/navigation/back.png) no-repeat center left; }
 .organizations ul.segments, .segments ul.segments {
   margin: 0;
   padding: 0;
   border-top: 1px dotted black; }
-  .organizations ul.segments li, .segments ul.segments li {
+  .organizations ul.segments li,   .segments ul.segments li {
     list-style-type: none;
     font-weight: bold;
     font-size: 138.5%;
@@ -138,7 +138,7 @@ a {
     padding: 5px 32px 0 0;
     min-height: 28px;
     background: url(/images/icons/navigation/segment.png) no-repeat right center; }
-    .organizations ul.segments li.current, .organizations ul.segments li:hover, .segments ul.segments li.current, .segments ul.segments li:hover {
+    .organizations ul.segments li.current, .organizations ul.segments li:hover,     .segments ul.segments li.current, .segments ul.segments li:hover {
       border-left: 5px solid gray; }
 .organizations img.avatar, .segments img.avatar {
   float: right;
@@ -161,9 +161,9 @@ a {
   width: 40%;
   float: right;
   text-align: center; }
-  .landing.index #badge-extras #actions h3, .badges.show #badge-extras #actions h3, .my_badges.show #badge-extras #actions h3 {
+  .landing.index #badge-extras #actions h3,   .badges.show #badge-extras #actions h3,   .my_badges.show #badge-extras #actions h3 {
     margin: 0 0 .5em 0; }
-  .landing.index #badge-extras #actions img.avatar, .badges.show #badge-extras #actions img.avatar, .my_badges.show #badge-extras #actions img.avatar {
+  .landing.index #badge-extras #actions img.avatar,   .badges.show #badge-extras #actions img.avatar,   .my_badges.show #badge-extras #actions img.avatar {
     margin: 10px 0 10px 0; }
 
 .customize.index #tool-options ul {
@@ -186,18 +186,18 @@ a {
   float: left;
   margin: 0 20px 20px 0; }
 
-.my_badges.new #complete-requirements .left, .my_badges.new #complete-requirements .right {
+.my_badges.new #complete-requirements .left, .my_badges.new #complete-requirements .right, .my_badges.create #complete-requirements .left, .my_badges.create #complete-requirements .right {
   width: 50%; }
-.my_badges.new #complete-requirements .left {
+.my_badges.new #complete-requirements .left, .my_badges.create #complete-requirements .left {
   position: relative;
   float: left; }
-  .my_badges.new #complete-requirements .left span.or {
+  .my_badges.new #complete-requirements .left span.or,   .my_badges.create #complete-requirements .left span.or {
     position: absolute;
     font-size: 174%;
     font-weight: bold;
     right: 88px;
     top: 30pt; }
-.my_badges.new #complete-requirements .right {
+.my_badges.new #complete-requirements .right, .my_badges.create #complete-requirements .right {
   float: right; }
 
 table#badge-list {
@@ -397,9 +397,9 @@ span.clear {
     background: transparent url('/images/boxes/basic-round.png') no-repeat top right; }
   .box.basicborder .content, .box.basicborder .t, .box.basicborder .b, .box.basicborder .b div {
     background: transparent url('/images/boxes/basic-round-border.png') no-repeat top right; }
-  .box.error .content, .box.error .t, .box.error .b, .box.error .b div, .box.warning .content, .box.warning .t, .box.warning .b, .box.warning .b div {
+  .box.error .content, .box.error .t, .box.error .b, .box.error .b div,   .box.warning .content, .box.warning .t, .box.warning .b, .box.warning .b div {
     background: transparent url('/images/boxes/basic-round-red-border.png') no-repeat top right; }
-  .box.notice .content, .box.notice .t, .box.notice .b, .box.notice .b div, .box.message .content, .box.message .t, .box.message .b, .box.message .b div {
+  .box.notice .content, .box.notice .t, .box.notice .b, .box.notice .b div,   .box.message .content, .box.message .t, .box.message .b, .box.message .b div {
     background: transparent url('/images/boxes/basic-round-green-border.png') no-repeat top right; }
   .box .content {
     position: relative;

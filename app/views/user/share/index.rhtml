@@ -19,7 +19,7 @@
       	<%= render :partial => "webapps", :locals => {:my_badge => @my_badge, :webapps => @webapps  } -%>
       </div>
       <div id="share-it" class="right">
-      <%= render :partial => 'webapp_choose' -%>
+      <%= render :partial => 'webapp_choose', :locals => { :my_badge => @my_badge }  -%>
 
 <% if false %>
 <p>If adding your badge to your personal website, email signature or blog you can copy and paste the code snippet below.  You can also use our share it library to automatically share your badge.  Choose an application to the left to begin the process.</p>
