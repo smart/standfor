@@ -3,13 +3,13 @@ class User::ShareController < ApplicationController
   before_filter :get_my_badge
 
     def index 
-      @customizations = Customization.commit(@my_badge.adi_id)
-      @webapps  = Younety::Remote::Webapp.find_all_with_shares
-      @default_webapp = @webapps.first
-      @webapps.each do |w|
-        @default_webapp = w if w.name == "Email Signature"
-      end
-      @shares = Younety::Remote::Share.find_all_by_webapp_id(@default_webapp.id)
+      #@customizations = Customization.commit(@my_badge.adi_id)
+      #@webapps  = Younety::Remote::Webapp.find_all_with_shares
+      #@default_webapp = @webapps.first
+      #@webapps.each do |w|
+      #  @default_webapp = w if w.name == "Email Signature"
+      #end
+      #@shares = Younety::Remote::Share.find_all_by_webapp_id(@default_webapp.id)
     end
 
     def webapp_choose

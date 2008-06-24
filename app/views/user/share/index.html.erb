@@ -1,0 +1,24 @@
+<%= @sub_layout = 'standard' %>
+
+<% content_for :top_left do -%>
+  <h1>Share your Badge</h1>
+  <%= render :partial => 'shared/badge_preview', :locals => {:badge => @my_badge} %>
+<% end %>
+  
+<% content_for :top_right do -%>
+  <p>
+  	The standfor.us business model thrives on word of mouth to raise awareness for our causes. To that end we have made it extremely easy to share your badges with all your friends across the internet. Simply choose from the options below and share it!
+  </p>
+<% end %>
+  
+<% content_for :tertiary do %>
+  <div id="toolbar">
+    <% grey_fade :id => 'share' do -%>
+    <iframe src="<%=YOUNETY['url']-%>/webapps?adi_id=<%=@my_badge.adi_id -%>" height="300" width="700" frameborder="0">
+    </iframe>
+    <% end %>
+  </div>
+<% end %>
+
+
+

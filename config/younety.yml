@@ -2,7 +2,7 @@ development:
     user: quentin
     pass: test
     younety_app: 1
-    url: http://adiserver.eval.sympact.net
+    url: http://0.0.0.0:3001
 
 test:
     user: quentin
