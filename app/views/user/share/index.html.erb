@@ -14,7 +14,7 @@
 <% content_for :tertiary do %>
   <div id="toolbar">
     <% grey_fade :id => 'share' do -%>
-    <iframe src="<%=YOUNETY['url']-%>/webapps?adi_id=<%=@my_badge.adi_id -%>" height="300" width="700" frameborder="0">
+    <iframe src="<%=YOUNETY['url']-%>/webapps?adi_id=<%=@my_badge.adi_id -%>&css=http://www.abc.com/foo.css" height="300" width="700" frameborder="0">
     </iframe>
     <% end %>
   </div>
