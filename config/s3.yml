@@ -1,0 +1,10 @@
+
+staging:
+  bucket_base_name: sympact-site-new
+  aws_access_key: 0H7J8WNGE7VBK5VH8682
+  aws_secret_access_key: q2jNChJnePCQVPrS/nAdB/7th4Bjc6Tz0ENnQZbT
+
+production:
+    bucket_base_name: sympact-site-new
+    aws_access_key: 0H7J8WNGE7VBK5VH8682
+    aws_secret_access_key: q2jNChJnePCQVPrS/nAdB/7th4Bjc6Tz0ENnQZbT
