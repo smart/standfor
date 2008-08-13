@@ -1,4 +1,3 @@
-require 'eyrubygems'
 # Settings specified here will take precedence over those in config/environment.rb
 
 # The production environment is meant for finished, "live" apps.
@@ -25,12 +24,5 @@ ADISERVER_PASS = "test"
 STANDFOR_ROOT = "http://www.standfor.us" 
 
 PAYPALTEST_MODE = false 
-
-ActionMailer::Base.smtp_settings = {
-  :domain             => "standfor.us",
-  :perform_deliveries => true,
-  :address            => 'smtp.ey02.engineyard.com',
-  :port               => 25 
-}
 
 
