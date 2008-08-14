@@ -33,5 +33,5 @@ production:
   encoding: utf8
   database: standfor_production
   username: root
-  password: rppt
+  password: 
   host: db_primary
