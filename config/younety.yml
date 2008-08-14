@@ -20,4 +20,4 @@ production:
     user: quentin
     pass: test
     younety_app: 1
-    url: http://adiserver.eval.sympact.net
+    url: http://adiserver.sympact.net
