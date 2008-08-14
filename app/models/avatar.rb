@@ -1,9 +1,11 @@
 class Avatar < ActiveRecord::Base
   belongs_to :account
-  has_attachment :storage => :s3, :content_type => :image, :processor => :rmagick, :path_prefix => "cache/avatars"
-  THUMBS = { :full => 150, :thumb => 75, :small => 25 }
+  has_attachment :storage => :s3, :content_type => :image, 
+                 :processor => :rmagick, :path_prefix => "cache/avatars",
+                 :thumbnails => { :full => [150, 150], :thumb => [75,75], :small => [25,25]}
+  #THUMBS = { :full => 150, :thumb => 75, :small => 25 }
   validates_as_attachment
-
+=begin
   after_attachment_saved do |photo|
     if photo.parent_id.nil?
       THUMBS.each_pair do |file_name_suffix, size|
@@ -28,5 +30,5 @@ class Avatar < ActiveRecord::Base
     end
     thumb
   end
-
+=end
 end
