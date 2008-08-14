@@ -1,0 +1,9 @@
+development:
+  bucket_name: standfor
+  access_key_id: 0H7J8WNGE7VBK5VH8682
+  secret_access_key: q2jNChJnePCQVPrS/nAdB/7th4Bjc6Tz0ENnQZbT
+
+production:
+  bucket_name: standfor
+  access_key_id: 0H7J8WNGE7VBK5VH8682
+  secret_access_key: q2jNChJnePCQVPrS/nAdB/7th4Bjc6Tz0ENnQZbT

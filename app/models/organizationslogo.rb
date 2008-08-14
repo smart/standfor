@@ -1,7 +1,10 @@
 class Organizationslogo < ActiveRecord::Base
   belongs_to :organization
-  acts_as_attachment :storage => :file_system, 
-		            :content_type => :image, :thumbnails => {  :normal => '300>', :thumb => '75', :medium => '150' }
+  #acts_as_attachment :storage => :file_system, 
+	#	            :content_type => :image, :thumbnails => {  :normal => '300>', :thumb => '75', :medium => '150' }
+	has_attachment :storage => :s3, :content_type => :image, 
+	               :processor => :rmagick, :path_prefix => "cache/organizationslogos", 
+	               :thumbnails => {  :normal => '300>', :thumb => '75', :medium => '150' }
   validates_as_attachment
 
   

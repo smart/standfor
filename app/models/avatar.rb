@@ -1,6 +1,6 @@
 class Avatar < ActiveRecord::Base
   belongs_to :account
-  acts_as_attachment :storage => :file_system, :content_type => :image
+  has_attachment :storage => :s3, :content_type => :image, :processor => :rmagick, :path_prefix => "cache/avatars"
   THUMBS = { :full => 150, :thumb => 75, :small => 25 }
   validates_as_attachment
 
