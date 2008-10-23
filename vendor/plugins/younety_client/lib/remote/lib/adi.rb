@@ -1,6 +1,7 @@
 module Younety
   module Remote
     class Adi < YounetyResource
+      self.site += "/structures/:product_key"
       has_many :customizations
       has_many :shares
       has_many :data_elements

@@ -7,7 +7,7 @@
                     :before => "Element.show('indicator')",
                     :complete => "Element.hide('indicator')" -%>
 <textarea rows="2" cols="40" name="option_value" >
-<%= (customization.draft_value.nil? || customization.empty? ) ? customization.current_value : customization.draft_value -%>
+<%= (customization.draft_value.nil? || customization.empty? ) ? customization.value : customization.draft_value -%>
 </textarea>
 <%= submit_tag  "Update #{customization.name}"  -%>
 </form>

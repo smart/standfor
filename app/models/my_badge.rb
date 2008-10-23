@@ -22,11 +22,11 @@ class MyBadge < ActiveRecord::Base
   end
   
   def adi
-    Younety::Remote::Adi.find(adi_id)
+    Younety::Remote::Adi.find(adi_id, :params => {:product_key => badge.structure_id})
   end
   
   def update_stats
-    stats = Younety::Remote::Adi.find(adi_id).stats_summary
+    stats = Younety::Remote::Adi.find(adi_id, :params => {:product_key => badge.structure_id}).stats_summary
     self.update_attributes(:total_hits => stats['total_hits'], :total_clicks => stats['total_clicks'],
                            :total_unique_hits => stats['total_unique_hits'], :total_unique_clicks => stats['total_unique_clicks'],
                            :stats_updated_at => Time.now)
@@ -86,6 +86,7 @@ class MyBadge < ActiveRecord::Base
    end
 
    def save_thumbnails
+     begin
       remote_path = "#{YOUNETY['url']}/adis/#{self.adi_id}.gif" 
       @file_data = open(remote_path) 
       image =  Magick::ImageList.new( @file_data.path  )
@@ -97,6 +98,9 @@ class MyBadge < ActiveRecord::Base
       small = image.first.resize_to_fit(225, 225)
       small_path = File.join(File.join(self.cache_path , 'small.gif' ) ) 
       small.write(small_path)
+     rescue
+       #send excaption notification
+      end
     end
 
    def cache_path
@@ -132,7 +136,7 @@ class MyBadge < ActiveRecord::Base
         if badge_id
           adi = Younety::Remote::Adi.create(:product_key => self.badge.structure_id, :auth_enabled => false ) 
           self.adi_id = adi.id
-          adi = Younety::Remote::Adi.find(self.adi_id) 
+          adi = Younety::Remote::Adi.find(self.adi_id, :params => {:product_key => badge.structure_id}) 
           self.public_adi_id = adi.attributes['public_id']
         end
       end

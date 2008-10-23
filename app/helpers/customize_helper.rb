@@ -3,9 +3,9 @@ module CustomizeHelper
   def option_link(icon_class, text, my_badge)
     css_classes = {
       'picture'   => 'images' ,
-      'name text' => 'fonts'  ,
+      'name_text' => 'fonts'  ,
       'color'     => 'edges'  ,
-      'rotary logo' => 'affiliation'
+      'rotary_logo' => 'affiliation'
     }
     css_class = css_classes["#{text}"]
     url = url_for(:controller => "/customize", :action => "choose_customizable", :customizable_name => text, :id => my_badge  )

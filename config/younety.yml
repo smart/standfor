@@ -17,7 +17,7 @@ staging:
     url: http://adiserver.eval.sympact.net
 
 production:
-    user: quentin
+    user: sympact
     pass: test
     younety_app: 1
-    url: http://adiserver.sympact.net
+    url: http://sympact.sympact.net
